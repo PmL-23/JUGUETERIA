@@ -67,7 +67,7 @@ namespace UIJugueteria
 
                 tboxIniciarUsuario.Text = "";
                 tboxIniciarContraseña.Text = "";
-                string _RolTemp =emp.VerificarRol(_NombreUsuario);
+                string _RolTemp = emp.VerificarRol(_NombreUsuario);
 
                 if (_RolTemp=="Logistica") { 
                     AbrirFormEnPanel(new ILOGISTICA(_NombreUsuario));
@@ -79,6 +79,10 @@ namespace UIJugueteria
                 if (_RolTemp == "Vendedor")
                 {
                     Console.WriteLine("ES VENDEDOR");
+                }
+                if (_RolTemp == "")
+                {
+                    Console.WriteLine("Error al verificar el rol de usuario...");
                 }
             }
             else

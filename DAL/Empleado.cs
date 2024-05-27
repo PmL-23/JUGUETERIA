@@ -59,7 +59,7 @@ namespace DAL
             {
                 return fila[0].ToString();
             }
-            return "Vendedor";//NO DEBERIA RETORNAR UN ERROR?
+            return "";
         }
     }
 }

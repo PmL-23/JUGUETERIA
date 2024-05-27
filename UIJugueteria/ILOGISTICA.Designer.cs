@@ -30,12 +30,12 @@
         {
             this.btnCargarNuevoProducto = new System.Windows.Forms.Button();
             this.PanelLateral = new System.Windows.Forms.Panel();
+            this.btnLogistica = new System.Windows.Forms.Button();
             this.btnCargarStock = new System.Windows.Forms.Button();
             this.btnCerrarsesion = new System.Windows.Forms.Button();
             this.btnVerAlertaDeStock = new System.Windows.Forms.Button();
             this.btnEditarProducto = new System.Windows.Forms.Button();
             this.PanelCentral = new System.Windows.Forms.Panel();
-            this.btnLogistica = new System.Windows.Forms.Button();
             this.PanelLateral.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +72,20 @@
             this.PanelLateral.Size = new System.Drawing.Size(200, 365);
             this.PanelLateral.TabIndex = 2;
             this.PanelLateral.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelLateral_Paint);
+            // 
+            // btnLogistica
+            // 
+            this.btnLogistica.FlatAppearance.BorderSize = 0;
+            this.btnLogistica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogistica.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogistica.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnLogistica.Location = new System.Drawing.Point(22, 3);
+            this.btnLogistica.Name = "btnLogistica";
+            this.btnLogistica.Size = new System.Drawing.Size(154, 50);
+            this.btnLogistica.TabIndex = 5;
+            this.btnLogistica.Text = "LOGISTICA";
+            this.btnLogistica.UseVisualStyleBackColor = true;
+            this.btnLogistica.Click += new System.EventHandler(this.btnLogistica_Click);
             // 
             // btnCargarStock
             // 
@@ -143,20 +157,6 @@
             this.PanelCentral.Size = new System.Drawing.Size(599, 365);
             this.PanelCentral.TabIndex = 3;
             this.PanelCentral.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelCentral_Paint);
-            // 
-            // btnLogistica
-            // 
-            this.btnLogistica.FlatAppearance.BorderSize = 0;
-            this.btnLogistica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogistica.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogistica.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnLogistica.Location = new System.Drawing.Point(22, 3);
-            this.btnLogistica.Name = "btnLogistica";
-            this.btnLogistica.Size = new System.Drawing.Size(154, 50);
-            this.btnLogistica.TabIndex = 5;
-            this.btnLogistica.Text = "LOGISTICA";
-            this.btnLogistica.UseVisualStyleBackColor = true;
-            this.btnLogistica.Click += new System.EventHandler(this.btnLogistica_Click);
             // 
             // ILOGISTICA
             // 

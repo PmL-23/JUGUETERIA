@@ -82,7 +82,7 @@ namespace BLL
             return false;
 
         }
-        //esto va en usuario
+
         public bool Registrarse(string nombre, string apellido, int dni, string nombreUsuario, string contrasenia, string confirmContra)
         {
 
@@ -105,7 +105,7 @@ namespace BLL
             return empleado.VerificarRol(nombreUsuario);
         }
 
-        public int CalcularSueldo()//QUE HACE ESTO?
+        public int CalcularSueldo()//Nos falta determinar en base a qué se va a calcular el sueldo de los empleados
         {
             return 0;
         }

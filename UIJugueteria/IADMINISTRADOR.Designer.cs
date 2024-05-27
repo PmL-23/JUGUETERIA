@@ -299,12 +299,17 @@
             // 
             // btnCerrarsesion
             // 
-            this.btnCerrarsesion.Location = new System.Drawing.Point(673, 12);
+            this.btnCerrarsesion.BackColor = System.Drawing.Color.DarkRed;
+            this.btnCerrarsesion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrarsesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrarsesion.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.btnCerrarsesion.ForeColor = System.Drawing.Color.White;
+            this.btnCerrarsesion.Location = new System.Drawing.Point(694, 12);
             this.btnCerrarsesion.Name = "btnCerrarsesion";
-            this.btnCerrarsesion.Size = new System.Drawing.Size(117, 23);
+            this.btnCerrarsesion.Size = new System.Drawing.Size(88, 25);
             this.btnCerrarsesion.TabIndex = 9;
             this.btnCerrarsesion.Text = "Cerrar Sesion";
-            this.btnCerrarsesion.UseVisualStyleBackColor = true;
+            this.btnCerrarsesion.UseVisualStyleBackColor = false;
             this.btnCerrarsesion.Click += new System.EventHandler(this.btnCerrarsesion_Click);
             // 
             // IADMINISTRADOR
