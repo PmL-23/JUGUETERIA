@@ -55,7 +55,7 @@ namespace BLL
             return false;
 
         }
-        /*
+        
         public List<Producto> VerAlertarBajoStock() //pedir ayuda a patricio para haecr esto, ya que el hizo algo muy parecido.
         {
             List < Producto > listaDeProductos = new List<Producto>();
@@ -78,8 +78,7 @@ namespace BLL
             }
             return listaDeProductos;
 
-        
-        }*/
+        }
 
         public Logistica()
         {

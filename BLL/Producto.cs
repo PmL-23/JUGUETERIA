@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    internal class Producto
+    public class Producto
     {
 		private string _NombreProducto;
 

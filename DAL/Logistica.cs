@@ -55,7 +55,7 @@ namespace DAL
         public bool AumentarStock(string IDProducto, int CantidadStockAAumentar)
         {
             Conexion objConexion = new Conexion();
-            int filasAfectadas = objConexion.EscribirPorComando("UPDATE PRODUCTO SET _CantidadEnStock= (_CantidadEnStock +" + CantidadStockAAumentar + ") WHERE _IDProducto= '" + IDProducto + "')");
+            int filasAfectadas = objConexion.EscribirPorComando("UPDATE PRODUCTO SET _CantidadEnStock = (_CantidadEnStock +" + CantidadStockAAumentar + ") WHERE _IDProducto= '" + IDProducto + "')");
 
             if (filasAfectadas > 0)
             {
@@ -68,7 +68,7 @@ namespace DAL
         public DataTable VerAlertarBajoStock() //pedir ayuda a patricio para haecr esto, ya que el hizo algo muy parecido.
         {
             Conexion objConexion = new Conexion(); //(fila de abajo) creo que deberia ser otro tipo de declaracion
-            return objConexion.LeerPorComando("SELECT [_NombreProducto], [_IDProducto], [_Costo], [_Precio], [_CantidadEnStock], [_CantidadMinimaPermitida] from [BDDJ].[dbo].[PRODUCTO] where _CantidadEnstock<_CantidadMinimaPermitida");
+            return objConexion.LeerPorComando("SELECT [_NombreProducto], [_IDProducto], [_Costo], [_Precio], [_CantidadEnStock], [_CantidadMinimaPermitida] from [BDDJ].[dbo].[PRODUCTO] where _CantidadEnstock < _CantidadMinimaPermitida");
         }
 
        
