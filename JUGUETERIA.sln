@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIJugueteria", "UIJugueteria\UIJugueteria.csproj", "{8CB9F5AB-E12A-4468-81F2-35583E75FB60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{FC4F7FDD-CDBA-4C3B-9AC7-702E92DCB945}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{4BAA5E65-2E35-4535-80A1-420FF379B727}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8CB9F5AB-E12A-4468-81F2-35583E75FB60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CB9F5AB-E12A-4468-81F2-35583E75FB60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CB9F5AB-E12A-4468-81F2-35583E75FB60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CB9F5AB-E12A-4468-81F2-35583E75FB60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC4F7FDD-CDBA-4C3B-9AC7-702E92DCB945}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC4F7FDD-CDBA-4C3B-9AC7-702E92DCB945}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC4F7FDD-CDBA-4C3B-9AC7-702E92DCB945}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC4F7FDD-CDBA-4C3B-9AC7-702E92DCB945}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BAA5E65-2E35-4535-80A1-420FF379B727}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BAA5E65-2E35-4535-80A1-420FF379B727}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BAA5E65-2E35-4535-80A1-420FF379B727}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BAA5E65-2E35-4535-80A1-420FF379B727}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5BBD268-391C-4DA4-A6C9-D6DD1D9D7D81}
+	EndGlobalSection
+EndGlobal
