@@ -99,7 +99,7 @@
             this.btnCargarStock.Name = "btnCargarStock";
             this.btnCargarStock.Size = new System.Drawing.Size(200, 41);
             this.btnCargarStock.TabIndex = 5;
-            this.btnCargarStock.Text = "Cargar Stock";
+            this.btnCargarStock.Text = "Controlar Stock";
             this.btnCargarStock.UseVisualStyleBackColor = true;
             this.btnCargarStock.Click += new System.EventHandler(this.btnCargarStock_Click);
             // 
