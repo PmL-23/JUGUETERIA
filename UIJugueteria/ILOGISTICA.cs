@@ -54,6 +54,7 @@ namespace UIJugueteria
         private void btnCargarNuevoProducto_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel(new CrearNuevoProducto(_NombreUsuario));
+            //asdas
         }
 
         private void btnEditarProducto_Click(object sender, EventArgs e)
