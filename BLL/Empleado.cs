@@ -54,21 +54,6 @@ namespace BLL
             this.Habilitado = "Deshabilitado";
         }
 
-        public Empleado(string Nombre, string Apellido, int Dni, string Contrasenia, string nombreUsuario)
-        {
-            this.Nombre = Nombre;
-            this.Apellido = Apellido;
-            this.DNI = Dni;
-            this.Contraseña = Contrasenia;
-            this.NombreUsuario = nombreUsuario;
-
-            this.Rol = "Indefinido";
-            this.IDEmpleado = nombreUsuario;
-            this.Sueldo = 50000;
-            this.Habilitado = "Deshabilitado";
-
-        }
-
         public bool VerSiExisteNombreUsuario(string _NombreUsuarioParametro) {
 
             DAL.Empleado empleado = new DAL.Empleado();

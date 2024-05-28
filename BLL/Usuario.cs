@@ -71,19 +71,5 @@ namespace BLL
 
             return false;
         }
-
-        public Usuario()
-        {
-
-        }
-
-        public Usuario(string Nombre, string Apellido, int Dni, string Contrasenia, string nombreUsuario)
-        {
-            this.Nombre = Nombre;
-            this.Apellido = Apellido;
-            this.DNI = Dni;
-            this.Contraseña = Contrasenia;
-            this.NombreUsuario = nombreUsuario;
-        }
     }
 }
