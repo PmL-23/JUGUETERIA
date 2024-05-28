@@ -61,7 +61,7 @@ namespace BLL
             List < Producto > listaDeProductos = new List<Producto>();
 
             DAL.Logistica logistica = new DAL.Logistica();
-            DataTable Productodb= logistica.VerAlertarBajoStock();
+            DataTable Productodb = logistica.VerAlertarBajoStock();
 
             foreach (DataRow fila in Productodb.Rows)
             {
@@ -73,7 +73,7 @@ namespace BLL
                 producto.FechaDeCreacion = fila["_FechaDeCreacion"].ToString();
                 producto.Precioventa = float.Parse(fila["_PrecioVenta"].ToString());
                 producto.CantidadEnStock = int.Parse(fila["_CantidadEnStock"].ToString());
-                producto.CantidadMinimaPermitida= int.Parse(fila["_CantidadMinimaPermitida"].ToString());
+                producto.CantidadMinimaPermitida = int.Parse(fila["_CantidadMinimaPermitida"].ToString());
                 listaDeProductos.Add(producto);
             }
             return listaDeProductos;

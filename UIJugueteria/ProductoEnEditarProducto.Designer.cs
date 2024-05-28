@@ -72,9 +72,9 @@
             this.lblFechaCreacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaCreacion.Location = new System.Drawing.Point(30, 77);
             this.lblFechaCreacion.Name = "lblFechaCreacion";
-            this.lblFechaCreacion.Size = new System.Drawing.Size(202, 20);
+            this.lblFechaCreacion.Size = new System.Drawing.Size(211, 20);
             this.lblFechaCreacion.TabIndex = 2;
-            this.lblFechaCreacion.Text = "Fecha Cracion de Producto";
+            this.lblFechaCreacion.Text = "Fecha Creacion de Producto";
             this.lblFechaCreacion.Click += new System.EventHandler(this.lblFechaCreacion_Click);
             // 
             // lblCosto

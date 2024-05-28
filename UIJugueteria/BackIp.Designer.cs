@@ -33,17 +33,19 @@
             this.tboxIniciarUsuario = new System.Windows.Forms.TextBox();
             this.tboxIniciarContraseña = new System.Windows.Forms.TextBox();
             this.PanelMain = new System.Windows.Forms.Panel();
-            this.btnCrearCuenta = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnCrearCuenta = new System.Windows.Forms.Button();
             this.PanelMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnIniciarSesion
             // 
             this.btnIniciarSesion.BackColor = System.Drawing.Color.Firebrick;
+            this.btnIniciarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIniciarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIniciarSesion.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnIniciarSesion.ForeColor = System.Drawing.SystemColors.Window;
             this.btnIniciarSesion.Location = new System.Drawing.Point(305, 184);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
@@ -56,7 +58,9 @@
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.Firebrick;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.btnCancelar.Location = new System.Drawing.Point(305, 218);
             this.btnCancelar.Name = "btnCancelar";
@@ -78,6 +82,7 @@
             // 
             this.tboxIniciarContraseña.Location = new System.Drawing.Point(305, 143);
             this.tboxIniciarContraseña.Name = "tboxIniciarContraseña";
+            this.tboxIniciarContraseña.PasswordChar = '*';
             this.tboxIniciarContraseña.Size = new System.Drawing.Size(174, 20);
             this.tboxIniciarContraseña.TabIndex = 2;
             this.tboxIniciarContraseña.TextChanged += new System.EventHandler(this.tboxContraseña_TextChanged);
@@ -101,18 +106,27 @@
             this.PanelMain.TabIndex = 19;
             this.PanelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelMain_Paint);
             // 
-            // btnCrearCuenta
+            // label3
             // 
-            this.btnCrearCuenta.BackColor = System.Drawing.Color.Firebrick;
-            this.btnCrearCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCrearCuenta.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnCrearCuenta.Location = new System.Drawing.Point(305, 252);
-            this.btnCrearCuenta.Name = "btnCrearCuenta";
-            this.btnCrearCuenta.Size = new System.Drawing.Size(174, 28);
-            this.btnCrearCuenta.TabIndex = 19;
-            this.btnCrearCuenta.Text = "Crear Cuenta";
-            this.btnCrearCuenta.UseVisualStyleBackColor = false;
-            this.btnCrearCuenta.Click += new System.EventHandler(this.btnCrearCuenta_Click);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Firebrick;
+            this.label3.Location = new System.Drawing.Point(217, 144);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(82, 19);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Contraseña";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Firebrick;
+            this.label2.Location = new System.Drawing.Point(164, 115);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(135, 19);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Nombre de Usuario";
             // 
             // label1
             // 
@@ -126,27 +140,20 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "Jugueteria";
             // 
-            // label2
+            // btnCrearCuenta
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Firebrick;
-            this.label2.Location = new System.Drawing.Point(164, 115);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(135, 19);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "Nombre de Usuario";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Firebrick;
-            this.label3.Location = new System.Drawing.Point(217, 144);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 19);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "Contraseña";
+            this.btnCrearCuenta.BackColor = System.Drawing.Color.Firebrick;
+            this.btnCrearCuenta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCrearCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCrearCuenta.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnCrearCuenta.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnCrearCuenta.Location = new System.Drawing.Point(305, 252);
+            this.btnCrearCuenta.Name = "btnCrearCuenta";
+            this.btnCrearCuenta.Size = new System.Drawing.Size(174, 28);
+            this.btnCrearCuenta.TabIndex = 19;
+            this.btnCrearCuenta.Text = "Crear Cuenta";
+            this.btnCrearCuenta.UseVisualStyleBackColor = false;
+            this.btnCrearCuenta.Click += new System.EventHandler(this.btnCrearCuenta_Click);
             // 
             // NOSE
             // 

@@ -50,12 +50,13 @@
             // btnCrearUsuario
             // 
             this.btnCrearUsuario.BackColor = System.Drawing.Color.Firebrick;
+            this.btnCrearUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCrearUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCrearUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrearUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.btnCrearUsuario.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnCrearUsuario.ForeColor = System.Drawing.Color.White;
             this.btnCrearUsuario.Location = new System.Drawing.Point(74, 266);
             this.btnCrearUsuario.Name = "btnCrearUsuario";
-            this.btnCrearUsuario.Size = new System.Drawing.Size(243, 22);
+            this.btnCrearUsuario.Size = new System.Drawing.Size(243, 25);
             this.btnCrearUsuario.TabIndex = 31;
             this.btnCrearUsuario.Text = "Crear Usuario";
             this.btnCrearUsuario.UseVisualStyleBackColor = false;
@@ -65,6 +66,7 @@
             // 
             this.tboxContraseñaCrear.Location = new System.Drawing.Point(138, 188);
             this.tboxContraseñaCrear.Name = "tboxContraseñaCrear";
+            this.tboxContraseñaCrear.PasswordChar = '*';
             this.tboxContraseñaCrear.Size = new System.Drawing.Size(100, 20);
             this.tboxContraseñaCrear.TabIndex = 30;
             this.tboxContraseñaCrear.TextChanged += new System.EventHandler(this.tboxContraseñaCrear_TextChanged);
@@ -88,10 +90,11 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.ForeColor = System.Drawing.Color.Black;
-            this.lblNombre.Location = new System.Drawing.Point(89, 93);
+            this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblNombre.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblNombre.Location = new System.Drawing.Point(83, 89);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(44, 13);
+            this.lblNombre.Size = new System.Drawing.Size(49, 13);
             this.lblNombre.TabIndex = 19;
             this.lblNombre.Text = "Nombre";
             this.lblNombre.Click += new System.EventHandler(this.lblNombre_Click);
@@ -99,9 +102,11 @@
             // lblApellido
             // 
             this.lblApellido.AutoSize = true;
-            this.lblApellido.Location = new System.Drawing.Point(89, 120);
+            this.lblApellido.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblApellido.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblApellido.Location = new System.Drawing.Point(82, 115);
             this.lblApellido.Name = "lblApellido";
-            this.lblApellido.Size = new System.Drawing.Size(44, 13);
+            this.lblApellido.Size = new System.Drawing.Size(50, 13);
             this.lblApellido.TabIndex = 20;
             this.lblApellido.Text = "Apellido";
             this.lblApellido.Click += new System.EventHandler(this.lblApellido_Click);
@@ -126,9 +131,11 @@
             // lblDNI
             // 
             this.lblDNI.AutoSize = true;
-            this.lblDNI.Location = new System.Drawing.Point(106, 145);
+            this.lblDNI.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblDNI.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblDNI.Location = new System.Drawing.Point(105, 141);
             this.lblDNI.Name = "lblDNI";
-            this.lblDNI.Size = new System.Drawing.Size(26, 13);
+            this.lblDNI.Size = new System.Drawing.Size(27, 13);
             this.lblDNI.TabIndex = 22;
             this.lblDNI.Text = "DNI";
             this.lblDNI.Click += new System.EventHandler(this.lblDNI_Click);
@@ -136,9 +143,11 @@
             // lblContraseñaCrear
             // 
             this.lblContraseñaCrear.AutoSize = true;
-            this.lblContraseñaCrear.Location = new System.Drawing.Point(71, 195);
+            this.lblContraseñaCrear.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblContraseñaCrear.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblContraseñaCrear.Location = new System.Drawing.Point(65, 191);
             this.lblContraseñaCrear.Name = "lblContraseñaCrear";
-            this.lblContraseñaCrear.Size = new System.Drawing.Size(61, 13);
+            this.lblContraseñaCrear.Size = new System.Drawing.Size(67, 13);
             this.lblContraseñaCrear.TabIndex = 24;
             this.lblContraseñaCrear.Text = "Contraseña";
             this.lblContraseñaCrear.Click += new System.EventHandler(this.lblContraseñaCrear_Click);
@@ -146,9 +155,11 @@
             // lblNombreCUrear
             // 
             this.lblNombreCUrear.AutoSize = true;
-            this.lblNombreCUrear.Location = new System.Drawing.Point(49, 170);
+            this.lblNombreCUrear.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblNombreCUrear.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblNombreCUrear.Location = new System.Drawing.Point(40, 166);
             this.lblNombreCUrear.Name = "lblNombreCUrear";
-            this.lblNombreCUrear.Size = new System.Drawing.Size(83, 13);
+            this.lblNombreCUrear.Size = new System.Drawing.Size(92, 13);
             this.lblNombreCUrear.TabIndex = 23;
             this.lblNombreCUrear.Text = "Nombre Usuario";
             this.lblNombreCUrear.Click += new System.EventHandler(this.lblNombreCUrear_Click);
@@ -157,6 +168,7 @@
             // 
             this.tboxContraseñaConfirmacion.Location = new System.Drawing.Point(138, 214);
             this.tboxContraseñaConfirmacion.Name = "tboxContraseñaConfirmacion";
+            this.tboxContraseñaConfirmacion.PasswordChar = '*';
             this.tboxContraseñaConfirmacion.Size = new System.Drawing.Size(100, 20);
             this.tboxContraseñaConfirmacion.TabIndex = 33;
             this.tboxContraseñaConfirmacion.TextChanged += new System.EventHandler(this.tboxContraseñaConfirmacion_TextChanged);
@@ -164,9 +176,11 @@
             // lblContraseñaConfirmacion
             // 
             this.lblContraseñaConfirmacion.AutoSize = true;
-            this.lblContraseñaConfirmacion.Location = new System.Drawing.Point(28, 221);
+            this.lblContraseñaConfirmacion.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblContraseñaConfirmacion.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblContraseñaConfirmacion.Location = new System.Drawing.Point(15, 217);
             this.lblContraseñaConfirmacion.Name = "lblContraseñaConfirmacion";
-            this.lblContraseñaConfirmacion.Size = new System.Drawing.Size(105, 13);
+            this.lblContraseñaConfirmacion.Size = new System.Drawing.Size(117, 13);
             this.lblContraseñaConfirmacion.TabIndex = 32;
             this.lblContraseñaConfirmacion.Text = "Confirme Contraseña";
             this.lblContraseñaConfirmacion.Click += new System.EventHandler(this.lblContraseñaConfirmacion_Click);
@@ -174,11 +188,13 @@
             // btnVolver
             // 
             this.btnVolver.BackColor = System.Drawing.Color.Firebrick;
+            this.btnVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVolver.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnVolver.Location = new System.Drawing.Point(104, 294);
+            this.btnVolver.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnVolver.ForeColor = System.Drawing.Color.White;
+            this.btnVolver.Location = new System.Drawing.Point(109, 297);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(187, 22);
+            this.btnVolver.Size = new System.Drawing.Size(187, 25);
             this.btnVolver.TabIndex = 34;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = false;

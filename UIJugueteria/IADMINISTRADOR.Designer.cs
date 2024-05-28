@@ -68,6 +68,7 @@
             // 
             // tabSeleccionar
             // 
+            this.tabSeleccionar.Controls.Add(this.btnCerrarsesion);
             this.tabSeleccionar.Controls.Add(this.btn_modif_empleado);
             this.tabSeleccionar.Controls.Add(this.dataGridViewEmpleados);
             this.tabSeleccionar.Location = new System.Drawing.Point(4, 22);
@@ -304,7 +305,7 @@
             this.btnCerrarsesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrarsesion.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.btnCerrarsesion.ForeColor = System.Drawing.Color.White;
-            this.btnCerrarsesion.Location = new System.Drawing.Point(694, 12);
+            this.btnCerrarsesion.Location = new System.Drawing.Point(692, 304);
             this.btnCerrarsesion.Name = "btnCerrarsesion";
             this.btnCerrarsesion.Size = new System.Drawing.Size(88, 25);
             this.btnCerrarsesion.TabIndex = 9;
@@ -317,7 +318,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(794, 406);
-            this.Controls.Add(this.btnCerrarsesion);
             this.Controls.Add(this.tabAdminEmpleados);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "IADMINISTRADOR";
