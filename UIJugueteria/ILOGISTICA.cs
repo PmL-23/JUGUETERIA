@@ -35,20 +35,20 @@ namespace UIJugueteria
 
         }
 
-        private void AbrirFormEnPanel(object Formulario)
-        {
-            if (this.PanelCentral.Controls.Count > 0)
-            {
-                this.PanelCentral.Controls.RemoveAt(0);
-            }
+                            private void AbrirFormEnPanel(object Formulario)
+                            {
+                                if (this.PanelCentral.Controls.Count > 0)
+                                {
+                                    this.PanelCentral.Controls.RemoveAt(0);
+                                }
 
-            Form FH = Formulario as Form;
-            FH.TopLevel = false;
-            FH.Dock = DockStyle.Fill;
-            this.PanelCentral.Controls.Add(FH);
-            this.PanelCentral.Tag = FH;
-            FH.Show();
-        }
+                                Form FH = Formulario as Form;
+                                FH.TopLevel = false;
+                                FH.Dock = DockStyle.Fill;
+                                this.PanelCentral.Controls.Add(FH);
+                                this.PanelCentral.Tag = FH;
+                                FH.Show();
+                            }
 
 
         private void btnCargarNuevoProducto_Click(object sender, EventArgs e)

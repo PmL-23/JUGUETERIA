@@ -46,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BackIp.cs">
+    <Compile Include="ILogIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BackIp.Designer.cs">
-      <DependentUpon>BackIp.cs</DependentUpon>
+    <Compile Include="ILogIn.Designer.cs">
+      <DependentUpon>ILogIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="CrearNuevoProducto.cs">
+    <Compile Include="ILogistica\CrearNuevoProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CrearNuevoProducto.Designer.cs">
+    <Compile Include="ILogistica\CrearNuevoProducto.Designer.cs">
       <DependentUpon>CrearNuevoProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="CrearUsuario.cs">
@@ -64,10 +64,10 @@
     <Compile Include="CrearUsuario.Designer.cs">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditarProducto.cs">
+    <Compile Include="ILogistica\EditarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditarProducto.Designer.cs">
+    <Compile Include="ILogistica\EditarProducto.Designer.cs">
       <DependentUpon>EditarProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="IADMINISTRADOR.cs">
@@ -82,24 +82,30 @@
     <Compile Include="ILOGISTICA.Designer.cs">
       <DependentUpon>ILOGISTICA.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductoEnEditarProducto.cs">
+    <Compile Include="ILogistica\ProductoEnEditarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductoEnEditarProducto.Designer.cs">
+    <Compile Include="ILogistica\ProductoEnEditarProducto.Designer.cs">
       <DependentUpon>ProductoEnEditarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IVENDEDOR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IVENDEDOR.Designer.cs">
+      <DependentUpon>IVENDEDOR.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="BackIp.resx">
-      <DependentUpon>BackIp.cs</DependentUpon>
+    <EmbeddedResource Include="ILogIn.resx">
+      <DependentUpon>ILogIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CrearNuevoProducto.resx">
+    <EmbeddedResource Include="ILogistica\CrearNuevoProducto.resx">
       <DependentUpon>CrearNuevoProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrearUsuario.resx">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditarProducto.resx">
+    <EmbeddedResource Include="ILogistica\EditarProducto.resx">
       <DependentUpon>EditarProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IADMINISTRADOR.resx">
@@ -108,8 +114,11 @@
     <EmbeddedResource Include="ILOGISTICA.resx">
       <DependentUpon>ILOGISTICA.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductoEnEditarProducto.resx">
+    <EmbeddedResource Include="ILogistica\ProductoEnEditarProducto.resx">
       <DependentUpon>ProductoEnEditarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IVENDEDOR.resx">
+      <DependentUpon>IVENDEDOR.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -138,6 +147,10 @@
       <Project>{fc4f7fdd-cdba-4c3b-9ac7-702e92dcb945}</Project>
       <Name>BLL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IAdministrador\" />
+    <Folder Include="IVendedor\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

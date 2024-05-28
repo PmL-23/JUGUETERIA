@@ -30,6 +30,7 @@
         {
             this.tabAdminEmpleados = new System.Windows.Forms.TabControl();
             this.tabSeleccionar = new System.Windows.Forms.TabPage();
+            this.btnCerrarsesion = new System.Windows.Forms.Button();
             this.btn_modif_empleado = new System.Windows.Forms.Button();
             this.dataGridViewEmpleados = new System.Windows.Forms.DataGridView();
             this.tabModificar = new System.Windows.Forms.TabPage();
@@ -48,7 +49,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnCerrarsesion = new System.Windows.Forms.Button();
             this.tabAdminEmpleados.SuspendLayout();
             this.tabSeleccionar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmpleados)).BeginInit();
@@ -78,6 +78,22 @@
             this.tabSeleccionar.TabIndex = 0;
             this.tabSeleccionar.Text = "Lista de empleados";
             this.tabSeleccionar.UseVisualStyleBackColor = true;
+            this.tabSeleccionar.Click += new System.EventHandler(this.tabSeleccionar_Click_1);
+            // 
+            // btnCerrarsesion
+            // 
+            this.btnCerrarsesion.BackColor = System.Drawing.Color.DarkRed;
+            this.btnCerrarsesion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrarsesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrarsesion.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.btnCerrarsesion.ForeColor = System.Drawing.Color.White;
+            this.btnCerrarsesion.Location = new System.Drawing.Point(692, 304);
+            this.btnCerrarsesion.Name = "btnCerrarsesion";
+            this.btnCerrarsesion.Size = new System.Drawing.Size(88, 25);
+            this.btnCerrarsesion.TabIndex = 9;
+            this.btnCerrarsesion.Text = "Cerrar Sesion";
+            this.btnCerrarsesion.UseVisualStyleBackColor = false;
+            this.btnCerrarsesion.Click += new System.EventHandler(this.btnCerrarsesion_Click);
             // 
             // btn_modif_empleado
             // 
@@ -297,21 +313,6 @@
             this.label3.Size = new System.Drawing.Size(66, 19);
             this.label3.TabIndex = 0;
             this.label3.Text = "Nombre:";
-            // 
-            // btnCerrarsesion
-            // 
-            this.btnCerrarsesion.BackColor = System.Drawing.Color.DarkRed;
-            this.btnCerrarsesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrarsesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrarsesion.Font = new System.Drawing.Font("Segoe UI", 8.5F);
-            this.btnCerrarsesion.ForeColor = System.Drawing.Color.White;
-            this.btnCerrarsesion.Location = new System.Drawing.Point(692, 304);
-            this.btnCerrarsesion.Name = "btnCerrarsesion";
-            this.btnCerrarsesion.Size = new System.Drawing.Size(88, 25);
-            this.btnCerrarsesion.TabIndex = 9;
-            this.btnCerrarsesion.Text = "Cerrar Sesion";
-            this.btnCerrarsesion.UseVisualStyleBackColor = false;
-            this.btnCerrarsesion.Click += new System.EventHandler(this.btnCerrarsesion_Click);
             // 
             // IADMINISTRADOR
             // 

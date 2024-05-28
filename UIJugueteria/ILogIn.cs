@@ -78,7 +78,7 @@ namespace UIJugueteria
                 }
                 if (_RolTemp == "Vendedor")
                 {
-                    Console.WriteLine("ES VENDEDOR");
+                    AbrirFormEnPanel(new IVENDEDOR());
                 }
                 if (_RolTemp == "")
                 {

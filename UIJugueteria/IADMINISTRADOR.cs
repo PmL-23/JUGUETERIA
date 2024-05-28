@@ -180,5 +180,10 @@ namespace UIJugueteria
         {
 
         }
+
+        private void tabSeleccionar_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
