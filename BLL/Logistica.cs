@@ -10,7 +10,6 @@ namespace BLL
 {
     public class Logistica : Empleado
     {
-        //no faltaria la id de admin?
         public bool VerSiExisteProducto(string IDProducto)
         {
             DAL.Logistica logistica = new DAL.Logistica();

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal class Vendedor
+    public class Vendedor
     {
         public bool RegistroCliente(string idCliente)
         {
@@ -24,6 +24,7 @@ namespace DAL
 
             return false;
         }
+        /*
         public bool AgregarCliente(string nombre, string apellido, string dni)
         {
             Conexion objConexion = new Conexion();
@@ -36,6 +37,6 @@ namespace DAL
 
             return false;
         }
+        */
     }
-}
 }

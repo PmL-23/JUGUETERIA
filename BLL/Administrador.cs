@@ -10,8 +10,6 @@ namespace BLL
     public class Administrador : Empleado
     {
 
-        //no faltaria la id de admin?
-
         public List<Empleado> ListarEmpleados()
         {
             List<Empleado> listaDeEmpleados = new List<Empleado>();

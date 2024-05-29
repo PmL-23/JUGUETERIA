@@ -6,23 +6,15 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    internal class Vendedor
+    public class Vendedor : Empleado
     {
-        private string idVendedor;
 
-        public string IdVendedor
-        {
-            get { return idVendedor; }
-            set { idVendedor = value; }
-        }
-
-
-        private string cantidadVentas;
+        private string _CantidadVentas;
 
         public string CantidadVentas
         {
-            get { return cantidadVentas; }
-            set { cantidadVentas = value; }
+            get { return _CantidadVentas; }
+            set { _CantidadVentas = value; }
         }
 
         public Vendedor()

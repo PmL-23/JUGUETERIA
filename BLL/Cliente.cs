@@ -6,39 +6,41 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    internal class Cliente
+    public class Cliente
     {
-        private string _idCliente;
+        private string _Nombre;
+        private string _Apellido;
+        private string _IDCliente;
+        private string _CantidadCompras;
+        private string _Dni;
 
-        public string _IdCliente
+        #region Props
+        public string Nombre
         {
-            get { return _idCliente; }
-            set { _idCliente = value; }
+            get { return _Nombre; }
+            set { _Nombre = value; }
         }
-
-        private string _cantidadCompras;
-
-        public string _CantidadCompras
+        public string Apellido
         {
-            get { return _cantidadCompras; }
-            set { _cantidadCompras = value; }
+            get { return _Apellido; }
+            set { _Apellido = value; }
         }
-
-        private string _nombre;
-
-        public string _Nombre
+        public string IDCliente
         {
-            get { return _nombre; }
-            set { _nombre = value; }
+            get { return _IDCliente; }
+            set { _IDCliente = value; }
         }
-
-        private string _apellido;
-
-        public string _Apellido
+        public string CantidadCompras
         {
-            get { return _apellido; }
-            set { _apellido = value; }
+            get { return _CantidadCompras; }
+            set { _CantidadCompras = value; }
         }
+        public string DNI
+        {
+            get { return _Dni; }
+            set { _Dni = value; }
+        }
+        #endregion
 
         public Cliente()
         {
