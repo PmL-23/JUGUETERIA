@@ -41,83 +41,77 @@ namespace UIJugueteria
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             if (tboxNombreProducto.Text==""||tboxIDProducto.Text==""||tboxCostoProducto.Text==""||tboxPrecioVentaProducto.Text==""||tboxStockMinimoProducto.Text=="") {
-                MessageBox.Show("\tComplete todos los campos\t");
+                MessageBox.Show("\tComplete todos los campos\t");               //el usuario no completo todos los campos
             }
-
             else {
 
                 string _NombreProducto = tboxNombreProducto.Text;
-                string _IDProducto = tboxIDProducto.Text;
+                string _IDProducto = tboxIDProducto.Text;                       //guardamos en variables los campos que ingreso el usuario.
 
                 string costoProductoTexto = tboxCostoProducto.Text;
-                float _CostoProducto;
-                if (float.TryParse(costoProductoTexto, out _CostoProducto)) { }
+                float _CostoProducto;                                               
+                if (float.TryParse(costoProductoTexto, out _CostoProducto)) {           //los campos en los que el Usuario puede equivocarlos los tramos con el float.TryParse,
+                                                                                        //si podemos seguimos, y si no se lanza una mensaje y se pedimos que los ingrese devuelta,
+                                                                                        //esto se hace 3 veces.
+                    string precioProductoTexto = tboxPrecioVentaProducto.Text;
+                    float _VentaProducto;
+                    if (float.TryParse(precioProductoTexto, out _VentaProducto)) {
+                        
+                        string stockMinimoProductoTexto = tboxStockMinimoProducto.Text;
+                        int _StockMinimoProducto;
+                        if (int.TryParse(stockMinimoProductoTexto, out _StockMinimoProducto)) {
 
-                else {
-                    MessageBox.Show("El formato del Costo del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                            int _StockDefault = 0;              //MODIFICAR
+                            BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
 
-                string precioProductoTexto = tboxPrecioVentaProducto.Text;
-                float _VentaProducto;
-                if (float.TryParse(precioProductoTexto, out _VentaProducto)) { }
+                            string fecha = "2024-03-05 00:00:00.000";//FALTA SACAR TIEMPO PARA METER EN LA FECHA DE CREACION, POR AHORA LO HARCODEAMOS
 
-                else
-                {
-                    MessageBox.Show("El formato del Precio de Venta del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                            bool VerSiExiste = log.VerSiExisteProducto(_IDProducto);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
 
-                string stockMinimoProductoTexto = tboxStockMinimoProducto.Text;
-                int _StockMinimoProducto;
-                if (int.TryParse(stockMinimoProductoTexto, out _StockMinimoProducto)) { }
+                            if (VerSiExiste)
+                            {
+                                MessageBox.Show("El producto con ID: '" + _IDProducto + "' ya existe en la Base de Datos", "Producto ya existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
 
-                else
-                {
-                    MessageBox.Show("El formato de la Cantidad Minima del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                            else
+                            {
 
-                int _StockDefault = 0;
-                BLL.Logistica log = new BLL.Logistica(); ///FALTA SACAR TIEMPO PARA METER EN LA FECHA DE CREACION
-                string fecha = "2024-03-05 00:00:00.000";
+                                bool resultado = log.CargarProducto(_NombreUsuario, _NombreProducto, _IDProducto, _CostoProducto, fecha, _VentaProducto, _StockDefault, _StockMinimoProducto);
+                                                                                                  //Aqui con el metodo CargarProducto ya mandamos a la BLL los datos para que la DAL los mande a la BDD.
+                                if (resultado)
+                                {
+                                    MessageBox.Show("El producto se cargó correctamente.");
+                                    tboxNombreProducto.Text = "";
+                                    tboxIDProducto.Text = "";
+                                    tboxCostoProducto.Text = "";
+                                    tboxPrecioVentaProducto.Text = "";
+                                    tboxStockMinimoProducto.Text = "";
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Hubo un error al cargar el producto.");
+                                }
+                            }
+                        }
 
-                bool VerSiExiste = log.VerSiExisteProducto(_IDProducto);
-
-                if (VerSiExiste) {
-
-                    MessageBox.Show("El producto con ID: '" + _IDProducto + "' ya existe en la Base de Datos");
-                }
-
-                else
-                {
-
-                    bool resultado = log.CargarNuevoProducto(_NombreUsuario, _NombreProducto, _IDProducto, _CostoProducto, fecha, _VentaProducto, _StockDefault, _StockMinimoProducto);
-                    if (resultado)
-                    {
-                        MessageBox.Show("El producto se cargó correctamente.");
-                        tboxNombreProducto.Text = "";
-                        tboxIDProducto.Text = "";
-                        tboxCostoProducto.Text = "";
-                        tboxPrecioVentaProducto.Text = "";
-                        tboxStockMinimoProducto.Text = "";
+                        else
+                        {
+                            MessageBox.Show("El formato de la Cantidad Minima del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
+
                     else
                     {
-                        MessageBox.Show("Hubo un error al cargar el producto.");
+                        MessageBox.Show("El formato del Precio de Venta del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
                 }
+                else {
+                    MessageBox.Show("El formato del Costo del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }    
             }
-
-
-
 
 
 
         }
-
-        //insert
-
-
-
-
     }
 }
