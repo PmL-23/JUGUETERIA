@@ -48,6 +48,18 @@ namespace BLL
 
 
         }
+        public bool ControlarStock(string nombreproducto, int stockdisponible, int stockminimoideal, string IDProducto)
+        {
+            DAL.Logistica logistica = new DAL.Logistica();
+
+            if (logistica.ControlarStock(nombreproducto, stockdisponible, stockminimoideal, IDProducto))
+            {
+                return true;
+            }
+            return false;
+
+
+        }
 
 
         //funcion de alerta bajo stock.

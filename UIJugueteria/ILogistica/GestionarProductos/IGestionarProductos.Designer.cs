@@ -1,6 +1,6 @@
 ﻿namespace UIJugueteria
 {
-    partial class GestionarProductos
+    partial class IGestionarProductos
     {
         /// <summary>
         /// Required designer variable.
@@ -35,13 +35,13 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.dtgvVerProductos = new System.Windows.Forms.DataGridView();
+            this.btnBuscarProducto = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.IDProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CostoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnBuscarProducto = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.PanelParaProducto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvVerProductos)).BeginInit();
             this.panel1.SuspendLayout();
@@ -80,9 +80,9 @@
             // 
             // btnAmpliar
             // 
-            this.btnAmpliar.Location = new System.Drawing.Point(501, 117);
+            this.btnAmpliar.Location = new System.Drawing.Point(509, 113);
             this.btnAmpliar.Name = "btnAmpliar";
-            this.btnAmpliar.Size = new System.Drawing.Size(95, 25);
+            this.btnAmpliar.Size = new System.Drawing.Size(87, 22);
             this.btnAmpliar.TabIndex = 6;
             this.btnAmpliar.Text = "Ampliar";
             this.btnAmpliar.UseVisualStyleBackColor = true;
@@ -90,9 +90,9 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(501, 179);
+            this.btnEliminar.Location = new System.Drawing.Point(509, 169);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(95, 25);
+            this.btnEliminar.Size = new System.Drawing.Size(87, 22);
             this.btnEliminar.TabIndex = 5;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -100,9 +100,9 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(501, 148);
+            this.btnEditar.Location = new System.Drawing.Point(509, 141);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(95, 25);
+            this.btnEditar.Size = new System.Drawing.Size(87, 22);
             this.btnEditar.TabIndex = 4;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
@@ -124,10 +124,34 @@
             this.dtgvVerProductos.Name = "dtgvVerProductos";
             this.dtgvVerProductos.ReadOnly = true;
             this.dtgvVerProductos.RowHeadersVisible = false;
-            this.dtgvVerProductos.Size = new System.Drawing.Size(480, 330);
+            this.dtgvVerProductos.Size = new System.Drawing.Size(500, 330);
             this.dtgvVerProductos.TabIndex = 0;
             this.dtgvVerProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvVerProductos_CellClick);
             this.dtgvVerProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvVerProductos_CellContentClick);
+            // 
+            // btnBuscarProducto
+            // 
+            this.btnBuscarProducto.Location = new System.Drawing.Point(401, 0);
+            this.btnBuscarProducto.Name = "btnBuscarProducto";
+            this.btnBuscarProducto.Size = new System.Drawing.Size(133, 23);
+            this.btnBuscarProducto.TabIndex = 3;
+            this.btnBuscarProducto.Text = "Buscar";
+            this.btnBuscarProducto.UseVisualStyleBackColor = true;
+            this.btnBuscarProducto.Click += new System.EventHandler(this.btnBuscarProducto_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.btnBuscarProducto);
+            this.panel1.Controls.Add(this.lblIDProducto);
+            this.panel1.Controls.Add(this.PanelParaProducto);
+            this.panel1.Controls.Add(this.tboxIDProducto);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(599, 365);
+            this.panel1.TabIndex = 4;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // IDProducto
             // 
@@ -159,30 +183,7 @@
             this.StockProducto.HeaderText = "Stock";
             this.StockProducto.Name = "StockProducto";
             this.StockProducto.ReadOnly = true;
-            this.StockProducto.Width = 60;
-            // 
-            // btnBuscarProducto
-            // 
-            this.btnBuscarProducto.Location = new System.Drawing.Point(401, 0);
-            this.btnBuscarProducto.Name = "btnBuscarProducto";
-            this.btnBuscarProducto.Size = new System.Drawing.Size(133, 23);
-            this.btnBuscarProducto.TabIndex = 3;
-            this.btnBuscarProducto.Text = "Buscar";
-            this.btnBuscarProducto.UseVisualStyleBackColor = true;
-            this.btnBuscarProducto.Click += new System.EventHandler(this.btnBuscarProducto_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.btnBuscarProducto);
-            this.panel1.Controls.Add(this.lblIDProducto);
-            this.panel1.Controls.Add(this.PanelParaProducto);
-            this.panel1.Controls.Add(this.tboxIDProducto);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(599, 365);
-            this.panel1.TabIndex = 4;
+            this.StockProducto.Width = 80;
             // 
             // GestionarProductos
             // 
@@ -209,14 +210,14 @@
         private System.Windows.Forms.Panel PanelParaProducto;
         private System.Windows.Forms.Button btnBuscarProducto;
         private System.Windows.Forms.DataGridView dtgvVerProductos;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnAmpliar;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn CostoProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn StockProducto;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Button btnAmpliar;
-        private System.Windows.Forms.Panel panel1;
     }
 }

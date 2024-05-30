@@ -94,9 +94,12 @@ namespace UIJugueteria
 
                                     if (resultado) {
                                         MessageBox.Show("Producto modificado con exito");
+
                                     }
 
-                                    else { }
+                                    else {
+                                        MessageBox.Show("El producto seleccionado no existe en la Base de Datos");
+                                    }
                                 }
                                 else
                                 {
@@ -133,19 +136,22 @@ namespace UIJugueteria
         }
 
 
-
         private void btnEliminarProducto_Click_1(object sender, EventArgs e)
         {
             bool resultado = logistica.EliminarProducto(idproducto.Text);
 
             if (resultado) {
                 MessageBox.Show("El Producto con ID: " + idproducto.Text + " a sido eliminado de la Base de Datos.");
+
+                //estoy en el panel1 del form EditarProductoEnGestionarProducto con tamaño 599; 340y necesito abrir el form Gestionar producto con tamaño 599; 365
+
             }
+
 
             else
             {
 
-                MessageBox.Show("Ocurrio un Error al eliminar el producto con ID: "+ idproducto.Text);
+                MessageBox.Show("El producto con ID: "+ idproducto.Text+" ya ha sido eliminado de la Base de Datos");
             }
         }
 
@@ -153,6 +159,7 @@ namespace UIJugueteria
         {
 
         }
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {

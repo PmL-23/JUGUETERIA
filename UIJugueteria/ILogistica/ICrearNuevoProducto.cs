@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace UIJugueteria
 {
-    public partial class CrearNuevoProducto : Form
+    public partial class ICrearNuevoProducto : Form
     {
         private string _NombreUsuario;
-        public CrearNuevoProducto(string _NombreUsuario)
+        public ICrearNuevoProducto(string _NombreUsuario)
         {
             InitializeComponent();
 

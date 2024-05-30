@@ -52,11 +52,23 @@
     <Compile Include="ILogIn.Designer.cs">
       <DependentUpon>ILogIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="ILogistica\CrearNuevoProducto.cs">
+    <Compile Include="ILogistica\ControlarStockcarpeta\IControlarSoloStock.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ILogistica\CrearNuevoProducto.Designer.cs">
-      <DependentUpon>CrearNuevoProducto.cs</DependentUpon>
+    <Compile Include="ILogistica\ControlarStockcarpeta\IControlarSoloStock.Designer.cs">
+      <DependentUpon>IControlarSoloStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ILogistica\ControlarStockcarpeta\EditarStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ILogistica\ControlarStockcarpeta\EditarStock.Designer.cs">
+      <DependentUpon>EditarStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ILogistica\ICrearNuevoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ILogistica\ICrearNuevoProducto.Designer.cs">
+      <DependentUpon>ICrearNuevoProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="CrearUsuario.cs">
       <SubType>Form</SubType>
@@ -64,17 +76,17 @@
     <Compile Include="CrearUsuario.Designer.cs">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="ILogistica\AmpliarProductoEnGestionarProducto.cs">
+    <Compile Include="ILogistica\GestionarProductos\AmpliarProductoEnGestionarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ILogistica\AmpliarProductoEnGestionarProducto.Designer.cs">
+    <Compile Include="ILogistica\GestionarProductos\AmpliarProductoEnGestionarProducto.Designer.cs">
       <DependentUpon>AmpliarProductoEnGestionarProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="ILogistica\GestionarProductos.cs">
+    <Compile Include="ILogistica\GestionarProductos\IGestionarProductos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ILogistica\GestionarProductos.Designer.cs">
-      <DependentUpon>GestionarProductos.cs</DependentUpon>
+    <Compile Include="ILogistica\GestionarProductos\IGestionarProductos.Designer.cs">
+      <DependentUpon>IGestionarProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="IADMINISTRADOR.cs">
       <SubType>Form</SubType>
@@ -88,10 +100,10 @@
     <Compile Include="ILOGISTICA.Designer.cs">
       <DependentUpon>ILOGISTICA.cs</DependentUpon>
     </Compile>
-    <Compile Include="ILogistica\EditarProductoEnGestionarProducto.cs">
+    <Compile Include="ILogistica\GestionarProductos\EditarProductoEnGestionarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ILogistica\EditarProductoEnGestionarProducto.Designer.cs">
+    <Compile Include="ILogistica\GestionarProductos\EditarProductoEnGestionarProducto.Designer.cs">
       <DependentUpon>EditarProductoEnGestionarProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="CrearCliente.cs">
@@ -111,17 +123,23 @@
     <EmbeddedResource Include="ILogIn.resx">
       <DependentUpon>ILogIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ILogistica\CrearNuevoProducto.resx">
-      <DependentUpon>CrearNuevoProducto.cs</DependentUpon>
+    <EmbeddedResource Include="ILogistica\ControlarStockcarpeta\IControlarSoloStock.resx">
+      <DependentUpon>IControlarSoloStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ILogistica\ControlarStockcarpeta\EditarStock.resx">
+      <DependentUpon>EditarStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ILogistica\ICrearNuevoProducto.resx">
+      <DependentUpon>ICrearNuevoProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrearUsuario.resx">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ILogistica\AmpliarProductoEnGestionarProducto.resx">
+    <EmbeddedResource Include="ILogistica\GestionarProductos\AmpliarProductoEnGestionarProducto.resx">
       <DependentUpon>AmpliarProductoEnGestionarProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ILogistica\GestionarProductos.resx">
-      <DependentUpon>GestionarProductos.cs</DependentUpon>
+    <EmbeddedResource Include="ILogistica\GestionarProductos\IGestionarProductos.resx">
+      <DependentUpon>IGestionarProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IADMINISTRADOR.resx">
       <DependentUpon>IADMINISTRADOR.cs</DependentUpon>
@@ -129,7 +147,7 @@
     <EmbeddedResource Include="ILOGISTICA.resx">
       <DependentUpon>ILOGISTICA.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ILogistica\EditarProductoEnGestionarProducto.resx">
+    <EmbeddedResource Include="ILogistica\GestionarProductos\EditarProductoEnGestionarProducto.resx">
       <DependentUpon>EditarProductoEnGestionarProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrearCliente.resx">

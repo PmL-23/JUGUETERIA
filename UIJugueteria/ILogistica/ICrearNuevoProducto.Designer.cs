@@ -1,6 +1,6 @@
 ﻿namespace UIJugueteria
 {
-    partial class CrearNuevoProducto
+    partial class ICrearNuevoProducto
     {
         /// <summary>
         /// Required designer variable.

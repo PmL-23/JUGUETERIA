@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace UIJugueteria
 {
-    public partial class GestionarProductos : Form
+    public partial class IGestionarProductos : Form
     {
         private int indice = 0;
 
-        public GestionarProductos()
+        public IGestionarProductos()
         {
             InitializeComponent();
             BLL.Logistica logistica = new BLL.Logistica();
@@ -137,15 +137,16 @@ namespace UIJugueteria
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+
             if (indice != -1 )
             {
-                string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
+                string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;           //probar maneja cuando no se selecciona ninguna final(solo es cuando no hay productos y se selecciona eliminar o ampliar o editar.)
                 BLL.Logistica logistica = new BLL.Logistica();
                 bool resultado = logistica.EliminarProducto(IDSelececionada);
                 if (resultado)
                 {
                     MessageBox.Show("El Producto con ID: " + IDSelececionada + " a sido eliminado de la Base de Datos.");
-                    RecargarTodo(new GestionarProductos());
+                    RecargarTodo(new IGestionarProductos());
 
                 }
                 else
@@ -161,6 +162,11 @@ namespace UIJugueteria
                 MessageBox.Show("Seleccione un producto ");
 
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

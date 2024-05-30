@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UIJugueteria.ILogistica;
 
 namespace UIJugueteria
 {
@@ -53,13 +54,13 @@ namespace UIJugueteria
 
         private void btnCargarNuevoProducto_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new CrearNuevoProducto(_NombreUsuario));
+            AbrirFormEnPanel(new ICrearNuevoProducto(_NombreUsuario));
             //asdas
         }
 
         private void btnEditarProducto_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new GestionarProductos());
+            AbrirFormEnPanel(new IGestionarProductos());
         }
 
         
@@ -72,7 +73,7 @@ namespace UIJugueteria
 
         private void btnCargarStock_Click(object sender, EventArgs e)
         {
-
+            AbrirFormEnPanel(new IControlarSoloStock());
         }
 
         private void btnVerAlertaDeStock_Click(object sender, EventArgs e)

@@ -48,7 +48,19 @@ namespace DAL
             return false;
         }
 
+        public bool ControlarStock(string nombreproducto, int stockdisponible, int stockminimoideal, string IDProducto)
+        {
+            Conexion objConexion = new Conexion();
+            int filasAfectadas = objConexion.EscribirPorComando("UPDATE PRODUCTO SET [_NombreProducto] ='"+nombreproducto+ "', [_CantidadEnStock] ="+stockdisponible+ ", [_CantidadMinimaPermitida]= "+stockminimoideal+"where _IDProducto= '"+IDProducto+"'");
 
+            if (filasAfectadas > 0)
+            {
+                return true;
+            }
+            return false;
+
+
+        }
 
 
 
