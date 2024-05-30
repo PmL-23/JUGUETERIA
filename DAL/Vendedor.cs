@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class Vendedor
+    public class Vendedor : Empleado
     {
         public bool RegistroCliente(string idCliente)
         {
@@ -24,11 +24,11 @@ namespace DAL
 
             return false;
         }
-        /*
-        public bool AgregarCliente(string nombre, string apellido, string dni)
+        
+        public bool AgregarCliente(string idCliente, string nombre, string apellido, string dni,int cantidadCompras)
         {
             Conexion objConexion = new Conexion();
-            int filasAfectadas = objConexion.EscribirPorComando("UPDATE [BDDJ].[dbo].[EMPLEADOS] SET [_Rol] = '" + Rol + "', [_Habilitado] = '" + Estado + "', [_Sueldo] = " + Sueldo + " WHERE [EMPLEADOS].[_IDEmpleado] = '" + nombreUsuario + "';");
+            int filasAfectadas = objConexion.EscribirPorComando("UPDATE [BDDJ].[dbo].[CLIENTES] SET [_IDCliente] = '" + idCliente + "', [_Nombre] = '" + nombre + "', [_Apellido] = '" + apellido + "', [_DNI] = '" + dni + "', [_CantidadCompras] = '" + cantidadCompras + "';");
 
             if (filasAfectadas > 0)
             {
@@ -37,6 +37,6 @@ namespace DAL
 
             return false;
         }
-        */
+        
     }
 }

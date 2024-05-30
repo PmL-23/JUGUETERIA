@@ -17,6 +17,18 @@ namespace BLL
             set { _CantidadVentas = value; }
         }
 
+        public bool RegistrarCliente(string idCliente, string nombre, string apellido, string dni, int cantidadCompras)
+        {
+            DAL.Vendedor cliente = new DAL.Vendedor();
+
+            if (cliente.AgregarCliente(idCliente ,nombre, apellido, dni, cantidadCompras))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public Vendedor()
         {
 
