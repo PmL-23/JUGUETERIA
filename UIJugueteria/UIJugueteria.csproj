@@ -94,6 +94,12 @@
     <Compile Include="ILogistica\EditarProductoEnGestionarProducto.Designer.cs">
       <DependentUpon>EditarProductoEnGestionarProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="CrearCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrearCliente.Designer.cs">
+      <DependentUpon>CrearCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="IVENDEDOR.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ILogistica\EditarProductoEnGestionarProducto.resx">
       <DependentUpon>EditarProductoEnGestionarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrearCliente.resx">
+      <DependentUpon>CrearCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IVENDEDOR.resx">
       <DependentUpon>IVENDEDOR.cs</DependentUpon>

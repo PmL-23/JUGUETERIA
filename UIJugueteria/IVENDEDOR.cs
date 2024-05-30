@@ -1,5 +1,4 @@
-﻿using BLL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 
 namespace UIJugueteria
 {
@@ -19,41 +17,21 @@ namespace UIJugueteria
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void AbrirFormEnPanel(Form formulario)
         {
-            {
-                string idCliente = "1";
-                string nombre = tboxNombre.Text;
-                string apellido = tboxApellido.Text;
-                string dni = tboxDNI.Text;
-                int cantidadCompras = 2;
+            // Eliminar todos los controles existentes del panel
+            panel1.Controls.Clear();
 
-                BLL.Vendedor unVendedor = new BLL.Vendedor();
-
-                if (unVendedor.RegistrarCliente(idCliente, nombre, apellido, dni, cantidadCompras) == false)
-                {
-                    MessageBox.Show("Datos duplicados!!");
-                }
-                else
-                {
-                    if (unVendedor.RegistrarCliente(idCliente, nombre, apellido, dni, cantidadCompras) == true)
-                    {
-                        MessageBox.Show("Usuario cliente creado con exito!!");
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo crear Nuevo Cliente!!");
-                    }
-
-                }
-
-            }
+            // Añadir el nuevo formulario al panel
+            formulario.TopLevel = false;
+            formulario.Dock = DockStyle.Fill;
+            panel1.Controls.Add(formulario);
+            formulario.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            AbrirFormEnPanel(new CrearCliente());
         }
     }
 }
