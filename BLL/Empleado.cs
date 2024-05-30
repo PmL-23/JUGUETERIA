@@ -71,7 +71,7 @@ namespace BLL
         public bool Registrarse(string nombre, string apellido, int dni, string nombreUsuario, string contrasenia, string confirmContra)
         {
 
-            if (!(string.Equals(contrasenia, confirmContra))) throw new Exceptions.BusinessException("Las contraseñas ingresadas no coinciden..");
+            if (!(string.Equals(contrasenia, confirmContra))) throw new Exceptions.MyExceptions("Las contraseñas ingresadas no coinciden..");
 
             DAL.Empleado empleado = new DAL.Empleado();
 

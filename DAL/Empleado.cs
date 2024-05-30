@@ -35,11 +35,11 @@ namespace DAL
 
         public bool Registrarse(string nombre, string apellido, int dni, string nombreUsuario, string contrasenia, string Rol, int Sueldo, string Habilitado)
         {
-            Conexion objConexion = new Conexion();//                                                                                                                                                    el dni estaba como caracter
+            Conexion objConexion = new Conexion();
             int filasAfectadas = objConexion.EscribirPorComando("INSERT into [BDDJ].[dbo].[USUARIOS] ([_Nombre], [_Apellido], [_DNI], [_Contraseña], [_NombreUsuario]) values ('" + nombre + "', '" + apellido + "', " + dni + ", '" + contrasenia + "', '" + nombreUsuario + "')");
 
             if (filasAfectadas > 0) 
-            {                                                                                                                                                                                     //el sueldo tambien estaba como caracter
+            {
                 if ((objConexion.EscribirPorComando("INSERT into [BDDJ].[dbo].[EMPLEADOS] ([_Rol], [_IDEmpleado], [_Sueldo], [_Habilitado]) values ('" + Rol + "', '" + nombreUsuario + "', " + Sueldo + ", '" + Habilitado + "')")) > 0)
                 {
                     return true;

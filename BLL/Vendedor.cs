@@ -17,7 +17,7 @@ namespace BLL
             set { _CantidadVentas = value; }
         }
 
-        public bool RegistrarCliente(string idCliente, string nombre, string apellido, string dni, int cantidadCompras)
+        public bool RegistrarCliente(string idCliente, string nombre, string apellido, int dni, int cantidadCompras)
         {
             DAL.Vendedor cliente = new DAL.Vendedor();
 

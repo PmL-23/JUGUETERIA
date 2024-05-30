@@ -24,11 +24,11 @@ namespace DAL
 
             return false;
         }
-        
-        public bool AgregarCliente(string idCliente, string nombre, string apellido, string dni,int cantidadCompras)
+
+        public bool AgregarCliente(string idCliente, string nombre, string apellido, int dni, int cantidadCompras)
         {
             Conexion objConexion = new Conexion();
-            int filasAfectadas = objConexion.EscribirPorComando("UPDATE [BDDJ].[dbo].[CLIENTES] SET [_IDCliente] = '" + idCliente + "', [_Nombre] = '" + nombre + "', [_Apellido] = '" + apellido + "', [_DNI] = '" + dni + "', [_CantidadCompras] = '" + cantidadCompras + "';");
+            int filasAfectadas = objConexion.EscribirPorComando("INSERT into [BDDJ].[dbo].[CLIENTES] ([_Nombre], [_Apelldo], [_IDCliente], [_CantidadCompras], [_DNI]) values ('"+nombre+"', '"+apellido+"', '"+idCliente+"', "+cantidadCompras+", "+dni+");");
 
             if (filasAfectadas > 0)
             {
@@ -37,6 +37,6 @@ namespace DAL
 
             return false;
         }
-        
+
     }
 }

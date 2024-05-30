@@ -37,6 +37,8 @@
             this.tboxDNI = new System.Windows.Forms.TextBox();
             this.tboxApellido = new System.Windows.Forms.TextBox();
             this.tboxNombre = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tboxIDCliente = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label4
@@ -61,7 +63,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(66, 119);
+            this.label2.Location = new System.Drawing.Point(66, 99);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 15;
@@ -105,7 +107,7 @@
             // 
             // tboxApellido
             // 
-            this.tboxApellido.Location = new System.Drawing.Point(116, 112);
+            this.tboxApellido.Location = new System.Drawing.Point(116, 99);
             this.tboxApellido.Name = "tboxApellido";
             this.tboxApellido.Size = new System.Drawing.Size(164, 20);
             this.tboxApellido.TabIndex = 10;
@@ -117,11 +119,30 @@
             this.tboxNombre.Size = new System.Drawing.Size(164, 20);
             this.tboxNombre.TabIndex = 9;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(66, 142);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "ID del cliente";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // tboxIDCliente
+            // 
+            this.tboxIDCliente.Location = new System.Drawing.Point(141, 142);
+            this.tboxIDCliente.Name = "tboxIDCliente";
+            this.tboxIDCliente.Size = new System.Drawing.Size(139, 20);
+            this.tboxIDCliente.TabIndex = 19;
+            // 
             // CrearCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 365);
+            this.Controls.Add(this.tboxIDCliente);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -150,5 +171,7 @@
         private System.Windows.Forms.TextBox tboxDNI;
         private System.Windows.Forms.TextBox tboxApellido;
         private System.Windows.Forms.TextBox tboxNombre;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tboxIDCliente;
     }
 }

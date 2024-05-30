@@ -58,9 +58,9 @@ namespace BLL
         public bool IniciarSesion(string nombreUsuario, string contrasenia)
         {
 
-            if (string.IsNullOrEmpty(nombreUsuario)) throw new Exceptions.BusinessException("Nombre de Usuario no puede estar vacio..");
+            if (string.IsNullOrEmpty(nombreUsuario)) throw new Exceptions.MyExceptions("Nombre de Usuario no puede estar vacio..");
 
-            if (string.IsNullOrEmpty(contrasenia)) throw new Exceptions.BusinessException("Contraseña no puede estar vacia..");
+            if (string.IsNullOrEmpty(contrasenia)) throw new Exceptions.MyExceptions("Contraseña no puede estar vacia..");
 
             DAL.Usuario usuario = new DAL.Usuario();
 

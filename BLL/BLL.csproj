@@ -45,7 +45,7 @@
     <Compile Include="Administrador.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Empleado.cs" />
-    <Compile Include="Exceptions\BusinessExceptions.cs" />
+    <Compile Include="Exceptions\MyExceptions.cs" />
     <Compile Include="Logistica.cs" />
     <Compile Include="Producto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
