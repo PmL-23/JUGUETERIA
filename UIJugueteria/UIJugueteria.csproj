@@ -64,11 +64,11 @@
     <Compile Include="CrearUsuario.Designer.cs">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="ILogistica\AmpliarProducto.cs">
+    <Compile Include="ILogistica\AmpliarProductoEnGestionarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ILogistica\AmpliarProducto.Designer.cs">
-      <DependentUpon>AmpliarProducto.cs</DependentUpon>
+    <Compile Include="ILogistica\AmpliarProductoEnGestionarProducto.Designer.cs">
+      <DependentUpon>AmpliarProductoEnGestionarProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="ILogistica\GestionarProductos.cs">
       <SubType>Form</SubType>
@@ -111,8 +111,8 @@
     <EmbeddedResource Include="CrearUsuario.resx">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ILogistica\AmpliarProducto.resx">
-      <DependentUpon>AmpliarProducto.cs</DependentUpon>
+    <EmbeddedResource Include="ILogistica\AmpliarProductoEnGestionarProducto.resx">
+      <DependentUpon>AmpliarProductoEnGestionarProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ILogistica\GestionarProductos.resx">
       <DependentUpon>GestionarProductos.cs</DependentUpon>
