@@ -68,7 +68,6 @@ namespace BLL
             {
                 return true;
             }
-
             return false;
         }
     }
