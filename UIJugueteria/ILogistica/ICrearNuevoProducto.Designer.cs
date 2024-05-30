@@ -39,6 +39,8 @@
             this.tboxPrecioVentaProducto = new System.Windows.Forms.TextBox();
             this.tboxStockMinimoProducto = new System.Windows.Forms.TextBox();
             this.btnConfirmar = new System.Windows.Forms.Button();
+            this.tboxStock = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblNombreDeProducto
@@ -89,11 +91,11 @@
             // 
             this.lblStockMnimo.AutoSize = true;
             this.lblStockMnimo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStockMnimo.Location = new System.Drawing.Point(106, 220);
+            this.lblStockMnimo.Location = new System.Drawing.Point(106, 246);
             this.lblStockMnimo.Name = "lblStockMnimo";
-            this.lblStockMnimo.Size = new System.Drawing.Size(104, 20);
+            this.lblStockMnimo.Size = new System.Drawing.Size(143, 20);
             this.lblStockMnimo.TabIndex = 6;
-            this.lblStockMnimo.Text = "Stock Minimo";
+            this.lblStockMnimo.Text = "Stock Minimo Ideal";
             this.lblStockMnimo.Click += new System.EventHandler(this.lblStockMnimo_Click);
             // 
             // tboxNombreProducto
@@ -130,7 +132,7 @@
             // 
             // tboxStockMinimoProducto
             // 
-            this.tboxStockMinimoProducto.Location = new System.Drawing.Point(266, 220);
+            this.tboxStockMinimoProducto.Location = new System.Drawing.Point(266, 246);
             this.tboxStockMinimoProducto.Name = "tboxStockMinimoProducto";
             this.tboxStockMinimoProducto.Size = new System.Drawing.Size(81, 20);
             this.tboxStockMinimoProducto.TabIndex = 11;
@@ -139,7 +141,7 @@
             // btnConfirmar
             // 
             this.btnConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmar.Location = new System.Drawing.Point(303, 261);
+            this.btnConfirmar.Location = new System.Drawing.Point(303, 282);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(136, 40);
             this.btnConfirmar.TabIndex = 12;
@@ -147,11 +149,32 @@
             this.btnConfirmar.UseVisualStyleBackColor = true;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // CrearNuevoProducto
+            // tboxStock
+            // 
+            this.tboxStock.Location = new System.Drawing.Point(266, 215);
+            this.tboxStock.Name = "tboxStock";
+            this.tboxStock.Size = new System.Drawing.Size(81, 20);
+            this.tboxStock.TabIndex = 14;
+            this.tboxStock.TextChanged += new System.EventHandler(this.tboxStock_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(106, 215);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 20);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Stock";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // ICrearNuevoProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 365);
+            this.Controls.Add(this.tboxStock);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.tboxStockMinimoProducto);
             this.Controls.Add(this.tboxPrecioVentaProducto);
@@ -164,7 +187,7 @@
             this.Controls.Add(this.lblIDProducto);
             this.Controls.Add(this.lblNombreDeProducto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "CrearNuevoProducto";
+            this.Name = "ICrearNuevoProducto";
             this.Text = "CrearNuevoProducto";
             this.Load += new System.EventHandler(this.CrearNuevoProducto_Load);
             this.ResumeLayout(false);
@@ -184,5 +207,7 @@
         private System.Windows.Forms.TextBox tboxPrecioVentaProducto;
         private System.Windows.Forms.TextBox tboxStockMinimoProducto;
         private System.Windows.Forms.Button btnConfirmar;
+        private System.Windows.Forms.TextBox tboxStock;
+        private System.Windows.Forms.Label label1;
     }
 }

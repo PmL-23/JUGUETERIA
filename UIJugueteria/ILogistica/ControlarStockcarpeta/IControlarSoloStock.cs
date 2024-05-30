@@ -28,7 +28,7 @@ namespace UIJugueteria.ILogistica
             foreach (BLL.Producto producto in listaProductos)
             {
                 // Agregar una nueva fila al DataGridView y asignar los valores de las celdas
-                dtgvVerProductos.Rows.Add(producto.IDProducto, producto.NombreProducto, producto.FechaDeCreacion, producto.CantidadEnStock, producto.CantidadMinimaPermitida);
+                dtgvVerProductos.Rows.Add(producto.IDProducto, producto.NombreProducto, producto.FechaDeCreacion, producto.CantidadMinimaPermitida, producto.CantidadEnStock);
             }
 
         }
@@ -56,7 +56,10 @@ namespace UIJugueteria.ILogistica
         {
 
         }
-                                                                        private void AbrirFormEnPanel(object Formulario)
+
+
+
+        private void AbrirFormEnPanel(object Formulario)
                                                                         {
                                                                             if (this.PanelParaProducto.Controls.Count > 0)
                                                                             {
@@ -75,6 +78,7 @@ namespace UIJugueteria.ILogistica
 
         private void btnEditarStock_Click(object sender, EventArgs e)
         {
+            
             if (indice != -1)
             {
                 string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
@@ -84,6 +88,16 @@ namespace UIJugueteria.ILogistica
             {
                 MessageBox.Show("Seleccione un producto ");
 
+            }
+        }
+
+        private void dtgvVerProductos_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            indice = e.RowIndex;
+
+            if (indice != -1)
+            {
+                string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
             }
         }
 

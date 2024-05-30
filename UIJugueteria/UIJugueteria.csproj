@@ -112,6 +112,12 @@
     <Compile Include="CrearCliente.Designer.cs">
       <DependentUpon>CrearCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="ILogistica\IVerAlertaStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ILogistica\IVerAlertaStock.Designer.cs">
+      <DependentUpon>IVerAlertaStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="IVENDEDOR.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CrearCliente.resx">
       <DependentUpon>CrearCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ILogistica\IVerAlertaStock.resx">
+      <DependentUpon>IVerAlertaStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IVENDEDOR.resx">
       <DependentUpon>IVENDEDOR.cs</DependentUpon>

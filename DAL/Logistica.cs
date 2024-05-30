@@ -61,18 +61,19 @@ namespace DAL
 
 
         }
-
-
-
-
-
         public DataTable VerAlertarBajoStock() //pedir ayuda a patricio para haecr esto, ya que el hizo algo muy parecido.
-                                            {
-                                                Conexion objConexion = new Conexion(); //(fila de abajo) creo que deberia ser otro tipo de declaracion
-                                                return objConexion.LeerPorComando("SELECT [_NombreProducto], [_IDProducto], [_Costo], [_Precio], [_CantidadEnStock], [_CantidadMinimaPermitida] from [BDDJ].[dbo].[PRODUCTO] where _CantidadEnstock < _CantidadMinimaPermitida");
-                                            }
+        {
+            Conexion objConexion = new Conexion(); //(fila de abajo) creo que deberia ser otro tipo de declaracion
+            return objConexion.LeerPorComando("SELECT [_IDCreadorProducto],[_NombreProducto],[_IDProducto],[_Costo],[_FechaCreacion],[_Precio],[_CantidadEnStock],[_CantidadMinimaPermitida] from [BDDJ].[dbo].[PRODUCTO] where _CantidadEnstock < _CantidadMinimaPermitida");
+        }
 
-                                                                        //METODOS AUXILIARES
+
+
+
+
+
+
+        //METODOS AUXILIARES
 
 
         public bool VerSiExisteProducto(string IDProducto)
@@ -102,6 +103,9 @@ namespace DAL
             Conexion objConexion = new Conexion();
             return objConexion.LeerPorComando("SELECT [_IDCreadorProducto],[_NombreProducto],[_IDProducto],[_Costo],[_FechaCreacion],[_Precio],[_CantidadEnStock],[_CantidadMinimaPermitida] FROM [BDDJ].[dbo].[PRODUCTO] WHERE [_IDProducto] is not null ");
         }
+
+       
+
 
     }
 }

@@ -26,12 +26,15 @@ namespace UIJugueteria
             foreach (BLL.Producto producto in listaProductos)
             {
                 // Agregar una nueva fila al DataGridView y asignar los valores de las celdas
-                dtgvVerProductos.Rows.Add(producto.IDProducto, producto.NombreProducto, producto.Costo, producto.Precioventa, producto.CantidadEnStock);
+                dtgvVerProductos.Rows.Add(producto.IDProducto, producto.NombreProducto, "$ " + producto.Costo, "$ " + producto.Precioventa, producto.CantidadEnStock);
             }
-
-
+            dtgvVerProductos.Columns["CostoProducto"].DefaultCellStyle.Format = "0.00";
+            dtgvVerProductos.Columns["PrecioProducto"].DefaultCellStyle.Format = "0.00";
 
         }
+
+      
+
         private void AbrirFormEnPanel(object Formulario)
         {
             if (this.PanelParaProducto.Controls.Count > 0)

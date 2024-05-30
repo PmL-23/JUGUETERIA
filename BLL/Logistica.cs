@@ -58,36 +58,32 @@ namespace BLL
             }
             return false;
 
+        }
+
+        public List<Producto> VerAlertarBajoStock() //pedir ayuda a patricio para haecr esto, ya que el hizo algo muy parecido.
+        {
+            List<Producto> listaDeProductos = new List<Producto>();
+
+            DAL.Logistica logistica = new DAL.Logistica();
+            DataTable Productodb = logistica.VerAlertarBajoStock();
+
+            foreach (DataRow fila in Productodb.Rows)
+            {
+                Producto producto = new Producto();
+                producto.IDCreadorProducto = fila["_IDCreadorProducto"].ToString();
+                producto.NombreProducto = fila["_NombreProducto"].ToString();
+                producto.IDProducto = fila["_NombreProducto"].ToString();
+                producto.Costo = float.Parse(fila["_Costo"].ToString());
+                producto.FechaDeCreacion = fila["_FechaCreacion"].ToString();
+                producto.Precioventa = float.Parse(fila["_Precio"].ToString());
+                producto.CantidadEnStock = int.Parse(fila["_CantidadEnStock"].ToString());
+                producto.CantidadMinimaPermitida = int.Parse(fila["_CantidadMinimaPermitida"].ToString());
+                listaDeProductos.Add(producto);
+            }
+            return listaDeProductos;
 
         }
 
-
-        //funcion de alerta bajo stock.
-
-
-        public List<Producto> VerAlertarBajoStock() //pedir ayuda a patricio para haecr esto, ya que el hizo algo muy parecido.
-                                    {
-                                        List < Producto > listaDeProductos = new List<Producto>();
-
-                                        DAL.Logistica logistica = new DAL.Logistica();
-                                        DataTable Productodb = logistica.VerAlertarBajoStock();
-
-                                        foreach (DataRow fila in Productodb.Rows)
-                                        {
-                                            Producto producto = new Producto();
-                                            producto.IDCreadorProducto = fila["_IDCreadorProducto"].ToString();
-                                            producto.NombreProducto = fila["_NombreProducto"].ToString();
-                                            producto.IDProducto = fila["_NombreProducto"].ToString();
-                                            producto.Costo = float.Parse(fila["_Costo"].ToString());
-                                            producto.FechaDeCreacion = fila["_FechaDeCreacion"].ToString();
-                                            producto.Precioventa = float.Parse(fila["_PrecioVenta"].ToString());
-                                            producto.CantidadEnStock = int.Parse(fila["_CantidadEnStock"].ToString());
-                                            producto.CantidadMinimaPermitida = int.Parse(fila["_CantidadMinimaPermitida"].ToString());
-                                            listaDeProductos.Add(producto);
-                                        }
-                                        return listaDeProductos;
-
-                                    }
 
 
         public Logistica()

@@ -78,7 +78,7 @@ namespace UIJugueteria
 
         private void btnVerAlertaDeStock_Click(object sender, EventArgs e)
         {
-            //abrir formulario con la funcion AlertaBajoStock
+            AbrirFormEnPanel(new IVerAlertaStock());
         }
 
 
