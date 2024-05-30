@@ -59,7 +59,7 @@ namespace UIJugueteria
 
         private void btnEditarProducto_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new EditarProducto(_NombreUsuario));
+            AbrirFormEnPanel(new GestionarProductos());
         }
 
         

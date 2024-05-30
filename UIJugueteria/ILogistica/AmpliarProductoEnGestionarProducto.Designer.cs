@@ -35,20 +35,22 @@
             this.lblPrecioVenta = new System.Windows.Forms.Label();
             this.lblStockDisponible = new System.Windows.Forms.Label();
             this.lblStockMinimo = new System.Windows.Forms.Label();
-            this.tboxCosto = new System.Windows.Forms.TextBox();
-            this.tboxPrecioVenta = new System.Windows.Forms.TextBox();
-            this.tboxStockDisponible = new System.Windows.Forms.TextBox();
-            this.tboxStockMinimoIdeal = new System.Windows.Forms.TextBox();
             this.lblIDEmpleadoCreadorProducto = new System.Windows.Forms.Label();
+            this.lblNombreProductoEstatico = new System.Windows.Forms.Label();
             this.lblFechaCreacionProducto = new System.Windows.Forms.Label();
-            this.idproducto = new System.Windows.Forms.Label();
+            this.lblIDProductoDinamico = new System.Windows.Forms.Label();
+            this.lblNombreProducto = new System.Windows.Forms.Label();
+            this.lblCostoProducto = new System.Windows.Forms.Label();
+            this.lblPrecioVentaProducto = new System.Windows.Forms.Label();
+            this.lblStock = new System.Windows.Forms.Label();
+            this.lblStockMinimoIdeal = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblIIDEmpleadorCreador
             // 
             this.lblIIDEmpleadorCreador.AutoSize = true;
             this.lblIIDEmpleadorCreador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIIDEmpleadorCreador.Location = new System.Drawing.Point(30, 47);
+            this.lblIIDEmpleadorCreador.Location = new System.Drawing.Point(30, 44);
             this.lblIIDEmpleadorCreador.Name = "lblIIDEmpleadorCreador";
             this.lblIIDEmpleadorCreador.Size = new System.Drawing.Size(249, 20);
             this.lblIIDEmpleadorCreador.TabIndex = 0;
@@ -59,7 +61,7 @@
             // 
             this.lblIDProducto.AutoSize = true;
             this.lblIDProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDProducto.Location = new System.Drawing.Point(30, 109);
+            this.lblIDProducto.Location = new System.Drawing.Point(30, 108);
             this.lblIDProducto.Name = "lblIDProducto";
             this.lblIDProducto.Size = new System.Drawing.Size(90, 20);
             this.lblIDProducto.TabIndex = 1;
@@ -70,7 +72,7 @@
             // 
             this.lblFechaCreacion.AutoSize = true;
             this.lblFechaCreacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaCreacion.Location = new System.Drawing.Point(30, 77);
+            this.lblFechaCreacion.Location = new System.Drawing.Point(30, 74);
             this.lblFechaCreacion.Name = "lblFechaCreacion";
             this.lblFechaCreacion.Size = new System.Drawing.Size(211, 20);
             this.lblFechaCreacion.TabIndex = 2;
@@ -81,7 +83,7 @@
             // 
             this.lblCosto.AutoSize = true;
             this.lblCosto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCosto.Location = new System.Drawing.Point(30, 138);
+            this.lblCosto.Location = new System.Drawing.Point(30, 172);
             this.lblCosto.Name = "lblCosto";
             this.lblCosto.Size = new System.Drawing.Size(51, 20);
             this.lblCosto.TabIndex = 3;
@@ -92,7 +94,7 @@
             // 
             this.lblPrecioVenta.AutoSize = true;
             this.lblPrecioVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecioVenta.Location = new System.Drawing.Point(30, 168);
+            this.lblPrecioVenta.Location = new System.Drawing.Point(30, 205);
             this.lblPrecioVenta.Name = "lblPrecioVenta";
             this.lblPrecioVenta.Size = new System.Drawing.Size(100, 20);
             this.lblPrecioVenta.TabIndex = 4;
@@ -103,7 +105,7 @@
             // 
             this.lblStockDisponible.AutoSize = true;
             this.lblStockDisponible.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStockDisponible.Location = new System.Drawing.Point(30, 198);
+            this.lblStockDisponible.Location = new System.Drawing.Point(30, 235);
             this.lblStockDisponible.Name = "lblStockDisponible";
             this.lblStockDisponible.Size = new System.Drawing.Size(128, 20);
             this.lblStockDisponible.TabIndex = 5;
@@ -114,87 +116,126 @@
             // 
             this.lblStockMinimo.AutoSize = true;
             this.lblStockMinimo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStockMinimo.Location = new System.Drawing.Point(30, 228);
+            this.lblStockMinimo.Location = new System.Drawing.Point(30, 268);
             this.lblStockMinimo.Name = "lblStockMinimo";
             this.lblStockMinimo.Size = new System.Drawing.Size(143, 20);
             this.lblStockMinimo.TabIndex = 6;
             this.lblStockMinimo.Text = "Stock Minimo Ideal";
             this.lblStockMinimo.Click += new System.EventHandler(this.lblStockMinimo_Click);
             // 
-            // tboxCosto
-            // 
-            this.tboxCosto.Location = new System.Drawing.Point(294, 138);
-            this.tboxCosto.Name = "tboxCosto";
-            this.tboxCosto.Size = new System.Drawing.Size(163, 20);
-            this.tboxCosto.TabIndex = 7;
-            this.tboxCosto.TextChanged += new System.EventHandler(this.tboxCosto_TextChanged);
-            // 
-            // tboxPrecioVenta
-            // 
-            this.tboxPrecioVenta.Location = new System.Drawing.Point(294, 168);
-            this.tboxPrecioVenta.Name = "tboxPrecioVenta";
-            this.tboxPrecioVenta.Size = new System.Drawing.Size(163, 20);
-            this.tboxPrecioVenta.TabIndex = 8;
-            this.tboxPrecioVenta.TextChanged += new System.EventHandler(this.tboxPrecioVenta_TextChanged);
-            // 
-            // tboxStockDisponible
-            // 
-            this.tboxStockDisponible.Location = new System.Drawing.Point(294, 198);
-            this.tboxStockDisponible.Name = "tboxStockDisponible";
-            this.tboxStockDisponible.Size = new System.Drawing.Size(64, 20);
-            this.tboxStockDisponible.TabIndex = 9;
-            this.tboxStockDisponible.TextChanged += new System.EventHandler(this.tboxStockDisponible_TextChanged);
-            // 
-            // tboxStockMinimoIdeal
-            // 
-            this.tboxStockMinimoIdeal.Location = new System.Drawing.Point(294, 228);
-            this.tboxStockMinimoIdeal.Name = "tboxStockMinimoIdeal";
-            this.tboxStockMinimoIdeal.Size = new System.Drawing.Size(64, 20);
-            this.tboxStockMinimoIdeal.TabIndex = 11;
-            this.tboxStockMinimoIdeal.TextChanged += new System.EventHandler(this.tboxStockMinimoIdeal_TextChanged);
-            // 
             // lblIDEmpleadoCreadorProducto
             // 
             this.lblIDEmpleadoCreadorProducto.AutoSize = true;
-            this.lblIDEmpleadoCreadorProducto.Location = new System.Drawing.Point(291, 52);
+            this.lblIDEmpleadoCreadorProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDEmpleadoCreadorProducto.Location = new System.Drawing.Point(295, 44);
             this.lblIDEmpleadoCreadorProducto.Name = "lblIDEmpleadoCreadorProducto";
-            this.lblIDEmpleadoCreadorProducto.Size = new System.Drawing.Size(35, 13);
+            this.lblIDEmpleadoCreadorProducto.Size = new System.Drawing.Size(68, 18);
             this.lblIDEmpleadoCreadorProducto.TabIndex = 12;
-            this.lblIDEmpleadoCreadorProducto.Text = "label1";
+            this.lblIDEmpleadoCreadorProducto.Text = "dinamico";
             this.lblIDEmpleadoCreadorProducto.Click += new System.EventHandler(this.lblIDEmpleadoCreadorProducto_Click);
+            // 
+            // lblNombreProductoEstatico
+            // 
+            this.lblNombreProductoEstatico.AutoSize = true;
+            this.lblNombreProductoEstatico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreProductoEstatico.Location = new System.Drawing.Point(30, 142);
+            this.lblNombreProductoEstatico.Name = "lblNombreProductoEstatico";
+            this.lblNombreProductoEstatico.Size = new System.Drawing.Size(133, 20);
+            this.lblNombreProductoEstatico.TabIndex = 16;
+            this.lblNombreProductoEstatico.Text = "Nombre Producto";
+            this.lblNombreProductoEstatico.Click += new System.EventHandler(this.lblNombreProductoEstatico_Click);
             // 
             // lblFechaCreacionProducto
             // 
             this.lblFechaCreacionProducto.AutoSize = true;
-            this.lblFechaCreacionProducto.Location = new System.Drawing.Point(291, 82);
+            this.lblFechaCreacionProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaCreacionProducto.Location = new System.Drawing.Point(295, 76);
             this.lblFechaCreacionProducto.Name = "lblFechaCreacionProducto";
-            this.lblFechaCreacionProducto.Size = new System.Drawing.Size(35, 13);
-            this.lblFechaCreacionProducto.TabIndex = 13;
-            this.lblFechaCreacionProducto.Text = "label1";
-            this.lblFechaCreacionProducto.Click += new System.EventHandler(this.lblFechaCreacionProducto_Click);
+            this.lblFechaCreacionProducto.Size = new System.Drawing.Size(68, 18);
+            this.lblFechaCreacionProducto.TabIndex = 17;
+            this.lblFechaCreacionProducto.Text = "dinamico";
+            this.lblFechaCreacionProducto.Click += new System.EventHandler(this.lblFechaCreacionProducto_Click_1);
             // 
-            // idproducto
+            // lblIDProductoDinamico
             // 
-            this.idproducto.AutoSize = true;
-            this.idproducto.Location = new System.Drawing.Point(291, 114);
-            this.idproducto.Name = "idproducto";
-            this.idproducto.Size = new System.Drawing.Size(35, 13);
-            this.idproducto.TabIndex = 14;
-            this.idproducto.Text = "label1";
-            this.idproducto.Click += new System.EventHandler(this.idproducto_Click);
+            this.lblIDProductoDinamico.AutoSize = true;
+            this.lblIDProductoDinamico.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDProductoDinamico.Location = new System.Drawing.Point(295, 110);
+            this.lblIDProductoDinamico.Name = "lblIDProductoDinamico";
+            this.lblIDProductoDinamico.Size = new System.Drawing.Size(68, 18);
+            this.lblIDProductoDinamico.TabIndex = 18;
+            this.lblIDProductoDinamico.Text = "dinamico";
+            this.lblIDProductoDinamico.Click += new System.EventHandler(this.lblIDProductoDinamico_Click);
+            // 
+            // lblNombreProducto
+            // 
+            this.lblNombreProducto.AutoSize = true;
+            this.lblNombreProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreProducto.Location = new System.Drawing.Point(295, 143);
+            this.lblNombreProducto.Name = "lblNombreProducto";
+            this.lblNombreProducto.Size = new System.Drawing.Size(68, 18);
+            this.lblNombreProducto.TabIndex = 19;
+            this.lblNombreProducto.Text = "dinamico";
+            this.lblNombreProducto.Click += new System.EventHandler(this.lblNombreProducto_Click);
+            // 
+            // lblCostoProducto
+            // 
+            this.lblCostoProducto.AutoSize = true;
+            this.lblCostoProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCostoProducto.Location = new System.Drawing.Point(295, 172);
+            this.lblCostoProducto.Name = "lblCostoProducto";
+            this.lblCostoProducto.Size = new System.Drawing.Size(68, 18);
+            this.lblCostoProducto.TabIndex = 20;
+            this.lblCostoProducto.Text = "dinamico";
+            this.lblCostoProducto.Click += new System.EventHandler(this.lblCostoProducto_Click);
+            // 
+            // lblPrecioVentaProducto
+            // 
+            this.lblPrecioVentaProducto.AutoSize = true;
+            this.lblPrecioVentaProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioVentaProducto.Location = new System.Drawing.Point(295, 205);
+            this.lblPrecioVentaProducto.Name = "lblPrecioVentaProducto";
+            this.lblPrecioVentaProducto.Size = new System.Drawing.Size(68, 18);
+            this.lblPrecioVentaProducto.TabIndex = 21;
+            this.lblPrecioVentaProducto.Text = "dinamico";
+            this.lblPrecioVentaProducto.Click += new System.EventHandler(this.lblPrecioVentaProducto_Click);
+            // 
+            // lblStock
+            // 
+            this.lblStock.AutoSize = true;
+            this.lblStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStock.Location = new System.Drawing.Point(295, 237);
+            this.lblStock.Name = "lblStock";
+            this.lblStock.Size = new System.Drawing.Size(68, 18);
+            this.lblStock.TabIndex = 22;
+            this.lblStock.Text = "dinamico";
+            this.lblStock.Click += new System.EventHandler(this.lblStock_Click);
+            // 
+            // lblStockMinimoIdeal
+            // 
+            this.lblStockMinimoIdeal.AutoSize = true;
+            this.lblStockMinimoIdeal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStockMinimoIdeal.Location = new System.Drawing.Point(295, 269);
+            this.lblStockMinimoIdeal.Name = "lblStockMinimoIdeal";
+            this.lblStockMinimoIdeal.Size = new System.Drawing.Size(68, 18);
+            this.lblStockMinimoIdeal.TabIndex = 23;
+            this.lblStockMinimoIdeal.Text = "dinamico";
+            this.lblStockMinimoIdeal.Click += new System.EventHandler(this.lblStockMinimoIdeal_Click);
             // 
             // ProductoEnEditarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(599, 328);
-            this.Controls.Add(this.idproducto);
+            this.ClientSize = new System.Drawing.Size(599, 340);
+            this.Controls.Add(this.lblStockMinimoIdeal);
+            this.Controls.Add(this.lblStock);
+            this.Controls.Add(this.lblPrecioVentaProducto);
+            this.Controls.Add(this.lblCostoProducto);
+            this.Controls.Add(this.lblNombreProducto);
+            this.Controls.Add(this.lblIDProductoDinamico);
             this.Controls.Add(this.lblFechaCreacionProducto);
+            this.Controls.Add(this.lblNombreProductoEstatico);
             this.Controls.Add(this.lblIDEmpleadoCreadorProducto);
-            this.Controls.Add(this.tboxStockMinimoIdeal);
-            this.Controls.Add(this.tboxStockDisponible);
-            this.Controls.Add(this.tboxPrecioVenta);
-            this.Controls.Add(this.tboxCosto);
             this.Controls.Add(this.lblStockMinimo);
             this.Controls.Add(this.lblStockDisponible);
             this.Controls.Add(this.lblPrecioVenta);
@@ -220,12 +261,14 @@
         private System.Windows.Forms.Label lblPrecioVenta;
         private System.Windows.Forms.Label lblStockDisponible;
         private System.Windows.Forms.Label lblStockMinimo;
-        private System.Windows.Forms.TextBox tboxCosto;
-        private System.Windows.Forms.TextBox tboxPrecioVenta;
-        private System.Windows.Forms.TextBox tboxStockDisponible;
-        private System.Windows.Forms.TextBox tboxStockMinimoIdeal;
         private System.Windows.Forms.Label lblIDEmpleadoCreadorProducto;
+        private System.Windows.Forms.Label lblNombreProductoEstatico;
         private System.Windows.Forms.Label lblFechaCreacionProducto;
-        private System.Windows.Forms.Label idproducto;
+        private System.Windows.Forms.Label lblIDProductoDinamico;
+        private System.Windows.Forms.Label lblNombreProducto;
+        private System.Windows.Forms.Label lblCostoProducto;
+        private System.Windows.Forms.Label lblPrecioVentaProducto;
+        private System.Windows.Forms.Label lblStock;
+        private System.Windows.Forms.Label lblStockMinimoIdeal;
     }
 }

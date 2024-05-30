@@ -129,6 +129,7 @@
             this.dataGridViewEmpleados.ShowEditingIcon = false;
             this.dataGridViewEmpleados.Size = new System.Drawing.Size(669, 315);
             this.dataGridViewEmpleados.TabIndex = 0;
+            this.dataGridViewEmpleados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmpleados_CellContentClick_1);
             // 
             // tabModificar
             // 

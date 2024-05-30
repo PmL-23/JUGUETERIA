@@ -25,46 +25,34 @@ namespace DAL
         }
 
 
-        //funcion de controlar stock.
-
-
-
-        //funcion de alerta bajo stock.
 
 
 
 
-        public bool EditarProducto(string NombreProducto, string IDProducto, float Costo, float PrecioVenta, int CantidadStock, int CantidadMinimaPermitida)
+            //funcion de alerta bajo stock.
+
+
+
+
+        public bool EditarProducto(string NombreProducto, float Costo, float Precio, int CantidadEnStock, int CantidadMinimaPermitida, string IDProducto)
         {
             Conexion objConexion = new Conexion();
-            int filasAfectadas = objConexion.EscribirPorComando("UPDATE PRODUCTO SET _NombreProducto = '"+NombreProducto+"', _Costo="+Costo+", _Precio="+PrecioVenta+", _CantidadStock="+CantidadStock+ " _CantidadMinimaPermitida= "+CantidadMinimaPermitida+" WHERE _IDProducto= '"+IDProducto+"')");
+            int filasAfectadas = objConexion.EscribirPorComando("UPDATE PRODUCTO SET [_NombreProducto] = '"+NombreProducto+"', [_Costo]= "+ Costo + ", [_Precio]="+ Precio + ", [_CantidadEnStock]="+ CantidadEnStock + ", [_CantidadMinimaPermitida]="+ CantidadMinimaPermitida + " where _IDProducto= '"+IDProducto+"'");
 
             if (filasAfectadas > 0)
             {
                 return true;
             }
-
             return false;
         }
 
-                                    public bool AumentarStock(string IDProducto, int CantidadStockAAumentar)
-                                    {
-                                        Conexion objConexion = new Conexion();
-                                        int filasAfectadas = objConexion.EscribirPorComando("UPDATE PRODUCTO SET _CantidadEnStock = (_CantidadEnStock +" + CantidadStockAAumentar + ") WHERE _IDProducto= '" + IDProducto + "')");
 
-                                        if (filasAfectadas > 0)
-                                        {
-                                            return true;
-                                        }
 
-                                        return false;
-                                    }
-
-                                    public DataTable VerAlertarBajoStock() //pedir ayuda a patricio para haecr esto, ya que el hizo algo muy parecido.
-                                    {
-                                        Conexion objConexion = new Conexion(); //(fila de abajo) creo que deberia ser otro tipo de declaracion
-                                        return objConexion.LeerPorComando("SELECT [_NombreProducto], [_IDProducto], [_Costo], [_Precio], [_CantidadEnStock], [_CantidadMinimaPermitida] from [BDDJ].[dbo].[PRODUCTO] where _CantidadEnstock < _CantidadMinimaPermitida");
-                                    }
+                                            public DataTable VerAlertarBajoStock() //pedir ayuda a patricio para haecr esto, ya que el hizo algo muy parecido.
+                                            {
+                                                Conexion objConexion = new Conexion(); //(fila de abajo) creo que deberia ser otro tipo de declaracion
+                                                return objConexion.LeerPorComando("SELECT [_NombreProducto], [_IDProducto], [_Costo], [_Precio], [_CantidadEnStock], [_CantidadMinimaPermitida] from [BDDJ].[dbo].[PRODUCTO] where _CantidadEnstock < _CantidadMinimaPermitida");
+                                            }
 
                                                                         //METODOS AUXILIARES
 
@@ -82,6 +70,19 @@ namespace DAL
                 }
             }
             return false;
+        }
+
+
+        public DataTable TraerUnProducto(string idproducto)
+        {
+            Conexion objConexion = new Conexion();
+            return objConexion.LeerPorComando("SELECT [_IDCreadorProducto],[_NombreProducto],[_IDProducto],[_Costo],[_FechaCreacion],[_Precio],[_CantidadEnStock],[_CantidadMinimaPermitida] FROM [BDDJ].[dbo].[PRODUCTO] WHERE [_IDProducto]= '" + idproducto + "' ");
+        }
+
+        public DataTable TraerListaProductos()
+        {
+            Conexion objConexion = new Conexion();
+            return objConexion.LeerPorComando("SELECT [_IDCreadorProducto],[_NombreProducto],[_IDProducto],[_Costo],[_FechaCreacion],[_Precio],[_CantidadEnStock],[_CantidadMinimaPermitida] FROM [BDDJ].[dbo].[PRODUCTO] WHERE [_IDProducto] is not null ");
         }
 
     }

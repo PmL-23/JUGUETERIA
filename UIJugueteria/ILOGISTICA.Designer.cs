@@ -144,7 +144,7 @@
             this.btnEditarProducto.Name = "btnEditarProducto";
             this.btnEditarProducto.Size = new System.Drawing.Size(200, 41);
             this.btnEditarProducto.TabIndex = 2;
-            this.btnEditarProducto.Text = "Editar Producto";
+            this.btnEditarProducto.Text = "Gestionar Productos";
             this.btnEditarProducto.UseVisualStyleBackColor = true;
             this.btnEditarProducto.Click += new System.EventHandler(this.btnEditarProducto_Click);
             // 
