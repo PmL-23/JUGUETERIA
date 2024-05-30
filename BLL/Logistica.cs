@@ -24,13 +24,6 @@ namespace BLL
             return false;
         }
 
-        
-
-        //funcion controlar stock
-
-
-        //funcion de alerta bajo stock.
-
 
         public bool EditarProducto(string NombreProducto, float Costo, float PrecioVenta, int CantidadStock, int CantidadMinimaPermitida, string IDProducto)
         {
@@ -43,8 +36,24 @@ namespace BLL
             return false;
         }
 
-        
-                                    public List<Producto> VerAlertarBajoStock() //pedir ayuda a patricio para haecr esto, ya que el hizo algo muy parecido.
+        public bool EliminarProducto(string IDProducto)
+        {
+            DAL.Logistica logistica = new DAL.Logistica();
+
+            if (logistica.EliminarProducto(IDProducto))
+            {
+                return true;
+            }
+            return false;
+
+
+        }
+
+
+        //funcion de alerta bajo stock.
+
+
+        public List<Producto> VerAlertarBajoStock() //pedir ayuda a patricio para haecr esto, ya que el hizo algo muy parecido.
                                     {
                                         List < Producto > listaDeProductos = new List<Producto>();
 

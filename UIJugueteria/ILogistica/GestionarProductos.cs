@@ -33,19 +33,33 @@ namespace UIJugueteria
 
         }
         private void AbrirFormEnPanel(object Formulario)
-                                            {
-                                                if (this.PanelParaProducto.Controls.Count > 0)
-                                                {
-                                                    this.PanelParaProducto.Controls.Clear();
-                                                }
+        {
+            if (this.PanelParaProducto.Controls.Count > 0)
+            {
+                this.PanelParaProducto.Controls.Clear();
+            }
 
-                                                Form FH = Formulario as Form;
-                                                FH.TopLevel = false;
-                                                FH.Dock = DockStyle.Fill;
-                                                this.PanelParaProducto.Controls.Add(FH);
-                                                this.PanelParaProducto.Tag = FH;
-                                                FH.Show();
-                                            }
+            Form FH = Formulario as Form;
+            FH.TopLevel = false;
+            FH.Dock = DockStyle.Fill;
+            this.PanelParaProducto.Controls.Add(FH);
+            this.PanelParaProducto.Tag = FH;
+            FH.Show();
+        }
+        private void RecargarTodo(object Formulario)
+        {
+            if (this.panel1.Controls.Count > 0)
+            {
+                this.panel1.Controls.Clear();
+            }
+
+            Form FH = Formulario as Form;
+            FH.TopLevel = false;
+            FH.Dock = DockStyle.Fill;
+            this.panel1.Controls.Add(FH);
+            this.panel1.Tag = FH;
+            FH.Show();
+        }
 
 
         private void EditarProducto_Load(object sender, EventArgs e) { }
@@ -84,32 +98,69 @@ namespace UIJugueteria
         {
             indice = e.RowIndex;
 
-            if (indice != -1) {  
-            
+            if (indice != -1 )
+            { 
                 string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
-
             }
-            
+
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (indice != -1)
+            if (indice != -1 )
             {
                 string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
                 AbrirFormEnPanel(new EditarProductoEnGestionarProducto(IDSelececionada));
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un producto ");
+
             }
         }
 
         private void btnAmpliar_Click(object sender, EventArgs e)
         {
-            if (indice != -1)
+            if (indice != -1 )
             {
                 string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
 
-                //AbrirFormEnPanel(new AmpliarProductoEnGestionarProducto(IDSelececionada));
+                AbrirFormEnPanel(new AmpliarProductoEnGestionarProducto(IDSelececionada));
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un producto ");
+
             }
 
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (indice != -1 )
+            {
+                string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
+                BLL.Logistica logistica = new BLL.Logistica();
+                bool resultado = logistica.EliminarProducto(IDSelececionada);
+                if (resultado)
+                {
+                    MessageBox.Show("El Producto con ID: " + IDSelececionada + " a sido eliminado de la Base de Datos.");
+                    RecargarTodo(new GestionarProductos());
+
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrio un error al eliminar el producto con ID: " + IDSelececionada);
+
+                }
+
+            }
+
+            else
+            {
+                MessageBox.Show("Seleccione un producto ");
+
+            }
         }
     }
 }

@@ -41,15 +41,17 @@
             this.PrecioProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnBuscarProducto = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.PanelParaProducto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvVerProductos)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblIDProducto
             // 
             this.lblIDProducto.AutoSize = true;
             this.lblIDProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDProducto.Location = new System.Drawing.Point(43, 5);
+            this.lblIDProducto.Location = new System.Drawing.Point(42, 5);
             this.lblIDProducto.Name = "lblIDProducto";
             this.lblIDProducto.Size = new System.Drawing.Size(87, 18);
             this.lblIDProducto.TabIndex = 0;
@@ -58,7 +60,7 @@
             // 
             // tboxIDProducto
             // 
-            this.tboxIDProducto.Location = new System.Drawing.Point(149, 3);
+            this.tboxIDProducto.Location = new System.Drawing.Point(148, 3);
             this.tboxIDProducto.Name = "tboxIDProducto";
             this.tboxIDProducto.Size = new System.Drawing.Size(203, 20);
             this.tboxIDProducto.TabIndex = 1;
@@ -70,7 +72,7 @@
             this.PanelParaProducto.Controls.Add(this.btnEliminar);
             this.PanelParaProducto.Controls.Add(this.btnEditar);
             this.PanelParaProducto.Controls.Add(this.dtgvVerProductos);
-            this.PanelParaProducto.Location = new System.Drawing.Point(0, 26);
+            this.PanelParaProducto.Location = new System.Drawing.Point(-1, 26);
             this.PanelParaProducto.Name = "PanelParaProducto";
             this.PanelParaProducto.Size = new System.Drawing.Size(599, 340);
             this.PanelParaProducto.TabIndex = 2;
@@ -94,6 +96,7 @@
             this.btnEliminar.TabIndex = 5;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnEditar
             // 
@@ -107,6 +110,7 @@
             // 
             // dtgvVerProductos
             // 
+            this.dtgvVerProductos.AllowUserToAddRows = false;
             this.dtgvVerProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgvVerProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dtgvVerProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -120,7 +124,7 @@
             this.dtgvVerProductos.Name = "dtgvVerProductos";
             this.dtgvVerProductos.ReadOnly = true;
             this.dtgvVerProductos.RowHeadersVisible = false;
-            this.dtgvVerProductos.Size = new System.Drawing.Size(492, 337);
+            this.dtgvVerProductos.Size = new System.Drawing.Size(480, 330);
             this.dtgvVerProductos.TabIndex = 0;
             this.dtgvVerProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvVerProductos_CellClick);
             this.dtgvVerProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvVerProductos_CellContentClick);
@@ -159,7 +163,7 @@
             // 
             // btnBuscarProducto
             // 
-            this.btnBuscarProducto.Location = new System.Drawing.Point(402, 0);
+            this.btnBuscarProducto.Location = new System.Drawing.Point(401, 0);
             this.btnBuscarProducto.Name = "btnBuscarProducto";
             this.btnBuscarProducto.Size = new System.Drawing.Size(133, 23);
             this.btnBuscarProducto.TabIndex = 3;
@@ -167,23 +171,34 @@
             this.btnBuscarProducto.UseVisualStyleBackColor = true;
             this.btnBuscarProducto.Click += new System.EventHandler(this.btnBuscarProducto_Click);
             // 
-            // EditarProducto
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.btnBuscarProducto);
+            this.panel1.Controls.Add(this.lblIDProducto);
+            this.panel1.Controls.Add(this.PanelParaProducto);
+            this.panel1.Controls.Add(this.tboxIDProducto);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(599, 365);
+            this.panel1.TabIndex = 4;
+            // 
+            // GestionarProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 365);
-            this.Controls.Add(this.btnBuscarProducto);
-            this.Controls.Add(this.PanelParaProducto);
-            this.Controls.Add(this.tboxIDProducto);
-            this.Controls.Add(this.lblIDProducto);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "EditarProducto";
+            this.Name = "GestionarProductos";
             this.Text = "EditarProducto";
             this.Load += new System.EventHandler(this.EditarProducto_Load);
             this.PanelParaProducto.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvVerProductos)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -202,5 +217,6 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnAmpliar;
+        private System.Windows.Forms.Panel panel1;
     }
 }

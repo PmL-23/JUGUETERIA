@@ -10,12 +10,13 @@ using System.Windows.Forms;
 
 namespace UIJugueteria
 {
-    public partial class ProductoEnEditarProducto : Form
+    public partial class AmpliarProductoEnGestionarProducto : Form
     {
 
         BLL.Producto ProductoEnForm = new BLL.Producto();
         BLL.Logistica logistica = new BLL.Logistica();
-        public ProductoEnEditarProducto(string _IDProducto)
+
+        public AmpliarProductoEnGestionarProducto(string _IDProducto)
         {
             InitializeComponent();
        
@@ -31,7 +32,7 @@ namespace UIJugueteria
             lblStockMinimoIdeal.Text = ProductoEnForm.CantidadMinimaPermitida.ToString();
         }
 
-        private void ProductoEnBuscarProducto_Load(object sender, EventArgs e) { }
+        private void AmpliarProductoEnGestionarProducto_Load(object sender, EventArgs e) { }
 
         private void lblIIDEmpleadorCreador_Click(object sender, EventArgs e) { }
         private void lblFechaCreacion_Click(object sender, EventArgs e) { }

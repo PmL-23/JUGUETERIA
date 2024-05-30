@@ -1,6 +1,6 @@
 ﻿namespace UIJugueteria
 {
-    partial class ProductoEnEditarProducto
+    partial class AmpliarProductoEnGestionarProducto
     {
         /// <summary>
         /// Required designer variable.
@@ -246,7 +246,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ProductoEnEditarProducto";
             this.Text = "ProductoEnBuscarProducto";
-            this.Load += new System.EventHandler(this.ProductoEnBuscarProducto_Load);
+            this.Load += new System.EventHandler(this.AmpliarProductoEnGestionarProducto_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

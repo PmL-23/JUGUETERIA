@@ -56,15 +56,11 @@ namespace UIJugueteria
         private void lblIDEmpleadoCreadorProducto_Click(object sender, EventArgs e) { }
         private void lblFechaCreacionProducto_Click(object sender, EventArgs e) { }
         private void idproducto_Click(object sender, EventArgs e) { }
-        private void lblNombreProductoEstatico_Click(object sender, EventArgs e)
-        {
-        }
+        private void lblNombreProductoEstatico_Click(object sender, EventArgs e) { }
 
 
 
-
-
-        private void btnConfirmarCambios_Click(object sender, EventArgs e)
+        private void btnConfirmarCambios_Click_1(object sender, EventArgs e)
         {
             if (tboxCosto.Text == "" || tboxPrecioVenta.Text == "" || tboxStockDisponible.Text == "" || tboxStockMinimoIdeal.Text == "" || tboxNombreProducto.Text == "")
             {
@@ -135,6 +131,62 @@ namespace UIJugueteria
 
             }
         }
+
+
+
+        private void btnEliminarProducto_Click_1(object sender, EventArgs e)
+        {
+            bool resultado = logistica.EliminarProducto(idproducto.Text);
+
+            if (resultado) {
+                MessageBox.Show("El Producto con ID: " + idproducto.Text + " a sido eliminado de la Base de Datos.");
+            }
+
+            else
+            {
+
+                MessageBox.Show("Ocurrio un Error al eliminar el producto con ID: "+ idproducto.Text);
+            }
+        }
+
+        private void tboxStockDisponible_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblCosto_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblStockDisponible_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblStockMinimo_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tboxPrecioVenta_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tboxCosto_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
 
 
 
