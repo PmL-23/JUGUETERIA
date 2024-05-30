@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,7 @@ namespace UIJugueteria
             try
             {
                 if (string.IsNullOrEmpty(tboxNombre.Text) || string.IsNullOrEmpty(tboxApellido.Text) || string.IsNullOrEmpty(tboxIDCliente.Text) || string.IsNullOrEmpty(tboxDNI.Text)) throw new MyExceptions("Debe completar todos los campos para continuar..");
-                
+
                 string nombre = tboxNombre.Text;
                 string apellido = tboxApellido.Text;
                 string idCliente = tboxIDCliente.Text;
@@ -34,7 +35,7 @@ namespace UIJugueteria
 
                 BLL.Vendedor unVendedor = new BLL.Vendedor();
 
-                
+
                 if (unVendedor.RegistrarCliente(idCliente, nombre, apellido, dni, cantidadCompras) == true)
                 {
                     MessageBox.Show("Usuario cliente creado con exito!!");
@@ -44,11 +45,22 @@ namespace UIJugueteria
                     MessageBox.Show("No se pudo crear Nuevo Cliente!!");
                 }
             }
-            catch (MyExceptions ExcPersonalizada)
+            catch (SqlException ex) //Atrapo las excepciones provenientes de la Base de Datos
+            {
+                if (ex.Number == 2627)
+                {
+                    MessageBox.Show("Ya existe un cliente con el ID ingresado..");
+                }
+                else 
+                {
+                    MessageBox.Show("Error " + ex.Number + ": "+ex.Message+".");
+                }
+            }
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
             {
                 MessageBox.Show(ExcPersonalizada.Mensaje);
             }
-            catch (Exception ex)
+            catch (Exception ex) //Atrapo excepciones generales
             {
                 MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
             }
