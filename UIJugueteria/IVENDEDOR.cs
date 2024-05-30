@@ -33,5 +33,26 @@ namespace UIJugueteria
         {
             AbrirFormEnPanel(new CrearCliente());
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CerrarSesion(new NOSE());
+            MessageBox.Show("\tSesion Cerrada\t");
+        }
+
+        private void CerrarSesion(object Formulario)
+        {
+
+            //PanelCentral.Controls.Clear();
+            //PanelLateral.Controls.Clear();
+
+            Form FH = Formulario as Form;
+            FH.WindowState = FormWindowState.Maximized;
+            FH.TopLevel = false;
+            FH.Dock = DockStyle.Fill;
+
+            this.Controls.Add(FH);
+            FH.Show();
+        }
     }
 }

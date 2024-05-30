@@ -53,12 +53,20 @@ namespace DAL
         {
             Conexion objConexion = new Conexion();
 
-            DataTable dt = objConexion.LeerPorComando("SELECT [_Rol] FROM [BDDJ].[dbo].[EMPLEADOS] WHERE [_IDEmpleado] = '" + nombreUsuario + "';");
+            DataTable dt = objConexion.LeerPorComando("SELECT [_Rol], [_Habilitado] FROM [BDDJ].[dbo].[EMPLEADOS] WHERE [_IDEmpleado] = '" + nombreUsuario + "';");
 
             foreach (DataRow fila in dt.Rows)
             {
-                return fila[0].ToString();
+                if (fila["_Habilitado"].ToString() == "Habilitado")
+                {
+                    return fila["_Rol"].ToString();
+                }
+                else 
+                {
+                    return "Deshabilitado";
+                }
             }
+
             return "";
         }
     }

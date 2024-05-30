@@ -323,6 +323,7 @@
             this.Controls.Add(this.tabAdminEmpleados);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "IADMINISTRADOR";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IADMINISTRADOR";
             this.Load += new System.EventHandler(this.IADMINISTRADOR_Load);
             this.tabAdminEmpleados.ResumeLayout(false);

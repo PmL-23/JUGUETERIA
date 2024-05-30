@@ -63,26 +63,46 @@ namespace UIJugueteria
 
             if (emp.IniciarSesion(_NombreUsuario, _Contraseña) == true)
             {
-                MessageBox.Show("\tInicio Sesión Exitosamente\t\n\tBienvenido "+_NombreUsuario);
-
-                tboxIniciarUsuario.Text = "";
-                tboxIniciarContraseña.Text = "";
+                //Con el método VerificarRol chequeo los datos de la cuenta para redireccionar al usuario
                 string _RolTemp = emp.VerificarRol(_NombreUsuario);
 
-                if (_RolTemp=="Logistica") { 
+                //Si el empleado se encuentra habilitado por el administrador puede iniciar sesion normalmente
+                if (_RolTemp=="Logistica") {
+                    MessageBox.Show("\tInicio Sesión Exitosamente\t\n\tBienvenido " + _NombreUsuario);
+                    tboxIniciarUsuario.Text = "";
+                    tboxIniciarContraseña.Text = "";
+
                     AbrirFormEnPanel(new ILOGISTICA(_NombreUsuario));
                 }
                 if (_RolTemp == "Administrador")
                 {
+                    MessageBox.Show("\tInicio Sesión Exitosamente\t\n\tBienvenido " + _NombreUsuario);
+                    tboxIniciarUsuario.Text = "";
+                    tboxIniciarContraseña.Text = "";
+
                     AbrirFormEnPanel(new IADMINISTRADOR());
                 }
                 if (_RolTemp == "Vendedor")
                 {
+                    MessageBox.Show("\tInicio Sesión Exitosamente\t\n\tBienvenido " + _NombreUsuario);
+                    tboxIniciarUsuario.Text = "";
+                    tboxIniciarContraseña.Text = "";
+
                     AbrirFormEnPanel(new IVENDEDOR());
+                }
+
+                //Si el empleado NO se encuentra habilitado o con un rol definido se le notifica lo ocurrido
+                if (_RolTemp == "Deshabilitado")
+                {
+                    MessageBox.Show("Su cuenta debe ser habilitada por el administrador para poder iniciar sesion..");
+                }
+                if (_RolTemp == "Indefinido")
+                {
+                    MessageBox.Show("Su cuenta debe tener un rol asignado por el administrador para poder iniciar sesion..");
                 }
                 if (_RolTemp == "")
                 {
-                    Console.WriteLine("Error al verificar el rol de usuario...");
+                    MessageBox.Show("Error al verificar el rol de usuario..");
                 }
             }
             else
