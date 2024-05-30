@@ -98,6 +98,7 @@ namespace UIJugueteria
             {
                 string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
                 AbrirFormEnPanel(new EditarProductoEnGestionarProducto(IDSelececionada));
+                
             }
         }
 
@@ -107,7 +108,7 @@ namespace UIJugueteria
             {
                 string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
 
-                //AbrirFormEnPanel(new AmpliarProductoEnGestionarProducto(IDSelececionada));
+               // AbrirFormEnPanel(new AmpliarProducto(IDSelececionada));
             }
 
         }
