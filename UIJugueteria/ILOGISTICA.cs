@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +16,12 @@ namespace UIJugueteria
     public partial class ILOGISTICA : Form
     {
         private string _NombreUsuario;
-        
-            public ILOGISTICA(string _NombreUsuario)
+
+        public ILOGISTICA(string _NombreUsuario)
         {
             InitializeComponent();
              this._NombreUsuario = _NombreUsuario;
+
 
         }
 
@@ -36,20 +38,20 @@ namespace UIJugueteria
 
         }
 
-                            private void AbrirFormEnPanel(object Formulario)
-                            {
-                                if (this.PanelCentral.Controls.Count > 0)
-                                {
-                                    this.PanelCentral.Controls.RemoveAt(0);
-                                }
 
-                                Form FH = Formulario as Form;
-                                FH.TopLevel = false;
-                                FH.Dock = DockStyle.Fill;
-                                this.PanelCentral.Controls.Add(FH);
-                                this.PanelCentral.Tag = FH;
-                                FH.Show();
-                            }
+        private void AbrirFormEnPanel(Form formulario)
+        {
+            // Eliminar todos los controles existentes del panel
+            PanelCentral.Controls.Clear();
+
+            // Añadir el nuevo formulario al panel
+            formulario.TopLevel = false;
+            formulario.FormBorderStyle = FormBorderStyle.None; // Opcional, si quieres que no tenga borde
+            formulario.Dock = DockStyle.None; // Cambia a None para permitir el movimiento
+            formulario.Location = new Point(0, 0); // Inicializa la posición del formulario hijo
+            PanelCentral.Controls.Add(formulario);
+            formulario.Show();
+        }
 
 
         private void btnCargarNuevoProducto_Click(object sender, EventArgs e)
@@ -93,7 +95,6 @@ namespace UIJugueteria
             FH.WindowState = FormWindowState.Maximized;
             FH.TopLevel = false;
             FH.Dock = DockStyle.Fill;
-
             this.Controls.Add(FH);
             FH.Show();
         }
@@ -105,5 +106,8 @@ namespace UIJugueteria
                 this.PanelCentral.Controls.RemoveAt(0);
             }
         }
+
+        
+
     }
 }

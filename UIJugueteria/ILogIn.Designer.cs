@@ -137,6 +137,8 @@
             this.label1.Size = new System.Drawing.Size(269, 62);
             this.label1.TabIndex = 20;
             this.label1.Text = "Jugueteria";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label1_MouseMove);
             // 
             // btnCrearCuenta
             // 
@@ -159,7 +161,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 365);
             this.Controls.Add(this.PanelMain);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NOSE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

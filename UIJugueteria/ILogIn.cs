@@ -18,7 +18,7 @@ namespace UIJugueteria
 
     public partial class NOSE : Form
     {
-
+        
         public NOSE()
         {
             InitializeComponent();
@@ -47,10 +47,14 @@ namespace UIJugueteria
 
             // Añadir el nuevo formulario al panel
             formulario.TopLevel = false;
-            formulario.Dock = DockStyle.Fill;
+            formulario.FormBorderStyle = FormBorderStyle.None; // Opcional, si quieres que no tenga borde
+            formulario.Dock = DockStyle.None; // Cambia a None para permitir el movimiento
+            formulario.Location = new Point(0, 0); // Inicializa la posición del formulario hijo
             PanelMain.Controls.Add(formulario);
             formulario.Show();
         }
+
+
 
 
 
@@ -69,8 +73,10 @@ namespace UIJugueteria
                 //Si el empleado se encuentra habilitado por el administrador puede iniciar sesion normalmente
                 if (_RolTemp=="Logistica") {
                     MessageBox.Show("\tInicio Sesión Exitosamente\t\n\tBienvenido " + _NombreUsuario);
+
                     tboxIniciarUsuario.Text = "";
                     tboxIniciarContraseña.Text = "";
+                    PanelMain.Controls.Clear();
 
                     AbrirFormEnPanel(new ILOGISTICA(_NombreUsuario));
                 }
@@ -120,5 +126,25 @@ namespace UIJugueteria
         {
             AbrirFormEnPanel(new CrearUsuario());
         }
+        
+        private void label1_Click(object sender, EventArgs e) { }
+
+        public int xClick, yClick;
+
+        private void label1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+            {
+                xClick= e.X; yClick= e.Y;
+            }
+            else
+            {
+                this.Left = this.Left + (e.X);
+                this.Top = this.Top + (e.Y);
+            }
+        }
+        
+
+
     } 
 }

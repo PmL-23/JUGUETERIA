@@ -12,6 +12,7 @@ namespace UIJugueteria
 {
     public partial class CrearUsuario : Form
     {
+        public int xClick, yClick;
         public CrearUsuario()
         {
             InitializeComponent();
@@ -126,5 +127,12 @@ namespace UIJugueteria
         {
             CerrarSesion(new NOSE());
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

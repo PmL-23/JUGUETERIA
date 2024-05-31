@@ -97,50 +97,66 @@ namespace UIJugueteria
                     decimal _CostoProducto;
                     if (decimal.TryParse(costoProductoTexto, NumberStyles.Any, CultureInfo.InvariantCulture, out _CostoProducto))
                     {
-                        string precioventatext = tboxPrecioVenta.Text.Replace(',', '.');
-                        decimal _PrecioVenta;
-                        if (decimal.TryParse(precioventatext, NumberStyles.Any, CultureInfo.InvariantCulture, out _PrecioVenta))
+                        if (_CostoProducto <= 0)
                         {
-                            string stockdisponibletext = tboxStockDisponible.Text;
-                            int _StockDisponible;
-                            if (int.TryParse(stockdisponibletext, out _StockDisponible))
-                            {
-                                string stockminimoidealtext = tboxStockMinimoIdeal.Text;
-                                int _StockMinimoIdeal;
-                                if (int.TryParse(stockminimoidealtext, out _StockMinimoIdeal))
-                                {
-                                    bool resultado = logistica.EditarProducto(
-                                        tboxNombreProducto.Text,
-                                        _CostoProducto,
-                                        _PrecioVenta,
-                                        _StockDisponible,
-                                        _StockMinimoIdeal,
-                                        idproducto.Text
-                                    );
+                            MessageBox.Show("El Costo debe ser mayor a 0.");
 
-                                    if (resultado)
+                        }
+                        else
+                        {
+                            string precioventatext = tboxPrecioVenta.Text.Replace(',', '.');
+                            decimal _PrecioVenta;
+                            if (decimal.TryParse(precioventatext, NumberStyles.Any, CultureInfo.InvariantCulture, out _PrecioVenta))
+                            {
+                                if (_PrecioVenta <= 0)
+                                {
+                                    MessageBox.Show("El Precio de Venta debe ser mayor a 0.");
+                                }
+
+                                else
+                                {
+                                    string stockdisponibletext = tboxStockDisponible.Text;
+                                    int _StockDisponible;
+                                    if (int.TryParse(stockdisponibletext, out _StockDisponible))
                                     {
-                                        MessageBox.Show("Producto modificado con éxito");
-                                        AbrirFormEnPanel(new IGestionarProductos());
+                                        string stockminimoidealtext = tboxStockMinimoIdeal.Text;
+                                        int _StockMinimoIdeal;
+                                        if (int.TryParse(stockminimoidealtext, out _StockMinimoIdeal))
+                                        {
+                                            bool resultado = logistica.EditarProducto(
+                                                tboxNombreProducto.Text,
+                                                _CostoProducto,
+                                                _PrecioVenta,
+                                                _StockDisponible,
+                                                _StockMinimoIdeal,
+                                                idproducto.Text
+                                            );
+
+                                            if (resultado)
+                                            {
+                                                MessageBox.Show("Producto modificado con éxito");
+                                                AbrirFormEnPanel(new IGestionarProductos());
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("El producto seleccionado no existe en la Base de Datos");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("El formato del Stock Mínimo Ideal del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
                                     }
                                     else
                                     {
-                                        MessageBox.Show("El producto seleccionado no existe en la Base de Datos");
+                                        MessageBox.Show("El formato del Stock Disponible del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("El formato del Stock Mínimo Ideal del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("El formato del Stock Disponible del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("El formato del Precio de Venta del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("El formato del Precio de Venta del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
