@@ -182,10 +182,24 @@ namespace UIJugueteria
 
         }
 
+        private void AbrirFormEnPanel(object Formulario)
+        {
+            if (this.panel1.Controls.Count > 0)
+            {
+                this.panel1.Controls.Clear();
+            }
+
+            Form FH = Formulario as Form;
+            FH.TopLevel = false;
+            FH.Dock = DockStyle.Fill;
+            this.panel1.Controls.Add(FH);
+            this.panel1.Tag = FH;
+            FH.Show();
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
-            CerrarSesion(new NOSE());
-            MessageBox.Show("\tSesion Cerrada\t");
+            AbrirFormEnPanel(new IVENDEDOR(IDVendedor));
         }
 
         private void CerrarSesion(object Formulario)

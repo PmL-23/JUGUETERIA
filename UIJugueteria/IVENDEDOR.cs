@@ -40,7 +40,6 @@ namespace UIJugueteria
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
             CerrarSesion(new NOSE());
             MessageBox.Show("\tSesion Cerrada\t");
         }
