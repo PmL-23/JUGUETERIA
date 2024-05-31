@@ -20,6 +20,7 @@ namespace UIJugueteria
         {
             InitializeComponent();
         }
+     
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -72,6 +73,7 @@ namespace UIJugueteria
             MessageBox.Show("\tSesion Cerrada\t");
         }
 
+       
         private void CerrarSesion(object Formulario)
         {
 

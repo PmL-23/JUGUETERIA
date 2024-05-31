@@ -36,6 +36,7 @@ namespace UIJugueteria
 
         private void button3_Click(object sender, EventArgs e)
         {
+            
             CerrarSesion(new NOSE());
             MessageBox.Show("\tSesion Cerrada\t");
         }
@@ -53,6 +54,17 @@ namespace UIJugueteria
 
             this.Controls.Add(FH);
             FH.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            BLL.Cliente cliente = new BLL.Cliente();
+            grillaClientes.DataSource = cliente.ListarClientes();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            
         }
     }
 }

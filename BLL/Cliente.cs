@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,9 +42,9 @@ namespace BLL
         }
 
 
-        private int _cantidadCompras;
+        private long _cantidadCompras;
 
-        public int _CantidadCompras
+        public long _CantidadCompras
         {
             get { return _cantidadCompras; }
             set { _cantidadCompras = value; }
@@ -58,6 +59,32 @@ namespace BLL
             this._CantidadCompras = cantidadCompras;
            
         }
+
+        public List<Cliente> ListarClientes()
+        {
+            List<Cliente> clientes = new List<Cliente>();
+
+            DAL.Cliente clienteDal = new DAL.Cliente();
+
+            DataTable miTabla = clienteDal.ClienteBase();
+
+            foreach ( DataRow fila in miTabla.Rows)
+            {
+                Cliente cliente = new Cliente();
+
+                cliente._Nombre = fila["_Nombre"].ToString();
+                cliente._Apellido = fila["_Apelldo"].ToString();
+                cliente._IDCliente = fila["_IDCLiente"].ToString();
+                cliente._CantidadCompras =(long)fila["_CantidadCompras"];
+                cliente._DNI = fila["_DNI"].ToString();
+
+                clientes.Add(cliente); 
+
+            }
+            
+            return clientes;
+        }
+
         public Cliente()
         {
         }

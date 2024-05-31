@@ -154,7 +154,6 @@
             this.Controls.Add(this.tboxNombre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CrearCliente";
-            this.Text = "IVENDEDOR";
             this.ResumeLayout(false);
             this.PerformLayout();
 
