@@ -17,7 +17,7 @@ namespace UIJugueteria
         public IVENDEDOR(string nombreUsuario)
         {
             InitializeComponent();
-            lbl_principal.Text = "¡Bienvenido " + nombreUsuario +"!";
+            label1.Text = "¡Bienvenido " + nombreUsuario +"!";
             IDVendedor = nombreUsuario;
         }
 
@@ -69,6 +69,22 @@ namespace UIJugueteria
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new NuevaVenta(IDVendedor));
+        }
+
+        private void btn_salir_Click(object sender, EventArgs e)
+        {
+            CerrarSesion(new NOSE());
+        }
+
+        private void btn_listar_Click(object sender, EventArgs e)
+        {
+            BLL.Cliente cliente = new BLL.Cliente();
+            grillaClientes.DataSource = cliente.ListarClientes();
         }
     }
 }
