@@ -1,4 +1,5 @@
 ﻿using BLL;
+using BLL.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -65,55 +67,68 @@ namespace UIJugueteria
             string _Contraseña = tboxIniciarContraseña.Text;
             BLL.Empleado emp = new BLL.Empleado();
 
-            if (emp.IniciarSesion(_NombreUsuario, _Contraseña) == true)
+            try
             {
-                //Con el método VerificarRol chequeo los datos de la cuenta para redireccionar al usuario
-                string _RolTemp = emp.VerificarRol(_NombreUsuario);
 
-                //Si el empleado se encuentra habilitado por el administrador puede iniciar sesion normalmente
-                if (_RolTemp=="Logistica") {
-                    MessageBox.Show("\tInicio Sesión Exitosamente\t\n\tBienvenido " + _NombreUsuario);
-
-                    tboxIniciarUsuario.Text = "";
-                    tboxIniciarContraseña.Text = "";
-                    PanelMain.Controls.Clear();
-
-                    AbrirFormEnPanel(new ILOGISTICA(_NombreUsuario));
-                }
-                if (_RolTemp == "Administrador")
+                if (emp.IniciarSesion(_NombreUsuario, _Contraseña) == true)
                 {
-                    MessageBox.Show("\tInicio Sesión Exitosamente\t\n\tBienvenido " + _NombreUsuario);
-                    tboxIniciarUsuario.Text = "";
-                    tboxIniciarContraseña.Text = "";
+                    //Con el método VerificarRol chequeo los datos de la cuenta para redireccionar al usuario
+                    string _RolTemp = emp.VerificarRol(_NombreUsuario);
 
-                    AbrirFormEnPanel(new IADMINISTRADOR());
-                }
-                if (_RolTemp == "Vendedor")
-                {
-                    MessageBox.Show("\tInicio Sesión Exitosamente\t\n\tBienvenido " + _NombreUsuario);
-                    tboxIniciarUsuario.Text = "";
-                    tboxIniciarContraseña.Text = "";
+                    //Si el empleado se encuentra habilitado por el administrador puede iniciar sesion normalmente
+                    if (_RolTemp == "Logistica")
+                    {
+                        MessageBox.Show("\tInicio Sesión Exitosamente\t\n\tBienvenido " + _NombreUsuario);
 
-                    AbrirFormEnPanel(new IVENDEDOR(_NombreUsuario));
-                }
+                        tboxIniciarUsuario.Text = "";
+                        tboxIniciarContraseña.Text = "";
+                        PanelMain.Controls.Clear();
 
-                //Si el empleado NO se encuentra habilitado o con un rol definido se le notifica lo ocurrido
-                if (_RolTemp == "Deshabilitado")
-                {
-                    MessageBox.Show("Su cuenta debe ser habilitada por el administrador para poder iniciar sesion..");
+                        AbrirFormEnPanel(new ILOGISTICA(_NombreUsuario));
+                    }
+                    if (_RolTemp == "Administrador")
+                    {
+                        MessageBox.Show("\tInicio Sesión Exitosamente\t\n\tBienvenido " + _NombreUsuario);
+                        tboxIniciarUsuario.Text = "";
+                        tboxIniciarContraseña.Text = "";
+
+                        AbrirFormEnPanel(new IADMINISTRADOR());
+                    }
+                    if (_RolTemp == "Vendedor")
+                    {
+                        MessageBox.Show("\tInicio Sesión Exitosamente\t\n\tBienvenido " + _NombreUsuario);
+                        tboxIniciarUsuario.Text = "";
+                        tboxIniciarContraseña.Text = "";
+
+                        AbrirFormEnPanel(new IVENDEDOR(_NombreUsuario));
+                    }
+
+                    //Si el empleado NO se encuentra habilitado o con un rol definido se le notifica lo ocurrido
+                    if (_RolTemp == "Deshabilitado")
+                    {
+                        MessageBox.Show("Su cuenta debe ser habilitada por el administrador para poder iniciar sesion..");
+                    }
+                    if (_RolTemp == "Indefinido")
+                    {
+                        MessageBox.Show("Su cuenta debe tener un rol asignado por el administrador para poder iniciar sesion..");
+                    }
+                    if (_RolTemp == "")
+                    {
+                        MessageBox.Show("Error al verificar el rol de usuario..");
+                    }
                 }
-                if (_RolTemp == "Indefinido")
+                else
                 {
-                    MessageBox.Show("Su cuenta debe tener un rol asignado por el administrador para poder iniciar sesion..");
-                }
-                if (_RolTemp == "")
-                {
-                    MessageBox.Show("Error al verificar el rol de usuario..");
+                    MessageBox.Show("\t Usuario y/o Contraseña incorrecto.\t");
                 }
             }
-            else
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
             {
-                MessageBox.Show("\t Usuario y/o Contraseña incorrecto.\t");
+                MessageBox.Show(ExcPersonalizada.Mensaje);
+            }
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
             }
         }
 
