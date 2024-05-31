@@ -89,9 +89,6 @@
             // 
             // PanelMain
             // 
-            this.PanelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelMain.Controls.Add(this.label3);
             this.PanelMain.Controls.Add(this.label2);
             this.PanelMain.Controls.Add(this.label1);
@@ -100,6 +97,7 @@
             this.PanelMain.Controls.Add(this.btnCancelar);
             this.PanelMain.Controls.Add(this.tboxIniciarUsuario);
             this.PanelMain.Controls.Add(this.tboxIniciarContraseña);
+            this.PanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelMain.Location = new System.Drawing.Point(0, 0);
             this.PanelMain.Name = "PanelMain";
             this.PanelMain.Size = new System.Drawing.Size(799, 365);
@@ -161,7 +159,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 365);
             this.Controls.Add(this.PanelMain);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "NOSE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

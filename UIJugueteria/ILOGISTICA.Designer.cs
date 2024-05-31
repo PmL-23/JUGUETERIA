@@ -43,14 +43,16 @@
             // 
             this.btnCargarNuevoProducto.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCargarNuevoProducto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnCargarNuevoProducto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCargarNuevoProducto.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btnCargarNuevoProducto.FlatAppearance.BorderSize = 0;
             this.btnCargarNuevoProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCargarNuevoProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargarNuevoProducto.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnCargarNuevoProducto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCargarNuevoProducto.Location = new System.Drawing.Point(0, 68);
             this.btnCargarNuevoProducto.Name = "btnCargarNuevoProducto";
             this.btnCargarNuevoProducto.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.btnCargarNuevoProducto.Size = new System.Drawing.Size(200, 41);
+            this.btnCargarNuevoProducto.Size = new System.Drawing.Size(200, 45);
             this.btnCargarNuevoProducto.TabIndex = 1;
             this.btnCargarNuevoProducto.Text = "Cargar Nuevo Producto";
             this.btnCargarNuevoProducto.UseVisualStyleBackColor = true;
@@ -58,7 +60,7 @@
             // 
             // PanelLateral
             // 
-            this.PanelLateral.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.PanelLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
             this.PanelLateral.Controls.Add(this.btnLogistica);
             this.PanelLateral.Controls.Add(this.btnCargarStock);
             this.PanelLateral.Controls.Add(this.btnCerrarsesion);
@@ -77,12 +79,12 @@
             // 
             this.btnLogistica.FlatAppearance.BorderSize = 0;
             this.btnLogistica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogistica.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogistica.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnLogistica.Location = new System.Drawing.Point(22, 3);
+            this.btnLogistica.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogistica.ForeColor = System.Drawing.Color.Firebrick;
+            this.btnLogistica.Location = new System.Drawing.Point(0, 0);
             this.btnLogistica.Name = "btnLogistica";
-            this.btnLogistica.Size = new System.Drawing.Size(154, 50);
-            this.btnLogistica.TabIndex = 5;
+            this.btnLogistica.Size = new System.Drawing.Size(200, 50);
+            this.btnLogistica.TabIndex = 6;
             this.btnLogistica.Text = "LOGISTICA";
             this.btnLogistica.UseVisualStyleBackColor = true;
             this.btnLogistica.Click += new System.EventHandler(this.btnLogistica_Click);
@@ -91,27 +93,30 @@
             // 
             this.btnCargarStock.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCargarStock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnCargarStock.Cursor = System.Windows.Forms.Cursors.No;
+            this.btnCargarStock.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btnCargarStock.FlatAppearance.BorderSize = 0;
             this.btnCargarStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCargarStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargarStock.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnCargarStock.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCargarStock.Location = new System.Drawing.Point(0, 186);
             this.btnCargarStock.Name = "btnCargarStock";
             this.btnCargarStock.Size = new System.Drawing.Size(200, 41);
-            this.btnCargarStock.TabIndex = 5;
+            this.btnCargarStock.TabIndex = 3;
             this.btnCargarStock.Text = "Controlar Stock";
             this.btnCargarStock.UseVisualStyleBackColor = true;
             this.btnCargarStock.Click += new System.EventHandler(this.btnCargarStock_Click);
             // 
             // btnCerrarsesion
             // 
+            this.btnCerrarsesion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrarsesion.FlatAppearance.BorderSize = 0;
             this.btnCerrarsesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrarsesion.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnCerrarsesion.ForeColor = System.Drawing.Color.Firebrick;
             this.btnCerrarsesion.Location = new System.Drawing.Point(40, 330);
             this.btnCerrarsesion.Name = "btnCerrarsesion";
             this.btnCerrarsesion.Size = new System.Drawing.Size(117, 23);
-            this.btnCerrarsesion.TabIndex = 4;
+            this.btnCerrarsesion.TabIndex = 5;
             this.btnCerrarsesion.Text = "Cerrar Sesion";
             this.btnCerrarsesion.UseVisualStyleBackColor = true;
             this.btnCerrarsesion.Click += new System.EventHandler(this.btnCerrarsesion_Click);
@@ -120,14 +125,16 @@
             // 
             this.btnVerAlertaDeStock.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVerAlertaDeStock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnVerAlertaDeStock.Cursor = System.Windows.Forms.Cursors.No;
+            this.btnVerAlertaDeStock.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btnVerAlertaDeStock.FlatAppearance.BorderSize = 0;
             this.btnVerAlertaDeStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVerAlertaDeStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerAlertaDeStock.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnVerAlertaDeStock.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnVerAlertaDeStock.Location = new System.Drawing.Point(0, 246);
             this.btnVerAlertaDeStock.Name = "btnVerAlertaDeStock";
             this.btnVerAlertaDeStock.Size = new System.Drawing.Size(200, 41);
-            this.btnVerAlertaDeStock.TabIndex = 3;
+            this.btnVerAlertaDeStock.TabIndex = 4;
             this.btnVerAlertaDeStock.Text = "Ver Alertas de Stock";
             this.btnVerAlertaDeStock.UseVisualStyleBackColor = true;
             this.btnVerAlertaDeStock.Click += new System.EventHandler(this.btnVerAlertaDeStock_Click);
@@ -136,9 +143,11 @@
             // 
             this.btnEditarProducto.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnEditarProducto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnEditarProducto.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            this.btnEditarProducto.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btnEditarProducto.FlatAppearance.BorderSize = 0;
             this.btnEditarProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarProducto.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnEditarProducto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnEditarProducto.Location = new System.Drawing.Point(0, 127);
             this.btnEditarProducto.Name = "btnEditarProducto";
@@ -150,6 +159,7 @@
             // 
             // PanelCentral
             // 
+            this.PanelCentral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
             this.PanelCentral.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.PanelCentral.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelCentral.Location = new System.Drawing.Point(200, 0);

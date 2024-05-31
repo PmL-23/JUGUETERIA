@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelParaProducto = new System.Windows.Forms.Panel();
             this.dtgvVerProductos = new System.Windows.Forms.DataGridView();
             this.IDCreador = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,9 +57,25 @@
             // dtgvVerProductos
             // 
             this.dtgvVerProductos.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Gainsboro;
+            this.dtgvVerProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgvVerProductos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
             this.dtgvVerProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtgvVerProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            this.dtgvVerProductos.ColumnHeadersHeight = 19;
+            this.dtgvVerProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dtgvVerProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvVerProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgvVerProductos.ColumnHeadersHeight = 15;
             this.dtgvVerProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgvVerProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDCreador,
@@ -66,20 +85,38 @@
             this.StockMinimoIdeal,
             this.StockProducto});
             this.dtgvVerProductos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtgvVerProductos.EnableHeadersVisualStyles = false;
+            this.dtgvVerProductos.GridColor = System.Drawing.Color.Black;
+            this.dtgvVerProductos.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dtgvVerProductos.Location = new System.Drawing.Point(0, 0);
             this.dtgvVerProductos.Name = "dtgvVerProductos";
             this.dtgvVerProductos.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvVerProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgvVerProductos.RowHeadersVisible = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(10)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Gainsboro;
+            this.dtgvVerProductos.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgvVerProductos.Size = new System.Drawing.Size(599, 365);
-            this.dtgvVerProductos.TabIndex = 1;
-            this.dtgvVerProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvVerProductos_CellContentClick);
+            this.dtgvVerProductos.TabIndex = 8;
+            this.dtgvVerProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvVerProductos_CellContentClick_1);
+            this.dtgvVerProductos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgvVerProductos_CellFormatting);
             // 
             // IDCreador
             // 
-            this.IDCreador.HeaderText = "ID E Creador";
+            this.IDCreador.HeaderText = "ID E. Creador";
             this.IDCreador.Name = "IDCreador";
             this.IDCreador.ReadOnly = true;
-            this.IDCreador.Width = 98;
+            this.IDCreador.Width = 80;
             // 
             // IDProducto
             // 
@@ -93,34 +130,33 @@
             this.NombreProducto.HeaderText = "Nombre";
             this.NombreProducto.Name = "NombreProducto";
             this.NombreProducto.ReadOnly = true;
-            this.NombreProducto.Width = 120;
             // 
             // FechaCreacionProducto
             // 
             this.FechaCreacionProducto.HeaderText = "Fecha Creacion";
             this.FechaCreacionProducto.Name = "FechaCreacionProducto";
             this.FechaCreacionProducto.ReadOnly = true;
-            this.FechaCreacionProducto.Width = 110;
+            this.FechaCreacionProducto.Width = 125;
             // 
             // StockMinimoIdeal
             // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StockMinimoIdeal.DefaultCellStyle = dataGridViewCellStyle5;
             this.StockMinimoIdeal.HeaderText = "Stock Minimo Ideal";
             this.StockMinimoIdeal.Name = "StockMinimoIdeal";
             this.StockMinimoIdeal.ReadOnly = true;
-            this.StockMinimoIdeal.Width = 110;
+            this.StockMinimoIdeal.Width = 105;
             // 
             // StockProducto
             // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StockProducto.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Gainsboro;
+            this.StockProducto.DefaultCellStyle = dataGridViewCellStyle3;
             this.StockProducto.HeaderText = "Stock";
             this.StockProducto.Name = "StockProducto";
             this.StockProducto.ReadOnly = true;
-            this.StockProducto.Width = 80;
+            this.StockProducto.Width = 105;
             // 
             // IVerAlertaStock
             // 

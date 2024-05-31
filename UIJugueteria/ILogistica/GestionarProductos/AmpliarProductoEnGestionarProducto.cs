@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UIJugueteria.ILogistica.ControlarStock;
 
 namespace UIJugueteria
 {
@@ -53,5 +54,53 @@ namespace UIJugueteria
         private void lblStock_Click(object sender, EventArgs e) { }
         private void lblStockMinimoIdeal_Click(object sender, EventArgs e) { }
 
+        private void AbrirFormEnPanel(object Formulario)
+        {
+            if (this.panel1.Controls.Count > 0)
+            {
+                this.panel1.Controls.Clear();
+            }
+
+            Form FH = Formulario as Form;
+            FH.TopLevel = false;
+            FH.Dock = DockStyle.Fill;
+            this.panel1.Controls.Add(FH);
+            this.panel1.Tag = FH;
+            FH.Show();
+        }
+
+
+
+        private void btnBuscarProducto_Click(object sender, EventArgs e)
+        {
+            if (tboxIDProducto.Text == "")
+            {
+                MessageBox.Show("Ingrese una IDProducto a buscar.");
+            }
+            else
+            {
+                BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
+                bool VerSiExiste = log.VerSiExisteProducto(tboxIDProducto.Text);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
+
+                if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
+                {
+                    AbrirFormEnPanel(new AmpliarProductoEnGestionarProducto(tboxIDProducto.Text));
+                }
+                else
+                {                           //Si el producto NO existe, mostramos un mensaje.
+                    MessageBox.Show("El producto con ID: '" + tboxIDProducto.Text + "' NO en la Base de Datos", "Producto Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new IGestionarProductos());
+        }
     }
 }

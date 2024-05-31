@@ -29,6 +29,7 @@ namespace UIJugueteria
                 dtgvVerProductos.Rows.Add(producto.IDProducto, producto.NombreProducto, "$ " + producto.Costo, "$ " + producto.Precioventa, producto.CantidadEnStock);
             }
             dtgvVerProductos.Columns["CostoProducto"].DefaultCellStyle.Format = "0.00";
+           
             dtgvVerProductos.Columns["PrecioProducto"].DefaultCellStyle.Format = "0.00";
 
         }
@@ -37,16 +38,16 @@ namespace UIJugueteria
 
         private void AbrirFormEnPanel(object Formulario)
         {
-            if (this.PanelParaProducto.Controls.Count > 0)
+            if (this.panel1.Controls.Count > 0)
             {
-                this.PanelParaProducto.Controls.Clear();
+                this.panel1.Controls.Clear();
             }
 
             Form FH = Formulario as Form;
             FH.TopLevel = false;
             FH.Dock = DockStyle.Fill;
-            this.PanelParaProducto.Controls.Add(FH);
-            this.PanelParaProducto.Tag = FH;
+            this.panel1.Controls.Add(FH);
+            this.panel1.Tag = FH;
             FH.Show();
         }
         private void RecargarTodo(object Formulario)
@@ -101,10 +102,6 @@ namespace UIJugueteria
         {
             indice = e.RowIndex;
 
-            if (indice != -1 )
-            { 
-                string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
-            }
 
         }
 
@@ -170,6 +167,16 @@ namespace UIJugueteria
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void dtgvVerProductos_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dtgvVerProductos_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            indice = e.RowIndex;
         }
     }
 }

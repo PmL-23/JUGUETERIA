@@ -27,6 +27,7 @@ namespace UIJugueteria.ILogistica
                 // Agregar una nueva fila al DataGridView y asignar los valores de las celdas
                 dtgvVerProductos.Rows.Add(producto.IDCreadorProducto, producto.IDProducto, producto.NombreProducto, producto.FechaDeCreacion, producto.CantidadMinimaPermitida, producto.CantidadEnStock);
             }
+            dtgvVerProductos.CellFormatting += dtgvVerProductos_CellFormatting;
 
 
         }
@@ -36,6 +37,34 @@ namespace UIJugueteria.ILogistica
         private void dtgvVerProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dtgvVerProductos_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dtgvVerProductos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Verifica si es la columna que deseas cambiar (por ejemplo, la columna "CantidadEnStock")
+            if (dtgvVerProductos.Columns[e.ColumnIndex].Name == "StockProducto")
+            {
+                // Cambia el color de fondo y el color de la fuente
+                //e.CellStyle.BackColor = Color.FromArgb(255, 128, 128);
+                e.CellStyle.BackColor = Color.Firebrick;
+                e.CellStyle.ForeColor = Color.Black;
+                e.CellStyle.Font = new Font(e.CellStyle.Font, FontStyle.Bold);
+                e.CellStyle.Font = new Font(e.CellStyle.Font.FontFamily, 10);
+            }
+            if (dtgvVerProductos.Columns[e.ColumnIndex].Name == "StockMinimoIdeal")
+            {
+                // Cambia el color de fondo y el color de la fuente
+                //e.CellStyle.BackColor = Color.FromArgb(255, 128, 128);
+                e.CellStyle.BackColor = Color.DarkGreen;
+                e.CellStyle.ForeColor = Color.Black;
+                e.CellStyle.Font = new Font(e.CellStyle.Font, FontStyle.Bold);
+                e.CellStyle.Font = new Font(e.CellStyle.Font.FontFamily, 10);
+            }
         }
     }
 }

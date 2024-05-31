@@ -20,7 +20,7 @@ namespace UIJugueteria.ILogistica
             InitializeComponent();
 
             BLL.Logistica logistica = new BLL.Logistica();
-
+            
             List<BLL.Producto> listaProductos = logistica.TraerListaProductos();
 
             dtgvVerProductos.Rows.Clear();
@@ -49,10 +49,27 @@ namespace UIJugueteria.ILogistica
 
         private void btnBuscarProducto_Click(object sender, EventArgs e)
         {
+            if (tboxIDProducto.Text == "") {
+                MessageBox.Show("Ingrese una IDProducto a buscar.");
+            }
+            else { 
+            BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
+            bool VerSiExiste = log.VerSiExisteProducto(tboxIDProducto.Text);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
+
+            if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
+            {
+                AbrirFormEnPanel(new EditarStock(tboxIDProducto.Text));
+            }
+            else
+            {                           //Si el producto NO existe, mostramos un mensaje.
+                MessageBox.Show("El producto con ID: '" + tboxIDProducto.Text + "' NO en la Base de Datos", "Producto Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         }
 
-        private void dtgvVerProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+            private void dtgvVerProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
@@ -83,6 +100,10 @@ namespace UIJugueteria.ILogistica
             {
                 string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
                 AbrirFormEnPanel(new EditarStock(IDSelececionada));
+                tboxIDProducto.Controls.Clear();
+
+                lblIDProducto.Controls.Clear();
+                btnBuscarProducto.Controls.Clear();
             }
             else
             {
@@ -94,17 +115,37 @@ namespace UIJugueteria.ILogistica
         private void dtgvVerProductos_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             indice = e.RowIndex;
+        }
 
-            if (indice != -1)
+        private void btnBuscarProducto_Click_1(object sender, EventArgs e)
+        {
+            if (tboxIDProducto.Text == "")
             {
-                string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
+                MessageBox.Show("Ingrese una IDProducto a buscar.");
+            }
+            else
+            {
+                BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
+                bool VerSiExiste = log.VerSiExisteProducto(tboxIDProducto.Text);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
+
+                if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
+                {
+                    AbrirFormEnPanel(new EditarStock(tboxIDProducto.Text));
+                }
+                else
+                {                           //Si el producto NO existe, mostramos un mensaje.
+                    MessageBox.Show("El producto con ID: '" + tboxIDProducto.Text + "' NO en la Base de Datos", "Producto Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
 
 
 
+        private void tboxIDProducto_TextChanged_1(object sender, EventArgs e)
+        {
 
+        }
 
 
 
@@ -127,4 +168,6 @@ namespace UIJugueteria.ILogistica
 
         //dsa
     }
-}
+
+
+    }

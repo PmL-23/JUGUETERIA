@@ -65,6 +65,23 @@ namespace UIJugueteria.ILogistica.ControlarStock
         private void tboxStockDisponible_TextChanged(object sender, EventArgs e) { }
         private void tboxStockMinimoIdeal_TextChanged(object sender, EventArgs e) { }
 
+        private void AbrirFormEnPanel(object Formulario)
+        {
+
+            this.panel1.Controls.Clear();
+
+            Form FH = Formulario as Form;
+
+            FH.TopLevel = false;
+            FH.Dock = DockStyle.Fill;
+            this.panel1.Controls.Add(FH);
+            this.panel1.Tag = FH;
+            FH.Location = new System.Drawing.Point(0, 0);
+            FH.Show();
+        }
+
+
+
         private void btnConfirmarCambios_Click(object sender, EventArgs e)
         {
             //funciona para mandar los cambios a la BDD
@@ -94,7 +111,11 @@ namespace UIJugueteria.ILogistica.ControlarStock
                             if (resultado)
                             {
                                 MessageBox.Show("Producto modificado con exito");
-                                
+                                    AbrirFormEnPanel(new IControlarSoloStock());
+
+
+
+
 
                             }
 
@@ -118,6 +139,34 @@ namespace UIJugueteria.ILogistica.ControlarStock
 
             }
 
+        }
+
+        private void btnBuscarProducto_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+                
+            {
+                MessageBox.Show("Ingrese una IDProducto a buscar.");
+            }
+            else
+            {
+                BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
+                bool VerSiExiste = log.VerSiExisteProducto(textBox1.Text);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
+
+                if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
+                {
+                    AbrirFormEnPanel(new EditarStock(textBox1.Text));
+                }
+                else
+                {                           //Si el producto NO existe, mostramos un mensaje.
+                    MessageBox.Show("El producto con ID: '" + textBox1.Text + "' NO en la Base de Datos", "Producto Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new IControlarSoloStock());
         }
 
 
