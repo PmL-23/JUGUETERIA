@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,15 +48,16 @@ namespace UIJugueteria
 
                 string _NombreProducto = tboxNombreProducto.Text;
                 string _IDProducto = tboxIDProducto.Text;                       //guardamos en variables los campos que ingreso el usuario.
-
-                string costoProductoTexto = tboxCostoProducto.Text;
-                float _CostoProducto;                                               
-                if (float.TryParse(costoProductoTexto, out _CostoProducto)) {           //los campos en los que el Usuario puede equivocarlos los tramos con el float.TryParse,
-                                                                                        //si podemos seguimos, y si no se lanza una mensaje y se pedimos que los ingrese devuelta,
-                                                                                        //esto se hace 3 veces.
-                    string precioProductoTexto = tboxPrecioVentaProducto.Text;
-                    float _VentaProducto;
-                    if (float.TryParse(precioProductoTexto, out _VentaProducto))
+                                                                                //los campos en los que el Usuario puede equivocarlos los tramos con el float.TryParse,
+                                                                                //si podemos seguimos, y si no se lanza una mensaje y se pedimos que los ingrese devuelta,
+                                                                                //esto se hace 3 veces.
+                string costoProductoTexto = tboxCostoProducto.Text.Replace(',', '.');
+                decimal _CostoProducto;
+                if (decimal.TryParse(costoProductoTexto, NumberStyles.Any, CultureInfo.InvariantCulture, out _CostoProducto))
+                {
+                    string precioventatext = tboxPrecioVentaProducto.Text.Replace(',', '.');
+                    decimal _PrecioVenta;
+                    if (decimal.TryParse(precioventatext, NumberStyles.Any, CultureInfo.InvariantCulture, out _PrecioVenta))
                     {
 
                         string StockProductoTexto = tboxStock.Text;
@@ -86,7 +88,7 @@ namespace UIJugueteria
                                 else
                                 {
 
-                                    bool resultado = log.CargarProducto(_NombreUsuario, _NombreProducto, _IDProducto, _CostoProducto, fechaFormateada, _VentaProducto, _StockProducto, _StockMinimoProducto);
+                                    bool resultado = log.CargarProducto(_NombreUsuario, _NombreProducto, _IDProducto, _CostoProducto, fechaFormateada, _PrecioVenta, _StockProducto, _StockMinimoProducto);
                                     //Aqui con el metodo CargarProducto ya mandamos a la BLL los datos para que la DAL los mande a la BDD.
                                     if (resultado)
                                     {

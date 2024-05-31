@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,18 +69,23 @@ namespace UIJugueteria
             }
             else
             {
-                if (tboxCosto.Text == ProductoEnForm.Costo.ToString() && tboxPrecioVenta.Text == ProductoEnForm.Precioventa.ToString() && tboxStockDisponible.Text == ProductoEnForm.CantidadEnStock.ToString() && tboxStockMinimoIdeal.Text == ProductoEnForm.CantidadMinimaPermitida.ToString() && tboxNombreProducto.Text == ProductoEnForm.NombreProducto.ToString())
+                if (tboxCosto.Text == ProductoEnForm.Costo.ToString() &&
+    tboxPrecioVenta.Text == ProductoEnForm.Precioventa.ToString() &&
+    tboxStockDisponible.Text == ProductoEnForm.CantidadEnStock.ToString() &&
+    tboxStockMinimoIdeal.Text == ProductoEnForm.CantidadMinimaPermitida.ToString() &&
+    tboxNombreProducto.Text == ProductoEnForm.NombreProducto.ToString())
                 {
-                    MessageBox.Show("\tDebe cambiar al menos 1 campo\t");               //el usuario no modifico los campos
+                    MessageBox.Show("\tDebe cambiar al menos 1 campo\t"); // el usuario no modificó los campos
                 }
-                else {
-                    string costoProductoTexto =  tboxCosto.Text;
-                    float _CostoProducto;
-                    if (float.TryParse(costoProductoTexto, out _CostoProducto))
+                else
+                {
+                    string costoProductoTexto = tboxCosto.Text.Replace(',', '.');
+                    decimal _CostoProducto;
+                    if (decimal.TryParse(costoProductoTexto, NumberStyles.Any, CultureInfo.InvariantCulture, out _CostoProducto))
                     {
-                        string precioventatext = tboxPrecioVenta.Text;
-                        float _PrecioVenta;
-                        if (float.TryParse(precioventatext, out _PrecioVenta))
+                        string precioventatext = tboxPrecioVenta.Text.Replace(',', '.');
+                        decimal _PrecioVenta;
+                        if (decimal.TryParse(precioventatext, NumberStyles.Any, CultureInfo.InvariantCulture, out _PrecioVenta))
                         {
                             string stockdisponibletext = tboxStockDisponible.Text;
                             int _StockDisponible;
@@ -89,50 +95,51 @@ namespace UIJugueteria
                                 int _StockMinimoIdeal;
                                 if (int.TryParse(stockminimoidealtext, out _StockMinimoIdeal))
                                 {
+                                    bool resultado = logistica.EditarProducto(
+                                        tboxNombreProducto.Text,
+                                        _CostoProducto,
+                                        _PrecioVenta,
+                                        _StockDisponible,
+                                        _StockMinimoIdeal,
+                                        idproducto.Text
+                                    );
 
-                                    bool resultado = logistica.EditarProducto(tboxNombreProducto.Text, _CostoProducto, _PrecioVenta, _StockDisponible, _StockMinimoIdeal, idproducto.Text);
-
-                                    if (resultado) {
-                                        MessageBox.Show("Producto modificado con exito");
-
+                                    if (resultado)
+                                    {
+                                        MessageBox.Show("Producto modificado con éxito");
                                     }
-
-                                    else {
+                                    else
+                                    {
                                         MessageBox.Show("El producto seleccionado no existe en la Base de Datos");
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("El formato del Stock Minimo Ideal del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("El formato del Stock Mínimo Ideal del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
-
-
                             }
                             else
                             {
                                 MessageBox.Show("El formato del Stock Disponible del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-
-
                         }
                         else
                         {
                             MessageBox.Show("El formato del Precio de Venta del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-
-
-
                     }
                     else
                     {
                         MessageBox.Show("El formato del Costo del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    
                 }
 
 
+            
 
-            }
+
+
+        }
         }
 
 

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnBuscarProducto = new System.Windows.Forms.Button();
             this.lblIDProducto = new System.Windows.Forms.Label();
             this.PanelParaProducto = new System.Windows.Forms.Panel();
@@ -137,6 +139,8 @@
             // 
             // StockMinimoIdeal
             // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StockMinimoIdeal.DefaultCellStyle = dataGridViewCellStyle1;
             this.StockMinimoIdeal.HeaderText = "Stock Minimo Ideal";
             this.StockMinimoIdeal.Name = "StockMinimoIdeal";
             this.StockMinimoIdeal.ReadOnly = true;
@@ -144,6 +148,8 @@
             // 
             // StockProducto
             // 
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StockProducto.DefaultCellStyle = dataGridViewCellStyle2;
             this.StockProducto.HeaderText = "Stock";
             this.StockProducto.Name = "StockProducto";
             this.StockProducto.ReadOnly = true;

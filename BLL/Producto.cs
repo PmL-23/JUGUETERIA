@@ -24,9 +24,9 @@ namespace BLL
 			set { _IDProducto = value; }
 		}
 
-		private float _Costo;
+		private decimal _Costo;
 
-		public float Costo
+		public decimal Costo
 		{
 			get { return _Costo; }
 			set { _Costo = value; }
@@ -38,9 +38,9 @@ namespace BLL
 			get { return _FechaDeCreacion; }
 			set { _FechaDeCreacion = value; }
 		}
-        private float _PrecioVenta;
+        private decimal _PrecioVenta;
 
-        public float Precioventa
+        public decimal Precioventa
         {
             get { return _PrecioVenta; }
             set { _PrecioVenta = value; }
@@ -69,7 +69,7 @@ namespace BLL
 			set { _IDCreadorProducto = value; }
 		}
 
-		public Producto(string nombreproducto, string idproducto, float costo, string fechadecreacion, float precioventa, int cantidadenstock, int cantidadminimapermitida, string idcreadorproducto)
+		public Producto(string nombreproducto, string idproducto, decimal costo, string fechadecreacion, decimal precioventa, int cantidadenstock, int cantidadminimapermitida, string idcreadorproducto)
 		{
 			this.NombreProducto = nombreproducto;
 			this.IDProducto = idproducto;	

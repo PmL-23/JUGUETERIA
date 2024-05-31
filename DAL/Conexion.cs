@@ -166,8 +166,6 @@ namespace DAL
                 //Me desconecto
                 this.Desconectar();
             }
-
-
             return filasAfectadas;
         }
 
