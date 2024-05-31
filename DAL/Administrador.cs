@@ -24,6 +24,18 @@ namespace DAL
 
             if (filasAfectadas > 0)
             {
+                Conexion con = new Conexion();
+                int rowsAfectados;
+
+                if (Rol == "Vendedor")
+                {
+                    rowsAfectados = con.EscribirPorComando("INSERT into [BDDJ].[dbo].[" + Rol.ToUpper() + "] ([_ID" + Rol + "], [_CantidadVentas]) values ('" + nombreUsuario + "', 0)");
+                }
+                else 
+                {
+                    rowsAfectados = con.EscribirPorComando("INSERT into [BDDJ].[dbo].[" + Rol.ToUpper() + "] ([_ID" + Rol + "]) values ('"+nombreUsuario+"')");
+                }
+
                 return true;
             }
 

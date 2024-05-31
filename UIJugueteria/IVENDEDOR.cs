@@ -12,9 +12,13 @@ namespace UIJugueteria
 {
     public partial class IVENDEDOR : Form
     {
-        public IVENDEDOR()
+        string IDVendedor;
+
+        public IVENDEDOR(string nombreUsuario)
         {
             InitializeComponent();
+            lbl_principal.Text = "¡Bienvenido " + nombreUsuario +"!";
+            IDVendedor = nombreUsuario;
         }
 
         private void AbrirFormEnPanel(Form formulario)

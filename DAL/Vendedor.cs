@@ -9,7 +9,7 @@ namespace DAL
 {
     public class Vendedor : Empleado
     {
-        public bool RegistroCliente(string idCliente)
+        public bool VerHistorialCliente(string idCliente)
         {
             Conexion objConexion = new Conexion();
 
@@ -25,7 +25,7 @@ namespace DAL
             return false;
         }
 
-        public bool AgregarCliente(string idCliente, string nombre, string apellido, int dni, int cantidadCompras)
+        public bool RegistrarCliente(string idCliente, string nombre, string apellido, int dni, int cantidadCompras)
         {
             Conexion objConexion = new Conexion();
             int filasAfectadas = objConexion.EscribirPorComando("INSERT into [BDDJ].[dbo].[CLIENTES] ([_Nombre], [_Apelldo], [_IDCliente], [_CantidadCompras], [_DNI]) values ('"+nombre+"', '"+apellido+"', '"+idCliente+"', "+cantidadCompras+", "+dni+");");

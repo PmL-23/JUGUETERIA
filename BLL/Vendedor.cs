@@ -21,7 +21,7 @@ namespace BLL
         {
             DAL.Vendedor cliente = new DAL.Vendedor();
 
-            if (cliente.AgregarCliente(idCliente ,nombre, apellido, dni, cantidadCompras))
+            if (cliente.RegistrarCliente(idCliente, nombre, apellido, dni, cantidadCompras))
             {
                 return true;
             }

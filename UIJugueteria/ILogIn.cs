@@ -94,7 +94,7 @@ namespace UIJugueteria
                     tboxIniciarUsuario.Text = "";
                     tboxIniciarContraseña.Text = "";
 
-                    AbrirFormEnPanel(new IVENDEDOR());
+                    AbrirFormEnPanel(new IVENDEDOR(_NombreUsuario));
                 }
 
                 //Si el empleado NO se encuentra habilitado o con un rol definido se le notifica lo ocurrido

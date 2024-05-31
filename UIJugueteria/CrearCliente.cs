@@ -79,6 +79,7 @@ namespace UIJugueteria
 
             //PanelCentral.Controls.Clear();
             //PanelLateral.Controls.Clear();
+            panel1.Controls.Clear();
 
             Form FH = Formulario as Form;
             FH.WindowState = FormWindowState.Maximized;
@@ -90,6 +91,11 @@ namespace UIJugueteria
         }
 
         private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

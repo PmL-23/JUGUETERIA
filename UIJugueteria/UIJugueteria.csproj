@@ -124,6 +124,12 @@
     <Compile Include="IVENDEDOR.Designer.cs">
       <DependentUpon>IVENDEDOR.cs</DependentUpon>
     </Compile>
+    <Compile Include="NuevaVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NuevaVenta.Designer.cs">
+      <DependentUpon>NuevaVenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ILogIn.resx">
@@ -164,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IVENDEDOR.resx">
       <DependentUpon>IVENDEDOR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NuevaVenta.resx">
+      <DependentUpon>NuevaVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
