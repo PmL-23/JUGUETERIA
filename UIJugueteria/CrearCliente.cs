@@ -67,6 +67,18 @@ namespace UIJugueteria
             }
         }
 
+        private void AbrirFormEnPanel(Form formulario)
+        {
+            // Eliminar todos los controles existentes del panel
+            panel1.Controls.Clear();
+
+            // Añadir el nuevo formulario al panel
+            formulario.TopLevel = false;
+            formulario.Dock = DockStyle.Fill;
+            panel1.Controls.Add(formulario);
+            formulario.Show();
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             CerrarSesion(new NOSE());
