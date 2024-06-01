@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,9 @@ namespace DAL
         public bool NuevaFactura(string idVendedorFactura, string idClienteFactura, string date, decimal total)
         {
             Conexion objConexion = new Conexion();
-            int filasAfectadas = objConexion.EscribirPorComando("INSERT into [BDDJ].[dbo].[FACTURA] ([_IDVendedorFactura], [_IDClienteFactura], [_FechaEmision], [_Total]) values ('" + idVendedorFactura + "', '" + idClienteFactura + "', '" + date + "', " + total + ");");
+            string totalString = total.ToString(CultureInfo.InvariantCulture);
+
+            int filasAfectadas = objConexion.EscribirPorComando("INSERT into [BDDJ].[dbo].[FACTURA] ([_IDVendedorFactura], [_IDClienteFactura], [_FechaEmision], [_Total]) values ('" + idVendedorFactura + "', '" + idClienteFactura + "', '" + date + "', " + totalString + ");");
 
             if (filasAfectadas > 0)
             {

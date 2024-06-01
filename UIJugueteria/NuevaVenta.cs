@@ -290,5 +290,10 @@ namespace UIJugueteria
             //Finalmente modifico el total mostrado en la interfaz
             lbl_total.Text = "Total: $" + factura.CalcularTotal();
         }
+
+        private void txtbox_idcliente_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

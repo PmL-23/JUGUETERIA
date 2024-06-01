@@ -119,7 +119,7 @@
             this.lbl_total.AutoSize = true;
             this.lbl_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lbl_total.ForeColor = System.Drawing.Color.White;
-            this.lbl_total.Location = new System.Drawing.Point(679, 263);
+            this.lbl_total.Location = new System.Drawing.Point(638, 260);
             this.lbl_total.Name = "lbl_total";
             this.lbl_total.Size = new System.Drawing.Size(62, 25);
             this.lbl_total.TabIndex = 6;
@@ -247,6 +247,7 @@
             this.txtbox_idcliente.Name = "txtbox_idcliente";
             this.txtbox_idcliente.Size = new System.Drawing.Size(100, 20);
             this.txtbox_idcliente.TabIndex = 15;
+            this.txtbox_idcliente.TextChanged += new System.EventHandler(this.txtbox_idcliente_TextChanged);
             // 
             // label3
             // 

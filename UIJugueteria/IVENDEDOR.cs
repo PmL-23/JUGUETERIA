@@ -72,7 +72,7 @@ namespace UIJugueteria
 
         private void button5_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new NuevaVenta(IDVendedor));
+            AbrirFormEnPanel(new NuevaVenta(this.IDVendedor));
         }
 
         private void btn_salir_Click(object sender, EventArgs e)
