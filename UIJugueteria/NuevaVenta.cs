@@ -300,5 +300,10 @@ namespace UIJugueteria
         {
 
         }
+
+        private void dgv_productos_stock_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

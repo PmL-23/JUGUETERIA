@@ -60,10 +60,10 @@
             this.tabAdminEmpleados.Controls.Add(this.tabSeleccionar);
             this.tabAdminEmpleados.Controls.Add(this.tabModificar);
             this.tabAdminEmpleados.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabAdminEmpleados.Location = new System.Drawing.Point(0, 43);
+            this.tabAdminEmpleados.Location = new System.Drawing.Point(0, 2);
             this.tabAdminEmpleados.Name = "tabAdminEmpleados";
             this.tabAdminEmpleados.SelectedIndex = 0;
-            this.tabAdminEmpleados.Size = new System.Drawing.Size(794, 363);
+            this.tabAdminEmpleados.Size = new System.Drawing.Size(799, 363);
             this.tabAdminEmpleados.TabIndex = 8;
             // 
             // tabSeleccionar
@@ -74,7 +74,7 @@
             this.tabSeleccionar.Location = new System.Drawing.Point(4, 22);
             this.tabSeleccionar.Name = "tabSeleccionar";
             this.tabSeleccionar.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSeleccionar.Size = new System.Drawing.Size(786, 337);
+            this.tabSeleccionar.Size = new System.Drawing.Size(791, 337);
             this.tabSeleccionar.TabIndex = 0;
             this.tabSeleccionar.Text = "Lista de empleados";
             this.tabSeleccionar.UseVisualStyleBackColor = true;
@@ -319,7 +319,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 406);
+            this.ClientSize = new System.Drawing.Size(799, 365);
             this.Controls.Add(this.tabAdminEmpleados);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "IADMINISTRADOR";

@@ -18,7 +18,8 @@ namespace UIJugueteria
         {
             InitializeComponent();
             grillaClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            label1.Text = "¡Bienvenido " + nombreUsuario +"!";
+            //label1.Text = "¡Bienvenido " + nombreUsuario
+            //label1.Text = "VENTAS";
             IDVendedor = nombreUsuario;
         }
 
@@ -79,6 +80,16 @@ namespace UIJugueteria
         {
             BLL.Cliente cliente = new BLL.Cliente();
             grillaClientes.DataSource = cliente.ListarClientes();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelSuperior_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

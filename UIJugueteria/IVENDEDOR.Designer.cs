@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_listar = new System.Windows.Forms.Button();
             this.btn_venta = new System.Windows.Forms.Button();
@@ -35,22 +39,24 @@
             this.grillaClientes = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.panelSuperior = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaClientes)).BeginInit();
+            this.panelSuperior.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.RosyBrown;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.panel1.Controls.Add(this.panelSuperior);
             this.panel1.Controls.Add(this.btn_listar);
             this.panel1.Controls.Add(this.btn_venta);
-            this.panel1.Controls.Add(this.btn_salir);
             this.panel1.Controls.Add(this.grillaClientes);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(3, 2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(792, 362);
+            this.panel1.Size = new System.Drawing.Size(799, 365);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -89,9 +95,9 @@
             this.btn_salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_salir.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.btn_salir.ForeColor = System.Drawing.Color.White;
-            this.btn_salir.Location = new System.Drawing.Point(686, 10);
+            this.btn_salir.Location = new System.Drawing.Point(695, 3);
             this.btn_salir.Name = "btn_salir";
-            this.btn_salir.Size = new System.Drawing.Size(99, 36);
+            this.btn_salir.Size = new System.Drawing.Size(101, 30);
             this.btn_salir.TabIndex = 5;
             this.btn_salir.Text = "Cerrar sesion";
             this.btn_salir.UseVisualStyleBackColor = true;
@@ -102,28 +108,61 @@
             this.grillaClientes.AllowUserToAddRows = false;
             this.grillaClientes.AllowUserToDeleteRows = false;
             this.grillaClientes.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.grillaClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.grillaClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.grillaClientes.BackgroundColor = System.Drawing.Color.RosyBrown;
+            this.grillaClientes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.grillaClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.grillaClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.grillaClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grillaClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.grillaClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grillaClientes.GridColor = System.Drawing.Color.White;
+            this.grillaClientes.EnableHeadersVisualStyles = false;
+            this.grillaClientes.GridColor = System.Drawing.Color.DarkSlateGray;
             this.grillaClientes.Location = new System.Drawing.Point(35, 113);
             this.grillaClientes.MultiSelect = false;
             this.grillaClientes.Name = "grillaClientes";
             this.grillaClientes.ReadOnly = true;
+            this.grillaClientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grillaClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.grillaClientes.RowHeadersVisible = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.grillaClientes.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.grillaClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grillaClientes.Size = new System.Drawing.Size(553, 211);
             this.grillaClientes.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(33, 26);
+            this.label1.Location = new System.Drawing.Point(12, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(304, 31);
+            this.label1.Size = new System.Drawing.Size(152, 30);
             this.label1.TabIndex = 3;
-            this.label1.Text = "CUENTA VENDEDOR";
+            this.label1.Text = "Seccion Ventas";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
             // 
@@ -139,11 +178,23 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // panelSuperior
+            // 
+            this.panelSuperior.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panelSuperior.Controls.Add(this.label1);
+            this.panelSuperior.Controls.Add(this.btn_salir);
+            this.panelSuperior.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSuperior.Location = new System.Drawing.Point(0, 0);
+            this.panelSuperior.Name = "panelSuperior";
+            this.panelSuperior.Size = new System.Drawing.Size(799, 36);
+            this.panelSuperior.TabIndex = 8;
+            this.panelSuperior.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSuperior_Paint);
+            // 
             // IVENDEDOR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 368);
+            this.ClientSize = new System.Drawing.Size(799, 365);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -152,8 +203,9 @@
             this.Text = "IVENDEDOR";
             this.Load += new System.EventHandler(this.IVENDEDOR_Load);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaClientes)).EndInit();
+            this.panelSuperior.ResumeLayout(false);
+            this.panelSuperior.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -167,5 +219,6 @@
         private System.Windows.Forms.Button btn_salir;
         private System.Windows.Forms.Button btn_venta;
         private System.Windows.Forms.Button btn_listar;
+        private System.Windows.Forms.Panel panelSuperior;
     }
 }
