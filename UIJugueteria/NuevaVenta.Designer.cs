@@ -130,12 +130,15 @@
             this.dgv_productos_stock.AllowUserToAddRows = false;
             this.dgv_productos_stock.AllowUserToDeleteRows = false;
             this.dgv_productos_stock.AllowUserToResizeRows = false;
+            this.dgv_productos_stock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_productos_stock.BackgroundColor = System.Drawing.Color.RosyBrown;
             this.dgv_productos_stock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_productos_stock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDProducto,
             this.NombreProducto,
             this.PrecioVenta,
             this.CantidadEnStock});
+            this.dgv_productos_stock.GridColor = System.Drawing.Color.White;
             this.dgv_productos_stock.Location = new System.Drawing.Point(3, 31);
             this.dgv_productos_stock.MultiSelect = false;
             this.dgv_productos_stock.Name = "dgv_productos_stock";
@@ -190,11 +193,14 @@
             this.dgv_productos_factura.AllowUserToAddRows = false;
             this.dgv_productos_factura.AllowUserToDeleteRows = false;
             this.dgv_productos_factura.AllowUserToResizeRows = false;
+            this.dgv_productos_factura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_productos_factura.BackgroundColor = System.Drawing.Color.RosyBrown;
             this.dgv_productos_factura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_productos_factura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nombre,
             this.Precio,
             this.Cantidad});
+            this.dgv_productos_factura.GridColor = System.Drawing.Color.White;
             this.dgv_productos_factura.Location = new System.Drawing.Point(324, 44);
             this.dgv_productos_factura.Name = "dgv_productos_factura";
             this.dgv_productos_factura.RowHeadersVisible = false;

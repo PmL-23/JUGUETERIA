@@ -62,11 +62,11 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnCancelar.Location = new System.Drawing.Point(305, 218);
+            this.btnCancelar.Location = new System.Drawing.Point(305, 252);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(174, 28);
             this.btnCancelar.TabIndex = 4;
-            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Text = "Salir";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
@@ -147,7 +147,7 @@
             this.btnCrearCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCrearCuenta.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnCrearCuenta.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnCrearCuenta.Location = new System.Drawing.Point(305, 252);
+            this.btnCrearCuenta.Location = new System.Drawing.Point(305, 218);
             this.btnCrearCuenta.Name = "btnCrearCuenta";
             this.btnCrearCuenta.Size = new System.Drawing.Size(174, 28);
             this.btnCrearCuenta.TabIndex = 19;

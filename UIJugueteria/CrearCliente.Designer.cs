@@ -94,7 +94,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(168, 39);
             this.button2.TabIndex = 13;
-            this.button2.Text = "Salir";
+            this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -179,6 +179,8 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CrearCliente";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

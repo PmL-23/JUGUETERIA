@@ -17,6 +17,7 @@ namespace UIJugueteria
         public IVENDEDOR(string nombreUsuario)
         {
             InitializeComponent();
+            grillaClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             label1.Text = "¡Bienvenido " + nombreUsuario +"!";
             IDVendedor = nombreUsuario;
         }
@@ -35,13 +36,7 @@ namespace UIJugueteria
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new CrearCliente());
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            CerrarSesion(new NOSE());
-            MessageBox.Show("\tSesion Cerrada\t");
+            AbrirFormEnPanel(new CrearCliente(this.IDVendedor));
         }
 
         private void CerrarSesion(object Formulario)
@@ -57,12 +52,6 @@ namespace UIJugueteria
 
             this.Controls.Add(FH);
             FH.Show();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            BLL.Cliente cliente = new BLL.Cliente();
-            grillaClientes.DataSource = cliente.ListarClientes();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -81,6 +70,12 @@ namespace UIJugueteria
         }
 
         private void btn_listar_Click(object sender, EventArgs e)
+        {
+            BLL.Cliente cliente = new BLL.Cliente();
+            grillaClientes.DataSource = cliente.ListarClientes();
+        }
+
+        private void IVENDEDOR_Load(object sender, EventArgs e)
         {
             BLL.Cliente cliente = new BLL.Cliente();
             grillaClientes.DataSource = cliente.ListarClientes();

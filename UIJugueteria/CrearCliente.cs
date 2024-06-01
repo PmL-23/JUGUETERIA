@@ -16,11 +16,12 @@ namespace UIJugueteria
 {
     public partial class CrearCliente : Form
     {
-        public CrearCliente()
+        string IDVendedor;
+        public CrearCliente(string idVendedor)
         {
             InitializeComponent();
+            this.IDVendedor = idVendedor;
         }
-     
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -40,6 +41,7 @@ namespace UIJugueteria
                 if (unVendedor.RegistrarCliente(idCliente, nombre, apellido, dni, cantidadCompras) == true)
                 {
                     MessageBox.Show("Usuario cliente creado con exito!!");
+                    AbrirFormEnPanel(new IVENDEDOR(this.IDVendedor));
                 }
                 else
                 {
@@ -81,25 +83,7 @@ namespace UIJugueteria
 
         private void button2_Click(object sender, EventArgs e)
         {
-            CerrarSesion(new NOSE());
-            MessageBox.Show("\tSesion Cerrada\t");
-        }
-
-       
-        private void CerrarSesion(object Formulario)
-        {
-
-            //PanelCentral.Controls.Clear();
-            //PanelLateral.Controls.Clear();
-            panel1.Controls.Clear();
-
-            Form FH = Formulario as Form;
-            FH.WindowState = FormWindowState.Maximized;
-            FH.TopLevel = false;
-            FH.Dock = DockStyle.Fill;
-
-            this.Controls.Add(FH);
-            FH.Show();
+            AbrirFormEnPanel(new IVENDEDOR(this.IDVendedor));
         }
 
         private void label5_Click(object sender, EventArgs e)

@@ -84,7 +84,7 @@ namespace UIJugueteria
                             tboxUsuarioCrear.Text = "";
                             tboxContraseñaCrear.Text = "";
                             tboxContraseñaConfirmacion.Text = "";
-
+                            CerrarSesion(new NOSE());
 
                         }
                         else
