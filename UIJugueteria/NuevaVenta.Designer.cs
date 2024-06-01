@@ -45,7 +45,6 @@
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtbox_idcliente = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -61,7 +60,7 @@
             this.btn_quitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_quitar.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F);
             this.btn_quitar.ForeColor = System.Drawing.Color.White;
-            this.btn_quitar.Location = new System.Drawing.Point(520, 339);
+            this.btn_quitar.Location = new System.Drawing.Point(520, 333);
             this.btn_quitar.Name = "btn_quitar";
             this.btn_quitar.Size = new System.Drawing.Size(75, 23);
             this.btn_quitar.TabIndex = 0;
@@ -77,7 +76,7 @@
             this.btn_agregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_agregar.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F);
             this.btn_agregar.ForeColor = System.Drawing.Color.White;
-            this.btn_agregar.Location = new System.Drawing.Point(369, 339);
+            this.btn_agregar.Location = new System.Drawing.Point(369, 332);
             this.btn_agregar.Name = "btn_agregar";
             this.btn_agregar.Size = new System.Drawing.Size(75, 23);
             this.btn_agregar.TabIndex = 1;
@@ -106,7 +105,7 @@
             this.btn_confirmar_venta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_confirmar_venta.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
             this.btn_confirmar_venta.ForeColor = System.Drawing.Color.White;
-            this.btn_confirmar_venta.Location = new System.Drawing.Point(653, 297);
+            this.btn_confirmar_venta.Location = new System.Drawing.Point(643, 253);
             this.btn_confirmar_venta.Name = "btn_confirmar_venta";
             this.btn_confirmar_venta.Size = new System.Drawing.Size(138, 49);
             this.btn_confirmar_venta.TabIndex = 3;
@@ -119,7 +118,7 @@
             this.lbl_total.AutoSize = true;
             this.lbl_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lbl_total.ForeColor = System.Drawing.Color.White;
-            this.lbl_total.Location = new System.Drawing.Point(638, 260);
+            this.lbl_total.Location = new System.Drawing.Point(638, 189);
             this.lbl_total.Name = "lbl_total";
             this.lbl_total.Size = new System.Drawing.Size(62, 25);
             this.lbl_total.TabIndex = 6;
@@ -143,7 +142,7 @@
             this.dgv_productos_stock.MultiSelect = false;
             this.dgv_productos_stock.Name = "dgv_productos_stock";
             this.dgv_productos_stock.RowHeadersVisible = false;
-            this.dgv_productos_stock.Size = new System.Drawing.Size(303, 326);
+            this.dgv_productos_stock.Size = new System.Drawing.Size(303, 322);
             this.dgv_productos_stock.TabIndex = 7;
             // 
             // IDProducto
@@ -175,7 +174,7 @@
             this.lblcantidad.AutoSize = true;
             this.lblcantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lblcantidad.ForeColor = System.Drawing.Color.White;
-            this.lblcantidad.Location = new System.Drawing.Point(364, 307);
+            this.lblcantidad.Location = new System.Drawing.Point(364, 304);
             this.lblcantidad.Name = "lblcantidad";
             this.lblcantidad.Size = new System.Drawing.Size(97, 25);
             this.lblcantidad.TabIndex = 9;
@@ -183,7 +182,7 @@
             // 
             // txtbox_cantidad
             // 
-            this.txtbox_cantidad.Location = new System.Drawing.Point(467, 310);
+            this.txtbox_cantidad.Location = new System.Drawing.Point(467, 309);
             this.txtbox_cantidad.Name = "txtbox_cantidad";
             this.txtbox_cantidad.Size = new System.Drawing.Size(128, 20);
             this.txtbox_cantidad.TabIndex = 10;
@@ -201,10 +200,10 @@
             this.Precio,
             this.Cantidad});
             this.dgv_productos_factura.GridColor = System.Drawing.Color.White;
-            this.dgv_productos_factura.Location = new System.Drawing.Point(324, 44);
+            this.dgv_productos_factura.Location = new System.Drawing.Point(324, 31);
             this.dgv_productos_factura.Name = "dgv_productos_factura";
             this.dgv_productos_factura.RowHeadersVisible = false;
-            this.dgv_productos_factura.Size = new System.Drawing.Size(308, 258);
+            this.dgv_productos_factura.Size = new System.Drawing.Size(308, 271);
             this.dgv_productos_factura.TabIndex = 8;
             // 
             // Nombre
@@ -230,28 +229,17 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Location = new System.Drawing.Point(71, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(171, 25);
             this.label1.TabIndex = 13;
             this.label1.Text = "Lista de productos";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(22, -22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 25);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Nueva factura";
-            // 
             // txtbox_idcliente
             // 
-            this.txtbox_idcliente.Location = new System.Drawing.Point(677, 211);
+            this.txtbox_idcliente.Location = new System.Drawing.Point(650, 134);
             this.txtbox_idcliente.Name = "txtbox_idcliente";
-            this.txtbox_idcliente.Size = new System.Drawing.Size(100, 20);
+            this.txtbox_idcliente.Size = new System.Drawing.Size(131, 20);
             this.txtbox_idcliente.TabIndex = 15;
             this.txtbox_idcliente.TextChanged += new System.EventHandler(this.txtbox_idcliente_TextChanged);
             // 
@@ -260,18 +248,17 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(679, 183);
+            this.label3.Location = new System.Drawing.Point(653, 106);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 25);
+            this.label3.Size = new System.Drawing.Size(123, 25);
             this.label3.TabIndex = 16;
-            this.label3.Text = "ID cliente";
+            this.label3.Text = "ID del cliente";
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.dgv_productos_stock);
             this.panel1.Controls.Add(this.txtbox_cantidad);
             this.panel1.Controls.Add(this.label3);
@@ -287,17 +274,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(799, 368);
             this.panel1.TabIndex = 17;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(449, 15);
+            this.label4.Location = new System.Drawing.Point(385, 3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 25);
+            this.label4.Size = new System.Drawing.Size(192, 25);
             this.label4.TabIndex = 17;
-            this.label4.Text = "Factura";
+            this.label4.Text = "Lista de nueva venta";
             // 
             // NuevaVenta
             // 
@@ -338,7 +326,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtbox_idcliente;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
