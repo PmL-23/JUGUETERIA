@@ -305,5 +305,10 @@ namespace UIJugueteria
         {
 
         }
+
+        private void lbl_total_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

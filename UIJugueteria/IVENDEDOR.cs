@@ -70,11 +70,6 @@ namespace UIJugueteria
             CerrarSesion(new NOSE());
         }
 
-        private void btn_listar_Click(object sender, EventArgs e)
-        {
-            BLL.Cliente cliente = new BLL.Cliente();
-            grillaClientes.DataSource = cliente.ListarClientes();
-        }
 
         private void IVENDEDOR_Load(object sender, EventArgs e)
         {

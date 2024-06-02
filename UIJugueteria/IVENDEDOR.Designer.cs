@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_listar = new System.Windows.Forms.Button();
             this.btn_venta = new System.Windows.Forms.Button();
             this.btn_salir = new System.Windows.Forms.Button();
             this.grillaClientes = new System.Windows.Forms.DataGridView();
@@ -49,7 +48,6 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.panel1.Controls.Add(this.panelSuperior);
-            this.panel1.Controls.Add(this.btn_listar);
             this.panel1.Controls.Add(this.btn_venta);
             this.panel1.Controls.Add(this.grillaClientes);
             this.panel1.Controls.Add(this.button1);
@@ -60,27 +58,13 @@
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // btn_listar
-            // 
-            this.btn_listar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_listar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_listar.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.btn_listar.ForeColor = System.Drawing.Color.White;
-            this.btn_listar.Location = new System.Drawing.Point(618, 177);
-            this.btn_listar.Name = "btn_listar";
-            this.btn_listar.Size = new System.Drawing.Size(142, 43);
-            this.btn_listar.TabIndex = 7;
-            this.btn_listar.Text = "Actualizar lista";
-            this.btn_listar.UseVisualStyleBackColor = true;
-            this.btn_listar.Click += new System.EventHandler(this.btn_listar_Click);
-            // 
             // btn_venta
             // 
             this.btn_venta.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_venta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_venta.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.btn_venta.ForeColor = System.Drawing.Color.White;
-            this.btn_venta.Location = new System.Drawing.Point(618, 242);
+            this.btn_venta.Location = new System.Drawing.Point(618, 214);
             this.btn_venta.Name = "btn_venta";
             this.btn_venta.Size = new System.Drawing.Size(142, 43);
             this.btn_venta.TabIndex = 6;
@@ -108,24 +92,24 @@
             this.grillaClientes.AllowUserToAddRows = false;
             this.grillaClientes.AllowUserToDeleteRows = false;
             this.grillaClientes.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.grillaClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            this.grillaClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.grillaClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grillaClientes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.grillaClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grillaClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.grillaClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grillaClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grillaClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.grillaClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaClientes.EnableHeadersVisualStyles = false;
             this.grillaClientes.GridColor = System.Drawing.Color.DarkSlateGray;
@@ -134,20 +118,20 @@
             this.grillaClientes.Name = "grillaClientes";
             this.grillaClientes.ReadOnly = true;
             this.grillaClientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grillaClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grillaClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.grillaClientes.RowHeadersVisible = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.grillaClientes.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
+            this.grillaClientes.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.grillaClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grillaClientes.Size = new System.Drawing.Size(553, 211);
             this.grillaClientes.TabIndex = 4;
@@ -170,7 +154,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(618, 113);
+            this.button1.Location = new System.Drawing.Point(618, 135);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(142, 43);
             this.button1.TabIndex = 0;
@@ -218,7 +202,6 @@
         private System.Windows.Forms.DataGridView grillaClientes;
         private System.Windows.Forms.Button btn_salir;
         private System.Windows.Forms.Button btn_venta;
-        private System.Windows.Forms.Button btn_listar;
         private System.Windows.Forms.Panel panelSuperior;
     }
 }
