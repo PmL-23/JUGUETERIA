@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_quitar = new System.Windows.Forms.Button();
             this.btn_agregar = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -47,19 +47,20 @@
             this.txtbox_idcliente = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.dgv_productos_factura = new System.Windows.Forms.DataGridView();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_productos_stock = new System.Windows.Forms.DataGridView();
             this.IDProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantidadEnStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_productos_factura = new System.Windows.Forms.DataGridView();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btn_cambiar_cant = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_productos_stock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_productos_factura)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_productos_stock)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_quitar
@@ -68,7 +69,7 @@
             this.btn_quitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_quitar.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F);
             this.btn_quitar.ForeColor = System.Drawing.Color.White;
-            this.btn_quitar.Location = new System.Drawing.Point(520, 333);
+            this.btn_quitar.Location = new System.Drawing.Point(199, 335);
             this.btn_quitar.Name = "btn_quitar";
             this.btn_quitar.Size = new System.Drawing.Size(75, 23);
             this.btn_quitar.TabIndex = 0;
@@ -84,7 +85,7 @@
             this.btn_agregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_agregar.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F);
             this.btn_agregar.ForeColor = System.Drawing.Color.White;
-            this.btn_agregar.Location = new System.Drawing.Point(369, 332);
+            this.btn_agregar.Location = new System.Drawing.Point(47, 335);
             this.btn_agregar.Name = "btn_agregar";
             this.btn_agregar.Size = new System.Drawing.Size(75, 23);
             this.btn_agregar.TabIndex = 1;
@@ -138,7 +139,7 @@
             this.lblcantidad.AutoSize = true;
             this.lblcantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lblcantidad.ForeColor = System.Drawing.Color.White;
-            this.lblcantidad.Location = new System.Drawing.Point(364, 304);
+            this.lblcantidad.Location = new System.Drawing.Point(358, 331);
             this.lblcantidad.Name = "lblcantidad";
             this.lblcantidad.Size = new System.Drawing.Size(97, 25);
             this.lblcantidad.TabIndex = 9;
@@ -148,11 +149,13 @@
             // 
             this.txtbox_cantidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.txtbox_cantidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbox_cantidad.Enabled = false;
             this.txtbox_cantidad.ForeColor = System.Drawing.Color.White;
-            this.txtbox_cantidad.Location = new System.Drawing.Point(467, 309);
+            this.txtbox_cantidad.Location = new System.Drawing.Point(461, 336);
             this.txtbox_cantidad.Name = "txtbox_cantidad";
-            this.txtbox_cantidad.Size = new System.Drawing.Size(128, 20);
+            this.txtbox_cantidad.Size = new System.Drawing.Size(92, 20);
             this.txtbox_cantidad.TabIndex = 10;
+            this.txtbox_cantidad.TextChanged += new System.EventHandler(this.txtbox_cantidad_TextChanged);
             // 
             // label1
             // 
@@ -190,6 +193,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.panel1.Controls.Add(this.btn_cambiar_cant);
             this.panel1.Controls.Add(this.dgv_productos_factura);
             this.panel1.Controls.Add(this.dgv_productos_stock);
             this.panel1.Controls.Add(this.label4);
@@ -210,40 +214,100 @@
             this.panel1.TabIndex = 17;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // label4
+            // dgv_productos_factura
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(385, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(192, 25);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Lista de nueva venta";
+            this.dgv_productos_factura.AllowUserToAddRows = false;
+            this.dgv_productos_factura.AllowUserToDeleteRows = false;
+            this.dgv_productos_factura.AllowUserToResizeRows = false;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.White;
+            this.dgv_productos_factura.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
+            this.dgv_productos_factura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_productos_factura.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.dgv_productos_factura.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_productos_factura.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgv_productos_factura.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_productos_factura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
+            this.dgv_productos_factura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_productos_factura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nombre,
+            this.PrecioUnitario,
+            this.Cantidad});
+            this.dgv_productos_factura.EnableHeadersVisualStyles = false;
+            this.dgv_productos_factura.GridColor = System.Drawing.Color.DarkSlateGray;
+            this.dgv_productos_factura.Location = new System.Drawing.Point(324, 31);
+            this.dgv_productos_factura.MultiSelect = false;
+            this.dgv_productos_factura.Name = "dgv_productos_factura";
+            this.dgv_productos_factura.ReadOnly = true;
+            this.dgv_productos_factura.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_productos_factura.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            this.dgv_productos_factura.RowHeadersVisible = false;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.White;
+            this.dgv_productos_factura.RowsDefaultCellStyle = dataGridViewCellStyle28;
+            this.dgv_productos_factura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_productos_factura.Size = new System.Drawing.Size(308, 271);
+            this.dgv_productos_factura.TabIndex = 19;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // PrecioUnitario
+            // 
+            this.PrecioUnitario.HeaderText = "Precio";
+            this.PrecioUnitario.Name = "PrecioUnitario";
+            this.PrecioUnitario.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
             // 
             // dgv_productos_stock
             // 
             this.dgv_productos_stock.AllowUserToAddRows = false;
             this.dgv_productos_stock.AllowUserToDeleteRows = false;
             this.dgv_productos_stock.AllowUserToResizeRows = false;
-            dataGridViewCellStyle45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle45.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.Color.White;
-            this.dgv_productos_stock.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.White;
+            this.dgv_productos_stock.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle29;
             this.dgv_productos_stock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_productos_stock.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.dgv_productos_stock.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_productos_stock.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_productos_stock.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle46.BackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle46.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle46.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_productos_stock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_productos_stock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle30;
             this.dgv_productos_stock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_productos_stock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDProducto,
@@ -257,22 +321,22 @@
             this.dgv_productos_stock.Name = "dgv_productos_stock";
             this.dgv_productos_stock.ReadOnly = true;
             this.dgv_productos_stock.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle47.BackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle47.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_productos_stock.RowHeadersDefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_productos_stock.RowHeadersDefaultCellStyle = dataGridViewCellStyle31;
             this.dgv_productos_stock.RowHeadersVisible = false;
-            dataGridViewCellStyle48.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle48.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.Color.White;
-            this.dgv_productos_stock.RowsDefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.White;
+            this.dgv_productos_stock.RowsDefaultCellStyle = dataGridViewCellStyle32;
             this.dgv_productos_stock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_productos_stock.Size = new System.Drawing.Size(303, 322);
+            this.dgv_productos_stock.Size = new System.Drawing.Size(303, 298);
             this.dgv_productos_stock.TabIndex = 18;
             // 
             // IDProducto
@@ -299,76 +363,32 @@
             this.CantidadEnStock.Name = "CantidadEnStock";
             this.CantidadEnStock.ReadOnly = true;
             // 
-            // dgv_productos_factura
+            // label4
             // 
-            this.dgv_productos_factura.AllowUserToAddRows = false;
-            this.dgv_productos_factura.AllowUserToDeleteRows = false;
-            this.dgv_productos_factura.AllowUserToResizeRows = false;
-            dataGridViewCellStyle41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle41.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.Color.White;
-            this.dgv_productos_factura.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle41;
-            this.dgv_productos_factura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_productos_factura.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.dgv_productos_factura.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgv_productos_factura.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgv_productos_factura.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle42.BackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle42.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_productos_factura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle42;
-            this.dgv_productos_factura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_productos_factura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Nombre,
-            this.PrecioUnitario,
-            this.Cantidad});
-            this.dgv_productos_factura.EnableHeadersVisualStyles = false;
-            this.dgv_productos_factura.GridColor = System.Drawing.Color.DarkSlateGray;
-            this.dgv_productos_factura.Location = new System.Drawing.Point(324, 31);
-            this.dgv_productos_factura.MultiSelect = false;
-            this.dgv_productos_factura.Name = "dgv_productos_factura";
-            this.dgv_productos_factura.ReadOnly = true;
-            this.dgv_productos_factura.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle43.BackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle43.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_productos_factura.RowHeadersDefaultCellStyle = dataGridViewCellStyle43;
-            this.dgv_productos_factura.RowHeadersVisible = false;
-            dataGridViewCellStyle44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle44.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.Color.White;
-            this.dgv_productos_factura.RowsDefaultCellStyle = dataGridViewCellStyle44;
-            this.dgv_productos_factura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_productos_factura.Size = new System.Drawing.Size(308, 271);
-            this.dgv_productos_factura.TabIndex = 19;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(385, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(192, 25);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Lista de nueva venta";
             // 
-            // Nombre
+            // btn_cambiar_cant
             // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // PrecioUnitario
-            // 
-            this.PrecioUnitario.HeaderText = "Precio";
-            this.PrecioUnitario.Name = "PrecioUnitario";
-            this.PrecioUnitario.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
+            this.btn_cambiar_cant.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_cambiar_cant.Enabled = false;
+            this.btn_cambiar_cant.FlatAppearance.BorderSize = 0;
+            this.btn_cambiar_cant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cambiar_cant.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F);
+            this.btn_cambiar_cant.ForeColor = System.Drawing.Color.White;
+            this.btn_cambiar_cant.Location = new System.Drawing.Point(559, 334);
+            this.btn_cambiar_cant.Name = "btn_cambiar_cant";
+            this.btn_cambiar_cant.Size = new System.Drawing.Size(57, 21);
+            this.btn_cambiar_cant.TabIndex = 20;
+            this.btn_cambiar_cant.Text = "cambiar";
+            this.btn_cambiar_cant.UseVisualStyleBackColor = true;
+            this.btn_cambiar_cant.Click += new System.EventHandler(this.btn_cambiar_cant_Click);
             // 
             // NuevaVenta
             // 
@@ -384,8 +404,8 @@
             this.Load += new System.EventHandler(this.NuevaVenta_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_productos_stock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_productos_factura)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_productos_stock)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -413,5 +433,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioUnitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.Button btn_cambiar_cant;
     }
 }

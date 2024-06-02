@@ -62,6 +62,8 @@ namespace UIJugueteria
                 // Selecciono la fila completa
                 dgv_productos_factura.Rows[e.RowIndex].Selected = true;
                 btn_quitar.Enabled = true;
+                txtbox_cantidad.Enabled = true;
+                btn_cambiar_cant.Enabled = true;
                 btn_agregar.Enabled = false;
             }
         }
@@ -72,6 +74,7 @@ namespace UIJugueteria
             if (dgv_productos_factura.SelectedRows.Count > 0)
             {
                 DataGridViewRow filaSeleccionada = dgv_productos_factura.SelectedRows[0];
+                txtbox_cantidad.Text = factura.ListaDetalles[filaSeleccionada.Index].Cantidad.ToString();
             }
             else 
             {
@@ -88,6 +91,8 @@ namespace UIJugueteria
                 dgv_productos_stock.Rows[e.RowIndex].Selected = true;
                 btn_agregar.Enabled = true;
                 btn_quitar.Enabled = false;
+                txtbox_cantidad.Enabled = false;
+                btn_cambiar_cant.Enabled = false;
             }
         }
 
@@ -123,12 +128,6 @@ namespace UIJugueteria
 
             try
             {
-                if (int.Parse(txtbox_cantidad.Text) <= 0)
-                {
-                    txtbox_cantidad.Text = "1";
-                    throw new MyExceptions("Ingrese una cantidad valida..");
-                }
-
                 foreach (DetalleFactura item in factura.ListaDetalles)
                 {
                     if (item.IDProducto == filaSeleccionada.Cells["IDProducto"].Value.ToString())
@@ -137,41 +136,33 @@ namespace UIJugueteria
                     }
                 }
 
-                if (int.Parse(filaSeleccionada.Cells["CantidadEnStock"].Value.ToString()) >= int.Parse(txtbox_cantidad.Text))
-                {
-                    factura.AgregarProductos(filaSeleccionada.Cells["IDProducto"].Value.ToString(), int.Parse(txtbox_cantidad.Text), decimal.Parse(filaSeleccionada.Cells["PrecioVenta"].Value.ToString().TrimStart('$')));
+                factura.AgregarProductos(filaSeleccionada.Cells["IDProducto"].Value.ToString(), int.Parse(txtbox_cantidad.Text), decimal.Parse(filaSeleccionada.Cells["PrecioVenta"].Value.ToString().TrimStart('$')));
 
-                    // Clona la fila para agregarla al segundo DataGridView
-                    DataGridViewRow newRow = new DataGridViewRow();
-                    newRow.CreateCells(dgv_productos_factura);
+                // Clona la fila para agregarla al segundo DataGridView
+                DataGridViewRow newRow = new DataGridViewRow();
+                newRow.CreateCells(dgv_productos_factura);
 
-                    newRow.Cells[0].Value = filaSeleccionada.Cells["NombreProducto"].Value;
-                    newRow.Cells[1].Value = filaSeleccionada.Cells["PrecioVenta"].Value;
-                    newRow.Cells[2].Value = txtbox_cantidad.Text;
+                newRow.Cells[0].Value = filaSeleccionada.Cells["NombreProducto"].Value;
+                newRow.Cells[1].Value = filaSeleccionada.Cells["PrecioVenta"].Value;
+                newRow.Cells[2].Value = txtbox_cantidad.Text;
 
-                    // Agrega la nueva fila al segundo DataGridView
-                    dgv_productos_factura.Rows.Add(newRow);
+                // Agrega la nueva fila al segundo DataGridView
+                dgv_productos_factura.Rows.Add(newRow);
 
-                    //Cambia el color de fondo de la fila
-                    dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.BackColor = Color.Brown;
+                //Cambia el color de fondo de la fila
+                dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.BackColor = Color.Brown;
 
-                    // Cambia el color de la fuente de la fila
-                    dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.ForeColor = Color.Black;
+                // Cambia el color de la fuente de la fila
+                dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.ForeColor = Color.Black;
 
-                    // Cambia el color de la última fila seleccionada
-                    dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.SelectionBackColor = Color.Brown;
+                // Cambia el color de la última fila seleccionada
+                dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.SelectionBackColor = Color.Brown;
 
-                    // Cambia el color de la fuente de la última fila seleccionada
-                    dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.SelectionForeColor = Color.Black;
+                // Cambia el color de la fuente de la última fila seleccionada
+                dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.SelectionForeColor = Color.Black;
 
-                    //Finalmente modifico el total mostrado en la interfaz
-                    lbl_total.Text = "Total: $" + factura.CalcularTotal();
-
-                }
-                else
-                {
-                    MessageBox.Show("El producto seleccionado ya se encuentra en la lista, si quiere agregar más quitelo y cambie la cantidad a ingresar.");
-                }
+                //Finalmente modifico el total mostrado en la interfaz
+                lbl_total.Text = "Total: $" + factura.CalcularTotal();
 
             }
             catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
@@ -244,6 +235,7 @@ namespace UIJugueteria
                         if (detFact.ActualizarStockProductos(factura.ListaDetalles) == true)
                         {
                             MessageBox.Show("Venta realizada con éxito!");
+                            AbrirFormEnPanel(new IVENDEDOR(IDVendedor));
                         }
                         else 
                         {
@@ -344,6 +336,53 @@ namespace UIJugueteria
         {
             btn_confirmar_venta.BackColor = Color.White;
             btn_confirmar_venta.ForeColor = Color.RosyBrown;
+        }
+
+        private void txtbox_cantidad_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_cambiar_cant_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow filaSeleccionada = dgv_productos_factura.SelectedRows[0];
+
+            try
+            {
+                if (int.Parse(txtbox_cantidad.Text) <= 0)
+                {
+                    txtbox_cantidad.Text = "1";
+                    throw new MyExceptions("Ingrese una cantidad valida..");
+                }
+
+                foreach (DataGridViewRow item in dgv_productos_stock.Rows)
+                {
+                    if (item.Cells["IDProducto"].Value.ToString() == factura.ListaDetalles[filaSeleccionada.Index].IDProducto)
+                    {
+                        if (int.Parse(txtbox_cantidad.Text) > int.Parse(item.Cells["CantidadEnStock"].Value.ToString()))
+                        {
+                            throw new MyExceptions("Este producto no dispone del stock ingresado..");
+                        }
+                    }
+                }
+
+                //Modifica el cambio de cantidad en la lista de objetos DetalleFactura
+                factura.ListaDetalles[filaSeleccionada.Index].Cantidad = int.Parse(txtbox_cantidad.Text);
+
+                //Modifico el cambio en la celda seleccionada
+                filaSeleccionada.Cells["Cantidad"].Value = txtbox_cantidad.Text;
+
+                //Finalmente modifico el total mostrado en la interfaz
+                lbl_total.Text = "Total: $" + factura.CalcularTotal();
+            }
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+            {
+                MessageBox.Show(ExcPersonalizada.Mensaje);
+            }
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
+            }
         }
     }
 }
