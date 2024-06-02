@@ -88,9 +88,10 @@ namespace UIJugueteria
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+
+        private void btnVerHistorialCliente_Click_1(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new FacturasCliente());
+            AbrirFormEnPanel(new HistorialCliente(IDVendedor));
         }
     }
 }

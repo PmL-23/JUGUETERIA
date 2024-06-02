@@ -30,13 +30,13 @@ namespace BLL
             return false;
         }
 
-        public List<Factura> TraerListaFacturas()
+        public List<Factura> TraerListaFacturas(string _IDCliente)
         {
             List<Factura> ListaFactura = new List<Factura>();
 
             DAL.Vendedor vendedor = new DAL.Vendedor();
 
-            DataTable vendedorbd = vendedor.TraerListaFacturas();//HACER
+            DataTable vendedorbd = vendedor.TraerListaFacturas(_IDCliente);//HACER
 
 
 

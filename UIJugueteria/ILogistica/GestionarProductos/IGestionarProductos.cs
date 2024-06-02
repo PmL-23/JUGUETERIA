@@ -52,10 +52,7 @@ namespace UIJugueteria
         }
         private void RecargarTodo(object Formulario)
         {
-            if (this.panel1.Controls.Count > 0)
-            {
-                this.panel1.Controls.Clear();
-            }
+            panel1.Controls.Clear();
 
             Form FH = Formulario as Form;
             FH.TopLevel = false;

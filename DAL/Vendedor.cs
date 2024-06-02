@@ -38,10 +38,10 @@ namespace DAL
             return false;
         }
 
-        public DataTable TraerListaFacturas()
+        public DataTable TraerListaFacturas(string _IDCliente)
         {
             Conexion objConexion = new Conexion();
-            return objConexion.LeerPorComando("SELECT [_IDVendedorFactura],[_IDClienteFactura],[_IDFactura],[_FechaEmision],[_Total] FROM [BDDJ].[dbo].[FACTURA] WHERE [_IDFactura] is not null ");
+            return objConexion.LeerPorComando("SELECT [_IDVendedorFactura],[_IDClienteFactura],[_IDFactura],[_FechaEmision],[_Total] FROM [BDDJ].[dbo].[FACTURA] WHERE [_IDClienteFactura] ='"+ _IDCliente + "' ");
         }
 
     }
