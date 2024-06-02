@@ -16,7 +16,7 @@ namespace BLL
 
             DAL.Administrador empleadosDAL = new DAL.Administrador();
 
-            DataTable empleadosBD = empleadosDAL.ListarEmpleados();//no entiendo bien esta parte. Necesito algo asi para la funcion ver productos con alerta de stock.
+            DataTable empleadosBD = empleadosDAL.ListarEmpleados();
 
             foreach (DataRow row in empleadosBD.Rows)
             {
@@ -38,12 +38,12 @@ namespace BLL
             return listaDeEmpleados;
         }
 
-        public bool ActualizarDatosUsuario(string nombreUsuario, string Rol, string Estado, int Sueldo)
+        public bool ActualizarDatosUsuario(string rolPrevio, string nombreUsuario, string Rol, string Estado, int Sueldo)
         {
 
             DAL.Administrador admin = new DAL.Administrador();
 
-            if (admin.ActualizarDatosUsuario(nombreUsuario, Rol, Estado, Sueldo))
+            if (admin.ActualizarDatosUsuario(rolPrevio, nombreUsuario, Rol, Estado, Sueldo))
             {
                 return true;
             }

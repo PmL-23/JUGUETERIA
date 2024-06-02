@@ -12,7 +12,7 @@ namespace UIJugueteria
 {
     public partial class IADMINISTRADOR : Form
     {
-
+        string RolPrevio;
         public IADMINISTRADOR()
         {
             InitializeComponent();
@@ -60,6 +60,7 @@ namespace UIJugueteria
                 comboBox_rol.Text = filaSeleccionada.Cells["Rol"].Value.ToString();
                 comboBox_estado.Text = filaSeleccionada.Cells["Habilitado"].Value.ToString();
                 textBox_sueldo.Text = filaSeleccionada.Cells["Sueldo"].Value.ToString();
+                this.RolPrevio = filaSeleccionada.Cells["Rol"].Value.ToString();
             }
             else
             {
@@ -80,34 +81,6 @@ namespace UIJugueteria
         {
             BLL.Administrador admin = new BLL.Administrador();
 
-            dataGridViewEmpleados.DataSource = admin.ListarEmpleados();
-        }
-
-        private void btn_modif_empleado_Click(object sender, EventArgs e)
-        {
-            tabAdminEmpleados.TabPages.Remove(tabSeleccionar);
-            tabAdminEmpleados.TabPages.Add(tabModificar);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //Este boton almacena los datos actualizados del usuario seleccionado
-
-            BLL.Administrador admin = new BLL.Administrador();
-
-            if (admin.ActualizarDatosUsuario(label_nombreusuario.Text, comboBox_rol.Text, comboBox_estado.Text, int.Parse(textBox_sueldo.Text)))
-            {
-                MessageBox.Show("Datos de usuario '" + label_nombreusuario.Text + "' actualizados con exito!.");
-            }
-            else
-            {
-                MessageBox.Show("Error al actualizar los datos del usuario '" + label_nombreusuario.Text + "'.");
-            }
-
-            tabAdminEmpleados.TabPages.Remove(tabModificar);
-            tabAdminEmpleados.TabPages.Add(tabSeleccionar);
-
-            //Una vez actualizados los datos recargo la tabla
             dataGridViewEmpleados.DataSource = admin.ListarEmpleados();
         }
 
@@ -139,7 +112,7 @@ namespace UIJugueteria
 
             BLL.Administrador admin = new BLL.Administrador();
 
-            if (admin.ActualizarDatosUsuario(label_nombreusuario.Text, comboBox_rol.Text, comboBox_estado.Text, int.Parse(textBox_sueldo.Text)))
+            if (admin.ActualizarDatosUsuario(this.RolPrevio,label_nombreusuario.Text, comboBox_rol.Text, comboBox_estado.Text, int.Parse(textBox_sueldo.Text)))
             {
                 MessageBox.Show("Datos de usuario '" + label_nombreusuario.Text + "' actualizados con exito!.");
             }
