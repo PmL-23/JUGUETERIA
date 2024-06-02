@@ -120,30 +120,12 @@ namespace UIJugueteria
                     throw new MyExceptions("Ingrese una cantidad valida..");
                 }
 
-                int cantProd = 0;
-                
-                if (factura.ListaDetalles.Count == 0) cantProd += int.Parse(txtbox_cantidad.Text);
-
                 foreach (DetalleFactura item in factura.ListaDetalles)
                 {
                     if (item.IDProducto == filaSeleccionada.Cells["IDProducto"].Value.ToString())
                     {
-
-                        if ((cantProd + int.Parse(txtbox_cantidad.Text)) >= int.Parse(filaSeleccionada.Cells["CantidadEnStock"].Value.ToString()))
-                        {
-                            throw new MyExceptions("Limite de stock alcanzado para este producto..");
-                        }
-                        else
-                        {
-                            cantProd += item.Cantidad;
-                        }
-
+                        throw new MyExceptions("Este producto ya se encuentra en la lista..");
                     }
-                }
-
-                if ((factura.ListaDetalles.Count > 0) && (cantProd > int.Parse(filaSeleccionada.Cells["CantidadEnStock"].Value.ToString())))
-                {
-                    throw new MyExceptions("Limite de stock alcanzado para este producto..");
                 }
 
                 if (int.Parse(filaSeleccionada.Cells["CantidadEnStock"].Value.ToString()) >= int.Parse(txtbox_cantidad.Text))
@@ -161,13 +143,25 @@ namespace UIJugueteria
                     // Agrega la nueva fila al segundo DataGridView
                     dgv_productos_factura.Rows.Add(newRow);
 
+                    //Cambia el color de fonde de la fila
+                    dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.BackColor = Color.Brown;
+
+                    // Cambia el color de la fuente de la fila
+                    dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.ForeColor = Color.Black;
+
+                    // Cambia el color de la última fila seleccionada
+                    dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.SelectionBackColor = Color.Brown;
+
+                    // Cambia el color de la fuente de la última fila seleccionada
+                    dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.SelectionForeColor = Color.Black;
+
                     //Finalmente modifico el total mostrado en la interfaz
                     lbl_total.Text = "Total: $" + factura.CalcularTotal();
 
                 }
                 else
                 {
-                    MessageBox.Show("El producto seleccionado no dispone de la cantidad de stock ingresada..");
+                    MessageBox.Show("El producto seleccionado ya se encuentra en la lista, si quiere agregar más quitelo y cambie la cantidad a ingresar.");
                 }
 
             }
@@ -282,10 +276,23 @@ namespace UIJugueteria
         private void btn_quitar_Click(object sender, EventArgs e)
         {
             DataGridViewRow filaSeleccionada = dgv_productos_factura.SelectedRows[0];
+            DataGridViewRow filaSeleccionadaStock = dgv_productos_stock.SelectedRows[0];
 
             factura.SacarProductos(filaSeleccionada.Index);
 
             dgv_productos_factura.Rows.Remove(filaSeleccionada);
+
+            //fijarse si le podes cambiar el color a la fila y lanzar exepcion de que no podes agregarlo devuelta
+            dgv_productos_stock.Rows[filaSeleccionadaStock.Index].DefaultCellStyle.BackColor = Color.FromArgb(30,30,30);
+
+            // Cambia el color de la fuente de la fila
+            dgv_productos_stock.Rows[filaSeleccionadaStock.Index].DefaultCellStyle.ForeColor = Color.White;
+
+            // Cambia el color de la última fila seleccionada
+            dgv_productos_stock.Rows[filaSeleccionadaStock.Index].DefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
+
+            // Cambia el color de la fuente de la última fila seleccionada
+            dgv_productos_stock.Rows[filaSeleccionadaStock.Index].DefaultCellStyle.SelectionForeColor = Color.White;
 
             //Finalmente modifico el total mostrado en la interfaz
             lbl_total.Text = "Total: $" + factura.CalcularTotal();

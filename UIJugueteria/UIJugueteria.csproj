@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HistorialCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistorialCliente.Designer.cs">
+      <DependentUpon>HistorialCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="ILogIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="HistorialCliente.resx">
+      <DependentUpon>HistorialCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ILogIn.resx">
       <DependentUpon>ILogIn.cs</DependentUpon>
     </EmbeddedResource>
