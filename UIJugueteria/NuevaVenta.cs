@@ -121,27 +121,27 @@ namespace UIJugueteria
                 }
 
                 int cantProd = 0;
-
-                if(cantProd == 0) cantProd += int.Parse(txtbox_cantidad.Text);
+                
+                if (factura.ListaDetalles.Count == 0) cantProd += int.Parse(txtbox_cantidad.Text);
 
                 foreach (DetalleFactura item in factura.ListaDetalles)
                 {
                     if (item.IDProducto == filaSeleccionada.Cells["IDProducto"].Value.ToString())
                     {
 
-                        if ((cantProd + int.Parse(txtbox_cantidad.Text)) > int.Parse(filaSeleccionada.Cells["CantidadEnStock"].Value.ToString()))
+                        if ((cantProd + int.Parse(txtbox_cantidad.Text)) >= int.Parse(filaSeleccionada.Cells["CantidadEnStock"].Value.ToString()))
                         {
                             throw new MyExceptions("Limite de stock alcanzado para este producto..");
                         }
-                        else 
-                        { 
-                            cantProd += int.Parse(txtbox_cantidad.Text);
+                        else
+                        {
+                            cantProd += item.Cantidad;
                         }
 
                     }
                 }
 
-                if (cantProd >= int.Parse(filaSeleccionada.Cells["CantidadEnStock"].Value.ToString()))
+                if ((factura.ListaDetalles.Count > 0) && (cantProd > int.Parse(filaSeleccionada.Cells["CantidadEnStock"].Value.ToString())))
                 {
                     throw new MyExceptions("Limite de stock alcanzado para este producto..");
                 }
@@ -309,6 +309,18 @@ namespace UIJugueteria
         private void lbl_total_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_confirmar_venta_MouseEnter(object sender, EventArgs e)
+        {
+            btn_confirmar_venta.BackColor = Color.RosyBrown;
+            btn_confirmar_venta.ForeColor = Color.White;
+        }
+
+        private void btn_confirmar_venta_MouseLeave(object sender, EventArgs e)
+        {
+            btn_confirmar_venta.BackColor = Color.White;
+            btn_confirmar_venta.ForeColor = Color.RosyBrown;
         }
     }
 }
