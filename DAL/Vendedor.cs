@@ -28,7 +28,7 @@ namespace DAL
         public bool RegistrarCliente(string idCliente, string nombre, string apellido, int dni, int cantidadCompras)
         {
             Conexion objConexion = new Conexion();
-            int filasAfectadas = objConexion.EscribirPorComando("INSERT into [BDDJ].[dbo].[CLIENTES] ([_Nombre], [_Apelldo], [_IDCliente], [_CantidadCompras], [_DNI]) values ('"+nombre+"', '"+apellido+"', '"+idCliente+"', "+cantidadCompras+", "+dni+");");
+            int filasAfectadas = objConexion.EscribirPorComando("INSERT into [BDDJ].[dbo].[CLIENTES] ([_Nombre], [_Apellido], [_IDCliente], [_CantidadCompras], [_DNI]) values ('"+nombre+"', '"+apellido+"', '"+idCliente+"', "+cantidadCompras+", "+dni+");");
 
             if (filasAfectadas > 0)
             {

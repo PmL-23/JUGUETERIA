@@ -73,7 +73,7 @@ namespace BLL
                 Cliente cliente = new Cliente();
 
                 cliente._Nombre = fila["_Nombre"].ToString();
-                cliente._Apellido = fila["_Apelldo"].ToString();
+                cliente._Apellido = fila["_Apellido"].ToString();
                 cliente._IDCliente = fila["_IDCLiente"].ToString();
                 cliente._CantidadCompras =(long)fila["_CantidadCompras"];
                 cliente._DNI = fila["_DNI"].ToString();
