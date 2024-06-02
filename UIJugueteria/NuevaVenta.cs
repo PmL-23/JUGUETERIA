@@ -98,6 +98,15 @@ namespace UIJugueteria
             {
                 DataGridViewRow filaSeleccionada = dgv_productos_stock.SelectedRows[0];
 
+                if (dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.SelectionBackColor != Color.Brown) { 
+                    
+                    // Cambia el color de la última fila seleccionada
+                    dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
+
+                    // Cambia el color de la fuente de la última fila seleccionada
+                    dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.SelectionForeColor = Color.White;
+                }
+
                 // Asigno los valores de la fila a los labels
                 txtbox_cantidad.Text = "1";
             }
@@ -143,7 +152,7 @@ namespace UIJugueteria
                     // Agrega la nueva fila al segundo DataGridView
                     dgv_productos_factura.Rows.Add(newRow);
 
-                    //Cambia el color de fonde de la fila
+                    //Cambia el color de fondo de la fila
                     dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.BackColor = Color.Brown;
 
                     // Cambia el color de la fuente de la fila
@@ -275,24 +284,31 @@ namespace UIJugueteria
 
         private void btn_quitar_Click(object sender, EventArgs e)
         {
-            DataGridViewRow filaSeleccionada = dgv_productos_factura.SelectedRows[0];
+            DataGridViewRow filaSeleccionadaFactura = dgv_productos_factura.SelectedRows[0];
             DataGridViewRow filaSeleccionadaStock = dgv_productos_stock.SelectedRows[0];
 
-            factura.SacarProductos(filaSeleccionada.Index);
+            foreach (DataGridViewRow item in dgv_productos_stock.Rows)
+            {
+                if (item.Cells["IDProducto"].Value.ToString() == factura.ListaDetalles[filaSeleccionadaFactura.Index].IDProducto)
+                {
+                    //fijarse si le podes cambiar el color a la fila y lanzar exepcion de que no podes agregarlo devuelta
+                    dgv_productos_stock.Rows[item.Index].DefaultCellStyle.BackColor = Color.FromArgb(30,30,30);
 
-            dgv_productos_factura.Rows.Remove(filaSeleccionada);
+                    // Cambia el color de la fuente de la fila
+                    dgv_productos_stock.Rows[item.Index].DefaultCellStyle.ForeColor = Color.White;
 
-            //fijarse si le podes cambiar el color a la fila y lanzar exepcion de que no podes agregarlo devuelta
-            dgv_productos_stock.Rows[filaSeleccionadaStock.Index].DefaultCellStyle.BackColor = Color.FromArgb(30,30,30);
+                    // Cambia el color de la última fila seleccionada
+                    dgv_productos_stock.Rows[item.Index].DefaultCellStyle.SelectionBackColor = Color.FromArgb(30,30,30);
 
-            // Cambia el color de la fuente de la fila
-            dgv_productos_stock.Rows[filaSeleccionadaStock.Index].DefaultCellStyle.ForeColor = Color.White;
+                    // Cambia el color de la fuente de la última fila seleccionada
+                    dgv_productos_stock.Rows[item.Index].DefaultCellStyle.SelectionForeColor = Color.White;        
+                }
+            }
 
-            // Cambia el color de la última fila seleccionada
-            dgv_productos_stock.Rows[filaSeleccionadaStock.Index].DefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
+            factura.SacarProductos(filaSeleccionadaFactura.Index);
 
-            // Cambia el color de la fuente de la última fila seleccionada
-            dgv_productos_stock.Rows[filaSeleccionadaStock.Index].DefaultCellStyle.SelectionForeColor = Color.White;
+            dgv_productos_factura.Rows.Remove(filaSeleccionadaFactura);
+
 
             //Finalmente modifico el total mostrado en la interfaz
             lbl_total.Text = "Total: $" + factura.CalcularTotal();
