@@ -38,5 +38,11 @@ namespace DAL
             return false;
         }
 
+        public DataTable TraerListaFacturas()
+        {
+            Conexion objConexion = new Conexion();
+            return objConexion.LeerPorComando("SELECT [_IDVendedorFactura],[_IDClienteFactura],[_IDFactura],[_FechaEmision],[_Total] FROM [BDDJ].[dbo].[FACTURA] WHERE [_IDFactura] is not null ");
+        }
+
     }
 }

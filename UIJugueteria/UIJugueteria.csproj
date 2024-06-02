@@ -130,6 +130,12 @@
     <Compile Include="IVENDEDOR.Designer.cs">
       <DependentUpon>IVENDEDOR.cs</DependentUpon>
     </Compile>
+    <Compile Include="IVendedor\FacturasCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IVendedor\FacturasCliente.Designer.cs">
+      <DependentUpon>FacturasCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="NuevaVenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     <EmbeddedResource Include="IVENDEDOR.resx">
       <DependentUpon>IVENDEDOR.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IVendedor\FacturasCliente.resx">
+      <DependentUpon>FacturasCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NuevaVenta.resx">
       <DependentUpon>NuevaVenta.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,7 +222,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="IAdministrador\" />
-    <Folder Include="IVendedor\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

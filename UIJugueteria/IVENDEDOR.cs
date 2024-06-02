@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UIJugueteria.IVendedor;
 
 namespace UIJugueteria
 {
@@ -85,6 +86,11 @@ namespace UIJugueteria
         private void panelSuperior_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new FacturasCliente());
         }
     }
 }

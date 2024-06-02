@@ -16,8 +16,17 @@ namespace BLL
 		private string _IDCliente;
 		private List<DetalleFactura> _ListaDetalles = new List<DetalleFactura>();
 
-        #region Props
-        public List<DetalleFactura> ListaDetalles
+		private string _IDFactura;		//AGREGO ID FACTURA
+
+		public string IDFactura
+		{
+			get { return _IDFactura; }
+			set { _IDFactura = value; }
+		}
+
+
+		#region Props
+		public List<DetalleFactura> ListaDetalles
 		{
 			get { return _ListaDetalles; }
 			set { _ListaDetalles = value; }
@@ -109,6 +118,10 @@ namespace BLL
             {
 				item.IDFactura = UltimoIDFactura;
             }
+		}
+		public Factura()
+		{
+
 		}
     }
 }
