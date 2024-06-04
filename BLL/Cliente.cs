@@ -85,6 +85,12 @@ namespace BLL
             return clientes;
         }
 
+        public bool AumentarCantCompras(string idCliente) {
+            DAL.Cliente cliente = new DAL.Cliente();
+
+            return cliente.AumentarCantCompras(idCliente);
+        }
+
         public Cliente()
         {
         }

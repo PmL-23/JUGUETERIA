@@ -44,5 +44,18 @@ namespace DAL
             return objConexion.LeerPorComando("SELECT [_IDVendedorFactura],[_IDClienteFactura],[_IDFactura],[_FechaEmision],[_Total] FROM [BDDJ].[dbo].[FACTURA] WHERE [_IDClienteFactura] ='"+ _IDCliente + "' ");
         }
 
+
+        public bool AumentarCantVentas(string idVendedor) { 
+            Conexion conexion = new Conexion();
+
+            int filasAfectadas = conexion.EscribirPorComando("UPDATE [BDDJ].[dbo].[VENDEDOR] SET [_CantidadVentas] = [_CantidadVentas] + 1 WHERE _IDVendedor = '" + idVendedor + "';");
+
+            if (filasAfectadas > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -234,8 +235,18 @@ namespace UIJugueteria
                     {
                         if (detFact.ActualizarStockProductos(factura.ListaDetalles) == true)
                         {
-                            MessageBox.Show("Venta realizada con éxito!");
-                            AbrirFormEnPanel(new IVENDEDOR(IDVendedor));
+                            Vendedor vendedor = new Vendedor();
+
+                            if (vendedor.AumentarCantVentas(this.IDVendedor) == true)
+                            {
+                                Cliente cliente = new Cliente();
+
+                                if (cliente.AumentarCantCompras(txtbox_idcliente.Text) == true)
+                                {
+                                    MessageBox.Show("Venta realizada con éxito!");
+                                    AbrirFormEnPanel(new IVENDEDOR(IDVendedor));                                    
+                                }
+                            }
                         }
                         else 
                         {

@@ -53,6 +53,12 @@ namespace BLL
             return ListaFactura;
         }
 
+        public bool AumentarCantVentas(string idVendedor) {
+            DAL.Vendedor vendedor = new DAL.Vendedor();
+
+            return vendedor.AumentarCantVentas(idVendedor);
+        }
+
         public Vendedor()
         {
 
