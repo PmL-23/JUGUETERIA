@@ -243,7 +243,27 @@ namespace UIJugueteria
 
                                 if (cliente.AumentarCantCompras(txtbox_idcliente.Text) == true)
                                 {
-                                    MessageBox.Show("Venta realizada con éxito!");
+
+                                    string facturaString = "----DATOS DE FACTURA----\n\n";
+                                    decimal totalFactura = 0;
+
+                                    facturaString += ("ID del vendedor: " + this.IDVendedor + "\n");
+                                    facturaString += ("ID del cliente: " + txtbox_idcliente.Text + "\n\n");
+                                    facturaString += ("Fecha y hora: " + fechaActual + "\n\n");
+
+                                    facturaString += "----PRODUCTOS INCLUIDOS----\n\n";
+
+                                    foreach (DataGridViewRow item in dgv_productos_factura.Rows)
+                                    {
+                                        facturaString += (item.Cells["Nombre"].Value.ToString() + " x " + item.Cells["Cantidad"].Value.ToString() + " = $" + (decimal.Parse(item.Cells["Cantidad"].Value.ToString()) * factura.ListaDetalles[item.Index].PrecioUnitario) + ".\n");
+                                        
+                                        totalFactura += decimal.Parse(item.Cells["Cantidad"].Value.ToString()) * factura.ListaDetalles[item.Index].PrecioUnitario;
+                                    }
+
+                                    facturaString += "TOTAL: $" + totalFactura;
+
+                                    MessageBox.Show(facturaString, "Venta realizada con éxito!", MessageBoxButtons.OK);
+
                                     AbrirFormEnPanel(new IVENDEDOR(IDVendedor));                                    
                                 }
                             }
