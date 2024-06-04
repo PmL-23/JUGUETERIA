@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NOSE));
             this.btnIniciarSesion = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.tboxIniciarUsuario = new System.Windows.Forms.TextBox();
@@ -37,7 +38,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCrearCuenta = new System.Windows.Forms.Button();
+            this.PanelMovCerrar = new System.Windows.Forms.Panel();
+            this.lblJugueteria = new System.Windows.Forms.Label();
+            this.btnCerrarAplicacion = new System.Windows.Forms.Button();
             this.PanelMain.SuspendLayout();
+            this.PanelMovCerrar.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnIniciarSesion
@@ -97,8 +102,8 @@
             this.PanelMain.Controls.Add(this.btnCancelar);
             this.PanelMain.Controls.Add(this.tboxIniciarUsuario);
             this.PanelMain.Controls.Add(this.tboxIniciarContraseña);
-            this.PanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelMain.Location = new System.Drawing.Point(0, 0);
+            this.PanelMain.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.PanelMain.Location = new System.Drawing.Point(0, 17);
             this.PanelMain.Name = "PanelMain";
             this.PanelMain.Size = new System.Drawing.Size(799, 365);
             this.PanelMain.TabIndex = 19;
@@ -155,11 +160,50 @@
             this.btnCrearCuenta.UseVisualStyleBackColor = false;
             this.btnCrearCuenta.Click += new System.EventHandler(this.btnCrearCuenta_Click);
             // 
+            // PanelMovCerrar
+            // 
+            this.PanelMovCerrar.BackColor = System.Drawing.SystemColors.WindowText;
+            this.PanelMovCerrar.Controls.Add(this.btnCerrarAplicacion);
+            this.PanelMovCerrar.Controls.Add(this.lblJugueteria);
+            this.PanelMovCerrar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelMovCerrar.Location = new System.Drawing.Point(0, 0);
+            this.PanelMovCerrar.Name = "PanelMovCerrar";
+            this.PanelMovCerrar.Size = new System.Drawing.Size(799, 17);
+            this.PanelMovCerrar.TabIndex = 20;
+            this.PanelMovCerrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelMovCerrar_MouseMove);
+            // 
+            // lblJugueteria
+            // 
+            this.lblJugueteria.AutoSize = true;
+            this.lblJugueteria.BackColor = System.Drawing.SystemColors.WindowText;
+            this.lblJugueteria.ForeColor = System.Drawing.Color.White;
+            this.lblJugueteria.Location = new System.Drawing.Point(3, 1);
+            this.lblJugueteria.Name = "lblJugueteria";
+            this.lblJugueteria.Size = new System.Drawing.Size(56, 13);
+            this.lblJugueteria.TabIndex = 23;
+            this.lblJugueteria.Text = "Jugueteria";
+            // 
+            // btnCerrarAplicacion
+            // 
+            this.btnCerrarAplicacion.BackColor = System.Drawing.Color.Black;
+            this.btnCerrarAplicacion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCerrarAplicacion.BackgroundImage")));
+            this.btnCerrarAplicacion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrarAplicacion.FlatAppearance.BorderSize = 0;
+            this.btnCerrarAplicacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrarAplicacion.ForeColor = System.Drawing.Color.Transparent;
+            this.btnCerrarAplicacion.Location = new System.Drawing.Point(781, 1);
+            this.btnCerrarAplicacion.Name = "btnCerrarAplicacion";
+            this.btnCerrarAplicacion.Size = new System.Drawing.Size(17, 17);
+            this.btnCerrarAplicacion.TabIndex = 4;
+            this.btnCerrarAplicacion.UseVisualStyleBackColor = false;
+            this.btnCerrarAplicacion.Click += new System.EventHandler(this.btnCerrarAplicacion_Click);
+            // 
             // NOSE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 365);
+            this.ClientSize = new System.Drawing.Size(799, 382);
+            this.Controls.Add(this.PanelMovCerrar);
             this.Controls.Add(this.PanelMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NOSE";
@@ -168,6 +212,8 @@
             this.Load += new System.EventHandler(this.btnCancela_Load);
             this.PanelMain.ResumeLayout(false);
             this.PanelMain.PerformLayout();
+            this.PanelMovCerrar.ResumeLayout(false);
+            this.PanelMovCerrar.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -183,6 +229,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel PanelMovCerrar;
+        private System.Windows.Forms.Label lblJugueteria;
+        private System.Windows.Forms.Button btnCerrarAplicacion;
     }
 }
 

@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -142,6 +143,26 @@ namespace UIJugueteria
         private void label1_Click(object sender, EventArgs e) { }
 
         public int xClick, yClick;
+
+        private void btnCerrarAplicacion_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        //para mover la aplicacion.
+        //<DllImport("user32.DLL", EntryPoint:="ReleaseCapture")>
+        //Private Shared Sub ReleaseCapture();
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private void PanelMovCerrar_MouseMove(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
 
         private void label1_MouseMove(object sender, MouseEventArgs e)
         {
