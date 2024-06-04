@@ -59,6 +59,20 @@ namespace BLL
             return vendedor.AumentarCantVentas(idVendedor);
         }
 
+        public bool GenerarFactura(string idVendedor, string idCliente, string date, decimal total)
+        {
+            DAL.Vendedor vend = new DAL.Vendedor();
+
+            if (vend.GenerarFactura(idVendedor, idCliente, date, total) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public Vendedor()
         {
 

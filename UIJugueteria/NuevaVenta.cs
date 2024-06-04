@@ -219,13 +219,17 @@ namespace UIJugueteria
                 if (string.IsNullOrEmpty(txtbox_idcliente.Text)) throw new MyExceptions("Ingrese un ID de cliente..");
                 if (factura.ListaDetalles.Count <= 0) throw new MyExceptions("Debe agregar productos a la factura para continuar..");
 
+                //Obtengo la fecha y hora actual
                 DateTime fechaActual = DateTime.Now;
+
                 // Formatear la fecha y hora como una cadena
                 string fechaFormateada = fechaActual.ToString("yyyy-MM-dd HH:mm:ss.fff");
 
                 decimal total = factura.CalcularTotal();
 
-                if (factura.GenerarFactura(this.IDVendedor, txtbox_idcliente.Text, fechaFormateada, total))
+                Vendedor vendedor = new Vendedor();
+
+                if (vendedor.GenerarFactura(this.IDVendedor, txtbox_idcliente.Text, fechaFormateada, total))
                 {
                     factura.SetIDFacturaADetalleFactura();
 
@@ -233,9 +237,8 @@ namespace UIJugueteria
 
                     if (detFact.InsertarDetallesFactura(factura.ListaDetalles) == true)
                     {
-                        if (detFact.ActualizarStockProductos(factura.ListaDetalles) == true)
+                        if (detFact.DecrementarStockPosventa(factura.ListaDetalles) == true)
                         {
-                            Vendedor vendedor = new Vendedor();
 
                             if (vendedor.AumentarCantVentas(this.IDVendedor) == true)
                             {

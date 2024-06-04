@@ -11,21 +11,6 @@ namespace DAL
 {
     public class Factura
     {
-        public bool NuevaFactura(string idVendedorFactura, string idClienteFactura, string date, decimal total)
-        {
-            Conexion objConexion = new Conexion();
-            string totalString = total.ToString(CultureInfo.InvariantCulture);
-
-            int filasAfectadas = objConexion.EscribirPorComando("INSERT into [BDDJ].[dbo].[FACTURA] ([_IDVendedorFactura], [_IDClienteFactura], [_FechaEmision], [_Total]) values ('" + idVendedorFactura + "', '" + idClienteFactura + "', '" + date + "', " + totalString + ");");
-
-            if (filasAfectadas > 0)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
         public DataTable TraerIDFactura() { 
             Conexion conexion = new Conexion();
 
@@ -33,6 +18,5 @@ namespace DAL
 
             return dt;
         }
-
     }
 }

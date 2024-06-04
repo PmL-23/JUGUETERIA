@@ -19,8 +19,6 @@ namespace UIJugueteria
         {
             InitializeComponent();
             grillaClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            //label1.Text = "¡Bienvenido " + nombreUsuario
-            //label1.Text = "VENTAS";
             IDVendedor = nombreUsuario;
         }
 

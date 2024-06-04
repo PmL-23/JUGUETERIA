@@ -4,6 +4,7 @@ using System.Linq;
 using System.Data;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace DAL
 {
@@ -44,6 +45,20 @@ namespace DAL
             return objConexion.LeerPorComando("SELECT [_IDVendedorFactura],[_IDClienteFactura],[_IDFactura],[_FechaEmision],[_Total] FROM [BDDJ].[dbo].[FACTURA] WHERE [_IDClienteFactura] ='"+ _IDCliente + "' ");
         }
 
+        public bool GenerarFactura(string idVendedorFactura, string idClienteFactura, string date, decimal total)
+        {
+            Conexion objConexion = new Conexion();
+            string totalString = total.ToString(CultureInfo.InvariantCulture);
+
+            int filasAfectadas = objConexion.EscribirPorComando("INSERT into [BDDJ].[dbo].[FACTURA] ([_IDVendedorFactura], [_IDClienteFactura], [_FechaEmision], [_Total]) values ('" + idVendedorFactura + "', '" + idClienteFactura + "', '" + date + "', " + totalString + ");");
+
+            if (filasAfectadas > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
 
         public bool AumentarCantVentas(string idVendedor) { 
             Conexion conexion = new Conexion();

@@ -10,14 +10,14 @@ namespace BLL
 {
     public class Factura
     {
-		private string _FechaEmision; //Manejo la fecha como string
+		private string _IDFactura;
+		private string _FechaEmision;
 		private decimal _Total;
 		private string _IDVendedor;
 		private string _IDCliente;
 		private List<DetalleFactura> _ListaDetalles = new List<DetalleFactura>();
 
-		private string _IDFactura;		//AGREGO ID FACTURA
-
+		#region Props
 		public string IDFactura
 		{
 			get { return _IDFactura; }
@@ -25,7 +25,6 @@ namespace BLL
 		}
 
 
-		#region Props
 		public List<DetalleFactura> ListaDetalles
 		{
 			get { return _ListaDetalles; }
@@ -87,20 +86,6 @@ namespace BLL
 			this.ListaDetalles.Remove(this.ListaDetalles[index]);
 
         }
-
-		public bool GenerarFactura(string idVendedor, string idCliente, string date, decimal total) { 
-
-			DAL.Factura factura = new DAL.Factura();
-
-			if (factura.NuevaFactura(idVendedor, idCliente, date, total) == true)
-			{
-				return true;
-			}
-			else 
-			{ 
-				return false;
-			}
-		}
 
 		public void SetIDFacturaADetalleFactura() {
 			DAL.Factura factura = new DAL.Factura();

@@ -45,92 +45,32 @@ namespace BLL
 
         public bool InsertarDetallesFactura(List<DetalleFactura> ListaDetalles)
         {
+            DAL.DetalleFactura detFactura = new DAL.DetalleFactura();
 
-            using (SqlConnection connection = new SqlConnection(@"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=BDDJ;Data Source=.\sqlexpress"))
+            foreach (DetalleFactura item in ListaDetalles)
             {
-                connection.Open();
-                SqlTransaction transaction = connection.BeginTransaction();
-
-                try
+                if (detFactura.InsertarDetallesFactura(item.IDFactura, item.IDProducto, item.PrecioUnitario, item.Cantidad) == false)
                 {
-                    foreach (DetalleFactura detalleFactura in ListaDetalles)
-                    {
-                        string query = "INSERT INTO [BDDJ].[dbo].[DETALLE_FACTURA] ([_IDFactura], [_IDProducto], [_PrecioUnitario], [_Cantidad]) VALUES (@IDFactura, @IDProducto, @PrecioUnitario, @Cantidad)";
-                        using (SqlCommand command = new SqlCommand(query, connection, transaction))
-                        {
-                            command.Parameters.AddWithValue("@IDFactura", detalleFactura.IDFactura);
-                            command.Parameters.AddWithValue("@IDProducto", detalleFactura.IDProducto);
-                            command.Parameters.AddWithValue("@PrecioUnitario", detalleFactura.PrecioUnitario);
-                            command.Parameters.AddWithValue("@Cantidad", detalleFactura.Cantidad);
-
-                            command.ExecuteNonQuery();
-                        }
-                    }
-
-                    transaction.Commit();
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    transaction.Rollback();
                     return false;
                 }
-                finally 
-                { 
-                    connection.Close();
-                    connection.Dispose();
-                }
             }
 
-
-            /*
-            DAL.DetalleFactura detFactura= new DAL.DetalleFactura();
-
-            if (detFactura.InsertarDetallesFactura(ListaDetalles) == true)
-            {
-                return true;
-            }
-            else 
-            {
-                return false;
-            }*/
+            return true;
         }
 
-        public bool ActualizarStockProductos(List<DetalleFactura> ListaDetalles)
+        public bool DecrementarStockPosventa(List<DetalleFactura> ListaDetalles)
         {
-            using (SqlConnection connection = new SqlConnection(@"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=BDDJ;Data Source=.\sqlexpress"))
+            DAL.DetalleFactura detFactura = new DAL.DetalleFactura();
+
+            foreach (DetalleFactura item in ListaDetalles)
             {
-                connection.Open();
-                SqlTransaction transaction = connection.BeginTransaction();
-
-                try
+                if (detFactura.DecrementarStockPosventa(item.Cantidad, item.IDProducto) == false)
                 {
-                    foreach (DetalleFactura detalleFactura in ListaDetalles)
-                    {
-                        string query = "UPDATE [BDDJ].[dbo].[PRODUCTO] SET _CantidadEnStock = _CantidadEnStock - @CantidadComprada WHERE _IDProducto = @IDProducto";
-                        using (SqlCommand command = new SqlCommand(query, connection, transaction))
-                        {
-                            command.Parameters.AddWithValue("@IDProducto", detalleFactura.IDProducto);
-                            command.Parameters.AddWithValue("@CantidadComprada", detalleFactura.Cantidad);
-
-                            command.ExecuteNonQuery();
-                        }
-                    }
-
-                    transaction.Commit();
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    transaction.Rollback();
                     return false;
                 }
-                finally
-                {
-                    connection.Close();
-                    connection.Dispose();
-                }
             }
+
+            return true;
         }
     }
 }
