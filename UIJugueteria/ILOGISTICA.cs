@@ -70,7 +70,7 @@ namespace UIJugueteria
         private void btnCerrarsesion_Click(object sender, EventArgs e)
         {
             CerrarSesion(new NOSE());
-            MessageBox.Show("\tSesion Cerrada\t");
+
         }
 
         private void btnCargarStock_Click(object sender, EventArgs e)

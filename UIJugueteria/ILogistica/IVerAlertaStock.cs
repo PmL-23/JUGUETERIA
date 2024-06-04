@@ -20,12 +20,14 @@ namespace UIJugueteria.ILogistica
 
             List<BLL.Producto> listaProductos = logistica.VerAlertarBajoStock();
 
+            int contador = listaProductos.Count;
             dtgvVerProductos.Rows.Clear();
 
             foreach (BLL.Producto producto in listaProductos)
             {
                 // Agregar una nueva fila al DataGridView y asignar los valores de las celdas
                 dtgvVerProductos.Rows.Add(producto.IDCreadorProducto, producto.IDProducto, producto.NombreProducto, producto.FechaDeCreacion, producto.CantidadMinimaPermitida, producto.CantidadEnStock);
+            
             }
             dtgvVerProductos.CellFormatting += dtgvVerProductos_CellFormatting;
 

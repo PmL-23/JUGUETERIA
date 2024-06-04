@@ -176,6 +176,10 @@ namespace UIJugueteria
 
         private void btnEliminarProducto_Click_1(object sender, EventArgs e)
         {
+
+            //codigo de metodo q primero ve si el producto esta en un detalle factura, si esta NO te deja eliminarlo, te salta un mensaje.
+            //si el producto no esta en ningun detalle factura, te deja eliminarlo normal.
+
             bool resultado = logistica.EliminarProducto(idproducto.Text);
 
             if (resultado) {

@@ -78,7 +78,6 @@ namespace UIJugueteria
                     //Si el empleado se encuentra habilitado por el administrador puede iniciar sesion normalmente
                     if (_RolTemp == "Logistica")
                     {
-                        MessageBox.Show("\tInicio Sesión Exitosamente\t\n\tBienvenido " + _NombreUsuario);
 
                         tboxIniciarUsuario.Text = "";
                         tboxIniciarContraseña.Text = "";
@@ -88,7 +87,6 @@ namespace UIJugueteria
                     }
                     if (_RolTemp == "Administrador")
                     {
-                        MessageBox.Show("\tInicio Sesión Exitosamente\t\n\tBienvenido " + _NombreUsuario);
                         tboxIniciarUsuario.Text = "";
                         tboxIniciarContraseña.Text = "";
 
@@ -96,7 +94,6 @@ namespace UIJugueteria
                     }
                     if (_RolTemp == "Vendedor")
                     {
-                        MessageBox.Show("\tInicio Sesión Exitosamente\t\n\tBienvenido " + _NombreUsuario);
                         tboxIniciarUsuario.Text = "";
                         tboxIniciarContraseña.Text = "";
 
