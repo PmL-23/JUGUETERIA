@@ -17,7 +17,7 @@ namespace DAL
             return objConexion.LeerPorComando("SELECT [USUARIOS].[_Nombre] AS Nombre, [USUARIOS].[_Apellido] AS Apellido,[USUARIOS].[_DNI] AS DNI,[USUARIOS].[_NombreUsuario] AS NombreDeUsuario,[EMPLEADOS].[_Rol] AS Rol,[EMPLEADOS].[_Sueldo] AS Sueldo,[EMPLEADOS].[_Habilitado] AS Estado FROM [BDDJ].[dbo].[USUARIOS] JOIN [BDDJ].[dbo].[EMPLEADOS] ON [USUARIOS]._NombreUsuario = [EMPLEADOS].[_IDEmpleado];");
         }
 
-        public bool ActualizarDatosUsuario(string rolPrevio, string nombreUsuario, string Rol, string Estado, int Sueldo)
+        public bool ActualizarDatosUsuario(string rolPrevio, string nombreUsuario, string Rol, string Estado, decimal Sueldo)
         {
             Conexion actualizarDatosDeEmpleado = new Conexion();
             int filasAfectadas = actualizarDatosDeEmpleado.EscribirPorComando("UPDATE [BDDJ].[dbo].[EMPLEADOS] SET [_Rol] = '" + Rol + "', [_Habilitado] = '" + Estado + "', [_Sueldo] = " + Sueldo + " WHERE [EMPLEADOS].[_IDEmpleado] = '" + nombreUsuario + "';");
@@ -50,5 +50,14 @@ namespace DAL
 
             return false;
         }
+
+        public DataTable TraerListaVendedores()
+        {
+            Conexion objConexion = new Conexion();
+            return objConexion.LeerPorComando("SELECT [_Nombre], [_Apellido], [_IDEmpleado], [_Sueldo], [_Habilitado], [_CantidadVentas] FROM USUARIOS u JOIN EMPLEADOS e ON u._NombreUsuario = _IDEmpleado join VENDEDOR v on e._IDEmpleado= _IDVendedor order by [_CantidadVentas]");
+
+        }
+
+
     }
 }

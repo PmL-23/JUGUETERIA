@@ -15,7 +15,7 @@ namespace BLL
     {
         protected string _Rol;
         protected string _IDEmpleado;
-        protected int _Sueldo;
+        protected decimal _Sueldo;
         protected string _Habilitado;
 
         #region Props
@@ -26,7 +26,7 @@ namespace BLL
         }
 
 
-        public int Sueldo
+        public decimal Sueldo
         {
             get { return _Sueldo; }
             set { _Sueldo = value; }

@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabAdminEmpleados = new System.Windows.Forms.TabControl();
             this.tabSeleccionar = new System.Windows.Forms.TabPage();
             this.btnCerrarsesion = new System.Windows.Forms.Button();
@@ -50,17 +53,31 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnVendoresVentas = new System.Windows.Forms.Button();
+            this.tabVerEmpleados = new System.Windows.Forms.TabPage();
+            this.btnVolver = new System.Windows.Forms.Button();
+            this.dtgvVendedores = new System.Windows.Forms.DataGridView();
+            this.NombreVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HabilitadoVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SueldoVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantidadVentasVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabAdminEmpleados.SuspendLayout();
             this.tabSeleccionar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmpleados)).BeginInit();
             this.tabModificar.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tabVerEmpleados.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvVendedores)).BeginInit();
             this.SuspendLayout();
             // 
             // tabAdminEmpleados
             // 
             this.tabAdminEmpleados.Controls.Add(this.tabSeleccionar);
             this.tabAdminEmpleados.Controls.Add(this.tabModificar);
+            this.tabAdminEmpleados.Controls.Add(this.tabVerEmpleados);
             this.tabAdminEmpleados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabAdminEmpleados.Location = new System.Drawing.Point(0, 0);
             this.tabAdminEmpleados.Name = "tabAdminEmpleados";
@@ -70,6 +87,7 @@
             // 
             // tabSeleccionar
             // 
+            this.tabSeleccionar.Controls.Add(this.btnVendoresVentas);
             this.tabSeleccionar.Controls.Add(this.btnCerrarsesion);
             this.tabSeleccionar.Controls.Add(this.btn_modif_empleado);
             this.tabSeleccionar.Controls.Add(this.dataGridViewEmpleados);
@@ -123,18 +141,20 @@
             this.dataGridViewEmpleados.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridViewEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEmpleados.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dataGridViewEmpleados.Dock = System.Windows.Forms.DockStyle.Left;
             this.dataGridViewEmpleados.GridColor = System.Drawing.Color.Black;
-            this.dataGridViewEmpleados.Location = new System.Drawing.Point(6, 19);
+            this.dataGridViewEmpleados.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewEmpleados.MultiSelect = false;
             this.dataGridViewEmpleados.Name = "dataGridViewEmpleados";
             this.dataGridViewEmpleados.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dataGridViewEmpleados.ShowEditingIcon = false;
-            this.dataGridViewEmpleados.Size = new System.Drawing.Size(669, 315);
+            this.dataGridViewEmpleados.Size = new System.Drawing.Size(683, 333);
             this.dataGridViewEmpleados.TabIndex = 0;
             this.dataGridViewEmpleados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmpleados_CellContentClick_1);
             // 
             // tabModificar
             // 
+            this.tabModificar.Controls.Add(this.button2);
             this.tabModificar.Controls.Add(this.label_nombreusuario);
             this.tabModificar.Controls.Add(this.label_dni);
             this.tabModificar.Controls.Add(this.label_apellido);
@@ -153,10 +173,11 @@
             this.tabModificar.Location = new System.Drawing.Point(4, 22);
             this.tabModificar.Name = "tabModificar";
             this.tabModificar.Padding = new System.Windows.Forms.Padding(3);
-            this.tabModificar.Size = new System.Drawing.Size(488, 339);
+            this.tabModificar.Size = new System.Drawing.Size(791, 339);
             this.tabModificar.TabIndex = 1;
             this.tabModificar.Text = "Modificacion de empleado";
             this.tabModificar.UseVisualStyleBackColor = true;
+            this.tabModificar.Click += new System.EventHandler(this.tabModificar_Click);
             // 
             // label_nombreusuario
             // 
@@ -326,6 +347,143 @@
             this.panel1.Size = new System.Drawing.Size(799, 365);
             this.panel1.TabIndex = 9;
             // 
+            // btnVendoresVentas
+            // 
+            this.btnVendoresVentas.BackColor = System.Drawing.SystemColors.Window;
+            this.btnVendoresVentas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnVendoresVentas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVendoresVentas.FlatAppearance.BorderSize = 0;
+            this.btnVendoresVentas.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVendoresVentas.ForeColor = System.Drawing.Color.Firebrick;
+            this.btnVendoresVentas.Location = new System.Drawing.Point(695, 85);
+            this.btnVendoresVentas.Margin = new System.Windows.Forms.Padding(0);
+            this.btnVendoresVentas.Name = "btnVendoresVentas";
+            this.btnVendoresVentas.Size = new System.Drawing.Size(86, 51);
+            this.btnVendoresVentas.TabIndex = 10;
+            this.btnVendoresVentas.Text = "Listar Vendores ";
+            this.btnVendoresVentas.UseVisualStyleBackColor = false;
+            this.btnVendoresVentas.Click += new System.EventHandler(this.btnVendoresVentas_Click);
+            // 
+            // tabVerEmpleados
+            // 
+            this.tabVerEmpleados.Controls.Add(this.dtgvVendedores);
+            this.tabVerEmpleados.Controls.Add(this.btnVolver);
+            this.tabVerEmpleados.Location = new System.Drawing.Point(4, 22);
+            this.tabVerEmpleados.Name = "tabVerEmpleados";
+            this.tabVerEmpleados.Padding = new System.Windows.Forms.Padding(3);
+            this.tabVerEmpleados.Size = new System.Drawing.Size(791, 339);
+            this.tabVerEmpleados.TabIndex = 2;
+            this.tabVerEmpleados.Text = "Ver Empleados";
+            this.tabVerEmpleados.UseVisualStyleBackColor = true;
+            this.tabVerEmpleados.Click += new System.EventHandler(this.tabVerEmpleados_Click);
+            // 
+            // btnVolver
+            // 
+            this.btnVolver.BackColor = System.Drawing.Color.DarkRed;
+            this.btnVolver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVolver.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.btnVolver.ForeColor = System.Drawing.Color.White;
+            this.btnVolver.Location = new System.Drawing.Point(692, 304);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(88, 25);
+            this.btnVolver.TabIndex = 10;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = false;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
+            // dtgvVendedores
+            // 
+            this.dtgvVendedores.AllowUserToAddRows = false;
+            this.dtgvVendedores.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtgvVendedores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dtgvVendedores.BackgroundColor = System.Drawing.Color.White;
+            this.dtgvVendedores.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgvVendedores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dtgvVendedores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvVendedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dtgvVendedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvVendedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NombreVendedor,
+            this.ApellidoVendedor,
+            this.IDVendedor,
+            this.HabilitadoVendedor,
+            this.SueldoVendedor,
+            this.CantidadVentasVendedor});
+            this.dtgvVendedores.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dtgvVendedores.Location = new System.Drawing.Point(3, 3);
+            this.dtgvVendedores.Name = "dtgvVendedores";
+            this.dtgvVendedores.ReadOnly = true;
+            this.dtgvVendedores.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dtgvVendedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvVendedores.Size = new System.Drawing.Size(683, 333);
+            this.dtgvVendedores.TabIndex = 11;
+            // 
+            // NombreVendedor
+            // 
+            this.NombreVendedor.HeaderText = "Nombres";
+            this.NombreVendedor.Name = "NombreVendedor";
+            this.NombreVendedor.ReadOnly = true;
+            // 
+            // ApellidoVendedor
+            // 
+            this.ApellidoVendedor.HeaderText = "Apellido";
+            this.ApellidoVendedor.Name = "ApellidoVendedor";
+            this.ApellidoVendedor.ReadOnly = true;
+            // 
+            // IDVendedor
+            // 
+            this.IDVendedor.HeaderText = "ID";
+            this.IDVendedor.Name = "IDVendedor";
+            this.IDVendedor.ReadOnly = true;
+            // 
+            // HabilitadoVendedor
+            // 
+            this.HabilitadoVendedor.HeaderText = "Habilitado";
+            this.HabilitadoVendedor.Name = "HabilitadoVendedor";
+            this.HabilitadoVendedor.ReadOnly = true;
+            // 
+            // SueldoVendedor
+            // 
+            this.SueldoVendedor.HeaderText = "Sueldo";
+            this.SueldoVendedor.Name = "SueldoVendedor";
+            this.SueldoVendedor.ReadOnly = true;
+            // 
+            // CantidadVentasVendedor
+            // 
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CantidadVentasVendedor.DefaultCellStyle = dataGridViewCellStyle6;
+            this.CantidadVentasVendedor.HeaderText = "Ventas";
+            this.CantidadVentasVendedor.Name = "CantidadVentasVendedor";
+            this.CantidadVentasVendedor.ReadOnly = true;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.DarkRed;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(680, 57);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(88, 25);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "Volver";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // IADMINISTRADOR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -343,6 +501,8 @@
             this.tabModificar.ResumeLayout(false);
             this.tabModificar.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.tabVerEmpleados.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvVendedores)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -370,5 +530,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnCerrarsesion;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnVendoresVentas;
+        private System.Windows.Forms.TabPage tabVerEmpleados;
+        private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.DataGridView dtgvVendedores;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreVendedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoVendedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDVendedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HabilitadoVendedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SueldoVendedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantidadVentasVendedor;
+        private System.Windows.Forms.Button button2;
     }
 }

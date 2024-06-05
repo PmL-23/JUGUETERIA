@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace UIJugueteria
             dataGridViewEmpleados.MultiSelect = false;
             dataGridViewEmpleados.ReadOnly = true;
             tabAdminEmpleados.TabPages.Remove(tabModificar);
+            tabAdminEmpleados.TabPages.Remove(tabVerEmpleados);
 
             comboBox_rol.Items.Add("Vendedor");
             comboBox_rol.Items.Add("Administrador");
@@ -112,20 +114,33 @@ namespace UIJugueteria
 
             BLL.Administrador admin = new BLL.Administrador();
 
-            if (admin.ActualizarDatosUsuario(this.RolPrevio,label_nombreusuario.Text, comboBox_rol.Text, comboBox_estado.Text, int.Parse(textBox_sueldo.Text)))
+            string Sueldotexto = textBox_sueldo.Text.Replace(',', '.');
+            decimal _Sueldo;
+            if (decimal.TryParse(Sueldotexto, NumberStyles.Any, CultureInfo.InvariantCulture, out _Sueldo))
             {
-                MessageBox.Show("Datos de usuario '" + label_nombreusuario.Text + "' actualizados con exito!.");
-            }
-            else
-            {
-                MessageBox.Show("Error al actualizar los datos del usuario '" + label_nombreusuario.Text + "'.");
-            }
 
-            tabAdminEmpleados.TabPages.Remove(tabModificar);
-            tabAdminEmpleados.TabPages.Add(tabSeleccionar);
+                if (admin.ActualizarDatosUsuario(this.RolPrevio, label_nombreusuario.Text, comboBox_rol.Text, comboBox_estado.Text, _Sueldo))
+                {
+                    MessageBox.Show("Datos de usuario '" + label_nombreusuario.Text + "' actualizados con exito!.");
+                    tabAdminEmpleados.TabPages.Remove(tabModificar);
+                    tabAdminEmpleados.TabPages.Add(tabSeleccionar);
+                    dataGridViewEmpleados.DataSource = admin.ListarEmpleados();
 
-            //Una vez actualizados los datos recargo la tabla
-            dataGridViewEmpleados.DataSource = admin.ListarEmpleados();
+                    //Una vez actualizados los datos recargo la tabla
+                }
+                else
+                {
+                    MessageBox.Show("Error al actualizar los datos del usuario '" + label_nombreusuario.Text + "'.");
+                }
+            }
+            else {
+
+                MessageBox.Show("El formato del Sueldo es incorrecto!");
+            }
+           
+
+
+            
         }
 
         private void btnCerrarsesion_Click(object sender, EventArgs e)
@@ -170,6 +185,58 @@ namespace UIJugueteria
         private void dataGridViewEmpleados_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void tabModificar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabVerEmpleados_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnVendoresVentas_Click(object sender, EventArgs e)
+        {
+            tabAdminEmpleados.TabPages.Remove(tabSeleccionar);
+            tabAdminEmpleados.TabPages.Add(tabVerEmpleados);
+            BLL.Administrador admin = new BLL.Administrador();
+
+            List<BLL.Vendedor> listaVendedores = admin.TraerListaVendedores();
+
+            dtgvVendedores.Rows.Clear();
+
+            foreach (BLL.Vendedor vendedor in listaVendedores)
+            {
+
+                int rowIndex = dtgvVendedores.Rows.Add(vendedor.Nombre, vendedor.Apellido, vendedor.IDEmpleado, vendedor.Habilitado, "$ " + vendedor.Sueldo,vendedor.CantidadVentas);
+                
+                // Obtener la fila actual
+                DataGridViewRow row = dtgvVendedores.Rows[rowIndex];
+
+                if (vendedor.CantidadVentas == 0)
+                {
+                    row.Cells["StockProducto"].Style.BackColor = Color.Brown;
+                    row.Cells["StockProducto"].Style.ForeColor = Color.Black;
+                }
+            }
+            dtgvVendedores.Columns["SueldoVendedor"].DefaultCellStyle.Format = "0.00";
+
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+
+
+            tabAdminEmpleados.TabPages.Remove(tabVerEmpleados);
+            tabAdminEmpleados.TabPages.Add(tabSeleccionar);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            tabAdminEmpleados.TabPages.Remove(tabModificar);
+            tabAdminEmpleados.TabPages.Add(tabSeleccionar);
         }
     }
 }

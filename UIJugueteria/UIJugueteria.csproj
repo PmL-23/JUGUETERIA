@@ -142,6 +142,12 @@
     <Compile Include="IVendedor\FacturasCliente.Designer.cs">
       <DependentUpon>FacturasCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListarVendedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListarVendedores.Designer.cs">
+      <DependentUpon>ListarVendedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="NuevaVenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IVendedor\FacturasCliente.resx">
       <DependentUpon>FacturasCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListarVendedores.resx">
+      <DependentUpon>ListarVendedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NuevaVenta.resx">
       <DependentUpon>NuevaVenta.cs</DependentUpon>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -38,7 +39,7 @@ namespace BLL
             return listaDeEmpleados;
         }
 
-        public bool ActualizarDatosUsuario(string rolPrevio, string nombreUsuario, string Rol, string Estado, int Sueldo)
+        public bool ActualizarDatosUsuario(string rolPrevio, string nombreUsuario, string Rol, string Estado, decimal Sueldo)
         {
 
             DAL.Administrador admin = new DAL.Administrador();
@@ -51,6 +52,30 @@ namespace BLL
             return false;
         }
 
+
+        public List<Vendedor> TraerListaVendedores()
+        {
+
+            List<Vendedor> ListaVendedores = new List<Vendedor>();
+            DAL.Administrador vendedor = new DAL.Administrador();
+
+            DataTable vendedorbd = vendedor.TraerListaVendedores();
+
+            foreach (DataRow row in vendedorbd.Rows)
+            {
+                Vendedor VendedorALista = new Vendedor();
+                
+                VendedorALista.Nombre = row["_Nombre"].ToString();
+                VendedorALista.Apellido = row["_Apellido"].ToString();
+                VendedorALista.IDEmpleado = row["_IDEmpleado"].ToString();
+                VendedorALista.Sueldo = Convert.ToDecimal(row["_Sueldo"]);
+                VendedorALista.Habilitado = row["_Habilitado"].ToString();
+                VendedorALista.CantidadVentas= Convert.ToInt32(row["_CantidadVentas"]);
+                ListaVendedores.Add(VendedorALista);
+            }
+            return ListaVendedores;
+            }
+        
 
         public Administrador()
         {

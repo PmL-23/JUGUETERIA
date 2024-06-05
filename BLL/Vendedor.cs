@@ -10,9 +10,9 @@ namespace BLL
     public class Vendedor : Empleado
     {
 
-        private string _CantidadVentas;
+        private int _CantidadVentas;
 
-        public string CantidadVentas
+        public int CantidadVentas
         {
             get { return _CantidadVentas; }
             set { _CantidadVentas = value; }

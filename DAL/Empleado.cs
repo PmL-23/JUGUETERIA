@@ -33,7 +33,7 @@ namespace DAL
         }
 
 
-        public bool Registrarse(string nombre, string apellido, int dni, string nombreUsuario, string contrasenia, string Rol, int Sueldo, string Habilitado)
+        public bool Registrarse(string nombre, string apellido, int dni, string nombreUsuario, string contrasenia, string Rol, decimal Sueldo, string Habilitado)
         {
             Conexion objConexion = new Conexion();
             int filasAfectadas = objConexion.EscribirPorComando("INSERT into [BDDJ].[dbo].[USUARIOS] ([_Nombre], [_Apellido], [_DNI], [_Contraseña], [_NombreUsuario]) values ('" + nombre + "', '" + apellido + "', " + dni + ", '" + contrasenia + "', '" + nombreUsuario + "')");
