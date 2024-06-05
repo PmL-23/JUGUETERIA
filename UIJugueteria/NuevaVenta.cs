@@ -418,5 +418,10 @@ namespace UIJugueteria
                 MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
             }
         }
+
+        private void dgv_productos_factura_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

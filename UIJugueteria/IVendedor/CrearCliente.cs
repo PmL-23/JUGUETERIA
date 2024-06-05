@@ -41,7 +41,7 @@ namespace UIJugueteria
                 if (unVendedor.RegistrarCliente(idCliente, nombre, apellido, dni, cantidadCompras) == true)
                 {
                     MessageBox.Show("Usuario cliente creado con exito!!");
-                    AbrirFormEnPanel(new IVENDEDOR(this.IDVendedor));
+                    AbrirFormEnPanel(() => new IVENDEDOR(this.IDVendedor));
                 }
                 else
                 {
@@ -69,21 +69,31 @@ namespace UIJugueteria
             }
         }
 
-        private void AbrirFormEnPanel(Form formulario)
+        private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
         {
-            // Eliminar todos los controles existentes del panel
-            panel1.Controls.Clear();
+            // Cerrar y eliminar cualquier instancia existente del formulario
+            var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
+            if (existingForm != null)
+            {
+                panel1.Controls.Remove(existingForm);
+                existingForm.Close();
+                existingForm.Dispose();
+            }
 
-            // Añadir el nuevo formulario al panel
+            // Crear una nueva instancia del formulario
+            Form formulario = formFactory();
             formulario.TopLevel = false;
+            formulario.FormBorderStyle = FormBorderStyle.None;
             formulario.Dock = DockStyle.Fill;
             panel1.Controls.Add(formulario);
+            panel1.Tag = formulario;
             formulario.Show();
+            formulario.BringToFront();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new IVENDEDOR(this.IDVendedor));
+            AbrirFormEnPanel(() => new IVENDEDOR(this.IDVendedor));
         }
 
         private void label5_Click(object sender, EventArgs e)

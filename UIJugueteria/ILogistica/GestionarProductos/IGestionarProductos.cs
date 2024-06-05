@@ -26,7 +26,22 @@ namespace UIJugueteria
             foreach (BLL.Producto producto in listaProductos)
             {
                 // Agregar una nueva fila al DataGridView y asignar los valores de las celdas
-                dtgvVerProductos.Rows.Add(producto.IDProducto, producto.NombreProducto, "$ " + producto.Costo, "$ " + producto.Precioventa, producto.CantidadEnStock);
+                int rowIndex = dtgvVerProductos.Rows.Add(producto.IDProducto, producto.NombreProducto, "$ " + producto.Costo, "$ " + producto.Precioventa, producto.CantidadEnStock);
+
+                // Obtener la fila actual
+                DataGridViewRow row = dtgvVerProductos.Rows[rowIndex];
+
+                // Cambiar el color de la celda de CantidadEnStock si es menor que CantidadMinimaPermitida
+                if (producto.CantidadEnStock < producto.CantidadMinimaPermitida)
+                {
+                    row.Cells["StockProducto"].Style.BackColor = Color.Orange;
+                    row.Cells["StockProducto"].Style.ForeColor = Color.Black;
+                }
+                if (producto.CantidadEnStock == 0)
+                {
+                    row.Cells["StockProducto"].Style.BackColor = Color.Brown;
+                    row.Cells["StockProducto"].Style.ForeColor = Color.Black;
+                }
             }
             dtgvVerProductos.Columns["CostoProducto"].DefaultCellStyle.Format = "0.00";
            
@@ -144,7 +159,7 @@ namespace UIJugueteria
                 }
                 else
                 {
-                    MessageBox.Show("Ocurrio un error al eliminar el producto con ID: " + IDSelececionada);
+                    MessageBox.Show("El producto con ID  " + IDSelececionada+"se ha usado en una factura, por lo que no se puede eliminar de la Base de Datos.");
 
                 }
 

@@ -41,12 +41,17 @@
             this.FechaCreacionProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockMinimoIdeal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbl = new System.Windows.Forms.Label();
+            this.lblCantidadProductos = new System.Windows.Forms.Label();
             this.PanelParaProducto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvVerProductos)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelParaProducto
             // 
+            this.PanelParaProducto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.PanelParaProducto.Controls.Add(this.lblCantidadProductos);
+            this.PanelParaProducto.Controls.Add(this.lbl);
             this.PanelParaProducto.Controls.Add(this.dtgvVerProductos);
             this.PanelParaProducto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelParaProducto.Location = new System.Drawing.Point(0, 0);
@@ -84,11 +89,11 @@
             this.FechaCreacionProducto,
             this.StockMinimoIdeal,
             this.StockProducto});
-            this.dtgvVerProductos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtgvVerProductos.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dtgvVerProductos.EnableHeadersVisualStyles = false;
             this.dtgvVerProductos.GridColor = System.Drawing.Color.Black;
             this.dtgvVerProductos.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dtgvVerProductos.Location = new System.Drawing.Point(0, 0);
+            this.dtgvVerProductos.Location = new System.Drawing.Point(0, 18);
             this.dtgvVerProductos.Name = "dtgvVerProductos";
             this.dtgvVerProductos.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -106,7 +111,8 @@
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Gainsboro;
             this.dtgvVerProductos.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dtgvVerProductos.Size = new System.Drawing.Size(599, 365);
+            this.dtgvVerProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dtgvVerProductos.Size = new System.Drawing.Size(599, 347);
             this.dtgvVerProductos.TabIndex = 8;
             this.dtgvVerProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvVerProductos_CellContentClick_1);
             this.dtgvVerProductos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgvVerProductos_CellFormatting);
@@ -158,6 +164,29 @@
             this.StockProducto.ReadOnly = true;
             this.StockProducto.Width = 105;
             // 
+            // lbl
+            // 
+            this.lbl.AutoSize = true;
+            this.lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lbl.Location = new System.Drawing.Point(3, 0);
+            this.lbl.Name = "lbl";
+            this.lbl.Size = new System.Drawing.Size(203, 15);
+            this.lbl.TabIndex = 9;
+            this.lbl.Text = "Productos con menor Stock al Ideal:";
+            // 
+            // lblCantidadProductos
+            // 
+            this.lblCantidadProductos.AutoSize = true;
+            this.lblCantidadProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidadProductos.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblCantidadProductos.Location = new System.Drawing.Point(212, 0);
+            this.lblCantidadProductos.Name = "lblCantidadProductos";
+            this.lblCantidadProductos.Size = new System.Drawing.Size(58, 15);
+            this.lblCantidadProductos.TabIndex = 10;
+            this.lblCantidadProductos.Text = "dinamico";
+            this.lblCantidadProductos.Click += new System.EventHandler(this.lblCantidadProductos_Click);
+            // 
             // IVerAlertaStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,6 +198,7 @@
             this.Text = "IVerAlertaStock";
             this.Load += new System.EventHandler(this.IVerAlertaStock_Load);
             this.PanelParaProducto.ResumeLayout(false);
+            this.PanelParaProducto.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvVerProductos)).EndInit();
             this.ResumeLayout(false);
 
@@ -184,5 +214,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaCreacionProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn StockMinimoIdeal;
         private System.Windows.Forms.DataGridViewTextBoxColumn StockProducto;
+        private System.Windows.Forms.Label lblCantidadProductos;
+        private System.Windows.Forms.Label lbl;
     }
 }

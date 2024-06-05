@@ -21,6 +21,7 @@ namespace UIJugueteria
         {
             InitializeComponent();
              this._NombreUsuario = _NombreUsuario;
+            AbrirFormEnPanel(() => new IGestionarProductos());
 
 
         }

@@ -30,24 +30,32 @@ namespace UIJugueteria
         {
 
         }
-        private void AbrirFormEnPanel(Form formulario)
+        private void AbrirFormEnPanelCERRAR<MiForm>(Func<MiForm> formFactory) where MiForm : Form
         {
-            try
+            // Cierra y elimina todos los controles en paneltodo
+            CloseAndRemoveAllControls(panel1);
+
+            Form formulario = formFactory();
+            formulario.TopLevel = false;
+            formulario.FormBorderStyle = FormBorderStyle.None;
+            formulario.Dock = DockStyle.Fill;
+            panel1.Controls.Add(formulario);
+            panel1.Tag = formulario;
+            formulario.Show();
+            formulario.BringToFront();
+        }
+
+        // Método auxiliar para cerrar y eliminar todos los controles en un panel
+        private void CloseAndRemoveAllControls(Panel panel)
+        {
+            foreach (Control control in panel.Controls)
             {
-                 // Eliminar todos los controles existentes del panel
-                panel1.Controls.Clear();
-
-                // Añadir el nuevo formulario al panel
-                formulario.TopLevel = false;
-                formulario.Dock = DockStyle.Fill;
-                panel1.Controls.Add(formulario);
-                formulario.Show();
-                formulario.BringToFront();
+                if (control is Form form)
+                {
+                    form.Close();
+                }
             }
-            catch {
-
-                MessageBox.Show("Disculpe las molestias, ocurrio un error");
-            }
+            panel.Controls.Clear();
         }
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
@@ -57,8 +65,8 @@ namespace UIJugueteria
             }
             else {
                 //if cliente existe y tiene facturas
-                
-                AbrirFormEnPanel(new FacturasCliente(tboxIDCliente.Text, _IDVendedor));
+
+                AbrirFormEnPanelCERRAR(() => new FacturasCliente(tboxIDCliente.Text, _IDVendedor));
 
                 //si existe y no tiene facturas otro mensaje.
                 //si no existe, mensaje
@@ -72,7 +80,7 @@ namespace UIJugueteria
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new IVENDEDOR(_IDVendedor));
+            AbrirFormEnPanelCERRAR( () => new IVENDEDOR(_IDVendedor));
         }
 
         private void btnVerFacturasCliente_Click(object sender, EventArgs e)
@@ -82,7 +90,7 @@ namespace UIJugueteria
             {
                 string IDSeleccionada = (string)dgv_clientes.Rows[indice].Cells["IDCliente"].Value;
 
-                AbrirFormEnPanel(new FacturasCliente(_IDVendedor, IDSeleccionada));
+                AbrirFormEnPanelCERRAR( () => new FacturasCliente(_IDVendedor, IDSelececionada));
             }
             else
             {

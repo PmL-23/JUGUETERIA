@@ -65,13 +65,24 @@ namespace DAL
         public bool EliminarProducto(string IDProducto)
         {
             Conexion objConexion = new Conexion();
-            int filasAfectadas = objConexion.EscribirPorComando("delete PRODUCTO where [_IDProducto] = '"+IDProducto+"'");
-
-            if (filasAfectadas > 0)
+            try
             {
-                return true;
+                int filasAfectadas = objConexion.EscribirPorComando("delete PRODUCTO where [_IDProducto] = '" + IDProducto + "'");
+
+
+                if (filasAfectadas > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            return false;
+            catch
+            {
+                return false;
+            }
         }
 
         public bool ControlarStock(string nombreproducto, int stockdisponible, int stockminimoideal, string IDProducto)
@@ -86,9 +97,9 @@ namespace DAL
             return false;
         }
 
-        public DataTable VerAlertarBajoStock() //pedir ayuda a patricio para haecr esto, ya que el hizo algo muy parecido.
+        public DataTable VerAlertarBajoStock() 
         {
-            Conexion objConexion = new Conexion(); //(fila de abajo) creo que deberia ser otro tipo de declaracion
+            Conexion objConexion = new Conexion();
             return objConexion.LeerPorComando("SELECT [_IDCreadorProducto],[_NombreProducto],[_IDProducto],[_Costo],[_FechaCreacion],[_Precio],[_CantidadEnStock],[_CantidadMinimaPermitida] from [BDDJ].[dbo].[PRODUCTO] where _CantidadEnstock < _CantidadMinimaPermitida");
         }
 

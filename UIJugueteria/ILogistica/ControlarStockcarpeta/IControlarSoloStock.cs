@@ -28,7 +28,25 @@ namespace UIJugueteria.ILogistica
             foreach (BLL.Producto producto in listaProductos)
             {
                 // Agregar una nueva fila al DataGridView y asignar los valores de las celdas
-                dtgvVerProductos.Rows.Add(producto.IDProducto, producto.NombreProducto, producto.FechaDeCreacion, producto.CantidadMinimaPermitida, producto.CantidadEnStock);
+                int rowIndex = dtgvVerProductos.Rows.Add(producto.IDProducto, producto.NombreProducto, producto.FechaDeCreacion, producto.CantidadMinimaPermitida, producto.CantidadEnStock);
+                // Agregar una nueva fila al DataGridView y asignar los valores de las celdas
+
+
+                // Obtener la fila actual
+                DataGridViewRow row = dtgvVerProductos.Rows[rowIndex];
+                // Cambiar el color de la celda de CantidadEnStock si es menor que CantidadMinimaPermitida
+                if (producto.CantidadEnStock < producto.CantidadMinimaPermitida)
+                {
+                    row.Cells["StockProducto"].Style.BackColor = Color.Orange;
+                    row.Cells["StockProducto"].Style.ForeColor = Color.Black;
+                }
+                if (producto.CantidadEnStock == 0)
+                {
+                    row.Cells["StockProducto"].Style.BackColor = Color.Brown;
+                    row.Cells["StockProducto"].Style.ForeColor = Color.Black;
+                }
+
+
             }
 
         }

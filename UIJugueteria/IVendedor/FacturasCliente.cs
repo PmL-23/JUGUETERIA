@@ -39,28 +39,37 @@ namespace UIJugueteria.IVendedor
         {
 
         }
-        private void AbrirFormEnPanel(Form formulario)
+        private void AbrirFormEnPanelCERRAR<MiForm>(Func<MiForm> formFactory) where MiForm : Form
         {
-            try
-            {
-                // Eliminar todos los controles existentes del panel
-                panel1.Controls.Clear();
+            // Cierra y elimina todos los controles en paneltodo
+            CloseAndRemoveAllControls(panel1);
 
-                // Añadir el nuevo formulario al panel
-                formulario.TopLevel = false;
-                formulario.Dock = DockStyle.Fill;
-                panel1.Controls.Add(formulario);
-                formulario.Show();
-                formulario.BringToFront();
+            Form formulario = formFactory();
+            formulario.TopLevel = false;
+            formulario.FormBorderStyle = FormBorderStyle.None;
+            formulario.Dock = DockStyle.Fill;
+            panel1.Controls.Add(formulario);
+            panel1.Tag = formulario;
+            formulario.Show();
+            formulario.BringToFront();
+        }
+
+        // Método auxiliar para cerrar y eliminar todos los controles en un panel
+        private void CloseAndRemoveAllControls(Panel panel)
+        {
+            foreach (Control control in panel.Controls)
+            {
+                if (control is Form form)
+                {
+                    form.Close();
+                }
             }
-            catch {
-                MessageBox.Show("Disculpe las molestias, ocurrio un error.");
-            }
+            panel.Controls.Clear();
         }
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            
-            AbrirFormEnPanel(new HistorialCliente(_IDVendedor));
+
+            AbrirFormEnPanelCERRAR(() => new HistorialCliente(_IDVendedor));
         }
 
         private void btnVerDetalleFactura_Click(object sender, EventArgs e)
@@ -94,7 +103,12 @@ namespace UIJugueteria.IVendedor
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new FacturasCliente(_IDVendedor, tboxIDCliente.Text));
+            AbrirFormEnPanelCERRAR(() => new FacturasCliente(_IDVendedor, tboxIDCliente.Text));
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

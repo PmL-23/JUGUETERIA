@@ -25,37 +25,39 @@ namespace UIJugueteria
             label2.Text = "Historial de ventas de " + this.IDVendedor;
         }
 
-        private void AbrirFormEnPanel(Form formulario)
+        private void AbrirFormEnPanelCERRAR<MiForm>(Func<MiForm> formFactory) where MiForm : Form
         {
-            // Eliminar todos los controles existentes del panel
-            panel1.Controls.Clear();
+            // Cierra y elimina todos los controles en paneltodo
+            CloseAndRemoveAllControls(panel1);
 
-            // Añadir el nuevo formulario al panel
+            Form formulario = formFactory();
             formulario.TopLevel = false;
+            formulario.FormBorderStyle = FormBorderStyle.None;
             formulario.Dock = DockStyle.Fill;
             panel1.Controls.Add(formulario);
+            panel1.Tag = formulario;
             formulario.Show();
+            formulario.BringToFront();
+        }
+
+        // Método auxiliar para cerrar y eliminar todos los controles en un panel
+        private void CloseAndRemoveAllControls(Panel panel)
+        {
+            foreach (Control control in panel.Controls)
+            {
+                if (control is Form form)
+                {
+                    form.Close();
+                }
+            }
+            panel.Controls.Clear();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new CrearCliente(this.IDVendedor));
+            AbrirFormEnPanelCERRAR(() => new CrearCliente(this.IDVendedor));
         }
 
-        private void CerrarSesion(object Formulario)
-        {
-
-            //PanelCentral.Controls.Clear();
-            //PanelLateral.Controls.Clear();
-
-            Form FH = Formulario as Form;
-            FH.WindowState = FormWindowState.Maximized;
-            FH.TopLevel = false;
-            FH.Dock = DockStyle.Fill;
-
-            this.Controls.Add(FH);
-            FH.Show();
-        }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -64,12 +66,12 @@ namespace UIJugueteria
 
         private void button5_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new NuevaVenta(this.IDVendedor));
+            AbrirFormEnPanelCERRAR(() => new NuevaVenta(this.IDVendedor));
         }
 
         private void btn_salir_Click(object sender, EventArgs e)
         {
-            CerrarSesion(new ILogIn());
+            AbrirFormEnPanelCERRAR(() => new ILogIn());
         }
 
 
@@ -98,7 +100,7 @@ namespace UIJugueteria
 
         private void btnVerHistorialCliente_Click_1(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new HistorialCliente(IDVendedor));
+            AbrirFormEnPanelCERRAR(() => new HistorialCliente(IDVendedor));
         }
     }
 }

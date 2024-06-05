@@ -24,6 +24,8 @@ namespace UIJugueteria.ILogistica
             List<BLL.Producto> listaProductos = logistica.VerAlertarBajoStock();
 
             int contador = listaProductos.Count;
+            lblCantidadProductos.Text = contador.ToString();
+
             dtgvVerProductos.Rows.Clear();
 
             foreach (BLL.Producto producto in listaProductos)
@@ -72,5 +74,8 @@ namespace UIJugueteria.ILogistica
                 e.CellStyle.Font = new Font(e.CellStyle.Font.FontFamily, 10);
             }
         }
+
+        private void lblCantidadProductos_Click(object sender, EventArgs e) { }
+
     }
 }

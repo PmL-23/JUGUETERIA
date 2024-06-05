@@ -162,6 +162,7 @@
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Gainsboro;
             this.dtgvVerProductos.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dtgvVerProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvVerProductos.Size = new System.Drawing.Size(500, 330);
             this.dtgvVerProductos.TabIndex = 0;
             this.dtgvVerProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvVerProductos_CellClick_1);

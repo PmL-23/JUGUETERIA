@@ -38,8 +38,8 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnBuscarProducto = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dtgvVerProductos = new System.Windows.Forms.DataGridView();
             this.tboxIDProducto = new System.Windows.Forms.TextBox();
+            this.dtgvVerProductos = new System.Windows.Forms.DataGridView();
             this.IDProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CostoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -126,6 +126,16 @@
             this.panel1.TabIndex = 4;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // tboxIDProducto
+            // 
+            this.tboxIDProducto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.tboxIDProducto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tboxIDProducto.ForeColor = System.Drawing.Color.Gainsboro;
+            this.tboxIDProducto.Location = new System.Drawing.Point(161, 3);
+            this.tboxIDProducto.Name = "tboxIDProducto";
+            this.tboxIDProducto.Size = new System.Drawing.Size(203, 20);
+            this.tboxIDProducto.TabIndex = 10;
+            // 
             // dtgvVerProductos
             // 
             this.dtgvVerProductos.AllowUserToAddRows = false;
@@ -176,20 +186,11 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Gainsboro;
             this.dtgvVerProductos.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dtgvVerProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvVerProductos.Size = new System.Drawing.Size(500, 330);
             this.dtgvVerProductos.TabIndex = 7;
             this.dtgvVerProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvVerProductos_CellClick_1);
             this.dtgvVerProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvVerProductos_CellContentClick_1);
-            // 
-            // tboxIDProducto
-            // 
-            this.tboxIDProducto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.tboxIDProducto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tboxIDProducto.ForeColor = System.Drawing.Color.Gainsboro;
-            this.tboxIDProducto.Location = new System.Drawing.Point(161, 3);
-            this.tboxIDProducto.Name = "tboxIDProducto";
-            this.tboxIDProducto.Size = new System.Drawing.Size(203, 20);
-            this.tboxIDProducto.TabIndex = 10;
             // 
             // IDProducto
             // 

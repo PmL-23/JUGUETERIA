@@ -192,16 +192,13 @@ namespace UIJugueteria
             if (resultado) {
                 MessageBox.Show("El Producto con ID: " + idproducto.Text + " a sido eliminado de la Base de Datos.");
                 AbrirFormEnPanel(() => new IGestionarProductos());
-
-
-
             }
 
 
             else
             {
 
-                MessageBox.Show("El producto con ID: "+ idproducto.Text+" ya ha sido eliminado de la Base de Datos");
+                MessageBox.Show("El producto con ID  " + idproducto.Text + "se ha usado en una factura, por lo que no se puede eliminar de la Base de Datos.");
             }
         }
 
