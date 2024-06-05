@@ -36,7 +36,9 @@
             this.btnVerAlertaDeStock = new System.Windows.Forms.Button();
             this.btnEditarProducto = new System.Windows.Forms.Button();
             this.PanelCentral = new System.Windows.Forms.Panel();
+            this.paneltodo = new System.Windows.Forms.Panel();
             this.PanelLateral.SuspendLayout();
+            this.paneltodo.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCargarNuevoProducto
@@ -161,26 +163,36 @@
             // 
             this.PanelCentral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
             this.PanelCentral.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.PanelCentral.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelCentral.Dock = System.Windows.Forms.DockStyle.Right;
             this.PanelCentral.Location = new System.Drawing.Point(200, 0);
             this.PanelCentral.Name = "PanelCentral";
             this.PanelCentral.Size = new System.Drawing.Size(599, 365);
             this.PanelCentral.TabIndex = 3;
             this.PanelCentral.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelCentral_Paint);
             // 
+            // paneltodo
+            // 
+            this.paneltodo.Controls.Add(this.PanelLateral);
+            this.paneltodo.Controls.Add(this.PanelCentral);
+            this.paneltodo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.paneltodo.Location = new System.Drawing.Point(0, 0);
+            this.paneltodo.Name = "paneltodo";
+            this.paneltodo.Size = new System.Drawing.Size(799, 365);
+            this.paneltodo.TabIndex = 4;
+            // 
             // ILOGISTICA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 365);
-            this.Controls.Add(this.PanelCentral);
-            this.Controls.Add(this.PanelLateral);
+            this.Controls.Add(this.paneltodo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ILOGISTICA";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ILOGISTICA";
             this.Load += new System.EventHandler(this.ILOGISTICA_Load);
             this.PanelLateral.ResumeLayout(false);
+            this.paneltodo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -195,5 +207,6 @@
         private System.Windows.Forms.Button btnCerrarsesion;
         private System.Windows.Forms.Button btnCargarStock;
         private System.Windows.Forms.Button btnLogistica;
+        private System.Windows.Forms.Panel paneltodo;
     }
 }

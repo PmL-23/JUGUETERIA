@@ -65,20 +65,27 @@ namespace UIJugueteria.ILogistica.ControlarStock
         private void tboxStockDisponible_TextChanged(object sender, EventArgs e) { }
         private void tboxStockMinimoIdeal_TextChanged(object sender, EventArgs e) { }
 
-        private void AbrirFormEnPanel(object Formulario)
-        {
+                                        private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
+                                        {
+                                            // Cerrar y eliminar cualquier instancia existente del formulario
+                                            var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
+                                            if (existingForm != null)
+                                            {
+                                                panel1.Controls.Remove(existingForm);
+                                                existingForm.Close();
+                                                existingForm.Dispose();
+                                            }
 
-            this.panel1.Controls.Clear();
-
-            Form FH = Formulario as Form;
-
-            FH.TopLevel = false;
-            FH.Dock = DockStyle.Fill;
-            this.panel1.Controls.Add(FH);
-            this.panel1.Tag = FH;
-            FH.Location = new System.Drawing.Point(0, 0);
-            FH.Show();
-        }
+                                            // Crear una nueva instancia del formulario
+                                            Form formulario = formFactory();
+                                            formulario.TopLevel = false;
+                                            formulario.FormBorderStyle = FormBorderStyle.None;
+                                            formulario.Dock = DockStyle.Fill;
+                                            panel1.Controls.Add(formulario);
+                                            panel1.Tag = formulario;
+                                            formulario.Show();
+                                            formulario.BringToFront();
+                                        }
 
 
 
@@ -111,12 +118,7 @@ namespace UIJugueteria.ILogistica.ControlarStock
                             if (resultado)
                             {
                                 MessageBox.Show("Producto modificado con exito");
-                                    AbrirFormEnPanel(new IControlarSoloStock());
-
-
-
-
-
+                                    AbrirFormEnPanel(() => new IControlarSoloStock());
                             }
 
                             else
@@ -155,7 +157,7 @@ namespace UIJugueteria.ILogistica.ControlarStock
 
                 if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
                 {
-                    AbrirFormEnPanel(new EditarStock(textBox1.Text));
+                    AbrirFormEnPanel(() => new EditarStock(textBox1.Text));
                 }
                 else
                 {                           //Si el producto NO existe, mostramos un mensaje.
@@ -166,7 +168,7 @@ namespace UIJugueteria.ILogistica.ControlarStock
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new IControlarSoloStock());
+            AbrirFormEnPanel(() => new IControlarSoloStock());
         }
 
 

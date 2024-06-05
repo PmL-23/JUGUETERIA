@@ -34,32 +34,28 @@ namespace UIJugueteria
 
         }
 
-      
 
-        private void AbrirFormEnPanel(object Formulario)
+
+        private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
         {
-            if (this.panel1.Controls.Count > 0)
+            // Cerrar y eliminar cualquier instancia existente del formulario
+            var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
+            if (existingForm != null)
             {
-                this.panel1.Controls.Clear();
+                panel1.Controls.Remove(existingForm);
+                existingForm.Close();
+                existingForm.Dispose();
             }
 
-            Form FH = Formulario as Form;
-            FH.TopLevel = false;
-            FH.Dock = DockStyle.Fill;
-            this.panel1.Controls.Add(FH);
-            this.panel1.Tag = FH;
-            FH.Show();
-        }
-        private void RecargarTodo(object Formulario)
-        {
-            panel1.Controls.Clear();
-
-            Form FH = Formulario as Form;
-            FH.TopLevel = false;
-            FH.Dock = DockStyle.Fill;
-            this.panel1.Controls.Add(FH);
-            this.panel1.Tag = FH;
-            FH.Show();
+            // Crear una nueva instancia del formulario
+            Form formulario = formFactory();
+            formulario.TopLevel = false;
+            formulario.FormBorderStyle = FormBorderStyle.None;
+            formulario.Dock = DockStyle.Fill;
+            panel1.Controls.Add(formulario);
+            panel1.Tag = formulario;
+            formulario.Show();
+            formulario.BringToFront();
         }
 
 
@@ -77,7 +73,7 @@ namespace UIJugueteria
 
             if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
             {
-                AbrirFormEnPanel(new EditarProductoEnGestionarProducto(tboxIDProducto.Text));
+                AbrirFormEnPanel(() => new EditarProductoEnGestionarProducto(tboxIDProducto.Text));
             }
             else
             {                           //Si el producto NO existe, mostramos un mensaje.
@@ -107,7 +103,7 @@ namespace UIJugueteria
             if (indice != -1 )
             {
                 string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
-                AbrirFormEnPanel(new EditarProductoEnGestionarProducto(IDSelececionada));
+                AbrirFormEnPanel(() => new EditarProductoEnGestionarProducto(IDSelececionada));
             }
             else
             {
@@ -122,7 +118,7 @@ namespace UIJugueteria
             {
                 string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
 
-                AbrirFormEnPanel(new AmpliarProductoEnGestionarProducto(IDSelececionada));
+                AbrirFormEnPanel(() => new AmpliarProductoEnGestionarProducto(IDSelececionada));
             }
             else
             {
@@ -143,7 +139,7 @@ namespace UIJugueteria
                 if (resultado)
                 {
                     MessageBox.Show("El Producto con ID: " + IDSelececionada + " a sido eliminado de la Base de Datos.");
-                    RecargarTodo(new IGestionarProductos());
+                    AbrirFormEnPanel(() => new IGestionarProductos());
 
                 }
                 else

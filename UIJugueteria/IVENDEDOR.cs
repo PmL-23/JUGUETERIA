@@ -66,7 +66,7 @@ namespace UIJugueteria
 
         private void btn_salir_Click(object sender, EventArgs e)
         {
-            CerrarSesion(new NOSE());
+            CerrarSesion(new ILogIn());
         }
 
 

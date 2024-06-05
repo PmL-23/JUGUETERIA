@@ -46,17 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ILogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ILogIn.Designer.cs">
+      <DependentUpon>ILogIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="IVendedor\HistorialCliente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="IVendedor\HistorialCliente.Designer.cs">
       <DependentUpon>HistorialCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="ILogIn.cs">
+    <Compile Include="INICIO.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ILogIn.Designer.cs">
-      <DependentUpon>ILogIn.cs</DependentUpon>
+    <Compile Include="INICIO.Designer.cs">
+      <DependentUpon>INICIO.cs</DependentUpon>
     </Compile>
     <Compile Include="ILogistica\ControlarStockcarpeta\IControlarSoloStock.cs">
       <SubType>Form</SubType>
@@ -112,10 +118,10 @@
     <Compile Include="ILogistica\GestionarProductos\EditarProductoEnGestionarProducto.Designer.cs">
       <DependentUpon>EditarProductoEnGestionarProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="CrearCliente.cs">
+    <Compile Include="IVendedor\CrearCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CrearCliente.Designer.cs">
+    <Compile Include="IVendedor\CrearCliente.Designer.cs">
       <DependentUpon>CrearCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="ILogistica\IVerAlertaStock.cs">
@@ -144,11 +150,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ILogIn.resx">
+      <DependentUpon>ILogIn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IVendedor\HistorialCliente.resx">
       <DependentUpon>HistorialCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ILogIn.resx">
-      <DependentUpon>ILogIn.cs</DependentUpon>
+    <EmbeddedResource Include="INICIO.resx">
+      <DependentUpon>INICIO.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ILogistica\ControlarStockcarpeta\IControlarSoloStock.resx">
       <DependentUpon>IControlarSoloStock.cs</DependentUpon>
@@ -177,7 +186,7 @@
     <EmbeddedResource Include="ILogistica\GestionarProductos\EditarProductoEnGestionarProducto.resx">
       <DependentUpon>EditarProductoEnGestionarProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CrearCliente.resx">
+    <EmbeddedResource Include="IVendedor\CrearCliente.resx">
       <DependentUpon>CrearCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ILogistica\IVerAlertaStock.resx">

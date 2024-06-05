@@ -58,20 +58,27 @@ namespace UIJugueteria
         private void idproducto_Click(object sender, EventArgs e) { }
         private void lblNombreProductoEstatico_Click(object sender, EventArgs e) { }
 
-        private void AbrirFormEnPanel(object Formulario)
-        {
-            if (this.panel1.Controls.Count > 0)
-            {
-                this.panel1.Controls.Clear();
-            }
+                                    private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
+                                    {
+                                        // Cerrar y eliminar cualquier instancia existente del formulario
+                                        var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
+                                        if (existingForm != null)
+                                        {
+                                            panel1.Controls.Remove(existingForm);
+                                            existingForm.Close();
+                                            existingForm.Dispose();
+                                        }
 
-            Form FH = Formulario as Form;
-            FH.TopLevel = false;
-            FH.Dock = DockStyle.Fill;
-            this.panel1.Controls.Add(FH);
-            this.panel1.Tag = FH;
-            FH.Show();
-        }
+                                        // Crear una nueva instancia del formulario
+                                        Form formulario = formFactory();
+                                        formulario.TopLevel = false;
+                                        formulario.FormBorderStyle = FormBorderStyle.None;
+                                        formulario.Dock = DockStyle.Fill;
+                                        panel1.Controls.Add(formulario);
+                                        panel1.Tag = formulario;
+                                        formulario.Show();
+                                        formulario.BringToFront();
+                                    }
 
 
         private void btnConfirmarCambios_Click_1(object sender, EventArgs e)
@@ -135,7 +142,7 @@ namespace UIJugueteria
                                             if (resultado)
                                             {
                                                 MessageBox.Show("Producto modificado con éxito");
-                                                AbrirFormEnPanel(new IGestionarProductos());
+                                                AbrirFormEnPanel(() => new IGestionarProductos());
                                             }
                                             else
                                             {
@@ -184,7 +191,7 @@ namespace UIJugueteria
 
             if (resultado) {
                 MessageBox.Show("El Producto con ID: " + idproducto.Text + " a sido eliminado de la Base de Datos.");
-                AbrirFormEnPanel(new IGestionarProductos());
+                AbrirFormEnPanel(() => new IGestionarProductos());
 
 
 
@@ -206,7 +213,7 @@ namespace UIJugueteria
 
             if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
             {
-                AbrirFormEnPanel(new EditarProductoEnGestionarProducto(textBox1.Text));
+                AbrirFormEnPanel(() => new EditarProductoEnGestionarProducto(textBox1.Text));
             }
             else
             {                           //Si el producto NO existe, mostramos un mensaje.
@@ -253,7 +260,7 @@ namespace UIJugueteria
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new IGestionarProductos());
+            AbrirFormEnPanel(() => new IGestionarProductos());
         }
 
 

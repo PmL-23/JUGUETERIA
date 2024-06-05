@@ -12,7 +12,7 @@ namespace UIJugueteria
 {
     public partial class CrearUsuario : Form
     {
-        public int xClick, yClick;
+
         public CrearUsuario()
         {
             InitializeComponent();
@@ -47,6 +47,28 @@ namespace UIJugueteria
         private void tboxContraseñaCrear_TextChanged(object sender, EventArgs e) { }
         private void tboxContraseñaConfirmacion_TextChanged(object sender, EventArgs e) { }
 
+        private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
+        {
+            Form formulario = PancelCentral.Controls.OfType<MiForm>().FirstOrDefault();
+
+            // Si el formulario/instancia no existe
+            if (formulario == null)
+            {
+                formulario = formFactory();
+                formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+                formulario.Dock = DockStyle.Fill;
+                PancelCentral.Controls.Add(formulario);
+                PancelCentral.Tag = formulario;
+                formulario.Show();
+                formulario.BringToFront();
+            }
+            // Si el formulario/instancia existe
+            else
+            {
+                formulario.BringToFront();
+            }
+        }
 
 
         private void btnCrearUsuario_Click(object sender, EventArgs e)
@@ -84,7 +106,7 @@ namespace UIJugueteria
                             tboxUsuarioCrear.Text = "";
                             tboxContraseñaCrear.Text = "";
                             tboxContraseñaConfirmacion.Text = "";
-                            CerrarSesion(new NOSE());
+                            AbrirFormEnPanel(() => new ILogIn());
 
                         }
                         else
@@ -109,23 +131,10 @@ namespace UIJugueteria
 
 
         }
-        private void CerrarSesion(object Formulario)
-        {
-
-            PancelCentral.Controls.Clear();
-
-            Form FH = Formulario as Form;
-            FH.WindowState = FormWindowState.Maximized;
-            FH.TopLevel = false;
-            FH.Dock = DockStyle.Fill;
-
-            this.Controls.Add(FH);
-            FH.Show();
-        }
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            CerrarSesion(new NOSE());
+            AbrirFormEnPanel(() => new ILogIn());
         }
 
         private void label1_Click(object sender, EventArgs e)

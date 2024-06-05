@@ -12,11 +12,14 @@ namespace UIJugueteria.ILogistica
 {
     public partial class IVerAlertaStock : Form
     {
+        
 
         public IVerAlertaStock()
         {
             InitializeComponent();
+            
             BLL.Logistica logistica = new BLL.Logistica();
+
 
             List<BLL.Producto> listaProductos = logistica.VerAlertarBajoStock();
 
@@ -34,7 +37,8 @@ namespace UIJugueteria.ILogistica
 
         }
 
-        private void IVerAlertaStock_Load(object sender, EventArgs e) { }
+        private void IVerAlertaStock_Load(object sender, EventArgs e) {
+        }
 
         private void dtgvVerProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

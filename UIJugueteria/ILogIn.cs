@@ -1,41 +1,23 @@
-﻿using BLL;
-using BLL.Exceptions;
+﻿using BLL.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-
 namespace UIJugueteria
 {
-
-
-    public partial class NOSE : Form
+    public partial class ILogIn : Form
     {
-        
-        public NOSE()
+        public ILogIn()
         {
             InitializeComponent();
-
-        }
-        private void btnCancela_Load(object sender, EventArgs e)
-        {
-
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
 
         private void lblNombreUsuario_Click(object sender, EventArgs e) { }// lbl para iniciar sesion
         private void lblContraseña_Click(object sender, EventArgs e) { }// 
@@ -43,7 +25,7 @@ namespace UIJugueteria
         private void tboxUsuario_TextChanged(object sender, EventArgs e) { } // tbox para iniciar sesion.
         private void tboxContraseña_TextChanged(object sender, EventArgs e) { }//
 
-        private void AbrirFormEnPanel(Form formulario)
+        /*private void AbrirFormEnPanel(Form formulario)
         {
             // Eliminar todos los controles existentes del panel
             PanelMain.Controls.Clear();
@@ -55,14 +37,42 @@ namespace UIJugueteria
             formulario.Location = new Point(0, 0); // Inicializa la posición del formulario hijo
             PanelMain.Controls.Add(formulario);
             formulario.Show();
+        }*/
+
+        private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
+        {
+            Form formulario = PanelMain.Controls.OfType<MiForm>().FirstOrDefault();
+
+            // Si el formulario/instancia no existe
+            if (formulario == null)
+            {
+                formulario = formFactory();
+                formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+                formulario.Dock = DockStyle.Fill;
+                PanelMain.Controls.Add(formulario);
+                PanelMain.Tag = formulario;
+                formulario.Show();
+                formulario.BringToFront();
+            }
+            // Si el formulario/instancia existe
+            else
+            {
+                formulario.BringToFront();
+            }
         }
 
 
 
 
 
+        private void PanelMain_Paint(object sender, PaintEventArgs e)
+        {
 
-        private void btnIniciarSesion_Click(object sender, EventArgs e)
+        }
+
+
+        private void btnIniciarSesion_Click_1(object sender, EventArgs e)
         {
             string _NombreUsuario = tboxIniciarUsuario.Text;
             string _Contraseña = tboxIniciarContraseña.Text;
@@ -84,21 +94,21 @@ namespace UIJugueteria
                         tboxIniciarContraseña.Text = "";
                         PanelMain.Controls.Clear();
 
-                        AbrirFormEnPanel(new ILOGISTICA(_NombreUsuario));
+                        AbrirFormEnPanel(() => new ILOGISTICA(_NombreUsuario));
                     }
                     if (_RolTemp == "Administrador")
                     {
                         tboxIniciarUsuario.Text = "";
                         tboxIniciarContraseña.Text = "";
 
-                        AbrirFormEnPanel(new IADMINISTRADOR());
+                        AbrirFormEnPanel(() => new IADMINISTRADOR());
                     }
                     if (_RolTemp == "Vendedor")
                     {
                         tboxIniciarUsuario.Text = "";
                         tboxIniciarContraseña.Text = "";
 
-                        AbrirFormEnPanel(new IVENDEDOR(_NombreUsuario));
+                        AbrirFormEnPanel(() => new IVENDEDOR(_NombreUsuario));
                     }
 
                     //Si el empleado NO se encuentra habilitado o con un rol definido se le notifica lo ocurrido
@@ -130,54 +140,24 @@ namespace UIJugueteria
             }
         }
 
-        private void PanelMain_Paint(object sender, PaintEventArgs e)
+        private void btnCrearCuenta_Click_1(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(() => new CrearUsuario());
+        }
+
+        private void PanelMain_Paint_1(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void btnCrearCuenta_Click(object sender, EventArgs e)
-        {
-            AbrirFormEnPanel(new CrearUsuario());
-        }
-        
-        private void label1_Click(object sender, EventArgs e) { }
-
-        public int xClick, yClick;
-
-        private void btnCerrarAplicacion_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        //para mover la aplicacion.
-        //<DllImport("user32.DLL", EntryPoint:="ReleaseCapture")>
-        //Private Shared Sub ReleaseCapture();
-
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-
-        private void PanelMovCerrar_MouseMove(object sender, MouseEventArgs e)
+        private void ILogIn_Load(object sender, EventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+
         }
-
-        private void label1_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button != MouseButtons.Left)
-            {
-                xClick= e.X; yClick= e.Y;
-            }
-            else
-            {
-                this.Left = this.Left + (e.X);
-                this.Top = this.Top + (e.Y);
-            }
-        }
-        
-
-
-    } 
+    }
 }

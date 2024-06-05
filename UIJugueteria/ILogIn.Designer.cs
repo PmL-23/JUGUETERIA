@@ -1,16 +1,16 @@
 ﻿namespace UIJugueteria
 {
-    partial class NOSE
+    partial class ILogIn
     {
         /// <summary>
-        /// Variable del diseñador necesaria.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Limpiar los recursos que se estén usando.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,77 +20,25 @@
             base.Dispose(disposing);
         }
 
-        #region Código generado por el Diseñador de Windows Forms
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// Método necesario para admitir el Diseñador. No se puede modificar
-        /// el contenido de este método con el editor de código.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NOSE));
-            this.btnIniciarSesion = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.tboxIniciarUsuario = new System.Windows.Forms.TextBox();
-            this.tboxIniciarContraseña = new System.Windows.Forms.TextBox();
             this.PanelMain = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCrearCuenta = new System.Windows.Forms.Button();
-            this.PanelMovCerrar = new System.Windows.Forms.Panel();
-            this.lblJugueteria = new System.Windows.Forms.Label();
-            this.btnCerrarAplicacion = new System.Windows.Forms.Button();
+            this.btnIniciarSesion = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.tboxIniciarUsuario = new System.Windows.Forms.TextBox();
+            this.tboxIniciarContraseña = new System.Windows.Forms.TextBox();
             this.PanelMain.SuspendLayout();
-            this.PanelMovCerrar.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnIniciarSesion
-            // 
-            this.btnIniciarSesion.BackColor = System.Drawing.Color.Firebrick;
-            this.btnIniciarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnIniciarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIniciarSesion.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnIniciarSesion.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnIniciarSesion.Location = new System.Drawing.Point(305, 184);
-            this.btnIniciarSesion.Name = "btnIniciarSesion";
-            this.btnIniciarSesion.Size = new System.Drawing.Size(174, 28);
-            this.btnIniciarSesion.TabIndex = 3;
-            this.btnIniciarSesion.Text = "Iniciar Sesión";
-            this.btnIniciarSesion.UseVisualStyleBackColor = false;
-            this.btnIniciarSesion.Click += new System.EventHandler(this.btnIniciarSesion_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.Firebrick;
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnCancelar.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnCancelar.Location = new System.Drawing.Point(305, 252);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(174, 28);
-            this.btnCancelar.TabIndex = 4;
-            this.btnCancelar.Text = "Salir";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // tboxIniciarUsuario
-            // 
-            this.tboxIniciarUsuario.Location = new System.Drawing.Point(305, 115);
-            this.tboxIniciarUsuario.Name = "tboxIniciarUsuario";
-            this.tboxIniciarUsuario.Size = new System.Drawing.Size(174, 20);
-            this.tboxIniciarUsuario.TabIndex = 1;
-            this.tboxIniciarUsuario.TextChanged += new System.EventHandler(this.tboxUsuario_TextChanged);
-            // 
-            // tboxIniciarContraseña
-            // 
-            this.tboxIniciarContraseña.Location = new System.Drawing.Point(305, 143);
-            this.tboxIniciarContraseña.Name = "tboxIniciarContraseña";
-            this.tboxIniciarContraseña.PasswordChar = '*';
-            this.tboxIniciarContraseña.Size = new System.Drawing.Size(174, 20);
-            this.tboxIniciarContraseña.TabIndex = 2;
-            this.tboxIniciarContraseña.TextChanged += new System.EventHandler(this.tboxContraseña_TextChanged);
             // 
             // PanelMain
             // 
@@ -102,12 +50,13 @@
             this.PanelMain.Controls.Add(this.btnCancelar);
             this.PanelMain.Controls.Add(this.tboxIniciarUsuario);
             this.PanelMain.Controls.Add(this.tboxIniciarContraseña);
+            this.PanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelMain.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.PanelMain.Location = new System.Drawing.Point(0, 17);
+            this.PanelMain.Location = new System.Drawing.Point(0, 0);
             this.PanelMain.Name = "PanelMain";
             this.PanelMain.Size = new System.Drawing.Size(799, 365);
-            this.PanelMain.TabIndex = 19;
-            this.PanelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelMain_Paint);
+            this.PanelMain.TabIndex = 20;
+            this.PanelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelMain_Paint_1);
             // 
             // label3
             // 
@@ -142,8 +91,6 @@
             this.label1.Size = new System.Drawing.Size(269, 62);
             this.label1.TabIndex = 20;
             this.label1.Text = "Jugueteria";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label1_MouseMove);
             // 
             // btnCrearCuenta
             // 
@@ -158,80 +105,80 @@
             this.btnCrearCuenta.TabIndex = 19;
             this.btnCrearCuenta.Text = "Crear Cuenta";
             this.btnCrearCuenta.UseVisualStyleBackColor = false;
-            this.btnCrearCuenta.Click += new System.EventHandler(this.btnCrearCuenta_Click);
+            this.btnCrearCuenta.Click += new System.EventHandler(this.btnCrearCuenta_Click_1);
             // 
-            // PanelMovCerrar
+            // btnIniciarSesion
             // 
-            this.PanelMovCerrar.BackColor = System.Drawing.SystemColors.WindowText;
-            this.PanelMovCerrar.Controls.Add(this.btnCerrarAplicacion);
-            this.PanelMovCerrar.Controls.Add(this.lblJugueteria);
-            this.PanelMovCerrar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelMovCerrar.Location = new System.Drawing.Point(0, 0);
-            this.PanelMovCerrar.Name = "PanelMovCerrar";
-            this.PanelMovCerrar.Size = new System.Drawing.Size(799, 17);
-            this.PanelMovCerrar.TabIndex = 20;
-            this.PanelMovCerrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelMovCerrar_MouseMove);
+            this.btnIniciarSesion.BackColor = System.Drawing.Color.Firebrick;
+            this.btnIniciarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnIniciarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIniciarSesion.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnIniciarSesion.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnIniciarSesion.Location = new System.Drawing.Point(305, 184);
+            this.btnIniciarSesion.Name = "btnIniciarSesion";
+            this.btnIniciarSesion.Size = new System.Drawing.Size(174, 28);
+            this.btnIniciarSesion.TabIndex = 3;
+            this.btnIniciarSesion.Text = "Iniciar Sesión";
+            this.btnIniciarSesion.UseVisualStyleBackColor = false;
+            this.btnIniciarSesion.Click += new System.EventHandler(this.btnIniciarSesion_Click_1);
             // 
-            // lblJugueteria
+            // btnCancelar
             // 
-            this.lblJugueteria.AutoSize = true;
-            this.lblJugueteria.BackColor = System.Drawing.SystemColors.WindowText;
-            this.lblJugueteria.ForeColor = System.Drawing.Color.White;
-            this.lblJugueteria.Location = new System.Drawing.Point(3, 1);
-            this.lblJugueteria.Name = "lblJugueteria";
-            this.lblJugueteria.Size = new System.Drawing.Size(56, 13);
-            this.lblJugueteria.TabIndex = 23;
-            this.lblJugueteria.Text = "Jugueteria";
+            this.btnCancelar.BackColor = System.Drawing.Color.Firebrick;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnCancelar.Location = new System.Drawing.Point(305, 252);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(174, 28);
+            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.Text = "Salir";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // btnCerrarAplicacion
+            // tboxIniciarUsuario
             // 
-            this.btnCerrarAplicacion.BackColor = System.Drawing.Color.Black;
-            this.btnCerrarAplicacion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCerrarAplicacion.BackgroundImage")));
-            this.btnCerrarAplicacion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrarAplicacion.FlatAppearance.BorderSize = 0;
-            this.btnCerrarAplicacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrarAplicacion.ForeColor = System.Drawing.Color.Transparent;
-            this.btnCerrarAplicacion.Location = new System.Drawing.Point(781, 1);
-            this.btnCerrarAplicacion.Name = "btnCerrarAplicacion";
-            this.btnCerrarAplicacion.Size = new System.Drawing.Size(17, 17);
-            this.btnCerrarAplicacion.TabIndex = 4;
-            this.btnCerrarAplicacion.UseVisualStyleBackColor = false;
-            this.btnCerrarAplicacion.Click += new System.EventHandler(this.btnCerrarAplicacion_Click);
+            this.tboxIniciarUsuario.Location = new System.Drawing.Point(305, 115);
+            this.tboxIniciarUsuario.Name = "tboxIniciarUsuario";
+            this.tboxIniciarUsuario.Size = new System.Drawing.Size(174, 20);
+            this.tboxIniciarUsuario.TabIndex = 1;
             // 
-            // NOSE
+            // tboxIniciarContraseña
+            // 
+            this.tboxIniciarContraseña.Location = new System.Drawing.Point(305, 143);
+            this.tboxIniciarContraseña.Name = "tboxIniciarContraseña";
+            this.tboxIniciarContraseña.PasswordChar = '*';
+            this.tboxIniciarContraseña.Size = new System.Drawing.Size(174, 20);
+            this.tboxIniciarContraseña.TabIndex = 2;
+            // 
+            // ILogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 382);
-            this.Controls.Add(this.PanelMovCerrar);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(799, 365);
             this.Controls.Add(this.PanelMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "NOSE";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.btnCancela_Load);
+            this.Name = "ILogIn";
+            this.Text = "ILogIn";
+            this.Load += new System.EventHandler(this.ILogIn_Load);
             this.PanelMain.ResumeLayout(false);
             this.PanelMain.PerformLayout();
-            this.PanelMovCerrar.ResumeLayout(false);
-            this.PanelMovCerrar.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Panel PanelMain;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnCrearCuenta;
         private System.Windows.Forms.Button btnIniciarSesion;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox tboxIniciarUsuario;
         private System.Windows.Forms.TextBox tboxIniciarContraseña;
-        private System.Windows.Forms.Panel PanelMain;
-        private System.Windows.Forms.Button btnCrearCuenta;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel PanelMovCerrar;
-        private System.Windows.Forms.Label lblJugueteria;
-        private System.Windows.Forms.Button btnCerrarAplicacion;
     }
 }
-
