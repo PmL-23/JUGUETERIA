@@ -10,12 +10,12 @@ namespace BLL
 {
     public class Factura
     {
-		private string _IDFactura;
-		private string _FechaEmision;
-		private decimal _Total;
-		private string _IDVendedor;
-		private string _IDCliente;
-		private List<DetalleFactura> _ListaDetalles = new List<DetalleFactura>();
+		public string _IDFactura;
+		public string _FechaEmision;
+		public decimal _Total;
+		public string _IDVendedor;
+		public string _IDCliente;
+		public List<DetalleFactura> _ListaDetalles = new List<DetalleFactura>();
 
 		#region Props
 		public string IDFactura

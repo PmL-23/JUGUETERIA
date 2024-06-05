@@ -4,17 +4,17 @@ using System;
 namespace UnitTestProject1
 {
     [TestClass]
-    public class UnitTest1
+    public class CargarCliente
     {
         [TestMethod]
         public void TestMethod1()
         {
             BLL.Vendedor unVendedor1 = new BLL.Vendedor();
             BLL.Cliente unCliente1 = new BLL.Cliente();
-            unCliente1._IDCliente = "4567";
-            unCliente1._Nombre = "Jorge";
+            unCliente1._IDCliente = "1234";
+            unCliente1._Nombre = "PEPE";
             unCliente1._Apellido = "Sala";
-            unCliente1._DNI = 8888888;
+            unCliente1._DNI = 999999;
             unCliente1._CantidadCompras = 4;
             //Verifico que el ID Cliente no  está cargado  en la base datos
             bool parametroEsperado1 = true;

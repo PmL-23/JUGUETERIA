@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="CargaCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GenerarFactura.cs" />
+    <Compile Include="UnitTest3.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
