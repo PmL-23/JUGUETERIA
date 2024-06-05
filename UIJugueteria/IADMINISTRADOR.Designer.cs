@@ -49,21 +49,23 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tabAdminEmpleados.SuspendLayout();
             this.tabSeleccionar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmpleados)).BeginInit();
             this.tabModificar.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabAdminEmpleados
             // 
             this.tabAdminEmpleados.Controls.Add(this.tabSeleccionar);
             this.tabAdminEmpleados.Controls.Add(this.tabModificar);
-            this.tabAdminEmpleados.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabAdminEmpleados.Location = new System.Drawing.Point(0, 2);
+            this.tabAdminEmpleados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabAdminEmpleados.Location = new System.Drawing.Point(0, 0);
             this.tabAdminEmpleados.Name = "tabAdminEmpleados";
             this.tabAdminEmpleados.SelectedIndex = 0;
-            this.tabAdminEmpleados.Size = new System.Drawing.Size(799, 363);
+            this.tabAdminEmpleados.Size = new System.Drawing.Size(799, 365);
             this.tabAdminEmpleados.TabIndex = 8;
             // 
             // tabSeleccionar
@@ -74,7 +76,7 @@
             this.tabSeleccionar.Location = new System.Drawing.Point(4, 22);
             this.tabSeleccionar.Name = "tabSeleccionar";
             this.tabSeleccionar.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSeleccionar.Size = new System.Drawing.Size(791, 337);
+            this.tabSeleccionar.Size = new System.Drawing.Size(791, 339);
             this.tabSeleccionar.TabIndex = 0;
             this.tabSeleccionar.Text = "Lista de empleados";
             this.tabSeleccionar.UseVisualStyleBackColor = true;
@@ -151,7 +153,7 @@
             this.tabModificar.Location = new System.Drawing.Point(4, 22);
             this.tabModificar.Name = "tabModificar";
             this.tabModificar.Padding = new System.Windows.Forms.Padding(3);
-            this.tabModificar.Size = new System.Drawing.Size(786, 337);
+            this.tabModificar.Size = new System.Drawing.Size(488, 339);
             this.tabModificar.TabIndex = 1;
             this.tabModificar.Text = "Modificacion de empleado";
             this.tabModificar.UseVisualStyleBackColor = true;
@@ -315,12 +317,21 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Nombre:";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.tabAdminEmpleados);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(799, 365);
+            this.panel1.TabIndex = 9;
+            // 
             // IADMINISTRADOR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 365);
-            this.Controls.Add(this.tabAdminEmpleados);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "IADMINISTRADOR";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -331,6 +342,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmpleados)).EndInit();
             this.tabModificar.ResumeLayout(false);
             this.tabModificar.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -357,5 +369,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnCerrarsesion;
+        private System.Windows.Forms.Panel panel1;
     }
 }

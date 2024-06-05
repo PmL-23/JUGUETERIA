@@ -177,24 +177,31 @@ namespace UIJugueteria
 
         }
 
-        private void AbrirFormEnPanel(object Formulario)
+        private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
         {
-            if (this.panel1.Controls.Count > 0)
+            // Cerrar y eliminar cualquier instancia existente del formulario
+            var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
+            if (existingForm != null)
             {
-                this.panel1.Controls.Clear();
+                panel1.Controls.Remove(existingForm);
+                existingForm.Close();
+                existingForm.Dispose();
             }
 
-            Form FH = Formulario as Form;
-            FH.TopLevel = false;
-            FH.Dock = DockStyle.Fill;
-            this.panel1.Controls.Add(FH);
-            this.panel1.Tag = FH;
-            FH.Show();
+            // Crear una nueva instancia del formulario
+            Form formulario = formFactory();
+            formulario.TopLevel = false;
+            formulario.FormBorderStyle = FormBorderStyle.None;
+            formulario.Dock = DockStyle.Fill;
+            panel1.Controls.Add(formulario);
+            panel1.Tag = formulario;
+            formulario.Show();
+            formulario.BringToFront();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new IVENDEDOR(IDVendedor));
+            AbrirFormEnPanel(() => new IVENDEDOR(IDVendedor));
         }
 
         private void CerrarSesion(object Formulario)
@@ -267,7 +274,7 @@ namespace UIJugueteria
 
                                     MessageBox.Show(facturaString, "Venta realizada con éxito!", MessageBoxButtons.OK);
 
-                                    AbrirFormEnPanel(new IVENDEDOR(IDVendedor));                                    
+                                    AbrirFormEnPanel(() => new IVENDEDOR(IDVendedor));                                    
                                 }
                             }
                         }

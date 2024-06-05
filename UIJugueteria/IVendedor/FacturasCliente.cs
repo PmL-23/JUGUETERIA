@@ -39,11 +39,18 @@ namespace UIJugueteria.IVendedor
         {
 
         }
-        private void AbrirFormEnPanelCERRAR<MiForm>(Func<MiForm> formFactory) where MiForm : Form
+        private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
         {
-            // Cierra y elimina todos los controles en paneltodo
-            CloseAndRemoveAllControls(panel1);
+            // Cerrar y eliminar cualquier instancia existente del formulario
+            var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
+            if (existingForm != null)
+            {
+                panel1.Controls.Remove(existingForm);
+                existingForm.Close();
+                existingForm.Dispose();
+            }
 
+            // Crear una nueva instancia del formulario
             Form formulario = formFactory();
             formulario.TopLevel = false;
             formulario.FormBorderStyle = FormBorderStyle.None;
@@ -52,6 +59,37 @@ namespace UIJugueteria.IVendedor
             panel1.Tag = formulario;
             formulario.Show();
             formulario.BringToFront();
+        }
+
+        private void AbrirFormEnPanelCERRAR<MiForm>(Func<MiForm> formFactory) where MiForm : Form
+        {
+            try
+            {
+                // Cierra y elimina todos los controles en paneltodo
+                CloseAndRemoveAllControls(panel1);
+
+                var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
+                if (existingForm != null)
+                {
+                    panel1.Controls.Remove(existingForm);
+                    existingForm.Close();
+                    existingForm.Dispose();
+                }
+
+                Form formulario = formFactory();
+                formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+                formulario.Dock = DockStyle.Fill;
+                panel1.Controls.Add(formulario);
+                panel1.Tag = formulario;
+                formulario.Show();
+                formulario.BringToFront();
+            }
+            catch (Exception )
+            {
+
+                MessageBox.Show("Disculpe las molestias, ocurrio un error, reinicie la aplicacion.");
+            }
         }
 
         // Método auxiliar para cerrar y eliminar todos los controles en un panel
@@ -74,36 +112,48 @@ namespace UIJugueteria.IVendedor
 
         private void btnVerDetalleFactura_Click(object sender, EventArgs e)
         {
-            DataGridViewRow filaseleccionada = dgvFacturasCliente.SelectedRows[0];
+            try {
+                DataGridViewRow filaseleccionada = dgvFacturasCliente.SelectedRows[0];
 
-            BLL.Vendedor vendedor = new BLL.Vendedor();
+                BLL.Vendedor vendedor = new BLL.Vendedor();
 
-            List<DetalleFactura> detallesFacturas = vendedor.TraerDetallesFactura(filaseleccionada.Cells["IDFactura"].Value.ToString());
+                List<DetalleFactura> detallesFacturas = vendedor.TraerDetallesFactura(filaseleccionada.Cells["IDFactura"].Value.ToString());
 
-            string facturaString = "----DETALLES DE FACTURA----\n\n";
-            decimal totalFactura = 0;
+                string facturaString = "----DETALLES DE FACTURA----\n\n";
+                decimal totalFactura = 0;
 
-            facturaString += ("ID del vendedor: " + this._IDVendedor + "\n");
-            facturaString += ("ID del cliente: " + this._IDCliente + "\n\n");
-            facturaString += ("Fecha y hora: " + filaseleccionada.Cells["FechaEmisionFactura"].Value.ToString() + "\n\n");
+                facturaString += ("ID del vendedor: " + this._IDVendedor + "\n");
+                facturaString += ("ID del cliente: " + this._IDCliente + "\n\n");
+                facturaString += ("Fecha y hora: " + filaseleccionada.Cells["FechaEmisionFactura"].Value.ToString() + "\n\n");
 
-            facturaString += "----PRODUCTOS INCLUIDOS----\n\n";
+                facturaString += "----PRODUCTOS INCLUIDOS----\n\n";
 
-            foreach (DetalleFactura item in detallesFacturas)
-            {
-                facturaString += (item.IDProducto + " x " + item.Cantidad.ToString() + " = $" + (decimal.Parse(item.Cantidad.ToString()) * item.PrecioUnitario) + ".\n");
+                foreach (DetalleFactura item in detallesFacturas)
+                {
+                    facturaString += (item.IDProducto + " x " + item.Cantidad.ToString() + " = $" + (decimal.Parse(item.Cantidad.ToString()) * item.PrecioUnitario) + ".\n");
 
-                totalFactura += decimal.Parse(item.Cantidad.ToString()) * item.PrecioUnitario;
+                    totalFactura += decimal.Parse(item.Cantidad.ToString()) * item.PrecioUnitario;
+                }
+
+                facturaString += "\nTOTAL: $" + totalFactura;
+
+                MessageBox.Show(facturaString, "", MessageBoxButtons.OK);
             }
-
-            facturaString += "\nTOTAL: $" + totalFactura;
-
-            MessageBox.Show(facturaString, "", MessageBoxButtons.OK);
-        }
+            catch (Exception ex) {
+                MessageBox.Show("no hay ninguna factrura seleccionada");
+            }
+            }
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanelCERRAR(() => new FacturasCliente(_IDVendedor, tboxIDCliente.Text));
+            if (tboxIDCliente.Text == "")
+            {
+                MessageBox.Show("Debe ingresar una IDCLiente a buscar");
+            }
+            else
+            {
+                AbrirFormEnPanelCERRAR(() => new FacturasCliente(_IDVendedor, tboxIDCliente.Text));
+            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

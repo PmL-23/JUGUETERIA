@@ -30,11 +30,18 @@ namespace UIJugueteria
         {
 
         }
-        private void AbrirFormEnPanelCERRAR<MiForm>(Func<MiForm> formFactory) where MiForm : Form
+        private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
         {
-            // Cierra y elimina todos los controles en paneltodo
-            CloseAndRemoveAllControls(panel1);
+            // Cerrar y eliminar cualquier instancia existente del formulario
+            var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
+            if (existingForm != null)
+            {
+                panel1.Controls.Remove(existingForm);
+                existingForm.Close();
+                existingForm.Dispose();
+            }
 
+            // Crear una nueva instancia del formulario
             Form formulario = formFactory();
             formulario.TopLevel = false;
             formulario.FormBorderStyle = FormBorderStyle.None;
@@ -43,6 +50,37 @@ namespace UIJugueteria
             panel1.Tag = formulario;
             formulario.Show();
             formulario.BringToFront();
+        }
+
+        private void AbrirFormEnPanelCERRAR<MiForm>(Func<MiForm> formFactory) where MiForm : Form
+        {
+            try
+            {
+                // Cierra y elimina todos los controles en paneltodo
+                CloseAndRemoveAllControls(panel1);
+
+                var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
+                if (existingForm != null)
+                {
+                    panel1.Controls.Remove(existingForm);
+                    existingForm.Close();
+                    existingForm.Dispose();
+                }
+
+                Form formulario = formFactory();
+                formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+                formulario.Dock = DockStyle.Fill;
+                panel1.Controls.Add(formulario);
+                panel1.Tag = formulario;
+                formulario.Show();
+                formulario.BringToFront();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Disculpe las molestias, ocurrio un error, reinicie la aplicacion.");
+            }
         }
 
         // Método auxiliar para cerrar y eliminar todos los controles en un panel

@@ -130,23 +130,31 @@ namespace UIJugueteria
 
         private void btnCerrarsesion_Click(object sender, EventArgs e)
         {
-            CerrarSesion(new NOSE());
-            MessageBox.Show("\tSesion Cerrada\t");
+            AbrirFormEnPanel(() => new ILogIn());
+
         }
 
-        private void CerrarSesion(object Formulario)
+        private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
         {
+            Form formulario = panel1.Controls.OfType<MiForm>().FirstOrDefault();
 
-            //PanelCentral.Controls.Clear();
-            //PanelLateral.Controls.Clear();
-
-            Form FH = Formulario as Form;
-            FH.WindowState = FormWindowState.Maximized;
-            FH.TopLevel = false;
-            FH.Dock = DockStyle.Fill;
-
-            this.Controls.Add(FH);
-            FH.Show();
+            // Si el formulario/instancia no existe
+            if (formulario == null)
+            {
+                formulario = formFactory();
+                formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+                formulario.Dock = DockStyle.Fill;
+                panel1.Controls.Add(formulario);
+                panel1.Tag = formulario;
+                formulario.Show();
+                formulario.BringToFront();
+            }
+            // Si el formulario/instancia existe
+            else
+            {
+                formulario.BringToFront();
+            }
         }
 
         private void label_dni_Click(object sender, EventArgs e)
