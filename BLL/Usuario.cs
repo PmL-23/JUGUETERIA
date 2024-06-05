@@ -11,11 +11,11 @@ namespace BLL
 {
     public abstract class Usuario
     {
-        protected string _Nombre;
-        protected string _Apellido;
-        protected int _Dni;
-        protected string _NombreUsuario;
-        protected string _Contraseña;
+        public string _Nombre;
+        public string _Apellido;
+        public int _Dni;
+        public string _NombreUsuario;
+        public string _Contraseña;
 
         #region Props
         public string Contraseña

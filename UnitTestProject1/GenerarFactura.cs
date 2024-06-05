@@ -12,7 +12,8 @@ namespace UnitTestProject1
         {
             BLL.Vendedor unVendedor = new BLL.Vendedor();
             BLL.Factura unaFactura = new BLL.Factura();
-
+            
+            //Cargo un Factura que no esta cargada en BDDJ 
             unaFactura._FechaEmision = "";
             unaFactura._Total = 1324;
             unaFactura._IDVendedor = "123";
@@ -20,6 +21,7 @@ namespace UnitTestProject1
 
         bool parametroEsperado = true;
 
+            //Verifico que la factura se carga correctamente en BDDJ
         Assert.AreEqual(parametroEsperado, unVendedor.GenerarFactura(unaFactura._IDVendedor, unaFactura._IDCliente, unaFactura._FechaEmision, unaFactura._Total));
 
         

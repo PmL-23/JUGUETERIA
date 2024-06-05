@@ -13,10 +13,10 @@ namespace BLL
 {
     public class Empleado : Usuario
     {
-        protected string _Rol;
-        protected string _IDEmpleado;
-        protected decimal _Sueldo;
-        protected string _Habilitado;
+        public string _Rol;
+        public string _IDEmpleado;
+        public decimal _Sueldo;
+        public string _Habilitado;
 
         #region Props
         public string Habilitado
