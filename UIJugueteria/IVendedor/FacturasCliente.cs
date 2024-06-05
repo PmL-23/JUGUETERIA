@@ -33,41 +33,21 @@ namespace UIJugueteria.IVendedor
             }
             dgvFacturasCliente.Columns["TotalFactura"].DefaultCellStyle.Format = "0.00";
 
+            lblIDClienteDinamico.Text= _IDCliente;
+
         }
 
         private void FacturasCliente_Load(object sender, EventArgs e)
         {
 
         }
-        private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
-        {
-            // Cerrar y eliminar cualquier instancia existente del formulario
-            var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
-            if (existingForm != null)
-            {
-                panel1.Controls.Remove(existingForm);
-                existingForm.Close();
-                existingForm.Dispose();
-            }
 
-            // Crear una nueva instancia del formulario
-            Form formulario = formFactory();
-            formulario.TopLevel = false;
-            formulario.FormBorderStyle = FormBorderStyle.None;
-            formulario.Dock = DockStyle.Fill;
-            panel1.Controls.Add(formulario);
-            panel1.Tag = formulario;
-            formulario.Show();
-            formulario.BringToFront();
-        }
 
         private void AbrirFormEnPanelCERRAR<MiForm>(Func<MiForm> formFactory) where MiForm : Form
         {
             try
             {
-                // Cierra y elimina todos los controles en paneltodo
-                CloseAndRemoveAllControls(panel1);
-
+                
                 var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
                 if (existingForm != null)
                 {
@@ -75,6 +55,8 @@ namespace UIJugueteria.IVendedor
                     existingForm.Close();
                     existingForm.Dispose();
                 }
+                // Cierra y elimina todos los controles en paneltodo
+                CloseAndRemoveAllControls(panel1);
 
                 Form formulario = formFactory();
                 formulario.TopLevel = false;
@@ -144,19 +126,16 @@ namespace UIJugueteria.IVendedor
             }
             }
 
-        private void btnBuscarCliente_Click(object sender, EventArgs e)
-        {
-            if (tboxIDCliente.Text == "")
-            {
-                MessageBox.Show("Debe ingresar una IDCLiente a buscar");
-            }
-            else
-            {
-                AbrirFormEnPanelCERRAR(() => new FacturasCliente(_IDVendedor, tboxIDCliente.Text));
-            }
-        }
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblIDClienteDinamico_Click(object sender, EventArgs e) { }
+
+        private void dgvFacturasCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

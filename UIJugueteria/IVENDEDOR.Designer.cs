@@ -28,11 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dgv_historial_vend = new System.Windows.Forms.DataGridView();
+            this.IDFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnVerHistorialCliente = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panelSuperior = new System.Windows.Forms.Panel();
@@ -40,14 +45,9 @@
             this.btn_salir = new System.Windows.Forms.Button();
             this.btn_venta = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.dgv_historial_vend = new System.Windows.Forms.DataGridView();
-            this.IDFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
-            this.panelSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_historial_vend)).BeginInit();
+            this.panelSuperior.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -66,6 +66,85 @@
             this.panel1.Size = new System.Drawing.Size(799, 365);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // dgv_historial_vend
+            // 
+            this.dgv_historial_vend.AllowUserToAddRows = false;
+            this.dgv_historial_vend.AllowUserToDeleteRows = false;
+            this.dgv_historial_vend.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dgv_historial_vend.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_historial_vend.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_historial_vend.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.dgv_historial_vend.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_historial_vend.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgv_historial_vend.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_historial_vend.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_historial_vend.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_historial_vend.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDFactura,
+            this.IDCliente,
+            this.Fecha,
+            this.Total});
+            this.dgv_historial_vend.EnableHeadersVisualStyles = false;
+            this.dgv_historial_vend.GridColor = System.Drawing.Color.DarkSlateGray;
+            this.dgv_historial_vend.Location = new System.Drawing.Point(26, 113);
+            this.dgv_historial_vend.MultiSelect = false;
+            this.dgv_historial_vend.Name = "dgv_historial_vend";
+            this.dgv_historial_vend.ReadOnly = true;
+            this.dgv_historial_vend.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_historial_vend.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv_historial_vend.RowHeadersVisible = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dgv_historial_vend.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_historial_vend.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_historial_vend.Size = new System.Drawing.Size(525, 218);
+            this.dgv_historial_vend.TabIndex = 19;
+            this.dgv_historial_vend.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_historial_vend_CellContentClick);
+            // 
+            // IDFactura
+            // 
+            this.IDFactura.HeaderText = "IDFactura";
+            this.IDFactura.Name = "IDFactura";
+            this.IDFactura.ReadOnly = true;
+            // 
+            // IDCliente
+            // 
+            this.IDCliente.HeaderText = "IDCliente";
+            this.IDCliente.Name = "IDCliente";
+            this.IDCliente.ReadOnly = true;
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
             // 
             // btnVerHistorialCliente
             // 
@@ -159,84 +238,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // dgv_historial_vend
-            // 
-            this.dgv_historial_vend.AllowUserToAddRows = false;
-            this.dgv_historial_vend.AllowUserToDeleteRows = false;
-            this.dgv_historial_vend.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            this.dgv_historial_vend.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgv_historial_vend.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_historial_vend.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.dgv_historial_vend.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgv_historial_vend.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgv_historial_vend.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_historial_vend.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgv_historial_vend.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_historial_vend.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDFactura,
-            this.IDCliente,
-            this.Fecha,
-            this.Total});
-            this.dgv_historial_vend.EnableHeadersVisualStyles = false;
-            this.dgv_historial_vend.GridColor = System.Drawing.Color.DarkSlateGray;
-            this.dgv_historial_vend.Location = new System.Drawing.Point(26, 113);
-            this.dgv_historial_vend.MultiSelect = false;
-            this.dgv_historial_vend.Name = "dgv_historial_vend";
-            this.dgv_historial_vend.ReadOnly = true;
-            this.dgv_historial_vend.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_historial_vend.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgv_historial_vend.RowHeadersVisible = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.dgv_historial_vend.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgv_historial_vend.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_historial_vend.Size = new System.Drawing.Size(525, 218);
-            this.dgv_historial_vend.TabIndex = 19;
-            // 
-            // IDFactura
-            // 
-            this.IDFactura.HeaderText = "IDFactura";
-            this.IDFactura.Name = "IDFactura";
-            this.IDFactura.ReadOnly = true;
-            // 
-            // IDCliente
-            // 
-            this.IDCliente.HeaderText = "IDCliente";
-            this.IDCliente.Name = "IDCliente";
-            this.IDCliente.ReadOnly = true;
-            // 
-            // Fecha
-            // 
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            // 
             // IVENDEDOR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,9 +252,9 @@
             this.Load += new System.EventHandler(this.IVENDEDOR_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_historial_vend)).EndInit();
             this.panelSuperior.ResumeLayout(false);
             this.panelSuperior.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_historial_vend)).EndInit();
             this.ResumeLayout(false);
 
         }

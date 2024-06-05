@@ -56,8 +56,7 @@ namespace UIJugueteria
         {
             try
             {
-                // Cierra y elimina todos los controles en paneltodo
-                CloseAndRemoveAllControls(panel1);
+                
 
                 var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
                 if (existingForm != null)
@@ -66,6 +65,8 @@ namespace UIJugueteria
                     existingForm.Close();
                     existingForm.Dispose();
                 }
+                // Cierra y elimina todos los controles en paneltodo
+                CloseAndRemoveAllControls(panel1);
 
                 Form formulario = formFactory();
                 formulario.TopLevel = false;
@@ -104,7 +105,7 @@ namespace UIJugueteria
             else {
                 //if cliente existe y tiene facturas
 
-                AbrirFormEnPanelCERRAR(() => new FacturasCliente(tboxIDCliente.Text, _IDVendedor));
+                AbrirFormEnPanelCERRAR(() => new FacturasCliente(_IDVendedor, tboxIDCliente.Text));
 
                 //si existe y no tiene facturas otro mensaje.
                 //si no existe, mensaje

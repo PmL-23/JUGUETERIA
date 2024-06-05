@@ -27,6 +27,13 @@ namespace UIJugueteria
 
         private void AbrirFormEnPanelCERRAR<MiForm>(Func<MiForm> formFactory) where MiForm : Form
         {
+            var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
+            if (existingForm != null)
+            {
+                panel1.Controls.Remove(existingForm);
+                existingForm.Close();
+                existingForm.Dispose();
+            }
             // Cierra y elimina todos los controles en paneltodo
             CloseAndRemoveAllControls(panel1);
 
@@ -51,27 +58,6 @@ namespace UIJugueteria
                 }
             }
             panel.Controls.Clear();
-        }
-        private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
-        {
-            // Cerrar y eliminar cualquier instancia existente del formulario
-            var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
-            if (existingForm != null)
-            {
-                panel1.Controls.Remove(existingForm);
-                existingForm.Close();
-                existingForm.Dispose();
-            }
-
-            // Crear una nueva instancia del formulario
-            Form formulario = formFactory();
-            formulario.TopLevel = false;
-            formulario.FormBorderStyle = FormBorderStyle.None;
-            formulario.Dock = DockStyle.Fill;
-            panel1.Controls.Add(formulario);
-            panel1.Tag = formulario;
-            formulario.Show();
-            formulario.BringToFront();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -119,6 +105,11 @@ namespace UIJugueteria
         private void btnVerHistorialCliente_Click_1(object sender, EventArgs e)
         {
             AbrirFormEnPanelCERRAR(() => new HistorialCliente(IDVendedor));
+        }
+
+        private void dgv_historial_vend_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

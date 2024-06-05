@@ -33,10 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.tboxIDCliente = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
-            this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.lblIDCliente = new System.Windows.Forms.Label();
             this.dgvFacturasCliente = new System.Windows.Forms.DataGridView();
             this.IDVendedorFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,20 +45,11 @@
             this.panelSuperior = new System.Windows.Forms.Panel();
             this.btnVerDetalleFactura = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblIDClienteDinamico = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturasCliente)).BeginInit();
             this.panelSuperior.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tboxIDCliente
-            // 
-            this.tboxIDCliente.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.tboxIDCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tboxIDCliente.ForeColor = System.Drawing.Color.White;
-            this.tboxIDCliente.Location = new System.Drawing.Point(260, 4);
-            this.tboxIDCliente.Name = "tboxIDCliente";
-            this.tboxIDCliente.Size = new System.Drawing.Size(203, 20);
-            this.tboxIDCliente.TabIndex = 52;
             // 
             // label4
             // 
@@ -86,18 +75,6 @@
             this.btnVolver.TabIndex = 50;
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
-            // 
-            // btnBuscarCliente
-            // 
-            this.btnBuscarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarCliente.ForeColor = System.Drawing.Color.White;
-            this.btnBuscarCliente.Location = new System.Drawing.Point(501, 3);
-            this.btnBuscarCliente.Name = "btnBuscarCliente";
-            this.btnBuscarCliente.Size = new System.Drawing.Size(133, 24);
-            this.btnBuscarCliente.TabIndex = 49;
-            this.btnBuscarCliente.Text = "Buscar";
-            this.btnBuscarCliente.UseVisualStyleBackColor = true;
-            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
             // 
             // lblIDCliente
             // 
@@ -165,6 +142,7 @@
             this.dgvFacturasCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFacturasCliente.Size = new System.Drawing.Size(668, 328);
             this.dgvFacturasCliente.TabIndex = 53;
+            this.dgvFacturasCliente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacturasCliente_CellContentClick);
             // 
             // IDVendedorFactura
             // 
@@ -199,9 +177,8 @@
             // panelSuperior
             // 
             this.panelSuperior.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.panelSuperior.Controls.Add(this.btnBuscarCliente);
+            this.panelSuperior.Controls.Add(this.lblIDClienteDinamico);
             this.panelSuperior.Controls.Add(this.lblIDCliente);
-            this.panelSuperior.Controls.Add(this.tboxIDCliente);
             this.panelSuperior.Controls.Add(this.btnVolver);
             this.panelSuperior.Controls.Add(this.label4);
             this.panelSuperior.Dock = System.Windows.Forms.DockStyle.Top;
@@ -234,6 +211,18 @@
             this.panel1.TabIndex = 56;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // lblIDClienteDinamico
+            // 
+            this.lblIDClienteDinamico.AutoSize = true;
+            this.lblIDClienteDinamico.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDClienteDinamico.ForeColor = System.Drawing.Color.White;
+            this.lblIDClienteDinamico.Location = new System.Drawing.Point(231, 5);
+            this.lblIDClienteDinamico.Name = "lblIDClienteDinamico";
+            this.lblIDClienteDinamico.Size = new System.Drawing.Size(71, 18);
+            this.lblIDClienteDinamico.TabIndex = 56;
+            this.lblIDClienteDinamico.Text = "Dinamico";
+            this.lblIDClienteDinamico.Click += new System.EventHandler(this.lblIDClienteDinamico_Click);
+            // 
             // FacturasCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,11 +244,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox tboxIDCliente;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnVolver;
-        private System.Windows.Forms.Button btnBuscarCliente;
         private System.Windows.Forms.Label lblIDCliente;
         private System.Windows.Forms.DataGridView dgvFacturasCliente;
         private System.Windows.Forms.Panel panelSuperior;
@@ -270,5 +256,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaEmisionFactura;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalFactura;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblIDClienteDinamico;
     }
 }
