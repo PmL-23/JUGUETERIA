@@ -33,9 +33,9 @@ namespace BLL
             set { _apellido = value; }
         }
 
-        private string _dni;
+        private long _dni;
 
-        public string _DNI
+        public long _DNI
         {
             get { return _dni; }
             set { _dni = value; }
@@ -50,7 +50,7 @@ namespace BLL
             set { _cantidadCompras = value; }
         }
 
-        public Cliente(string idCliente, string nombre, string apellido, string dni, int cantidadCompras)
+        public Cliente(string idCliente, string nombre, string apellido, long dni, long cantidadCompras)
         {
             this._IDCliente = idCliente;
             this._Nombre = nombre;
@@ -76,7 +76,7 @@ namespace BLL
                 cliente._Apellido = fila["_Apellido"].ToString();
                 cliente._IDCliente = fila["_IDCLiente"].ToString();
                 cliente._CantidadCompras =(long)fila["_CantidadCompras"];
-                cliente._DNI = fila["_DNI"].ToString();
+                cliente._DNI =(long) fila["_DNI"];
 
                 clientes.Add(cliente); 
 
