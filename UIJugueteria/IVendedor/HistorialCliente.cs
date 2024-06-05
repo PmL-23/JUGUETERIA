@@ -90,7 +90,7 @@ namespace UIJugueteria
             {
                 string IDSeleccionada = (string)dgv_clientes.Rows[indice].Cells["IDCliente"].Value;
 
-                AbrirFormEnPanelCERRAR( () => new FacturasCliente(_IDVendedor, IDSelececionada));
+                AbrirFormEnPanelCERRAR( () => new FacturasCliente(_IDVendedor, IDSeleccionada));
             }
             else
             {
