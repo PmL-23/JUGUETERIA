@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,12 +23,12 @@ namespace UIJugueteria.IVendedor
             BLL.Vendedor vendedor = new BLL.Vendedor();
 
             List<BLL.Factura> listaFacturas = vendedor.TraerListaFacturas(_IDCliente);
+            dgvFacturasCliente.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             dgvFacturasCliente.Rows.Clear();
 
             foreach (BLL.Factura factura in listaFacturas)
             {
-
                 dgvFacturasCliente.Rows.Add(factura.IDVendedor, factura.IDCliente,factura.IDFactura, factura.FechaEmision, "$ " + factura.Total);
             }
             dgvFacturasCliente.Columns["TotalFactura"].DefaultCellStyle.Format = "0.00";
@@ -64,7 +65,31 @@ namespace UIJugueteria.IVendedor
 
         private void btnVerDetalleFactura_Click(object sender, EventArgs e)
         {
-            //AbrirFormEnPanel
+            DataGridViewRow filaseleccionada = dgvFacturasCliente.SelectedRows[0];
+
+            BLL.Vendedor vendedor = new BLL.Vendedor();
+
+            List<DetalleFactura> detallesFacturas = vendedor.TraerDetallesFactura(filaseleccionada.Cells["IDFactura"].Value.ToString());
+
+            string facturaString = "----DETALLES DE FACTURA----\n\n";
+            decimal totalFactura = 0;
+
+            facturaString += ("ID del vendedor: " + this._IDVendedor + "\n");
+            facturaString += ("ID del cliente: " + this._IDCliente + "\n\n");
+            facturaString += ("Fecha y hora: " + filaseleccionada.Cells["FechaEmisionFactura"].Value.ToString() + "\n\n");
+
+            facturaString += "----PRODUCTOS INCLUIDOS----\n\n";
+
+            foreach (DetalleFactura item in detallesFacturas)
+            {
+                facturaString += (item.IDProducto + " x " + item.Cantidad.ToString() + " = $" + (decimal.Parse(item.Cantidad.ToString()) * item.PrecioUnitario) + ".\n");
+
+                totalFactura += decimal.Parse(item.Cantidad.ToString()) * item.PrecioUnitario;
+            }
+
+            facturaString += "\nTOTAL: $" + totalFactura;
+
+            MessageBox.Show(facturaString, "", MessageBoxButtons.OK);
         }
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)

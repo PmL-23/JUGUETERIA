@@ -53,6 +53,29 @@ namespace BLL
             return ListaFactura;
         }
 
+        public List<DetalleFactura> TraerDetallesFactura(string idFactura) { 
+            
+            List<DetalleFactura> listaDetalles = new List<DetalleFactura>();
+
+            DAL.Vendedor vend = new DAL.Vendedor();
+
+            DataTable dataTable = vend.TraerDetallesFactura(idFactura);
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                DetalleFactura detFactura = new DetalleFactura();
+
+                detFactura.IDFactura = int.Parse(row["_IDFactura"].ToString());
+                detFactura.IDProducto = row["_IDProducto"].ToString();
+                detFactura.PrecioUnitario = decimal.Parse(row["_PrecioUnitario"].ToString());
+                detFactura.Cantidad = int.Parse(row["_Cantidad"].ToString());
+
+                listaDetalles.Add(detFactura);
+            }
+
+            return listaDetalles;
+        }
+
         public bool AumentarCantVentas(string idVendedor) {
             DAL.Vendedor vendedor = new DAL.Vendedor();
 
@@ -71,6 +94,28 @@ namespace BLL
             {
                 return false;
             }
+        }
+
+        public List<Factura> VerHistorialVendedor(string idVendedor) {
+
+            List<Factura> ListaFactura = new List<Factura>();
+
+            DAL.Vendedor vendedor = new DAL.Vendedor();
+
+            DataTable vendedorbd = vendedor.VerHistorialVendedor(idVendedor);
+
+            foreach (DataRow row in vendedorbd.Rows)
+            {
+                Factura FacturaALista = new Factura();
+                FacturaALista.IDVendedor = row["_IDVendedorFactura"].ToString();
+                FacturaALista.IDCliente = row["_IDClienteFactura"].ToString();
+                FacturaALista.IDFactura = row["_IDFactura"].ToString();
+                FacturaALista.FechaEmision = row["_FechaEmision"].ToString();
+                FacturaALista.Total = Convert.ToDecimal(row["_Total"]);
+                ListaFactura.Add(FacturaALista);
+            }
+
+            return ListaFactura;
         }
 
         public Vendedor()

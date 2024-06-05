@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,8 +19,10 @@ namespace UIJugueteria
         public IVENDEDOR(string nombreUsuario)
         {
             InitializeComponent();
-            grillaClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            IDVendedor = nombreUsuario;
+            dgv_historial_vend.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv_historial_vend.Rows.Clear();
+            this.IDVendedor = nombreUsuario;
+            label2.Text = "Historial de ventas de " + this.IDVendedor;
         }
 
         private void AbrirFormEnPanel(Form formulario)
@@ -72,8 +75,14 @@ namespace UIJugueteria
 
         private void IVENDEDOR_Load(object sender, EventArgs e)
         {
-            BLL.Cliente cliente = new BLL.Cliente();
-            grillaClientes.DataSource = cliente.ListarClientes();
+            BLL.Vendedor vendedor = new BLL.Vendedor();
+
+            List<Factura> facturas = vendedor.VerHistorialVendedor(this.IDVendedor);
+
+            foreach (Factura item in facturas)
+            {
+                dgv_historial_vend.Rows.Add(item.IDFactura, item.IDCliente, item.FechaEmision, item.Total);
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)

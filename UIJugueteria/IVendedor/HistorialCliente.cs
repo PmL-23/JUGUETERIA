@@ -19,7 +19,7 @@ namespace UIJugueteria
         public HistorialCliente( string IDVendedor)
         {
             InitializeComponent();
-            grillaClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv_clientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             _IDVendedor = IDVendedor;
 
         }
@@ -77,11 +77,12 @@ namespace UIJugueteria
 
         private void btnVerFacturasCliente_Click(object sender, EventArgs e)
         {
+
             if (indice != -1)
             {
-                string IDSelececionada = (string)grillaClientes.Rows[indice].Cells["_IDCliente"].Value;
+                string IDSeleccionada = (string)dgv_clientes.Rows[indice].Cells["IDCliente"].Value;
 
-                AbrirFormEnPanel(new FacturasCliente(_IDVendedor, IDSelececionada));
+                AbrirFormEnPanel(new FacturasCliente(_IDVendedor, IDSeleccionada));
             }
             else
             {
@@ -93,10 +94,18 @@ namespace UIJugueteria
         private void HistorialCliente_Load(object sender, EventArgs e)
         {
             BLL.Cliente cliente = new BLL.Cliente();
-            grillaClientes.DataSource = cliente.ListarClientes();
+
+            List<BLL.Cliente> listaClientes = cliente.ListarClientes();
+
+            dgv_clientes.Rows.Clear();
+
+            foreach (BLL.Cliente item in listaClientes)
+            {
+                dgv_clientes.Rows.Add(item._IDCliente, item._Nombre, item._Apellido, item._CantidadCompras, item._DNI);
+            }
         }
 
-        private void grillaClientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_clientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             indice = e.RowIndex;
         }

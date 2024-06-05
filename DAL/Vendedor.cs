@@ -26,6 +26,15 @@ namespace DAL
             return false;
         }
 
+        public DataTable VerHistorialVendedor(string idVendedor) {
+
+            Conexion objConexion = new Conexion();
+
+            DataTable dt = objConexion.LeerPorComando("SELECT * FROM [BDDJ].[dbo].[FACTURA] WHERE [_IDVendedorFactura] = '"+idVendedor+"';");
+            
+            return dt;
+        }
+
         public bool RegistrarCliente(string idCliente, string nombre, string apellido, int dni, int cantidadCompras)
         {
             Conexion objConexion = new Conexion();
@@ -43,6 +52,12 @@ namespace DAL
         {
             Conexion objConexion = new Conexion();
             return objConexion.LeerPorComando("SELECT [_IDVendedorFactura],[_IDClienteFactura],[_IDFactura],[_FechaEmision],[_Total] FROM [BDDJ].[dbo].[FACTURA] WHERE [_IDClienteFactura] ='"+ _IDCliente + "' ");
+        }
+
+        public DataTable TraerDetallesFactura(string idFactura) { 
+            Conexion con = new Conexion();
+
+            return con.LeerPorComando("SELECT * FROM [BDDJ].[dbo].[DETALLE_FACTURA] WHERE _IDFactura = " + idFactura + ";");
         }
 
         public bool GenerarFactura(string idVendedorFactura, string idClienteFactura, string date, decimal total)

@@ -263,7 +263,7 @@ namespace UIJugueteria
                                         totalFactura += decimal.Parse(item.Cells["Cantidad"].Value.ToString()) * factura.ListaDetalles[item.Index].PrecioUnitario;
                                     }
 
-                                    facturaString += "TOTAL: $" + totalFactura;
+                                    facturaString += "\nTOTAL: $" + totalFactura;
 
                                     MessageBox.Show(facturaString, "Venta realizada con éxito!", MessageBoxButtons.OK);
 
