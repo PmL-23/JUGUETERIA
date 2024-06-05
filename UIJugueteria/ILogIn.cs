@@ -62,10 +62,6 @@ namespace UIJugueteria
             }
         }
 
-
-
-
-
         private void PanelMain_Paint(object sender, PaintEventArgs e)
         {
 
