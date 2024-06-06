@@ -25,9 +25,19 @@ namespace DAL
             if (filasAfectadas > 0)
             {
                 Conexion verificarExistenciaIdEnTabla = new Conexion();
-                DataTable rowsAfectados = verificarExistenciaIdEnTabla.LeerPorComando("SELECT * FROM [BDDJ].[dbo].["+Rol.ToUpper()+"] WHERE [_ID"+Rol+"] = '" + nombreUsuario + "';");
+                DataTable rowsAfectados = new DataTable();
+                int flagRolIndefinido = 0;
 
-                if (rowsAfectados.Rows.Count == 0)
+                if (Rol != "Indefinido")
+                {
+                    rowsAfectados = verificarExistenciaIdEnTabla.LeerPorComando("SELECT * FROM [BDDJ].[dbo].[" + Rol.ToUpper() + "] WHERE [_ID" + Rol + "] = '" + nombreUsuario + "';");
+                }
+                else 
+                { 
+                    flagRolIndefinido++;
+                }
+
+                if (rowsAfectados.Rows.Count == 0 || flagRolIndefinido > 0)
                 {
                     Conexion agregarIdEnTablaCorrespondiente = new Conexion();
 
@@ -37,12 +47,17 @@ namespace DAL
                     }
                     else
                     {
-                        agregarIdEnTablaCorrespondiente.EscribirPorComando("INSERT into [BDDJ].[dbo].[" + Rol.ToUpper() + "] ([_ID" + Rol + "]) values ('" + nombreUsuario + "')");
+                        if (Rol != "Indefinido")
+                        {
+                            agregarIdEnTablaCorrespondiente.EscribirPorComando("INSERT into [BDDJ].[dbo].[" + Rol.ToUpper() + "] ([_ID" + Rol + "]) values ('" + nombreUsuario + "')");
+                        }
                     }
 
-                    Conexion quitarIdDeTablaPrevia = new Conexion();
-
-                    quitarIdDeTablaPrevia.EscribirPorComando("DELETE FROM [BDDJ].[dbo].["+ rolPrevio.ToUpper() + "] WHERE [_ID" + rolPrevio + "] = '"+nombreUsuario+"';");
+                    if (rolPrevio != "Indefinido")
+                    {
+                        Conexion quitarIdDeTablaPrevia = new Conexion();
+                        quitarIdDeTablaPrevia.EscribirPorComando("DELETE FROM [BDDJ].[dbo].["+ rolPrevio.ToUpper() + "] WHERE [_ID" + rolPrevio + "] = '"+nombreUsuario+"';");
+                    }
                 }
 
                 return true;

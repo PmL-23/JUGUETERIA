@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,7 +30,6 @@ namespace UIJugueteria
             comboBox_rol.Items.Add("Vendedor");
             comboBox_rol.Items.Add("Administrador");
             comboBox_rol.Items.Add("Logistica");
-            comboBox_rol.Items.Add("Cliente");
             comboBox_rol.Items.Add("Indefinido");
 
             comboBox_estado.Items.Add("Habilitado");
@@ -81,9 +81,16 @@ namespace UIJugueteria
 
         private void IADMINISTRADOR_Load(object sender, EventArgs e)
         {
+            dataGridViewEmpleados.Rows.Clear();
+
             BLL.Administrador admin = new BLL.Administrador();
 
-            dataGridViewEmpleados.DataSource = admin.ListarEmpleados();
+            List<Empleado> empleados = admin.ListarEmpleados();
+
+            foreach (Empleado item in empleados)
+            {
+                dataGridViewEmpleados.Rows.Add(item.Nombre, item.Apellido, item.DNI, item.NombreUsuario, item.Rol, item.Sueldo, item.Habilitado);
+            }
         }
 
         private void dataGridViewEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -116,6 +123,7 @@ namespace UIJugueteria
 
             string Sueldotexto = textBox_sueldo.Text.Replace(',', '.');
             decimal _Sueldo;
+
             if (decimal.TryParse(Sueldotexto, NumberStyles.Any, CultureInfo.InvariantCulture, out _Sueldo))
             {
 
@@ -124,9 +132,15 @@ namespace UIJugueteria
                     MessageBox.Show("Datos de usuario '" + label_nombreusuario.Text + "' actualizados con exito!.");
                     tabAdminEmpleados.TabPages.Remove(tabModificar);
                     tabAdminEmpleados.TabPages.Add(tabSeleccionar);
-                    dataGridViewEmpleados.DataSource = admin.ListarEmpleados();
 
                     //Una vez actualizados los datos recargo la tabla
+                    dataGridViewEmpleados.Rows.Clear();
+                    List<Empleado> empleados = admin.ListarEmpleados();
+
+                    foreach (Empleado item in empleados)
+                    {
+                        dataGridViewEmpleados.Rows.Add(item.Nombre, item.Apellido, item.DNI, item.NombreUsuario, item.Rol, item.Sueldo, item.Habilitado);
+                    }
                 }
                 else
                 {
