@@ -24,7 +24,7 @@ namespace BLL
                 Empleado empleado = new Empleado();
 
                 empleado.Habilitado = row["Estado"].ToString();
-                empleado.Sueldo = int.Parse(row["Sueldo"].ToString());
+                empleado.Sueldo = decimal.Parse(row["Sueldo"].ToString());
                 empleado.IDEmpleado = row["NombreDeUsuario"].ToString();
                 empleado.Rol = row["Rol"].ToString();
                 empleado.NombreUsuario = row["NombreDeUsuario"].ToString();

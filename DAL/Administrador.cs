@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -20,7 +21,9 @@ namespace DAL
         public bool ActualizarDatosUsuario(string rolPrevio, string nombreUsuario, string Rol, string Estado, decimal Sueldo)
         {
             Conexion actualizarDatosDeEmpleado = new Conexion();
-            int filasAfectadas = actualizarDatosDeEmpleado.EscribirPorComando("UPDATE [BDDJ].[dbo].[EMPLEADOS] SET [_Rol] = '" + Rol + "', [_Habilitado] = '" + Estado + "', [_Sueldo] = " + Sueldo + " WHERE [EMPLEADOS].[_IDEmpleado] = '" + nombreUsuario + "';");
+
+            string sueldoToString = Sueldo.ToString(CultureInfo.InvariantCulture);
+            int filasAfectadas = actualizarDatosDeEmpleado.EscribirPorComando("UPDATE [BDDJ].[dbo].[EMPLEADOS] SET [_Rol] = '" + Rol + "', [_Habilitado] = '" + Estado + "', [_Sueldo] = " + sueldoToString + " WHERE [EMPLEADOS].[_IDEmpleado] = '" + nombreUsuario + "';");
 
             if (filasAfectadas > 0)
             {

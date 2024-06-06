@@ -122,6 +122,7 @@ namespace UIJugueteria.IVendedor
                 MessageBox.Show(facturaString, "", MessageBoxButtons.OK);
             }
             catch (Exception ex) {
+                Console.WriteLine(ex.ToString());
                 MessageBox.Show("no hay ninguna factrura seleccionada");
             }
             }
