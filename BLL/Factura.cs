@@ -56,13 +56,25 @@ namespace BLL
 
 		#endregion
 
+		public decimal CalcularSubtotal() {
+
+            this.Total = 0;
+
+            foreach (DetalleFactura item in this.ListaDetalles)
+            {
+                this.Total += item.Producto.Precioventa * item.Cantidad;
+            }
+
+            return this.Total;
+        }
+
 		public decimal CalcularTotal() {
 
 			this.Total = 0;
 
             foreach (DetalleFactura item in this.ListaDetalles)
             {
-				this.Total += item.Producto.Precioventa * item.Cantidad;
+				this.Total += (item.Producto.Precioventa * 1.21M) * item.Cantidad;
             }
 
             return this.Total;

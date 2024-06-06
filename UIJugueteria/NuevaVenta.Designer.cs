@@ -40,7 +40,7 @@
             this.btn_agregar = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btn_confirmar_venta = new System.Windows.Forms.Button();
-            this.lbl_total = new System.Windows.Forms.Label();
+            this.lbl2 = new System.Windows.Forms.Label();
             this.lblcantidad = new System.Windows.Forms.Label();
             this.txtbox_cantidad = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,6 +58,9 @@
             this.PrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantidadEnStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
+            this.lbl_subtotal = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.lbl_total = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_productos_factura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_productos_stock)).BeginInit();
@@ -114,7 +117,7 @@
             this.btn_confirmar_venta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_confirmar_venta.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
             this.btn_confirmar_venta.ForeColor = System.Drawing.Color.White;
-            this.btn_confirmar_venta.Location = new System.Drawing.Point(643, 253);
+            this.btn_confirmar_venta.Location = new System.Drawing.Point(648, 304);
             this.btn_confirmar_venta.Name = "btn_confirmar_venta";
             this.btn_confirmar_venta.Size = new System.Drawing.Size(138, 49);
             this.btn_confirmar_venta.TabIndex = 3;
@@ -122,17 +125,17 @@
             this.btn_confirmar_venta.UseVisualStyleBackColor = true;
             this.btn_confirmar_venta.Click += new System.EventHandler(this.button4_Click);
             // 
-            // lbl_total
+            // lbl2
             // 
-            this.lbl_total.AutoSize = true;
-            this.lbl_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lbl_total.ForeColor = System.Drawing.Color.White;
-            this.lbl_total.Location = new System.Drawing.Point(638, 187);
-            this.lbl_total.Name = "lbl_total";
-            this.lbl_total.Size = new System.Drawing.Size(89, 25);
-            this.lbl_total.TabIndex = 6;
-            this.lbl_total.Text = "Total: $0";
-            this.lbl_total.Click += new System.EventHandler(this.lbl_total_Click);
+            this.lbl2.AutoSize = true;
+            this.lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lbl2.ForeColor = System.Drawing.Color.White;
+            this.lbl2.Location = new System.Drawing.Point(650, 227);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(117, 25);
+            this.lbl2.TabIndex = 6;
+            this.lbl2.Text = "Total + IVA:";
+            this.lbl2.Click += new System.EventHandler(this.lbl_total_Click);
             // 
             // lblcantidad
             // 
@@ -173,7 +176,7 @@
             this.txtbox_idcliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.txtbox_idcliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtbox_idcliente.ForeColor = System.Drawing.Color.White;
-            this.txtbox_idcliente.Location = new System.Drawing.Point(650, 134);
+            this.txtbox_idcliente.Location = new System.Drawing.Point(655, 110);
             this.txtbox_idcliente.Name = "txtbox_idcliente";
             this.txtbox_idcliente.Size = new System.Drawing.Size(131, 20);
             this.txtbox_idcliente.TabIndex = 15;
@@ -184,7 +187,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(653, 106);
+            this.label3.Location = new System.Drawing.Point(658, 82);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(123, 25);
             this.label3.TabIndex = 16;
@@ -193,6 +196,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.panel1.Controls.Add(this.lbl_total);
+            this.panel1.Controls.Add(this.lbl1);
+            this.panel1.Controls.Add(this.lbl_subtotal);
             this.panel1.Controls.Add(this.btn_cambiar_cant);
             this.panel1.Controls.Add(this.dgv_productos_factura);
             this.panel1.Controls.Add(this.dgv_productos_stock);
@@ -206,7 +212,7 @@
             this.panel1.Controls.Add(this.btn_agregar);
             this.panel1.Controls.Add(this.btn_confirmar_venta);
             this.panel1.Controls.Add(this.btn_quitar);
-            this.panel1.Controls.Add(this.lbl_total);
+            this.panel1.Controls.Add(this.lbl2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -391,6 +397,39 @@
             this.label4.TabIndex = 17;
             this.label4.Text = "Lista de nueva venta";
             // 
+            // lbl_subtotal
+            // 
+            this.lbl_subtotal.AutoSize = true;
+            this.lbl_subtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lbl_subtotal.ForeColor = System.Drawing.Color.White;
+            this.lbl_subtotal.Location = new System.Drawing.Point(650, 187);
+            this.lbl_subtotal.Name = "lbl_subtotal";
+            this.lbl_subtotal.Size = new System.Drawing.Size(34, 25);
+            this.lbl_subtotal.TabIndex = 21;
+            this.lbl_subtotal.Text = "$0";
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lbl1.ForeColor = System.Drawing.Color.White;
+            this.lbl1.Location = new System.Drawing.Point(650, 152);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(90, 25);
+            this.lbl1.TabIndex = 22;
+            this.lbl1.Text = "Subtotal:";
+            // 
+            // lbl_total
+            // 
+            this.lbl_total.AutoSize = true;
+            this.lbl_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lbl_total.ForeColor = System.Drawing.Color.White;
+            this.lbl_total.Location = new System.Drawing.Point(650, 261);
+            this.lbl_total.Name = "lbl_total";
+            this.lbl_total.Size = new System.Drawing.Size(34, 25);
+            this.lbl_total.TabIndex = 23;
+            this.lbl_total.Text = "$0";
+            // 
             // NuevaVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -417,7 +456,7 @@
         private System.Windows.Forms.Button btn_agregar;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btn_confirmar_venta;
-        private System.Windows.Forms.Label lbl_total;
+        private System.Windows.Forms.Label lbl2;
         private System.Windows.Forms.Label lblcantidad;
         private System.Windows.Forms.TextBox txtbox_cantidad;
         private System.Windows.Forms.Label label1;
@@ -435,5 +474,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioUnitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.Button btn_cambiar_cant;
+        private System.Windows.Forms.Label lbl_total;
+        private System.Windows.Forms.Label lbl1;
+        private System.Windows.Forms.Label lbl_subtotal;
     }
 }

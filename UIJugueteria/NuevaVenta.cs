@@ -163,7 +163,8 @@ namespace UIJugueteria
                 dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.SelectionForeColor = Color.Black;
 
                 //Finalmente modifico el total mostrado en la interfaz
-                lbl_total.Text = "Total: $" + factura.CalcularTotal();
+                lbl_subtotal.Text = "$" + factura.CalcularSubtotal();
+                lbl_total.Text = "$" + factura.CalcularTotal().ToString("F2");
 
             }
             catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
@@ -232,7 +233,7 @@ namespace UIJugueteria
                 // Formatear la fecha y hora como una cadena
                 string fechaFormateada = fechaActual.ToString("yyyy-MM-dd HH:mm:ss.fff");
 
-                decimal total = factura.CalcularTotal();
+                decimal total = decimal.Parse(factura.CalcularTotal().ToString("F2"));
 
                 Vendedor vendedor = new Vendedor();
 
@@ -255,7 +256,7 @@ namespace UIJugueteria
                                 {
 
                                     string facturaString = "----DETALLE DE FACTURA----\n\n";
-                                    decimal totalFactura = 0;
+                                    //decimal totalFactura = 0;
 
                                     facturaString += ("ID del vendedor: " + this.IDVendedor + "\n");
                                     facturaString += ("ID del cliente: " + txtbox_idcliente.Text + "\n\n");
@@ -267,10 +268,12 @@ namespace UIJugueteria
                                     {
                                         facturaString += (item.Cells["Nombre"].Value.ToString() + " x " + item.Cells["Cantidad"].Value.ToString() + " = $" + (decimal.Parse(item.Cells["Cantidad"].Value.ToString()) * factura.ListaDetalles[item.Index].Producto.Precioventa) + ".\n");
                                         
-                                        totalFactura += decimal.Parse(item.Cells["Cantidad"].Value.ToString()) * factura.ListaDetalles[item.Index].Producto.Precioventa;
+                                        //totalFactura += decimal.Parse(item.Cells["Cantidad"].Value.ToString()) * factura.ListaDetalles[item.Index].Producto.Precioventa;
                                     }
 
-                                    facturaString += "\nTOTAL: $" + totalFactura;
+                                    //facturaString += "\nTOTAL: $" + totalFactura;
+                                    facturaString += "\nSUBTOTAL: $" + factura.CalcularSubtotal();
+                                    facturaString += "\nTOTAL (+IVA): $" + factura.CalcularTotal().ToString("F2");
 
                                     MessageBox.Show(facturaString, "Venta realizada con éxito!", MessageBoxButtons.OK);
 
@@ -344,7 +347,8 @@ namespace UIJugueteria
 
 
             //Finalmente modifico el total mostrado en la interfaz
-            lbl_total.Text = "Total: $" + factura.CalcularTotal();
+            lbl_subtotal.Text = "$" + factura.CalcularSubtotal();
+            lbl_total.Text = "$" + factura.CalcularTotal().ToString("F2");
         }
 
         private void txtbox_idcliente_TextChanged(object sender, EventArgs e)
@@ -414,7 +418,8 @@ namespace UIJugueteria
                 filaSeleccionada.Cells["Cantidad"].Value = txtbox_cantidad.Text;
 
                 //Finalmente modifico el total mostrado en la interfaz
-                lbl_total.Text = "Total: $" + factura.CalcularTotal();
+                lbl_subtotal.Text = "$" + factura.CalcularSubtotal();
+                lbl_total.Text = "$" + factura.CalcularTotal().ToString("F2");
             }
             catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
             {

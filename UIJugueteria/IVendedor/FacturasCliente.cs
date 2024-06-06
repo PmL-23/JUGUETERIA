@@ -102,6 +102,7 @@ namespace UIJugueteria.IVendedor
                 List<DetalleFactura> detallesFacturas = vendedor.TraerDetallesFactura(filaseleccionada.Cells["IDFactura"].Value.ToString());
 
                 string facturaString = "----DETALLE DE FACTURA----\n\n";
+                decimal subtotalFactura = 0;
                 decimal totalFactura = 0;
 
                 facturaString += ("ID del vendedor: " + this._IDVendedor + "\n");
@@ -114,10 +115,12 @@ namespace UIJugueteria.IVendedor
                 {
                     facturaString += (item.Producto.IDProducto + " x " + item.Cantidad.ToString() + " = $" + (decimal.Parse(item.Cantidad.ToString()) * item.Producto.Precioventa) + ".\n");
 
-                    totalFactura += decimal.Parse(item.Cantidad.ToString()) * item.Producto.Precioventa;
+                    subtotalFactura += decimal.Parse(item.Cantidad.ToString()) * item.Producto.Precioventa;
+                    totalFactura += (decimal.Parse(item.Cantidad.ToString()) * 1.21M) * item.Producto.Precioventa;
                 }
 
-                facturaString += "\nTOTAL: $" + totalFactura;
+                facturaString += "\nSUBTOTAL: $" + subtotalFactura;
+                facturaString += "\nTOTAL (+IVA): $" + totalFactura.ToString("F2");
 
                 MessageBox.Show(facturaString, "", MessageBoxButtons.OK);
             }
