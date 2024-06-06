@@ -131,7 +131,7 @@ namespace UIJugueteria
             {
                 foreach (DetalleFactura item in factura.ListaDetalles)
                 {
-                    if (item.IDProducto == filaSeleccionada.Cells["IDProducto"].Value.ToString())
+                    if (item.Producto.IDProducto == filaSeleccionada.Cells["IDProducto"].Value.ToString())
                     {
                         throw new MyExceptions("Este producto ya se encuentra en la lista..");
                     }
@@ -254,7 +254,7 @@ namespace UIJugueteria
                                 if (cliente.AumentarCantCompras(txtbox_idcliente.Text) == true)
                                 {
 
-                                    string facturaString = "----DATOS DE FACTURA----\n\n";
+                                    string facturaString = "----DETALLE DE FACTURA----\n\n";
                                     decimal totalFactura = 0;
 
                                     facturaString += ("ID del vendedor: " + this.IDVendedor + "\n");
@@ -265,9 +265,9 @@ namespace UIJugueteria
 
                                     foreach (DataGridViewRow item in dgv_productos_factura.Rows)
                                     {
-                                        facturaString += (item.Cells["Nombre"].Value.ToString() + " x " + item.Cells["Cantidad"].Value.ToString() + " = $" + (decimal.Parse(item.Cells["Cantidad"].Value.ToString()) * factura.ListaDetalles[item.Index].PrecioUnitario) + ".\n");
+                                        facturaString += (item.Cells["Nombre"].Value.ToString() + " x " + item.Cells["Cantidad"].Value.ToString() + " = $" + (decimal.Parse(item.Cells["Cantidad"].Value.ToString()) * factura.ListaDetalles[item.Index].Producto.Precioventa) + ".\n");
                                         
-                                        totalFactura += decimal.Parse(item.Cells["Cantidad"].Value.ToString()) * factura.ListaDetalles[item.Index].PrecioUnitario;
+                                        totalFactura += decimal.Parse(item.Cells["Cantidad"].Value.ToString()) * factura.ListaDetalles[item.Index].Producto.Precioventa;
                                     }
 
                                     facturaString += "\nTOTAL: $" + totalFactura;
@@ -322,7 +322,7 @@ namespace UIJugueteria
 
             foreach (DataGridViewRow item in dgv_productos_stock.Rows)
             {
-                if (item.Cells["IDProducto"].Value.ToString() == factura.ListaDetalles[filaSeleccionadaFactura.Index].IDProducto)
+                if (item.Cells["IDProducto"].Value.ToString() == factura.ListaDetalles[filaSeleccionadaFactura.Index].Producto.IDProducto)
                 {
                     //fijarse si le podes cambiar el color a la fila y lanzar exepcion de que no podes agregarlo devuelta
                     dgv_productos_stock.Rows[item.Index].DefaultCellStyle.BackColor = Color.FromArgb(30,30,30);
@@ -398,7 +398,7 @@ namespace UIJugueteria
 
                 foreach (DataGridViewRow item in dgv_productos_stock.Rows)
                 {
-                    if (item.Cells["IDProducto"].Value.ToString() == factura.ListaDetalles[filaSeleccionada.Index].IDProducto)
+                    if (item.Cells["IDProducto"].Value.ToString() == factura.ListaDetalles[filaSeleccionada.Index].Producto.IDProducto)
                     {
                         if (int.Parse(txtbox_cantidad.Text) > int.Parse(item.Cells["CantidadEnStock"].Value.ToString()))
                         {

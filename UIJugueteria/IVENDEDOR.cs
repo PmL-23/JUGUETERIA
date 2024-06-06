@@ -87,7 +87,7 @@ namespace UIJugueteria
 
             foreach (Factura item in facturas)
             {
-                dgv_historial_vend.Rows.Add(item.IDFactura, item.IDCliente, item.FechaEmision, item.Total);
+                dgv_historial_vend.Rows.Add(item.IDFactura, item.Cliente._IDCliente, item.FechaEmision, item.Total);
             }
         }
 

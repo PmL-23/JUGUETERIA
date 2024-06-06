@@ -43,8 +43,8 @@ namespace BLL
             foreach (DataRow row in vendedorbd.Rows)
             {
                 Factura FacturaALista = new Factura();
-                FacturaALista.IDVendedor = row["_IDVendedorFactura"].ToString();
-                FacturaALista.IDCliente = row["_IDClienteFactura"].ToString();
+                FacturaALista.Vendedor.NombreUsuario = row["_IDVendedorFactura"].ToString();
+                FacturaALista.Cliente._IDCliente = row["_IDClienteFactura"].ToString();
                 FacturaALista.IDFactura = row["_IDFactura"].ToString();
                 FacturaALista.FechaEmision = row["_FechaEmision"].ToString();
                 FacturaALista.Total = Convert.ToDecimal(row["_Total"]);
@@ -65,9 +65,9 @@ namespace BLL
             {
                 DetalleFactura detFactura = new DetalleFactura();
 
-                detFactura.IDFactura = int.Parse(row["_IDFactura"].ToString());
-                detFactura.IDProducto = row["_IDProducto"].ToString();
-                detFactura.PrecioUnitario = decimal.Parse(row["_PrecioUnitario"].ToString());
+                detFactura.Factura.IDFactura = row["_IDFactura"].ToString();
+                detFactura.Producto.IDProducto = row["_IDProducto"].ToString();
+                detFactura.Producto.Precioventa = decimal.Parse(row["_PrecioUnitario"].ToString());
                 detFactura.Cantidad = int.Parse(row["_Cantidad"].ToString());
 
                 listaDetalles.Add(detFactura);
@@ -107,8 +107,8 @@ namespace BLL
             foreach (DataRow row in vendedorbd.Rows)
             {
                 Factura FacturaALista = new Factura();
-                FacturaALista.IDVendedor = row["_IDVendedorFactura"].ToString();
-                FacturaALista.IDCliente = row["_IDClienteFactura"].ToString();
+                FacturaALista.Vendedor.NombreUsuario = row["_IDVendedorFactura"].ToString();
+                FacturaALista.Cliente._IDCliente = row["_IDClienteFactura"].ToString();
                 FacturaALista.IDFactura = row["_IDFactura"].ToString();
                 FacturaALista.FechaEmision = row["_FechaEmision"].ToString();
                 FacturaALista.Total = Convert.ToDecimal(row["_Total"]);

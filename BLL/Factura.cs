@@ -13,36 +13,33 @@ namespace BLL
 		public string _IDFactura;
 		public string _FechaEmision;
 		public decimal _Total;
-		public string _IDVendedor;
-		public string _IDCliente;
 		public List<DetalleFactura> _ListaDetalles = new List<DetalleFactura>();
+		private Cliente _Cliente = new Cliente();
+		private Vendedor _Vendedor = new Vendedor();
 
 		#region Props
+		public Cliente Cliente
+		{
+			get { return _Cliente; }
+			set { _Cliente = value; }
+		}
+
+		public Vendedor Vendedor
+		{
+			get { return _Vendedor; }
+			set { _Vendedor = value; }
+		}
+
 		public string IDFactura
 		{
 			get { return _IDFactura; }
 			set { _IDFactura = value; }
 		}
 
-
 		public List<DetalleFactura> ListaDetalles
 		{
 			get { return _ListaDetalles; }
 			set { _ListaDetalles = value; }
-		}
-
-
-		public string IDCliente
-		{
-			get { return _IDCliente; }
-			set { _IDCliente = value; }
-		}
-
-
-		public string IDVendedor
-		{
-			get { return _IDVendedor; }
-			set { _IDVendedor = value; }
 		}
 
 		public decimal Total
@@ -65,7 +62,7 @@ namespace BLL
 
             foreach (DetalleFactura item in this.ListaDetalles)
             {
-				this.Total += item.PrecioUnitario * item.Cantidad;
+				this.Total += item.Producto.Precioventa * item.Cantidad;
             }
 
             return this.Total;
@@ -74,9 +71,9 @@ namespace BLL
 		public void AgregarProductos(string idProducto, int cantidad, decimal precioUnitario) { 
 
 			DetalleFactura detalle = new DetalleFactura();
-			detalle.IDProducto = idProducto;
+			detalle.Producto.IDProducto = idProducto;
 			detalle.Cantidad = cantidad;
-			detalle.PrecioUnitario = precioUnitario;
+			detalle.Producto.Precioventa = precioUnitario;
 
 			this.ListaDetalles.Add(detalle);
 		}
@@ -92,16 +89,16 @@ namespace BLL
 			
 			DataTable datatable = factura.TraerIDFactura();
 
-			int UltimoIDFactura = 0;
+			string UltimoIDFactura = "";
 
             foreach (DataRow fila in datatable.Rows)
             {
-				UltimoIDFactura = int.Parse(fila[0].ToString());
+				UltimoIDFactura = fila[0].ToString();
             }
 
             foreach (DetalleFactura item in this.ListaDetalles)
             {
-				item.IDFactura = UltimoIDFactura;
+				item.Factura.IDFactura = UltimoIDFactura;
             }
 		}
 		public Factura()

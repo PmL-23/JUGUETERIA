@@ -16,13 +16,13 @@ namespace UnitTestProject1
             //Cargo un Factura que no esta cargada en BDDJ 
             unaFactura._FechaEmision = "";
             unaFactura._Total = 1324;
-            unaFactura._IDVendedor = "123";
-            unaFactura. _IDCliente = "4567";
+            unaFactura.Vendedor.IDEmpleado = "123";
+            unaFactura.Cliente._IDCliente = "4567";
 
-        bool parametroEsperado = true;
+             bool parametroEsperado = true;
 
             //Verifico que la factura se carga correctamente en BDDJ
-        Assert.AreEqual(parametroEsperado, unVendedor.GenerarFactura(unaFactura._IDVendedor, unaFactura._IDCliente, unaFactura._FechaEmision, unaFactura._Total));
+            Assert.AreEqual(parametroEsperado, unVendedor.GenerarFactura(unaFactura.Vendedor.IDEmpleado, unaFactura.Cliente._IDCliente, unaFactura._FechaEmision, unaFactura._Total));
 
         
 

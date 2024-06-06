@@ -9,37 +9,27 @@ namespace BLL
 {
     public class DetalleFactura
     {
-		private int _IDFactura;
-		private string _IDProducto;
-		private decimal _PrecioUnitario;
 		private int _Cantidad;
+        private Producto _Producto = new Producto();
+        private Factura _Factura = new Factura();
 
         #region Props
+        public Factura Factura
+        {
+            get { return _Factura; }
+            set { _Factura = value; }
+        }
+
+        public Producto Producto
+        {
+            get { return _Producto; }
+            set { _Producto = value; }
+        }
+
         public int Cantidad
 		{
 			get { return _Cantidad; }
 			set { _Cantidad = value; }
-		}
-
-
-		public decimal PrecioUnitario
-		{
-			get { return _PrecioUnitario; }
-			set { _PrecioUnitario = value; }
-		}
-
-
-		public string IDProducto
-		{
-			get { return _IDProducto; }
-			set { _IDProducto = value; }
-		}
-
-
-		public int IDFactura
-		{
-			get { return _IDFactura; }
-			set { _IDFactura = value; }
 		}
         #endregion
 
@@ -49,7 +39,7 @@ namespace BLL
 
             foreach (DetalleFactura item in ListaDetalles)
             {
-                if (detFactura.InsertarDetallesFactura(item.IDFactura, item.IDProducto, item.PrecioUnitario, item.Cantidad) == false)
+                if (detFactura.InsertarDetallesFactura(int.Parse(item.Factura.IDFactura), item.Producto.IDProducto, item.Producto.Precioventa, item.Cantidad) == false)
                 {
                     return false;
                 }
@@ -64,7 +54,7 @@ namespace BLL
 
             foreach (DetalleFactura item in ListaDetalles)
             {
-                if (detFactura.DecrementarStockPosventa(item.Cantidad, item.IDProducto) == false)
+                if (detFactura.DecrementarStockPosventa(item.Cantidad, item.Producto.IDProducto) == false)
                 {
                     return false;
                 }

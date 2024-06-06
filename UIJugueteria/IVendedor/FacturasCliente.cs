@@ -29,11 +29,11 @@ namespace UIJugueteria.IVendedor
 
             foreach (BLL.Factura factura in listaFacturas)
             {
-                dgvFacturasCliente.Rows.Add(factura.IDVendedor, factura.IDCliente,factura.IDFactura, factura.FechaEmision, "$ " + factura.Total);
+                dgvFacturasCliente.Rows.Add(this._IDVendedor, this._IDCliente, factura.IDFactura, factura.FechaEmision, "$ " + factura.Total);
             }
             dgvFacturasCliente.Columns["TotalFactura"].DefaultCellStyle.Format = "0.00";
 
-            lblIDClienteDinamico.Text= _IDCliente;
+            lblIDClienteDinamico.Text = this._IDCliente;
 
         }
 
@@ -101,7 +101,7 @@ namespace UIJugueteria.IVendedor
 
                 List<DetalleFactura> detallesFacturas = vendedor.TraerDetallesFactura(filaseleccionada.Cells["IDFactura"].Value.ToString());
 
-                string facturaString = "----DETALLES DE FACTURA----\n\n";
+                string facturaString = "----DETALLE DE FACTURA----\n\n";
                 decimal totalFactura = 0;
 
                 facturaString += ("ID del vendedor: " + this._IDVendedor + "\n");
@@ -112,9 +112,9 @@ namespace UIJugueteria.IVendedor
 
                 foreach (DetalleFactura item in detallesFacturas)
                 {
-                    facturaString += (item.IDProducto + " x " + item.Cantidad.ToString() + " = $" + (decimal.Parse(item.Cantidad.ToString()) * item.PrecioUnitario) + ".\n");
+                    facturaString += (item.Producto.IDProducto + " x " + item.Cantidad.ToString() + " = $" + (decimal.Parse(item.Cantidad.ToString()) * item.Producto.Precioventa) + ".\n");
 
-                    totalFactura += decimal.Parse(item.Cantidad.ToString()) * item.PrecioUnitario;
+                    totalFactura += decimal.Parse(item.Cantidad.ToString()) * item.Producto.Precioventa;
                 }
 
                 facturaString += "\nTOTAL: $" + totalFactura;
