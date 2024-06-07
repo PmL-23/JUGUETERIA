@@ -82,7 +82,7 @@ namespace UIJugueteria
 
 
         private void btnCerrarAplicacion_Click(object sender, EventArgs e)
-        {
+        { 
             Application.Exit();
         }
         //para mover la aplicacion.
