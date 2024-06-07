@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -73,64 +74,83 @@ namespace UIJugueteria
 
         private void btnCrearUsuario_Click(object sender, EventArgs e)
         {
+
             if (tboxNombre.Text == "" || tboxApellido.Text == "" || tboxDNI.Text == "" || tboxUsuarioCrear.Text == "" || tboxContraseñaCrear.Text == "" || tboxContraseñaConfirmacion.Text == "")
             {
                 MessageBox.Show("\tHay campos incompletos, debe completarlos todos.\t");
             }
+
             else
             {
-                BLL.Empleado comprobando = new BLL.Empleado();
-
-                string TNombreUsuario = tboxUsuarioCrear.Text;
-                if (comprobando.VerSiExisteNombreUsuario(TNombreUsuario) == false)
+                try
                 {
+                    BLL.Empleado comprobando = new BLL.Empleado();
 
-                    string TNombre = tboxNombre.Text;
-                    string TApellido = tboxApellido.Text;
-                    string TextoDNI = tboxDNI.Text;
-                    int TDNI;
-                        if (int.TryParse(TextoDNI, out TDNI)) {
-                        string TContraseña = tboxContraseñaCrear.Text;
-                        string TConstraseñaConfirmacion = tboxContraseñaConfirmacion.Text;
+                    string TNombreUsuario = tboxUsuarioCrear.Text;
+                    if (comprobando.VerSiExisteNombreUsuario(TNombreUsuario) == false)
+                    {
 
-
-                        BLL.Empleado empleado = new BLL.Empleado();
-
-                        bool registro = empleado.Registrarse(TNombre, TApellido, TDNI, TNombreUsuario, TContraseña, TConstraseñaConfirmacion);
-                        if (registro == true)
+                        string TNombre = tboxNombre.Text;
+                        string TApellido = tboxApellido.Text;
+                        string TextoDNI = tboxDNI.Text;
+                        int TDNI;
+                        if (int.TryParse(TextoDNI, out TDNI))
                         {
-                            MessageBox.Show("\tUsuario creado exitosamente Exitosamente.\t");
-                            tboxNombre.Text = "";
-                            tboxApellido.Text = "";
-                            tboxDNI.Text = "";
-                            tboxUsuarioCrear.Text = "";
-                            tboxContraseñaCrear.Text = "";
-                            tboxContraseñaConfirmacion.Text = "";
-                            AbrirFormEnPanel(() => new ILogIn());
+
+                            string TContraseña = tboxContraseñaCrear.Text;
+                            string TConstraseñaConfirmacion = tboxContraseñaConfirmacion.Text;
+
+
+
+                            BLL.Empleado empleado = new BLL.Empleado();
+
+                            bool registro = empleado.Registrarse(TNombre, TApellido, TDNI, TNombreUsuario, TContraseña, TConstraseñaConfirmacion);
+                            if (registro == true)
+                            {
+                                MessageBox.Show("\tUsuario creado exitosamente Exitosamente.\t");
+                                tboxNombre.Text = "";
+                                tboxApellido.Text = "";
+                                tboxDNI.Text = "";
+                                tboxUsuarioCrear.Text = "";
+                                tboxContraseñaCrear.Text = "";
+                                tboxContraseñaConfirmacion.Text = "";
+                                AbrirFormEnPanel(() => new ILogIn());
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("\tError al crear el usuario.\t");
+                            }
+
 
                         }
                         else
                         {
-                            MessageBox.Show("\tError al crear el usuario.\t");
+                            MessageBox.Show("El formato del DNI es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
 
                     }
-                        else{
-                            MessageBox.Show("El formato del DNI es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                    
+                    else if (comprobando.VerSiExisteNombreUsuario(tboxUsuarioCrear.Text) == true)
+                    {
+                        MessageBox.Show("El Nombre de Usuario ya se encuentra Registrado en la Base de Datos");
+                    }
+
 
                 }
-
-                else if (comprobando.VerSiExisteNombreUsuario(tboxUsuarioCrear.Text) == true)
+                catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
                 {
-                    MessageBox.Show("El Nombre de Usuario ya se encuentra Registrado en la Base de Datos");
+                    MessageBox.Show(ExcPersonalizada.Mensaje);
+                }
+                catch (Exception ex) //Atrapo excepciones generales
+                {
+                    MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
                 }
             }
+    }
 
 
-        }
+        
 
         private void btnVolver_Click(object sender, EventArgs e)
         {

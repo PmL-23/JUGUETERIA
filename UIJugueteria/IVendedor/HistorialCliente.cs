@@ -142,7 +142,7 @@ namespace UIJugueteria
         {
             BLL.Cliente cliente = new BLL.Cliente();
 
-            List<BLL.Cliente> listaClientes = cliente.ListarClientes();
+            List<BLL.Cliente> listaClientes = cliente.ListarClientes().OrderByDescending(v => v._CantidadCompras).ToList();
 
             dgv_clientes.Rows.Clear();
 

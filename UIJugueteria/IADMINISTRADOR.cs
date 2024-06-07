@@ -217,22 +217,24 @@ namespace UIJugueteria
             tabAdminEmpleados.TabPages.Add(tabVerEmpleados);
             BLL.Administrador admin = new BLL.Administrador();
 
-            List<BLL.Vendedor> listaVendedores = admin.TraerListaVendedores();
+            List<BLL.Vendedor> listaVendedores = admin.TraerListaVendedores().OrderByDescending(v => v.CantidadVentas).ToList();
+            //List<BLL.Vendedor> listaVendedores = admin.TraerListaVendedores();
 
             dtgvVendedores.Rows.Clear();
 
             foreach (BLL.Vendedor vendedor in listaVendedores)
             {
+                string sueldoFormateado = vendedor.Sueldo.ToString("N2", new System.Globalization.CultureInfo("es-ES"));
 
-                int rowIndex = dtgvVendedores.Rows.Add(vendedor.Nombre, vendedor.Apellido, vendedor.IDEmpleado, vendedor.Habilitado, "$ " + vendedor.Sueldo,vendedor.CantidadVentas);
+                int rowIndex = dtgvVendedores.Rows.Add(vendedor.Nombre, vendedor.Apellido, vendedor.IDEmpleado, vendedor.Habilitado, "$ " + sueldoFormateado, vendedor.CantidadVentas);
                 
                 // Obtener la fila actual
                 DataGridViewRow row = dtgvVendedores.Rows[rowIndex];
 
                 if (vendedor.CantidadVentas == 0)
                 {
-                    row.Cells["StockProducto"].Style.BackColor = Color.Brown;
-                    row.Cells["StockProducto"].Style.ForeColor = Color.Black;
+                    row.Cells["CantidadVentasVendedor"].Style.BackColor = Color.Brown;
+                    row.Cells["CantidadVentasVendedor"].Style.ForeColor = Color.Black;
                 }
             }
             dtgvVendedores.Columns["SueldoVendedor"].DefaultCellStyle.Format = "0.00";
