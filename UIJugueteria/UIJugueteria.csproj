@@ -46,10 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILogIn.cs">
+    <Compile Include="IInicio\ILogIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ILogIn.Designer.cs">
+    <Compile Include="IInicio\ILogIn.Designer.cs">
       <DependentUpon>ILogIn.cs</DependentUpon>
     </Compile>
     <Compile Include="IVendedor\HistorialCliente.cs">
@@ -58,10 +58,10 @@
     <Compile Include="IVendedor\HistorialCliente.Designer.cs">
       <DependentUpon>HistorialCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="INICIO.cs">
+    <Compile Include="IInicio\INICIO.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="INICIO.Designer.cs">
+    <Compile Include="IInicio\INICIO.Designer.cs">
       <DependentUpon>INICIO.cs</DependentUpon>
     </Compile>
     <Compile Include="ILogistica\ControlarStockcarpeta\IControlarSoloStock.cs">
@@ -82,10 +82,10 @@
     <Compile Include="ILogistica\ICrearNuevoProducto.Designer.cs">
       <DependentUpon>ICrearNuevoProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="CrearUsuario.cs">
+    <Compile Include="IInicio\CrearUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CrearUsuario.Designer.cs">
+    <Compile Include="IInicio\CrearUsuario.Designer.cs">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="ILogistica\GestionarProductos\AmpliarProductoEnGestionarProducto.cs">
@@ -100,16 +100,16 @@
     <Compile Include="ILogistica\GestionarProductos\IGestionarProductos.Designer.cs">
       <DependentUpon>IGestionarProductos.cs</DependentUpon>
     </Compile>
-    <Compile Include="IADMINISTRADOR.cs">
+    <Compile Include="IAdministrador\IADMINISTRADOR.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IADMINISTRADOR.Designer.cs">
+    <Compile Include="IAdministrador\IADMINISTRADOR.Designer.cs">
       <DependentUpon>IADMINISTRADOR.cs</DependentUpon>
     </Compile>
-    <Compile Include="ILOGISTICA.cs">
+    <Compile Include="ILogistica\ILOGISTICA.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ILOGISTICA.Designer.cs">
+    <Compile Include="ILogistica\ILOGISTICA.Designer.cs">
       <DependentUpon>ILOGISTICA.cs</DependentUpon>
     </Compile>
     <Compile Include="ILogistica\GestionarProductos\EditarProductoEnGestionarProducto.cs">
@@ -130,10 +130,10 @@
     <Compile Include="ILogistica\IVerAlertaStock.Designer.cs">
       <DependentUpon>IVerAlertaStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="IVENDEDOR.cs">
+    <Compile Include="IVendedor\IVENDEDOR.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IVENDEDOR.Designer.cs">
+    <Compile Include="IVendedor\IVENDEDOR.Designer.cs">
       <DependentUpon>IVENDEDOR.cs</DependentUpon>
     </Compile>
     <Compile Include="IVendedor\FacturasCliente.cs">
@@ -142,27 +142,21 @@
     <Compile Include="IVendedor\FacturasCliente.Designer.cs">
       <DependentUpon>FacturasCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListarVendedores.cs">
+    <Compile Include="IVendedor\NuevaVenta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListarVendedores.Designer.cs">
-      <DependentUpon>ListarVendedores.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NuevaVenta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NuevaVenta.Designer.cs">
+    <Compile Include="IVendedor\NuevaVenta.Designer.cs">
       <DependentUpon>NuevaVenta.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ILogIn.resx">
+    <EmbeddedResource Include="IInicio\ILogIn.resx">
       <DependentUpon>ILogIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IVendedor\HistorialCliente.resx">
       <DependentUpon>HistorialCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="INICIO.resx">
+    <EmbeddedResource Include="IInicio\INICIO.resx">
       <DependentUpon>INICIO.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ILogistica\ControlarStockcarpeta\IControlarSoloStock.resx">
@@ -174,7 +168,7 @@
     <EmbeddedResource Include="ILogistica\ICrearNuevoProducto.resx">
       <DependentUpon>ICrearNuevoProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CrearUsuario.resx">
+    <EmbeddedResource Include="IInicio\CrearUsuario.resx">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ILogistica\GestionarProductos\AmpliarProductoEnGestionarProducto.resx">
@@ -183,10 +177,10 @@
     <EmbeddedResource Include="ILogistica\GestionarProductos\IGestionarProductos.resx">
       <DependentUpon>IGestionarProductos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IADMINISTRADOR.resx">
+    <EmbeddedResource Include="IAdministrador\IADMINISTRADOR.resx">
       <DependentUpon>IADMINISTRADOR.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ILOGISTICA.resx">
+    <EmbeddedResource Include="ILogistica\ILOGISTICA.resx">
       <DependentUpon>ILOGISTICA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ILogistica\GestionarProductos\EditarProductoEnGestionarProducto.resx">
@@ -198,16 +192,13 @@
     <EmbeddedResource Include="ILogistica\IVerAlertaStock.resx">
       <DependentUpon>IVerAlertaStock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IVENDEDOR.resx">
+    <EmbeddedResource Include="IVendedor\IVENDEDOR.resx">
       <DependentUpon>IVENDEDOR.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IVendedor\FacturasCliente.resx">
       <DependentUpon>FacturasCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListarVendedores.resx">
-      <DependentUpon>ListarVendedores.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NuevaVenta.resx">
+    <EmbeddedResource Include="IVendedor\NuevaVenta.resx">
       <DependentUpon>NuevaVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -238,8 +229,6 @@
       <Name>BLL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="IAdministrador\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

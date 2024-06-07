@@ -10,6 +10,8 @@ namespace BLL
     public class Vendedor : Empleado
     {
 
+
+
         private int _CantidadVentas;
 
         public int CantidadVentas

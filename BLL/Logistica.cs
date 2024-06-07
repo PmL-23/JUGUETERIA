@@ -10,8 +10,17 @@ namespace BLL
 {
     public class Logistica : Empleado
     {
+        //atributos
 
-                                                                    //METODOS PRINCIPALES
+        //propiedades
+
+        public Logistica()
+        {
+
+        }
+
+        #region Metodos Principales
+
         public bool CargarProducto(string IDCreadorusuario, string NombreProducto, string IDProducto, decimal Costo, string FechaCreacion, decimal PrecioVenta, int CantidadStock, int CantidadMinimaPermitida)
         {
             DAL.Logistica logistica = new DAL.Logistica();
@@ -83,18 +92,10 @@ namespace BLL
             return listaDeProductos;
 
         }
+        #endregion
+        
 
-
-
-        public Logistica()
-        {
-
-        }
-
-
-
-
-                                                                    //METODOS AUXILIARES
+        #region Metodos Auxiliares
         public bool VerSiExisteProducto(string IDProducto)
         {
             DAL.Logistica logistica = new DAL.Logistica();
@@ -162,7 +163,7 @@ namespace BLL
             }
             return ListaProductos;
         }
-
+        #endregion
 
     }
 }
