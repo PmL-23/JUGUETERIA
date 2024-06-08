@@ -10,9 +10,6 @@ namespace BLL
 {
     public class Logistica : Empleado
     {
-        //atributos
-
-        //propiedades
 
         public Logistica()
         {

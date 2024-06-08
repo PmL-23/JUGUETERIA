@@ -9,16 +9,22 @@ namespace BLL
 {
     public class Vendedor : Empleado
     {
-
-
-
         private int _CantidadVentas;
 
+        #region Props
         public int CantidadVentas
         {
             get { return _CantidadVentas; }
             set { _CantidadVentas = value; }
         }
+        #endregion
+
+        public Vendedor()
+        {
+
+        }
+
+        #region Métodos Principales
 
         public bool RegistrarCliente(string idCliente, string nombre, string apellido, long dni, long cantidadCompras)
         {
@@ -30,6 +36,20 @@ namespace BLL
             }
 
             return false;
+        }
+
+        public bool GenerarFactura(string idVendedor, string idCliente, string date, decimal total)
+        {
+            DAL.Vendedor vend = new DAL.Vendedor();
+
+            if (vend.GenerarFactura(idVendedor, idCliente, date, total) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public List<Factura> TraerListaFacturas(string _IDCliente)
@@ -77,25 +97,14 @@ namespace BLL
 
             return listaDetalles;
         }
+        #endregion
+
+        #region Métodos Auxiliares
 
         public bool AumentarCantVentas(string idVendedor) {
             DAL.Vendedor vendedor = new DAL.Vendedor();
 
             return vendedor.AumentarCantVentas(idVendedor);
-        }
-
-        public bool GenerarFactura(string idVendedor, string idCliente, string date, decimal total)
-        {
-            DAL.Vendedor vend = new DAL.Vendedor();
-
-            if (vend.GenerarFactura(idVendedor, idCliente, date, total) == true)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         public List<Factura> VerHistorialVendedor(string idVendedor) {
@@ -120,9 +129,6 @@ namespace BLL
             return ListaFactura;
         }
 
-        public Vendedor()
-        {
-
-        }
+        #endregion
     }
 }

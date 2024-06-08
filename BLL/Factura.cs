@@ -56,17 +56,11 @@ namespace BLL
 
 		#endregion
 
-		public decimal CalcularSubtotal() {
+		public Factura()
+		{
 
-            this.Total = 0;
-
-            foreach (DetalleFactura item in this.ListaDetalles)
-            {
-                this.Total += item.Producto.Precioventa * item.Cantidad;
-            }
-
-            return this.Total;
-        }
+		}
+        #region Métodos Principales
 
 		public decimal CalcularTotal() {
 
@@ -96,6 +90,22 @@ namespace BLL
 
         }
 
+        #endregion
+
+        #region Métodos Auxiliares
+
+        public decimal CalcularSubtotal() {
+
+            this.Total = 0;
+
+            foreach (DetalleFactura item in this.ListaDetalles)
+            {
+                this.Total += item.Producto.Precioventa * item.Cantidad;
+            }
+
+            return this.Total;
+        }
+
 		public void SetIDFacturaADetalleFactura() {
 			DAL.Factura factura = new DAL.Factura();
 			
@@ -113,9 +123,7 @@ namespace BLL
 				item.Factura.IDFactura = UltimoIDFactura;
             }
 		}
-		public Factura()
-		{
 
-		}
+        #endregion
     }
 }

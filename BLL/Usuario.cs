@@ -11,11 +11,11 @@ namespace BLL
 {
     public abstract class Usuario
     {
-        public string _Nombre;
-        public string _Apellido;
-        public int _Dni;
-        public string _NombreUsuario;
-        public string _Contraseña;
+        protected string _Nombre;
+        protected string _Apellido;
+        protected int _Dni;
+        protected string _NombreUsuario;
+        protected string _Contraseña;
 
         #region Props
         public string Contraseña
@@ -55,6 +55,8 @@ namespace BLL
 
         #endregion
 
+        #region Métodos Principales
+
         public bool IniciarSesion(string nombreUsuario, string contrasenia)
         {
 
@@ -70,5 +72,7 @@ namespace BLL
             }
             return false;
         }
+
+        #endregion
     }
 }

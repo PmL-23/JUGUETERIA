@@ -11,6 +11,13 @@ namespace BLL
     public class Administrador : Empleado
     {
 
+        public Administrador()
+        {
+
+        }
+
+        #region Metodos Principales
+
         public List<Empleado> ListarEmpleados()
         {
             List<Empleado> listaDeEmpleados = new List<Empleado>();
@@ -74,12 +81,8 @@ namespace BLL
                 ListaVendedores.Add(VendedorALista);
             }
             return ListaVendedores;
-            }
-        
-
-        public Administrador()
-        {
-
         }
+
+        #endregion
     }
 }

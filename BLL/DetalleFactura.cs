@@ -33,6 +33,8 @@ namespace BLL
 		}
         #endregion
 
+        #region Métodos Principales
+
         public bool InsertarDetallesFactura(List<DetalleFactura> ListaDetalles)
         {
             DAL.DetalleFactura detFactura = new DAL.DetalleFactura();
@@ -47,6 +49,9 @@ namespace BLL
 
             return true;
         }
+        #endregion
+
+        #region Métodos Auxiliares
 
         public bool DecrementarStockPosventa(List<DetalleFactura> ListaDetalles)
         {
@@ -62,5 +67,7 @@ namespace BLL
 
             return true;
         }
+
+        #endregion
     }
 }

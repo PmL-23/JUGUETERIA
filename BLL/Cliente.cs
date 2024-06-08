@@ -49,16 +49,12 @@ namespace BLL
             get { return _cantidadCompras; }
             set { _cantidadCompras = value; }
         }
-
-        public Cliente(string idCliente, string nombre, string apellido, int dni, int cantidadCompras)
+        public Cliente()
         {
-            this._IDCliente = idCliente;
-            this._Nombre = nombre;
-            this._Apellido = apellido;
-            this._DNI = dni;
-            this._CantidadCompras = cantidadCompras;
-           
+
         }
+
+        #region Métodos Principales
 
         public List<Cliente> ListarClientes()
         {
@@ -84,15 +80,15 @@ namespace BLL
             
             return clientes;
         }
+        #endregion
 
+        #region Métodos Auxiliares
         public bool AumentarCantCompras(string idCliente) {
             DAL.Cliente cliente = new DAL.Cliente();
 
             return cliente.AumentarCantCompras(idCliente);
         }
 
-        public Cliente()
-        {
-        }
+        #endregion
     }
 }

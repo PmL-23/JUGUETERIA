@@ -9,14 +9,22 @@ namespace BLL
     public class Producto
     {
 		private string _NombreProducto;
+		private string _IDProducto;
+		private decimal _Costo;
+		private string _FechaDeCreacion;
+        private decimal _PrecioVenta;
+        private int _CantidadEnStock;
+		private int _CantidadMinimaPermitida;
+		private string _IDCreadorProducto;
 
-		public string NombreProducto
+        #region Props
+
+        public string NombreProducto
 		{
 			get { return _NombreProducto; }
 			set { _NombreProducto = value; }
 		}
 
-		private string _IDProducto;
 
 		public string IDProducto
 		{
@@ -24,21 +32,18 @@ namespace BLL
 			set { _IDProducto = value; }
 		}
 
-		private decimal _Costo;
 
 		public decimal Costo
 		{
 			get { return _Costo; }
 			set { _Costo = value; }
 		}
-		private string _FechaDeCreacion;
 
 		public string  FechaDeCreacion
 		{
 			get { return _FechaDeCreacion; }
 			set { _FechaDeCreacion = value; }
 		}
-        private decimal _PrecioVenta;
 
         public decimal Precioventa
         {
@@ -46,7 +51,6 @@ namespace BLL
             set { _PrecioVenta = value; }
         }
 
-        private int _CantidadEnStock;
 
 		public int CantidadEnStock
 		{
@@ -54,36 +58,23 @@ namespace BLL
 			set { _CantidadEnStock = value; }
 		}
 
-		private int _CantidadMinimaPermitida;
 
 		public int CantidadMinimaPermitida
 		{
 			get { return _CantidadMinimaPermitida; }
 			set { _CantidadMinimaPermitida = value; }
 		}
-		private string _IDCreadorProducto;
 
 		public string IDCreadorProducto
 		{
 			get { return _IDCreadorProducto; }
 			set { _IDCreadorProducto = value; }
 		}
+        #endregion
 
-		public Producto(string nombreproducto, string idproducto, decimal costo, string fechadecreacion, decimal precioventa, int cantidadenstock, int cantidadminimapermitida, string idcreadorproducto)
+		public Producto() 
 		{
-			this.NombreProducto = nombreproducto;
-			this.IDProducto = idproducto;	
-			this.Costo = costo;
-			this.FechaDeCreacion = fechadecreacion;
-			this.Precioventa = precioventa;
-			this.CantidadEnStock=cantidadenstock;
-			this.CantidadMinimaPermitida=cantidadminimapermitida;
-			this.IDCreadorProducto=idcreadorproducto;
+
 		}
-
-		public Producto() {
-		}
-
-
     }
 }

@@ -13,10 +13,10 @@ namespace BLL
 {
     public class Empleado : Usuario
     {
-        public string _Rol;
-        public string _IDEmpleado;
-        public decimal _Sueldo;
-        public string _Habilitado;
+        protected string _Rol;
+        protected string _IDEmpleado;
+        protected decimal _Sueldo;
+        protected string _Habilitado;
 
         #region Props
         public string Habilitado
@@ -54,20 +54,7 @@ namespace BLL
             this.Habilitado = "Deshabilitado";
         }
 
-        public bool VerSiExisteNombreUsuario(string _NombreUsuarioParametro) {
-
-            DAL.Empleado empleado = new DAL.Empleado();
-
-            bool ver = empleado.VerSiExisteNombreUsuario(_NombreUsuarioParametro);
-            if (ver==true)
-            {
-                return true;
-            }
-
-            return false;
-
-        }
-
+        #region Métodos Principales
         public bool Registrarse(string nombre, string apellido, int dni, string nombreUsuario, string contrasenia, string confirmContra)
         {
 
@@ -83,6 +70,24 @@ namespace BLL
             return false;
         }
 
+        #endregion
+
+        #region Métodos Auxiliares
+
+        public bool VerSiExisteNombreUsuario(string _NombreUsuarioParametro) {
+
+            DAL.Empleado empleado = new DAL.Empleado();
+
+            bool ver = empleado.VerSiExisteNombreUsuario(_NombreUsuarioParametro);
+            if (ver==true)
+            {
+                return true;
+            }
+
+            return false;
+
+        }
+
         public string VerificarRol(string nombreUsuario)
         {
             DAL.Empleado empleado = new DAL.Empleado();
@@ -90,9 +95,6 @@ namespace BLL
             return empleado.VerificarRol(nombreUsuario);
         }
 
-        public int CalcularSueldo()//Nos falta determinar en base a qué se va a calcular el sueldo de los empleados
-        {
-            return 0;
-        }
+        #endregion
     }
 }
