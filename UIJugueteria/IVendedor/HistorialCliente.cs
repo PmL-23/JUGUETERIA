@@ -145,13 +145,13 @@ namespace UIJugueteria
             {
                 BLL.Cliente cliente = new BLL.Cliente();
 
-                List<BLL.Cliente> listaClientes = cliente.ListarClientes().OrderByDescending(v => v._CantidadCompras).ToList();
+                List<BLL.Cliente> listaClientes = cliente.ListarClientes().OrderByDescending(v => v.CantidadCompras).ToList();
 
                 dgv_clientes.Rows.Clear();
 
                 foreach (BLL.Cliente item in listaClientes)
                 {
-                    dgv_clientes.Rows.Add(item._IDCliente, item._Nombre, item._Apellido, item._CantidadCompras, item._DNI);
+                    dgv_clientes.Rows.Add(item.IDCliente, item.Nombre, item.Apellido, item.CantidadCompras, item.DNI);
                 }
             }
             catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas

@@ -66,7 +66,7 @@ namespace BLL
             {
                 Factura FacturaALista = new Factura();
                 FacturaALista.Vendedor.NombreUsuario = row["_IDVendedorFactura"].ToString();
-                FacturaALista.Cliente._IDCliente = row["_IDClienteFactura"].ToString();
+                FacturaALista.Cliente.IDCliente = row["_IDClienteFactura"].ToString();
                 FacturaALista.IDFactura = row["_IDFactura"].ToString();
                 FacturaALista.FechaEmision = row["_FechaEmision"].ToString();
                 FacturaALista.Total = Convert.ToDecimal(row["_Total"]);
@@ -119,7 +119,7 @@ namespace BLL
             {
                 Factura FacturaALista = new Factura();
                 FacturaALista.Vendedor.NombreUsuario = row["_IDVendedorFactura"].ToString();
-                FacturaALista.Cliente._IDCliente = row["_IDClienteFactura"].ToString();
+                FacturaALista.Cliente.IDCliente = row["_IDClienteFactura"].ToString();
                 FacturaALista.IDFactura = row["_IDFactura"].ToString();
                 FacturaALista.FechaEmision = row["_FechaEmision"].ToString();
                 FacturaALista.Total = Convert.ToDecimal(row["_Total"]);

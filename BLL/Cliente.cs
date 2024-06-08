@@ -9,46 +9,45 @@ namespace BLL
 {
     public class Cliente
     {
+        private string _nombre;
+        private string _apellido;
         private string _idCliente;
+        private int _cantidadCompras;
+        private int _dni;
 
-        public string _IDCliente
+        #region Props
+        public string IDCliente
         {
             get { return _idCliente; }
             set { _idCliente = value; }
         }
 
-        private string _nombre;
-
-        public string _Nombre
+        public string Nombre
         {
             get { return _nombre; }
             set { _nombre = value; }
         }
 
-        private string _apellido;
-
-        public string _Apellido
+        public string Apellido
         {
             get { return _apellido; }
             set { _apellido = value; }
         }
 
-        private int _dni;
-
-        public int _DNI
+        public int DNI
         {
             get { return _dni; }
             set { _dni = value; }
         }
 
-
-        private int _cantidadCompras;
-
-        public int _CantidadCompras
+        public int CantidadCompras
         {
             get { return _cantidadCompras; }
             set { _cantidadCompras = value; }
         }
+
+        #endregion
+
         public Cliente()
         {
 
@@ -68,11 +67,11 @@ namespace BLL
             {
                 Cliente cliente = new Cliente();
 
-                cliente._Nombre = fila["_Nombre"].ToString();
-                cliente._Apellido = fila["_Apellido"].ToString();
-                cliente._IDCliente = fila["_IDCLiente"].ToString();
-                cliente._CantidadCompras =int.Parse(fila["_CantidadCompras"].ToString());
-                cliente._DNI = int.Parse( fila["_DNI"].ToString());
+                cliente.Nombre = fila["_Nombre"].ToString();
+                cliente.Apellido = fila["_Apellido"].ToString();
+                cliente.IDCliente= fila["_IDCLiente"].ToString();
+                cliente.CantidadCompras =int.Parse(fila["_CantidadCompras"].ToString());
+                cliente.DNI = int.Parse( fila["_DNI"].ToString());
 
                 clientes.Add(cliente); 
 
