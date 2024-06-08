@@ -97,15 +97,16 @@ namespace BLL
 
             return listaDetalles;
         }
-        #endregion
 
-        #region Métodos Auxiliares
-
-        public bool AumentarCantVentas(string idVendedor) {
+        public bool IncrementarYComisionarVenta(string idVendedor, decimal comision) {
             DAL.Vendedor vendedor = new DAL.Vendedor();
 
-            return vendedor.AumentarCantVentas(idVendedor);
+            return vendedor.IncrementarYComisionarVenta(idVendedor, comision);
         }
+        #endregion
+
+
+        #region Métodos Auxiliares
 
         public List<Factura> VerHistorialVendedor(string idVendedor) {
 

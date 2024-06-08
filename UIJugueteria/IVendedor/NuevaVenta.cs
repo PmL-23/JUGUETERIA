@@ -250,7 +250,7 @@ namespace UIJugueteria
                         if (detFact.DecrementarStockPosventa(factura.ListaDetalles) == true)
                         {
 
-                            if (vendedor.AumentarCantVentas(this.IDVendedor) == true)
+                            if (vendedor.IncrementarYComisionarVenta(this.IDVendedor, decimal.Parse((total * 0.05M).ToString("F2"))) == true)
                             {
                                 Cliente cliente = new Cliente();
 
@@ -258,7 +258,6 @@ namespace UIJugueteria
                                 {
 
                                     string facturaString = "----DETALLE DE FACTURA----\n\n";
-                                    //decimal totalFactura = 0;
 
                                     facturaString += ("ID del vendedor: " + this.IDVendedor + "\n");
                                     facturaString += ("ID del cliente: " + txtbox_idcliente.Text + "\n\n");
@@ -269,11 +268,8 @@ namespace UIJugueteria
                                     foreach (DataGridViewRow item in dgv_productos_factura.Rows)
                                     {
                                         facturaString += (item.Cells["Nombre"].Value.ToString() + " x " + item.Cells["Cantidad"].Value.ToString() + " = $" + (decimal.Parse(item.Cells["Cantidad"].Value.ToString()) * factura.ListaDetalles[item.Index].Producto.Precioventa) + ".\n");
-                                        
-                                        //totalFactura += decimal.Parse(item.Cells["Cantidad"].Value.ToString()) * factura.ListaDetalles[item.Index].Producto.Precioventa;
                                     }
 
-                                    //facturaString += "\nTOTAL: $" + totalFactura;
                                     facturaString += "\nSUBTOTAL: $" + factura.CalcularSubtotal();
                                     facturaString += "\nTOTAL (+IVA): $" + factura.CalcularTotal().ToString("F2");
 

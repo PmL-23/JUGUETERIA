@@ -75,14 +75,21 @@ namespace DAL
             return false;
         }
 
-        public bool AumentarCantVentas(string idVendedor) { 
+        public bool IncrementarYComisionarVenta(string idVendedor, decimal comision)
+        {
             Conexion conexion = new Conexion();
 
             int filasAfectadas = conexion.EscribirPorComando("UPDATE [BDDJ].[dbo].[VENDEDOR] SET [_CantidadVentas] = [_CantidadVentas] + 1 WHERE _IDVendedor = '" + idVendedor + "';");
 
             if (filasAfectadas > 0)
             {
-                return true;
+                string comisionString = comision.ToString(CultureInfo.InvariantCulture);
+                filasAfectadas = conexion.EscribirPorComando("UPDATE [BDDJ].[dbo].[EMPLEADOS] SET [_Sueldo] = [_Sueldo] + "+comisionString+" WHERE _IDEmpleado = '"+idVendedor+"';");
+
+                if (filasAfectadas > 0)
+                {
+                    return true;
+                }
             }
 
             return false;
