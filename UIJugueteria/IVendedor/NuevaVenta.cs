@@ -129,6 +129,8 @@ namespace UIJugueteria
 
             try
             {
+                if (filaSeleccionada.Cells["CantidadEnStock"].Value.ToString() == "0") throw new MyExceptions("Este producto se encuentra sin stock..");
+
                 foreach (DetalleFactura item in factura.ListaDetalles)
                 {
                     if (item.Producto.IDProducto == filaSeleccionada.Cells["IDProducto"].Value.ToString())
