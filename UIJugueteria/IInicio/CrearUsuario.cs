@@ -19,18 +19,10 @@ namespace UIJugueteria
             InitializeComponent();
         }
 
-        private void panelCentral_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void CrearUsuario_Load(object sender, EventArgs e)
         {
 
         }
-
-
-
 
 
         private void lblNombre_Click(object sender, EventArgs e) { }
@@ -79,7 +71,6 @@ namespace UIJugueteria
             {
                 MessageBox.Show("\tHay campos incompletos, debe completarlos todos.\t");
             }
-
             else
             {
                 try
@@ -147,7 +138,7 @@ namespace UIJugueteria
                     MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
                 }
             }
-    }
+        }
 
 
         

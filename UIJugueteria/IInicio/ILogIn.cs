@@ -62,12 +62,6 @@ namespace UIJugueteria
             }
         }
 
-        private void PanelMain_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
         private void btnIniciarSesion_Click_1(object sender, EventArgs e)
         {
             string _NombreUsuario = tboxIniciarUsuario.Text;

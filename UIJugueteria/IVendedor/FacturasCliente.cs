@@ -1,4 +1,5 @@
 ﻿using BLL;
+using BLL.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,20 +21,31 @@ namespace UIJugueteria.IVendedor
             InitializeComponent();
             _IDCliente = idcliente;
             _IDVendedor = idvendedor;
-            BLL.Vendedor vendedor = new BLL.Vendedor();
-
-            List<BLL.Factura> listaFacturas = vendedor.TraerListaFacturas(_IDCliente);
-            dgvFacturasCliente.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-            dgvFacturasCliente.Rows.Clear();
-
-            foreach (BLL.Factura factura in listaFacturas)
+            try
             {
-                dgvFacturasCliente.Rows.Add(this._IDVendedor, this._IDCliente, factura.IDFactura, factura.FechaEmision, "$ " + factura.Total);
-            }
-            dgvFacturasCliente.Columns["TotalFactura"].DefaultCellStyle.Format = "0.00";
+                BLL.Vendedor vendedor = new BLL.Vendedor();
 
-            lblIDClienteDinamico.Text = this._IDCliente;
+                List<BLL.Factura> listaFacturas = vendedor.TraerListaFacturas(_IDCliente);
+                dgvFacturasCliente.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+                dgvFacturasCliente.Rows.Clear();
+
+                foreach (BLL.Factura factura in listaFacturas)
+                {
+                    dgvFacturasCliente.Rows.Add(this._IDVendedor, this._IDCliente, factura.IDFactura, factura.FechaEmision, "$ " + factura.Total);
+                }
+                dgvFacturasCliente.Columns["TotalFactura"].DefaultCellStyle.Format = "0.00";
+
+                lblIDClienteDinamico.Text = this._IDCliente;
+            }
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+            {
+                MessageBox.Show(ExcPersonalizada.Mensaje);
+            }
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
+            }
 
         }
 
@@ -124,11 +136,16 @@ namespace UIJugueteria.IVendedor
 
                 MessageBox.Show(facturaString, "", MessageBoxButtons.OK);
             }
-            catch (Exception ex) {
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+            {
+                MessageBox.Show(ExcPersonalizada.Mensaje);
+            }
+            catch (Exception ex) 
+            {
                 Console.WriteLine(ex.ToString());
-                MessageBox.Show("no hay ninguna factrura seleccionada");
+                MessageBox.Show("no hay ninguna factura seleccionada");
             }
-            }
+        }
 
 
 

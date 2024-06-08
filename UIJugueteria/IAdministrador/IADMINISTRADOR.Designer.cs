@@ -28,15 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabAdminEmpleados = new System.Windows.Forms.TabControl();
             this.tabSeleccionar = new System.Windows.Forms.TabPage();
             this.btnVendoresVentas = new System.Windows.Forms.Button();
             this.btnCerrarsesion = new System.Windows.Forms.Button();
             this.btn_modif_empleado = new System.Windows.Forms.Button();
             this.dataGridViewEmpleados = new System.Windows.Forms.DataGridView();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sueldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Habilitado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabModificar = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.label_nombreusuario = new System.Windows.Forms.Label();
@@ -64,13 +71,6 @@
             this.CantidadVentasVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnVolver = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sueldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Habilitado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabAdminEmpleados.SuspendLayout();
             this.tabSeleccionar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmpleados)).BeginInit();
@@ -185,6 +185,41 @@
             this.dataGridViewEmpleados.Size = new System.Drawing.Size(683, 333);
             this.dataGridViewEmpleados.TabIndex = 0;
             this.dataGridViewEmpleados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmpleados_CellContentClick_1);
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            // 
+            // Apellido
+            // 
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            // 
+            // DNI
+            // 
+            this.DNI.HeaderText = "D.N.I";
+            this.DNI.Name = "DNI";
+            // 
+            // NombreUsuario
+            // 
+            this.NombreUsuario.HeaderText = "Usuario";
+            this.NombreUsuario.Name = "NombreUsuario";
+            // 
+            // Rol
+            // 
+            this.Rol.HeaderText = "Rol";
+            this.Rol.Name = "Rol";
+            // 
+            // Sueldo
+            // 
+            this.Sueldo.HeaderText = "Sueldo";
+            this.Sueldo.Name = "Sueldo";
+            // 
+            // Habilitado
+            // 
+            this.Habilitado.HeaderText = "Estado";
+            this.Habilitado.Name = "Habilitado";
             // 
             // tabModificar
             // 
@@ -404,24 +439,24 @@
             // 
             this.dtgvVendedores.AllowUserToAddRows = false;
             this.dtgvVendedores.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
-            this.dtgvVendedores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtgvVendedores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgvVendedores.BackgroundColor = System.Drawing.Color.White;
             this.dtgvVendedores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgvVendedores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtgvVendedores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvVendedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvVendedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgvVendedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvVendedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NombreVendedor,
@@ -438,6 +473,7 @@
             this.dtgvVendedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvVendedores.Size = new System.Drawing.Size(683, 333);
             this.dtgvVendedores.TabIndex = 11;
+            this.dtgvVendedores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvVendedores_CellContentClick);
             // 
             // NombreVendedor
             // 
@@ -471,8 +507,8 @@
             // 
             // CantidadVentasVendedor
             // 
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CantidadVentasVendedor.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CantidadVentasVendedor.DefaultCellStyle = dataGridViewCellStyle3;
             this.CantidadVentasVendedor.HeaderText = "Ventas";
             this.CantidadVentasVendedor.Name = "CantidadVentasVendedor";
             this.CantidadVentasVendedor.ReadOnly = true;
@@ -500,41 +536,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(799, 365);
             this.panel1.TabIndex = 9;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            // 
-            // Apellido
-            // 
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.Name = "Apellido";
-            // 
-            // DNI
-            // 
-            this.DNI.HeaderText = "D.N.I";
-            this.DNI.Name = "DNI";
-            // 
-            // NombreUsuario
-            // 
-            this.NombreUsuario.HeaderText = "Usuario";
-            this.NombreUsuario.Name = "NombreUsuario";
-            // 
-            // Rol
-            // 
-            this.Rol.HeaderText = "Rol";
-            this.Rol.Name = "Rol";
-            // 
-            // Sueldo
-            // 
-            this.Sueldo.HeaderText = "Sueldo";
-            this.Sueldo.Name = "Sueldo";
-            // 
-            // Habilitado
-            // 
-            this.Habilitado.HeaderText = "Estado";
-            this.Habilitado.Name = "Habilitado";
             // 
             // IADMINISTRADOR
             // 

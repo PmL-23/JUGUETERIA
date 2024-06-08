@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,17 +21,28 @@ namespace UIJugueteria
         public AmpliarProductoEnGestionarProducto(string _IDProducto)
         {
             InitializeComponent();
-       
-            ProductoEnForm = logistica.TraerUnProducto(_IDProducto);
+            try 
+            { 
+                ProductoEnForm = logistica.TraerUnProducto(_IDProducto);
 
-            lblIDEmpleadoCreadorProducto.Text = ProductoEnForm.IDCreadorProducto.ToString();
-            lblFechaCreacionProducto.Text =ProductoEnForm.FechaDeCreacion.ToString();
-            lblIDProductoDinamico.Text = ProductoEnForm.IDProducto.ToString();
-            lblNombreProducto.Text = ProductoEnForm.NombreProducto.ToString();
-            lblCostoProducto.Text = ProductoEnForm.Costo.ToString();
-            lblPrecioVentaProducto.Text = ProductoEnForm.Precioventa.ToString();
-            lblStock.Text = ProductoEnForm.CantidadEnStock.ToString();
-            lblStockMinimoIdeal.Text = ProductoEnForm.CantidadMinimaPermitida.ToString();
+                lblIDEmpleadoCreadorProducto.Text = ProductoEnForm.IDCreadorProducto.ToString();
+                lblFechaCreacionProducto.Text =ProductoEnForm.FechaDeCreacion.ToString();
+                lblIDProductoDinamico.Text = ProductoEnForm.IDProducto.ToString();
+                lblNombreProducto.Text = ProductoEnForm.NombreProducto.ToString();
+                lblCostoProducto.Text = ProductoEnForm.Costo.ToString();
+                lblPrecioVentaProducto.Text = ProductoEnForm.Precioventa.ToString();
+                lblStock.Text = ProductoEnForm.CantidadEnStock.ToString();
+                lblStockMinimoIdeal.Text = ProductoEnForm.CantidadMinimaPermitida.ToString();
+            
+            }
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+            {
+                MessageBox.Show(ExcPersonalizada.Mensaje);
+            }
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
+            }
         }
 
         private void AmpliarProductoEnGestionarProducto_Load(object sender, EventArgs e) { }
@@ -86,16 +98,28 @@ namespace UIJugueteria
             }
             else
             {
-                BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
-                bool VerSiExiste = log.VerSiExisteProducto(tboxIDProducto.Text);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
-
-                if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
+                try
                 {
-                    AbrirFormEnPanel(() => new AmpliarProductoEnGestionarProducto(tboxIDProducto.Text));
+                    BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
+                    bool VerSiExiste = log.VerSiExisteProducto(tboxIDProducto.Text);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
+
+                    if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
+                    {
+                        AbrirFormEnPanel(() => new AmpliarProductoEnGestionarProducto(tboxIDProducto.Text));
+                    }
+                    else
+                    {                           //Si el producto NO existe, mostramos un mensaje.
+                        MessageBox.Show("El producto con ID: '" + tboxIDProducto.Text + "' NO en la Base de Datos", "Producto Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
-                else
-                {                           //Si el producto NO existe, mostramos un mensaje.
-                    MessageBox.Show("El producto con ID: '" + tboxIDProducto.Text + "' NO en la Base de Datos", "Producto Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+                {
+                    MessageBox.Show(ExcPersonalizada.Mensaje);
+                }
+                catch (Exception ex) //Atrapo excepciones generales
+                {
+                    MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
                 }
             }
         }

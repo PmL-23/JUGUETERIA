@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -140,15 +141,26 @@ namespace UIJugueteria
 
         private void HistorialCliente_Load(object sender, EventArgs e)
         {
-            BLL.Cliente cliente = new BLL.Cliente();
-
-            List<BLL.Cliente> listaClientes = cliente.ListarClientes().OrderByDescending(v => v._CantidadCompras).ToList();
-
-            dgv_clientes.Rows.Clear();
-
-            foreach (BLL.Cliente item in listaClientes)
+            try
             {
-                dgv_clientes.Rows.Add(item._IDCliente, item._Nombre, item._Apellido, item._CantidadCompras, item._DNI);
+                BLL.Cliente cliente = new BLL.Cliente();
+
+                List<BLL.Cliente> listaClientes = cliente.ListarClientes().OrderByDescending(v => v._CantidadCompras).ToList();
+
+                dgv_clientes.Rows.Clear();
+
+                foreach (BLL.Cliente item in listaClientes)
+                {
+                    dgv_clientes.Rows.Add(item._IDCliente, item._Nombre, item._Apellido, item._CantidadCompras, item._DNI);
+                }
+            }
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+            {
+                MessageBox.Show(ExcPersonalizada.Mensaje);
+            }
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
             }
         }
 

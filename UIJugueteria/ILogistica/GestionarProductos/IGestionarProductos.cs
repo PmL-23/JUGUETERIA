@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,35 +18,47 @@ namespace UIJugueteria
         public IGestionarProductos()
         {
             InitializeComponent();
-            BLL.Logistica logistica = new BLL.Logistica();
-
-            List<BLL.Producto> listaProductos = logistica.TraerListaProductos();
-
-            dtgvVerProductos.Rows.Clear();
-
-            foreach (BLL.Producto producto in listaProductos)
+            try
             {
-                // Agregar una nueva fila al DataGridView y asignar los valores de las celdas
-                int rowIndex = dtgvVerProductos.Rows.Add(producto.IDProducto, producto.NombreProducto, "$ " + producto.Costo, "$ " + producto.Precioventa, producto.CantidadEnStock);
+                BLL.Logistica logistica = new BLL.Logistica();
 
-                // Obtener la fila actual
-                DataGridViewRow row = dtgvVerProductos.Rows[rowIndex];
+                List<BLL.Producto> listaProductos = logistica.TraerListaProductos();
 
-                // Cambiar el color de la celda de CantidadEnStock si es menor que CantidadMinimaPermitida
-                if (producto.CantidadEnStock < producto.CantidadMinimaPermitida)
+                dtgvVerProductos.Rows.Clear();
+
+                foreach (BLL.Producto producto in listaProductos)
                 {
-                    row.Cells["StockProducto"].Style.BackColor = Color.Orange;
-                    row.Cells["StockProducto"].Style.ForeColor = Color.Black;
+                    // Agregar una nueva fila al DataGridView y asignar los valores de las celdas
+                    int rowIndex = dtgvVerProductos.Rows.Add(producto.IDProducto, producto.NombreProducto, "$ " + producto.Costo, "$ " + producto.Precioventa, producto.CantidadEnStock);
+
+                    // Obtener la fila actual
+                    DataGridViewRow row = dtgvVerProductos.Rows[rowIndex];
+
+                    // Cambiar el color de la celda de CantidadEnStock si es menor que CantidadMinimaPermitida
+                    if (producto.CantidadEnStock < producto.CantidadMinimaPermitida)
+                    {
+                        row.Cells["StockProducto"].Style.BackColor = Color.Orange;
+                        row.Cells["StockProducto"].Style.ForeColor = Color.Black;
+                    }
+                    if (producto.CantidadEnStock == 0)
+                    {
+                        row.Cells["StockProducto"].Style.BackColor = Color.Brown;
+                        row.Cells["StockProducto"].Style.ForeColor = Color.Black;
+                    }
                 }
-                if (producto.CantidadEnStock == 0)
-                {
-                    row.Cells["StockProducto"].Style.BackColor = Color.Brown;
-                    row.Cells["StockProducto"].Style.ForeColor = Color.Black;
-                }
-            }
-            dtgvVerProductos.Columns["CostoProducto"].DefaultCellStyle.Format = "0.00";
+                dtgvVerProductos.Columns["CostoProducto"].DefaultCellStyle.Format = "0.00";
            
-            dtgvVerProductos.Columns["PrecioProducto"].DefaultCellStyle.Format = "0.00";
+                dtgvVerProductos.Columns["PrecioProducto"].DefaultCellStyle.Format = "0.00";
+
+            }
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+            {
+                MessageBox.Show(ExcPersonalizada.Mensaje);
+            }
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
+            }
 
         }
 
@@ -83,16 +96,27 @@ namespace UIJugueteria
 
         private void btnBuscarProducto_Click(object sender, EventArgs e)
         {
-            BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
-            bool VerSiExiste = log.VerSiExisteProducto(tboxIDProducto.Text);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
-
-            if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
+            try
             {
-                AbrirFormEnPanel(() => new EditarProductoEnGestionarProducto(tboxIDProducto.Text));
+                BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
+                bool VerSiExiste = log.VerSiExisteProducto(tboxIDProducto.Text);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
+
+                if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
+                {
+                    AbrirFormEnPanel(() => new EditarProductoEnGestionarProducto(tboxIDProducto.Text));
+                }
+                else
+                {                           //Si el producto NO existe, mostramos un mensaje.
+                    MessageBox.Show("El producto con ID: '" + tboxIDProducto.Text + "' NO en la Base de Datos", "Producto Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
-            {                           //Si el producto NO existe, mostramos un mensaje.
-                MessageBox.Show("El producto con ID: '" + tboxIDProducto.Text + "' NO en la Base de Datos", "Producto Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+            {
+                MessageBox.Show(ExcPersonalizada.Mensaje);
+            }
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
             }
         }
 
@@ -145,30 +169,41 @@ namespace UIJugueteria
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-
-            if (indice != -1 )
+            try
             {
-                string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;           //probar maneja cuando no se selecciona ninguna final(solo es cuando no hay productos y se selecciona eliminar o ampliar o editar.)
-                BLL.Logistica logistica = new BLL.Logistica();
-                bool resultado = logistica.EliminarProducto(IDSelececionada);
-                if (resultado)
+                if (indice != -1 )
                 {
-                    MessageBox.Show("El Producto con ID: " + IDSelececionada + " a sido eliminado de la Base de Datos.");
-                    AbrirFormEnPanel(() => new IGestionarProductos());
+                    string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;           //probar maneja cuando no se selecciona ninguna final(solo es cuando no hay productos y se selecciona eliminar o ampliar o editar.)
+                    BLL.Logistica logistica = new BLL.Logistica();
+                    bool resultado = logistica.EliminarProducto(IDSelececionada);
+                    if (resultado)
+                    {
+                        MessageBox.Show("El Producto con ID: " + IDSelececionada + " a sido eliminado de la Base de Datos.");
+                        AbrirFormEnPanel(() => new IGestionarProductos());
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("El producto con ID  " + IDSelececionada+"se ha usado en una factura, por lo que no se puede eliminar de la Base de Datos.");
+
+                    }
 
                 }
+
                 else
                 {
-                    MessageBox.Show("El producto con ID  " + IDSelececionada+"se ha usado en una factura, por lo que no se puede eliminar de la Base de Datos.");
+                    MessageBox.Show("Seleccione un producto ");
 
                 }
 
             }
-
-            else
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
             {
-                MessageBox.Show("Seleccione un producto ");
-
+                MessageBox.Show(ExcPersonalizada.Mensaje);
+            }
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
             }
         }
 

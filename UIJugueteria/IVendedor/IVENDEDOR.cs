@@ -1,4 +1,5 @@
 ﻿using BLL;
+using BLL.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -83,11 +84,22 @@ namespace UIJugueteria
         {
             BLL.Vendedor vendedor = new BLL.Vendedor();
 
-            List<Factura> facturas = vendedor.VerHistorialVendedor(this.IDVendedor);
-
-            foreach (Factura item in facturas)
+            try
             {
-                dgv_historial_vend.Rows.Add(item.IDFactura, item.Cliente._IDCliente, item.FechaEmision, item.Total);
+                List<Factura> facturas = vendedor.VerHistorialVendedor(this.IDVendedor);
+
+                foreach (Factura item in facturas)
+                {
+                    dgv_historial_vend.Rows.Add(item.IDFactura, item.Cliente._IDCliente, item.FechaEmision, item.Total);
+                }
+            }
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+            {
+                MessageBox.Show(ExcPersonalizada.Mensaje);
+            }
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using BLL;
+using BLL.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -74,39 +75,29 @@ namespace UIJugueteria
             }
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void IADMINISTRADOR_Load(object sender, EventArgs e)
         {
             dataGridViewEmpleados.Rows.Clear();
 
-            BLL.Administrador admin = new BLL.Administrador();
-
-            List<Empleado> empleados = admin.ListarEmpleados();
-
-            foreach (Empleado item in empleados)
+            try
             {
-                dataGridViewEmpleados.Rows.Add(item.Nombre, item.Apellido, item.DNI, item.NombreUsuario, item.Rol, item.Sueldo, item.Habilitado);
-            }
-        }
+                BLL.Administrador admin = new BLL.Administrador();
 
-        private void dataGridViewEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Verifico si el clic fue en una celda válida y no en encabezados de columna
-            if (e.RowIndex >= 0)
+                List<Empleado> empleados = admin.ListarEmpleados();
+
+                foreach (Empleado item in empleados)
+                {
+                    dataGridViewEmpleados.Rows.Add(item.Nombre, item.Apellido, item.DNI, item.NombreUsuario, item.Rol, item.Sueldo, item.Habilitado);
+                }
+            }
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
             {
-                // Selecciono la fila completa
-                dataGridViewEmpleados.Rows[e.RowIndex].Selected = true;
-                btn_modif_empleado.Enabled = true;
+                MessageBox.Show(ExcPersonalizada.Mensaje);
             }
-        }
-
-        private void tabSeleccionar_Click(object sender, EventArgs e)
-        {
-
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
+            }
         }
 
         private void btn_modif_empleado_Click_1(object sender, EventArgs e)
@@ -117,44 +108,53 @@ namespace UIJugueteria
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            //Este boton almacena los datos actualizados del usuario seleccionado
-
-            BLL.Administrador admin = new BLL.Administrador();
-
-            string Sueldotexto = textBox_sueldo.Text.Replace(',', '.');
-            decimal _Sueldo;
-
-            if (decimal.TryParse(Sueldotexto, NumberStyles.Any, CultureInfo.InvariantCulture, out _Sueldo))
+            try
             {
+                //Este boton almacena los datos actualizados del usuario seleccionado
 
-                if (admin.ActualizarDatosUsuario(this.RolPrevio, label_nombreusuario.Text, comboBox_rol.Text, comboBox_estado.Text, _Sueldo))
+                BLL.Administrador admin = new BLL.Administrador();
+
+                string Sueldotexto = textBox_sueldo.Text.Replace(',', '.');
+                decimal _Sueldo;
+
+                if (decimal.TryParse(Sueldotexto, NumberStyles.Any, CultureInfo.InvariantCulture, out _Sueldo))
                 {
-                    MessageBox.Show("Datos de usuario '" + label_nombreusuario.Text + "' actualizados con exito!.");
-                    tabAdminEmpleados.TabPages.Remove(tabModificar);
-                    tabAdminEmpleados.TabPages.Add(tabSeleccionar);
 
-                    //Una vez actualizados los datos recargo la tabla
-                    dataGridViewEmpleados.Rows.Clear();
-                    List<Empleado> empleados = admin.ListarEmpleados();
-
-                    foreach (Empleado item in empleados)
+                    if (admin.ActualizarDatosUsuario(this.RolPrevio, label_nombreusuario.Text, comboBox_rol.Text, comboBox_estado.Text, _Sueldo))
                     {
-                        dataGridViewEmpleados.Rows.Add(item.Nombre, item.Apellido, item.DNI, item.NombreUsuario, item.Rol, item.Sueldo, item.Habilitado);
+                        MessageBox.Show("Datos de usuario '" + label_nombreusuario.Text + "' actualizados con exito!.");
+                        tabAdminEmpleados.TabPages.Remove(tabModificar);
+                        tabAdminEmpleados.TabPages.Add(tabSeleccionar);
+
+                        //Una vez actualizados los datos recargo la tabla
+                        dataGridViewEmpleados.Rows.Clear();
+                        List<Empleado> empleados = admin.ListarEmpleados();
+
+                        foreach (Empleado item in empleados)
+                        {
+                            dataGridViewEmpleados.Rows.Add(item.Nombre, item.Apellido, item.DNI, item.NombreUsuario, item.Rol, item.Sueldo, item.Habilitado);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al actualizar los datos del usuario '" + label_nombreusuario.Text + "'.");
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Error al actualizar los datos del usuario '" + label_nombreusuario.Text + "'.");
+                else {
+
+                    MessageBox.Show("El formato del Sueldo es incorrecto!");
                 }
+
             }
-            else {
-
-                MessageBox.Show("El formato del Sueldo es incorrecto!");
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+            {
+                MessageBox.Show(ExcPersonalizada.Mensaje);
             }
-           
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
+            }
 
-
-            
         }
 
         private void btnCerrarsesion_Click(object sender, EventArgs e)
@@ -215,30 +215,41 @@ namespace UIJugueteria
         {
             tabAdminEmpleados.TabPages.Remove(tabSeleccionar);
             tabAdminEmpleados.TabPages.Add(tabVerEmpleados);
-            BLL.Administrador admin = new BLL.Administrador();
-
-            List<BLL.Vendedor> listaVendedores = admin.TraerListaVendedores().OrderByDescending(v => v.CantidadVentas).ToList();
-            //List<BLL.Vendedor> listaVendedores = admin.TraerListaVendedores();
-
-            dtgvVendedores.Rows.Clear();
-
-            foreach (BLL.Vendedor vendedor in listaVendedores)
+            try
             {
-                string sueldoFormateado = vendedor.Sueldo.ToString("N2", new System.Globalization.CultureInfo("es-ES"));
+                BLL.Administrador admin = new BLL.Administrador();
 
-                int rowIndex = dtgvVendedores.Rows.Add(vendedor.Nombre, vendedor.Apellido, vendedor.IDEmpleado, vendedor.Habilitado, "$ " + sueldoFormateado, vendedor.CantidadVentas);
-                
-                // Obtener la fila actual
-                DataGridViewRow row = dtgvVendedores.Rows[rowIndex];
+                List<BLL.Vendedor> listaVendedores = admin.TraerListaVendedores().OrderByDescending(v => v.CantidadVentas).ToList();
+                //List<BLL.Vendedor> listaVendedores = admin.TraerListaVendedores();
 
-                if (vendedor.CantidadVentas == 0)
+                dtgvVendedores.Rows.Clear();
+
+                foreach (BLL.Vendedor vendedor in listaVendedores)
                 {
-                    row.Cells["CantidadVentasVendedor"].Style.BackColor = Color.Brown;
-                    row.Cells["CantidadVentasVendedor"].Style.ForeColor = Color.Black;
-                }
-            }
-            dtgvVendedores.Columns["SueldoVendedor"].DefaultCellStyle.Format = "0.00";
+                    string sueldoFormateado = vendedor.Sueldo.ToString("N2", new System.Globalization.CultureInfo("es-ES"));
 
+                    int rowIndex = dtgvVendedores.Rows.Add(vendedor.Nombre, vendedor.Apellido, vendedor.IDEmpleado, vendedor.Habilitado, "$ " + sueldoFormateado, vendedor.CantidadVentas);
+                
+                    // Obtener la fila actual
+                    DataGridViewRow row = dtgvVendedores.Rows[rowIndex];
+
+                    if (vendedor.CantidadVentas == 0)
+                    {
+                        row.Cells["CantidadVentasVendedor"].Style.BackColor = Color.Brown;
+                        row.Cells["CantidadVentasVendedor"].Style.ForeColor = Color.Black;
+                    }
+                }
+                dtgvVendedores.Columns["SueldoVendedor"].DefaultCellStyle.Format = "0.00";
+
+            }
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+            {
+                MessageBox.Show(ExcPersonalizada.Mensaje);
+            }
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
+            }
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -253,6 +264,11 @@ namespace UIJugueteria
         {
             tabAdminEmpleados.TabPages.Remove(tabModificar);
             tabAdminEmpleados.TabPages.Add(tabSeleccionar);
+        }
+
+        private void dtgvVendedores_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

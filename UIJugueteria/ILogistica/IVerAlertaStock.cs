@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,26 +18,36 @@ namespace UIJugueteria.ILogistica
         public IVerAlertaStock()
         {
             InitializeComponent();
-            
-            BLL.Logistica logistica = new BLL.Logistica();
 
-
-            List<BLL.Producto> listaProductos = logistica.VerAlertarBajoStock();
-
-            int contador = listaProductos.Count;
-            lblCantidadProductos.Text = contador.ToString();
-
-            dtgvVerProductos.Rows.Clear();
-
-            foreach (BLL.Producto producto in listaProductos)
+            try
             {
-                // Agregar una nueva fila al DataGridView y asignar los valores de las celdas
-                dtgvVerProductos.Rows.Add(producto.IDCreadorProducto, producto.IDProducto, producto.NombreProducto, producto.FechaDeCreacion, producto.CantidadMinimaPermitida, producto.CantidadEnStock);
+                BLL.Logistica logistica = new BLL.Logistica();
+
+
+                List<BLL.Producto> listaProductos = logistica.VerAlertarBajoStock();
+
+                int contador = listaProductos.Count;
+                lblCantidadProductos.Text = contador.ToString();
+
+                dtgvVerProductos.Rows.Clear();
+
+                foreach (BLL.Producto producto in listaProductos)
+                {
+                    // Agregar una nueva fila al DataGridView y asignar los valores de las celdas
+                    dtgvVerProductos.Rows.Add(producto.IDCreadorProducto, producto.IDProducto, producto.NombreProducto, producto.FechaDeCreacion, producto.CantidadMinimaPermitida, producto.CantidadEnStock);
             
+                }
+                dtgvVerProductos.CellFormatting += dtgvVerProductos_CellFormatting;
+
             }
-            dtgvVerProductos.CellFormatting += dtgvVerProductos_CellFormatting;
-
-
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+            {
+                MessageBox.Show(ExcPersonalizada.Mensaje);
+            }
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
+            }
         }
 
         private void IVerAlertaStock_Load(object sender, EventArgs e) {

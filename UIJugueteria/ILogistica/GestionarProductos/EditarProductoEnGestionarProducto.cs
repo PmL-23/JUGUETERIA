@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,21 +20,30 @@ namespace UIJugueteria
         public EditarProductoEnGestionarProducto(string _IDProducto)
         {
             InitializeComponent();
-            
-            
 
-            ProductoEnForm = logistica.TraerUnProducto(_IDProducto);
+            try { 
+                ProductoEnForm = logistica.TraerUnProducto(_IDProducto);
 
             
-            lblIDEmpleadoCreadorProducto.Text = ProductoEnForm.IDCreadorProducto.ToString();
-            lblFechaCreacionProducto.Text =ProductoEnForm.FechaDeCreacion.ToString();
-            idproducto.Text = ProductoEnForm.IDProducto.ToString();
+                lblIDEmpleadoCreadorProducto.Text = ProductoEnForm.IDCreadorProducto.ToString();
+                lblFechaCreacionProducto.Text =ProductoEnForm.FechaDeCreacion.ToString();
+                idproducto.Text = ProductoEnForm.IDProducto.ToString();
 
-            tboxNombreProducto.Text = ProductoEnForm.NombreProducto.ToString();
-            tboxCosto.Text = ProductoEnForm.Costo.ToString();
-            tboxPrecioVenta.Text = ProductoEnForm.Precioventa.ToString();
-            tboxStockDisponible.Text = ProductoEnForm.CantidadEnStock.ToString();
-            tboxStockMinimoIdeal.Text = ProductoEnForm.CantidadMinimaPermitida.ToString();
+                tboxNombreProducto.Text = ProductoEnForm.NombreProducto.ToString();
+                tboxCosto.Text = ProductoEnForm.Costo.ToString();
+                tboxPrecioVenta.Text = ProductoEnForm.Precioventa.ToString();
+                tboxStockDisponible.Text = ProductoEnForm.CantidadEnStock.ToString();
+                tboxStockMinimoIdeal.Text = ProductoEnForm.CantidadMinimaPermitida.ToString();
+            
+            }
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+            {
+                MessageBox.Show(ExcPersonalizada.Mensaje);
+            }
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
+            }
         }
 
         private void ProductoEnBuscarProducto_Load(object sender, EventArgs e) { }
@@ -90,131 +100,161 @@ namespace UIJugueteria
             }
             else
             {
-                if (tboxCosto.Text == ProductoEnForm.Costo.ToString() &&
-    tboxPrecioVenta.Text == ProductoEnForm.Precioventa.ToString() &&
-    tboxStockDisponible.Text == ProductoEnForm.CantidadEnStock.ToString() &&
-    tboxStockMinimoIdeal.Text == ProductoEnForm.CantidadMinimaPermitida.ToString() &&
-    tboxNombreProducto.Text == ProductoEnForm.NombreProducto.ToString())
+                try
                 {
-                    MessageBox.Show("\tDebe cambiar al menos 1 campo\t"); // el usuario no modificó los campos
-                }
-                else
-                {
-                    string costoProductoTexto = tboxCosto.Text.Replace(',', '.');
-                    decimal _CostoProducto;
-                    if (decimal.TryParse(costoProductoTexto, NumberStyles.Any, CultureInfo.InvariantCulture, out _CostoProducto))
+                    if (tboxCosto.Text == ProductoEnForm.Costo.ToString() &&
+        tboxPrecioVenta.Text == ProductoEnForm.Precioventa.ToString() &&
+        tboxStockDisponible.Text == ProductoEnForm.CantidadEnStock.ToString() &&
+        tboxStockMinimoIdeal.Text == ProductoEnForm.CantidadMinimaPermitida.ToString() &&
+        tboxNombreProducto.Text == ProductoEnForm.NombreProducto.ToString())
                     {
-                        if (_CostoProducto <= 0)
+                        MessageBox.Show("\tDebe cambiar al menos 1 campo\t"); // el usuario no modificó los campos
+                    }
+                    else
+                    {
+                        string costoProductoTexto = tboxCosto.Text.Replace(',', '.');
+                        decimal _CostoProducto;
+                        if (decimal.TryParse(costoProductoTexto, NumberStyles.Any, CultureInfo.InvariantCulture, out _CostoProducto))
                         {
-                            MessageBox.Show("El Costo debe ser mayor a 0.");
-
-                        }
-                        else
-                        {
-                            string precioventatext = tboxPrecioVenta.Text.Replace(',', '.');
-                            decimal _PrecioVenta;
-                            if (decimal.TryParse(precioventatext, NumberStyles.Any, CultureInfo.InvariantCulture, out _PrecioVenta))
+                            if (_CostoProducto <= 0)
                             {
-                                if (_PrecioVenta <= 0)
-                                {
-                                    MessageBox.Show("El Precio de Venta debe ser mayor a 0.");
-                                }
+                                MessageBox.Show("El Costo debe ser mayor a 0.");
 
-                                else
+                            }
+                            else
+                            {
+                                string precioventatext = tboxPrecioVenta.Text.Replace(',', '.');
+                                decimal _PrecioVenta;
+                                if (decimal.TryParse(precioventatext, NumberStyles.Any, CultureInfo.InvariantCulture, out _PrecioVenta))
                                 {
-                                    string stockdisponibletext = tboxStockDisponible.Text;
-                                    int _StockDisponible;
-                                    if (int.TryParse(stockdisponibletext, out _StockDisponible))
+                                    if (_PrecioVenta <= 0)
                                     {
-                                        string stockminimoidealtext = tboxStockMinimoIdeal.Text;
-                                        int _StockMinimoIdeal;
-                                        if (int.TryParse(stockminimoidealtext, out _StockMinimoIdeal))
-                                        {
-                                            bool resultado = logistica.EditarProducto(
-                                                tboxNombreProducto.Text,
-                                                _CostoProducto,
-                                                _PrecioVenta,
-                                                _StockDisponible,
-                                                _StockMinimoIdeal,
-                                                idproducto.Text
-                                            );
+                                        MessageBox.Show("El Precio de Venta debe ser mayor a 0.");
+                                    }
 
-                                            if (resultado)
+                                    else
+                                    {
+                                        string stockdisponibletext = tboxStockDisponible.Text;
+                                        int _StockDisponible;
+                                        if (int.TryParse(stockdisponibletext, out _StockDisponible))
+                                        {
+                                            string stockminimoidealtext = tboxStockMinimoIdeal.Text;
+                                            int _StockMinimoIdeal;
+                                            if (int.TryParse(stockminimoidealtext, out _StockMinimoIdeal))
                                             {
-                                                MessageBox.Show("Producto modificado con éxito");
-                                                AbrirFormEnPanel(() => new IGestionarProductos());
+                                                bool resultado = logistica.EditarProducto(
+                                                    tboxNombreProducto.Text,
+                                                    _CostoProducto,
+                                                    _PrecioVenta,
+                                                    _StockDisponible,
+                                                    _StockMinimoIdeal,
+                                                    idproducto.Text
+                                                );
+
+                                                if (resultado)
+                                                {
+                                                    MessageBox.Show("Producto modificado con éxito");
+                                                    AbrirFormEnPanel(() => new IGestionarProductos());
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("El producto seleccionado no existe en la Base de Datos");
+                                                }
                                             }
                                             else
                                             {
-                                                MessageBox.Show("El producto seleccionado no existe en la Base de Datos");
+                                                MessageBox.Show("El formato del Stock Mínimo Ideal del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             }
                                         }
                                         else
                                         {
-                                            MessageBox.Show("El formato del Stock Mínimo Ideal del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            MessageBox.Show("El formato del Stock Disponible del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         }
                                     }
-                                    else
-                                    {
-                                        MessageBox.Show("El formato del Stock Disponible del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("El formato del Precio de Venta del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
-                            else
-                            {
-                                MessageBox.Show("El formato del Precio de Venta del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("El formato del Costo del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show("El formato del Costo del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+
+                }
+                catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+                {
+                    MessageBox.Show(ExcPersonalizada.Mensaje);
+                }
+                catch (Exception ex) //Atrapo excepciones generales
+                {
+                    MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
                 }
 
-
-            
-
-
-
-        }
+            }
         }
 
 
         private void btnEliminarProducto_Click_1(object sender, EventArgs e)
         {
-
-            //codigo de metodo q primero ve si el producto esta en un detalle factura, si esta NO te deja eliminarlo, te salta un mensaje.
-            //si el producto no esta en ningun detalle factura, te deja eliminarlo normal.
-
-            bool resultado = logistica.EliminarProducto(idproducto.Text);
-
-            if (resultado) {
-                MessageBox.Show("El Producto con ID: " + idproducto.Text + " a sido eliminado de la Base de Datos.");
-                AbrirFormEnPanel(() => new IGestionarProductos());
-            }
-
-
-            else
+            try
             {
+                //codigo de metodo q primero ve si el producto esta en un detalle factura, si esta NO te deja eliminarlo, te salta un mensaje.
+                //si el producto no esta en ningun detalle factura, te deja eliminarlo normal.
 
-                MessageBox.Show("El producto con ID  " + idproducto.Text + "se ha usado en una factura, por lo que no se puede eliminar de la Base de Datos.");
+                bool resultado = logistica.EliminarProducto(idproducto.Text);
+
+                if (resultado) {
+                    MessageBox.Show("El Producto con ID: " + idproducto.Text + " a sido eliminado de la Base de Datos.");
+                    AbrirFormEnPanel(() => new IGestionarProductos());
+                }
+
+
+                else
+                {
+
+                    MessageBox.Show("El producto con ID  " + idproducto.Text + "se ha usado en una factura, por lo que no se puede eliminar de la Base de Datos.");
+                }
+
+            }
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+            {
+                MessageBox.Show(ExcPersonalizada.Mensaje);
+            }
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
             }
         }
 
        
         private void btnBuscarProducto_Click(object sender, EventArgs e)
         {
-            BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
-            bool VerSiExiste = log.VerSiExisteProducto(textBox1.Text);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
+            try 
+            { 
+                BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
+                bool VerSiExiste = log.VerSiExisteProducto(textBox1.Text);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
 
-            if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
-            {
-                AbrirFormEnPanel(() => new EditarProductoEnGestionarProducto(textBox1.Text));
+                if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
+                {
+                    AbrirFormEnPanel(() => new EditarProductoEnGestionarProducto(textBox1.Text));
+                }
+                else
+                {                           //Si el producto NO existe, mostramos un mensaje.
+                    MessageBox.Show("El producto con ID: '" + textBox1.Text + "' NO en la Base de Datos", "Producto Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
-            else
-            {                           //Si el producto NO existe, mostramos un mensaje.
-                MessageBox.Show("El producto con ID: '" + textBox1.Text + "' NO en la Base de Datos", "Producto Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+            {
+                MessageBox.Show(ExcPersonalizada.Mensaje);
+            }
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
             }
         }
 

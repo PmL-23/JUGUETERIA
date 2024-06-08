@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,22 +19,33 @@ namespace UIJugueteria.ILogistica.ControlarStock
         public EditarStock(string _IDPRODUCTO)
         {
             InitializeComponent();
-            ProductoEnForm = logistica.TraerUnProducto(_IDPRODUCTO);
+            try 
+            { 
+                ProductoEnForm = logistica.TraerUnProducto(_IDPRODUCTO);
 
 
-            lblIDEmpleadoCreadorProducto.Text = ProductoEnForm.IDCreadorProducto.ToString();
-            lblFechaCreacionProducto.Text = ProductoEnForm.FechaDeCreacion.ToString();
-            idproducto.Text = ProductoEnForm.IDProducto.ToString();
+                lblIDEmpleadoCreadorProducto.Text = ProductoEnForm.IDCreadorProducto.ToString();
+                lblFechaCreacionProducto.Text = ProductoEnForm.FechaDeCreacion.ToString();
+                idproducto.Text = ProductoEnForm.IDProducto.ToString();
 
-            tboxNombreProducto.Text = ProductoEnForm.NombreProducto.ToString();
+                tboxNombreProducto.Text = ProductoEnForm.NombreProducto.ToString();
 
-            label1.Text = ProductoEnForm.Costo.ToString();
-            label2.Text = ProductoEnForm.Precioventa.ToString();
+                label1.Text = ProductoEnForm.Costo.ToString();
+                label2.Text = ProductoEnForm.Precioventa.ToString();
             
-            tboxStockDisponible.Text = ProductoEnForm.CantidadEnStock.ToString();
-            tboxStockMinimoIdeal.Text = ProductoEnForm.CantidadMinimaPermitida.ToString();
-        
+                tboxStockDisponible.Text = ProductoEnForm.CantidadEnStock.ToString();
+                tboxStockMinimoIdeal.Text = ProductoEnForm.CantidadMinimaPermitida.ToString();
+            
             }
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+            {
+                MessageBox.Show(ExcPersonalizada.Mensaje);
+            }
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
+            }
+        }
 
 
 
@@ -98,45 +110,57 @@ namespace UIJugueteria.ILogistica.ControlarStock
             }
             else
             {
-                if (tboxNombreProducto.Text == ProductoEnForm.NombreProducto.ToString() && tboxStockDisponible.Text == ProductoEnForm.CantidadEnStock.ToString() && tboxStockMinimoIdeal.Text == ProductoEnForm.CantidadMinimaPermitida.ToString())
+                try 
                 {
-                    MessageBox.Show("\tDebe cambiar al menos 1 campo\t");               //el usuario no modifico los campos
-                }
-                else
-                {
-                    string stockdisponibletext = tboxStockDisponible.Text;
-                    int _StockDisponible;
-                    if (int.TryParse(stockdisponibletext, out _StockDisponible))
+                    if (tboxNombreProducto.Text == ProductoEnForm.NombreProducto.ToString() && tboxStockDisponible.Text == ProductoEnForm.CantidadEnStock.ToString() && tboxStockMinimoIdeal.Text == ProductoEnForm.CantidadMinimaPermitida.ToString())
                     {
-                        string stockminimoidealtext = tboxStockMinimoIdeal.Text;
-                        int _StockMinimoIdeal;
-                        if (int.TryParse(stockminimoidealtext, out _StockMinimoIdeal))
-                        {
-                            //ESTA FUNCIONA
-                            bool resultado = logistica.ControlarStock(tboxNombreProducto.Text, _StockDisponible, _StockMinimoIdeal, idproducto.Text);
-
-                            if (resultado)
-                            {
-                                MessageBox.Show("Producto modificado con exito");
-                                    AbrirFormEnPanel(() => new IControlarSoloStock());
-                            }
-
-                            else
-                            {
-                                MessageBox.Show("El producto seleccionado no existe en la Base de Datos");
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("El formato del Stock Minimo Ideal del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-
-
+                        MessageBox.Show("\tDebe cambiar al menos 1 campo\t");               //el usuario no modifico los campos
                     }
                     else
                     {
-                        MessageBox.Show("El formato del Stock Disponible del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        string stockdisponibletext = tboxStockDisponible.Text;
+                        int _StockDisponible;
+                        if (int.TryParse(stockdisponibletext, out _StockDisponible))
+                        {
+                            string stockminimoidealtext = tboxStockMinimoIdeal.Text;
+                            int _StockMinimoIdeal;
+                            if (int.TryParse(stockminimoidealtext, out _StockMinimoIdeal))
+                            {
+                                //ESTA FUNCIONA
+                                bool resultado = logistica.ControlarStock(tboxNombreProducto.Text, _StockDisponible, _StockMinimoIdeal, idproducto.Text);
+
+                                if (resultado)
+                                {
+                                    MessageBox.Show("Producto modificado con exito");
+                                        AbrirFormEnPanel(() => new IControlarSoloStock());
+                                }
+
+                                else
+                                {
+                                    MessageBox.Show("El producto seleccionado no existe en la Base de Datos");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("El formato del Stock Minimo Ideal del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("El formato del Stock Disponible del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
+                
+                }
+                catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+                {
+                    MessageBox.Show(ExcPersonalizada.Mensaje);
+                }
+                catch (Exception ex) //Atrapo excepciones generales
+                {
+                    MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
                 }
 
             }
@@ -152,16 +176,28 @@ namespace UIJugueteria.ILogistica.ControlarStock
             }
             else
             {
-                BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
-                bool VerSiExiste = log.VerSiExisteProducto(textBox1.Text);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
-
-                if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
+                try 
                 {
-                    AbrirFormEnPanel(() => new EditarStock(textBox1.Text));
+                    BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
+                    bool VerSiExiste = log.VerSiExisteProducto(textBox1.Text);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
+
+                    if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
+                    {
+                        AbrirFormEnPanel(() => new EditarStock(textBox1.Text));
+                    }
+                    else
+                    {                           //Si el producto NO existe, mostramos un mensaje.
+                        MessageBox.Show("El producto con ID: '" + textBox1.Text + "' NO en la Base de Datos", "Producto Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
                 }
-                else
-                {                           //Si el producto NO existe, mostramos un mensaje.
-                    MessageBox.Show("El producto con ID: '" + textBox1.Text + "' NO en la Base de Datos", "Producto Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+                {
+                    MessageBox.Show(ExcPersonalizada.Mensaje);
+                }
+                catch (Exception ex) //Atrapo excepciones generales
+                {
+                    MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
                 }
             }
         }
@@ -171,44 +207,6 @@ namespace UIJugueteria.ILogistica.ControlarStock
             AbrirFormEnPanel(() => new IControlarSoloStock());
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //sad
 
     }
 }

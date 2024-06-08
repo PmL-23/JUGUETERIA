@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,34 +20,46 @@ namespace UIJugueteria.ILogistica
         {
             InitializeComponent();
 
-            BLL.Logistica logistica = new BLL.Logistica();
-            
-            List<BLL.Producto> listaProductos = logistica.TraerListaProductos();
-
-            dtgvVerProductos.Rows.Clear();
-
-            foreach (BLL.Producto producto in listaProductos)
+            try
             {
-                // Agregar una nueva fila al DataGridView y asignar los valores de las celdas
-                int rowIndex = dtgvVerProductos.Rows.Add(producto.IDProducto, producto.NombreProducto, producto.FechaDeCreacion, producto.CantidadMinimaPermitida, producto.CantidadEnStock);
-                // Agregar una nueva fila al DataGridView y asignar los valores de las celdas
+                BLL.Logistica logistica = new BLL.Logistica();
+            
+                List<BLL.Producto> listaProductos = logistica.TraerListaProductos();
 
+                dtgvVerProductos.Rows.Clear();
 
-                // Obtener la fila actual
-                DataGridViewRow row = dtgvVerProductos.Rows[rowIndex];
-                // Cambiar el color de la celda de CantidadEnStock si es menor que CantidadMinimaPermitida
-                if (producto.CantidadEnStock < producto.CantidadMinimaPermitida)
+                foreach (BLL.Producto producto in listaProductos)
                 {
-                    row.Cells["StockProducto"].Style.BackColor = Color.Orange;
-                    row.Cells["StockProducto"].Style.ForeColor = Color.Black;
-                }
-                if (producto.CantidadEnStock == 0)
-                {
-                    row.Cells["StockProducto"].Style.BackColor = Color.Brown;
-                    row.Cells["StockProducto"].Style.ForeColor = Color.Black;
-                }
+                    // Agregar una nueva fila al DataGridView y asignar los valores de las celdas
+                    int rowIndex = dtgvVerProductos.Rows.Add(producto.IDProducto, producto.NombreProducto, producto.FechaDeCreacion, producto.CantidadMinimaPermitida, producto.CantidadEnStock);
+                    // Agregar una nueva fila al DataGridView y asignar los valores de las celdas
 
 
+                    // Obtener la fila actual
+                    DataGridViewRow row = dtgvVerProductos.Rows[rowIndex];
+                    // Cambiar el color de la celda de CantidadEnStock si es menor que CantidadMinimaPermitida
+                    if (producto.CantidadEnStock < producto.CantidadMinimaPermitida)
+                    {
+                        row.Cells["StockProducto"].Style.BackColor = Color.Orange;
+                        row.Cells["StockProducto"].Style.ForeColor = Color.Black;
+                    }
+                    if (producto.CantidadEnStock == 0)
+                    {
+                        row.Cells["StockProducto"].Style.BackColor = Color.Brown;
+                        row.Cells["StockProducto"].Style.ForeColor = Color.Black;
+                    }
+
+
+                }
+
+            }
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+            {
+                MessageBox.Show(ExcPersonalizada.Mensaje);
+            }
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
             }
 
         }
@@ -70,19 +83,32 @@ namespace UIJugueteria.ILogistica
             if (tboxIDProducto.Text == "") {
                 MessageBox.Show("Ingrese una IDProducto a buscar.");
             }
-            else { 
-            BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
-            bool VerSiExiste = log.VerSiExisteProducto(tboxIDProducto.Text);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
-
-            if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
-            {
-                AbrirFormEnPanel(new EditarStock(tboxIDProducto.Text));
-            }
             else
-            {                           //Si el producto NO existe, mostramos un mensaje.
-                MessageBox.Show("El producto con ID: '" + tboxIDProducto.Text + "' NO en la Base de Datos", "Producto Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                try 
+                { 
+                    BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
+                    bool VerSiExiste = log.VerSiExisteProducto(tboxIDProducto.Text);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
+
+                    if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
+                    {
+                        AbrirFormEnPanel(new EditarStock(tboxIDProducto.Text));
+                    }
+                    else
+                    {                           //Si el producto NO existe, mostramos un mensaje.
+                        MessageBox.Show("El producto con ID: '" + tboxIDProducto.Text + "' NO en la Base de Datos", "Producto Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                
+                }
+                catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+                {
+                    MessageBox.Show(ExcPersonalizada.Mensaje);
+                }
+                catch (Exception ex) //Atrapo excepciones generales
+                {
+                    MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
+                }
             }
-        }
 
 
         }
@@ -143,16 +169,28 @@ namespace UIJugueteria.ILogistica
             }
             else
             {
-                BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
-                bool VerSiExiste = log.VerSiExisteProducto(tboxIDProducto.Text);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
-
-                if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
+                try 
                 {
-                    AbrirFormEnPanel(new EditarStock(tboxIDProducto.Text));
+                    BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
+                    bool VerSiExiste = log.VerSiExisteProducto(tboxIDProducto.Text);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
+
+                    if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
+                    {
+                        AbrirFormEnPanel(new EditarStock(tboxIDProducto.Text));
+                    }
+                    else
+                    {                           //Si el producto NO existe, mostramos un mensaje.
+                        MessageBox.Show("El producto con ID: '" + tboxIDProducto.Text + "' NO en la Base de Datos", "Producto Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
                 }
-                else
-                {                           //Si el producto NO existe, mostramos un mensaje.
-                    MessageBox.Show("El producto con ID: '" + tboxIDProducto.Text + "' NO en la Base de Datos", "Producto Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+                {
+                    MessageBox.Show(ExcPersonalizada.Mensaje);
+                }
+                catch (Exception ex) //Atrapo excepciones generales
+                {
+                    MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
                 }
             }
         }
@@ -167,25 +205,7 @@ namespace UIJugueteria.ILogistica
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //dsa
     }
 
 
-    }
+}
