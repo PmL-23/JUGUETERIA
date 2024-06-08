@@ -10,10 +10,10 @@ namespace BLL
 {
     public class Factura
     {
-		public string _IDFactura;
-		public string _FechaEmision;
-		public decimal _Total;
-		public List<DetalleFactura> _ListaDetalles = new List<DetalleFactura>();
+		private string _IDFactura;
+		private string _FechaEmision;
+		private decimal _Total;
+		private List<DetalleFactura> _ListaDetalles = new List<DetalleFactura>();
 		private Cliente _Cliente = new Cliente();
 		private Vendedor _Vendedor = new Vendedor();
 
