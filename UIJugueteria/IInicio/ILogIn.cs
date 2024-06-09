@@ -18,27 +18,6 @@ namespace UIJugueteria
             InitializeComponent();
         }
 
-
-        private void lblNombreUsuario_Click(object sender, EventArgs e) { }// lbl para iniciar sesion
-        private void lblContraseña_Click(object sender, EventArgs e) { }// 
-
-        private void tboxUsuario_TextChanged(object sender, EventArgs e) { } // tbox para iniciar sesion.
-        private void tboxContraseña_TextChanged(object sender, EventArgs e) { }//
-
-        /*private void AbrirFormEnPanel(Form formulario)
-        {
-            // Eliminar todos los controles existentes del panel
-            PanelMain.Controls.Clear();
-
-            // Añadir el nuevo formulario al panel
-            formulario.TopLevel = false;
-            formulario.FormBorderStyle = FormBorderStyle.None; // Opcional, si quieres que no tenga borde
-            formulario.Dock = DockStyle.None; // Cambia a None para permitir el movimiento
-            formulario.Location = new Point(0, 0); // Inicializa la posición del formulario hijo
-            PanelMain.Controls.Add(formulario);
-            formulario.Show();
-        }*/
-
         private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
         {
             Form formulario = PanelMain.Controls.OfType<MiForm>().FirstOrDefault();
@@ -64,13 +43,16 @@ namespace UIJugueteria
 
         private void btnIniciarSesion_Click_1(object sender, EventArgs e)
         {
-            string _NombreUsuario = tboxIniciarUsuario.Text;
-            string _Contraseña = tboxIniciarContraseña.Text;
-            BLL.Empleado emp = new BLL.Empleado();
 
             try
             {
+                //Guardo los valores de loa textbox en variables string
+                string _NombreUsuario = tboxIniciarUsuario.Text;
+                string _Contraseña = tboxIniciarContraseña.Text;
 
+                BLL.Empleado emp = new BLL.Empleado();
+
+                //Llamo al método que inicia sesión pasandole los parametros correspondientes
                 if (emp.IniciarSesion(_NombreUsuario, _Contraseña) == true)
                 {
                     //Con el método VerificarRol chequeo los datos de la cuenta para redireccionar al usuario
@@ -79,7 +61,7 @@ namespace UIJugueteria
                     //Si el empleado se encuentra habilitado por el administrador puede iniciar sesion normalmente
                     if (_RolTemp == "Logistica")
                     {
-
+                        //limpio la interfaz y despliego la interfaz correspondiente
                         tboxIniciarUsuario.Text = "";
                         tboxIniciarContraseña.Text = "";
                         PanelMain.Controls.Clear();
@@ -88,6 +70,7 @@ namespace UIJugueteria
                     }
                     if (_RolTemp == "Administrador")
                     {
+                        //limpio la interfaz y despliego la interfaz correspondiente
                         tboxIniciarUsuario.Text = "";
                         tboxIniciarContraseña.Text = "";
 
@@ -95,6 +78,7 @@ namespace UIJugueteria
                     }
                     if (_RolTemp == "Vendedor")
                     {
+                        //limpio la interfaz y despliego la interfaz correspondiente
                         tboxIniciarUsuario.Text = "";
                         tboxIniciarContraseña.Text = "";
 

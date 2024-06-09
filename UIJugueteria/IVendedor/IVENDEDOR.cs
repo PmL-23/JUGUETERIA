@@ -20,8 +20,12 @@ namespace UIJugueteria
         public IVENDEDOR(string nombreUsuario)
         {
             InitializeComponent();
+
+            //Modifico el comportamiento de las filas de la grilla
             dgv_historial_vend.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_historial_vend.Rows.Clear();
+
+            //Muestro el nombre de usuario del vendedor logueado por pantalla
             this.IDVendedor = nombreUsuario;
             label2.Text = "Historial de ventas de " + this.IDVendedor;
         }
@@ -82,14 +86,15 @@ namespace UIJugueteria
 
         private void IVENDEDOR_Load(object sender, EventArgs e)
         {
-            BLL.Vendedor vendedor = new BLL.Vendedor();
-
+            //Traigo de la BD las ventas pertenecientes al vendedor
             try
             {
+                BLL.Vendedor vendedor = new BLL.Vendedor();
                 List<Factura> facturas = vendedor.VerHistorialVendedor(this.IDVendedor);
 
                 foreach (Factura item in facturas)
                 {
+                    //Agrego la fila a la grilla de la interfaz
                     dgv_historial_vend.Rows.Add(item.IDFactura, item.Cliente.IDCliente, item.FechaEmision, item.Total);
                 }
             }

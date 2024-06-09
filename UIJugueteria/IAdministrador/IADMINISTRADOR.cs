@@ -20,14 +20,19 @@ namespace UIJugueteria
         {
             InitializeComponent();
             btn_modif_empleado.Enabled = false;
+            
+            //Cambio algunas propiedades de las grillas para modificar su comportamiento
             dataGridViewEmpleados.SelectionChanged += DataGridViewEmpleados_SelectionChanged;
             dataGridViewEmpleados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewEmpleados.CellClick += DataGridViewEmpleados_CellClick;
             dataGridViewEmpleados.MultiSelect = false;
             dataGridViewEmpleados.ReadOnly = true;
+
+            //Remuevo las tablas que no son principales de la interfaz
             tabAdminEmpleados.TabPages.Remove(tabModificar);
             tabAdminEmpleados.TabPages.Remove(tabVerEmpleados);
 
+            //Agrego valores a los comboBoxes de la tabla de modificación de empleado
             comboBox_rol.Items.Add("Vendedor");
             comboBox_rol.Items.Add("Administrador");
             comboBox_rol.Items.Add("Logistica");
@@ -77,16 +82,19 @@ namespace UIJugueteria
 
         private void IADMINISTRADOR_Load(object sender, EventArgs e)
         {
+            //Limpio la tabla
             dataGridViewEmpleados.Rows.Clear();
 
             try
             {
+                //Traigo de la BD la lista de empleados 
                 BLL.Administrador admin = new BLL.Administrador();
 
                 List<Empleado> empleados = admin.ListarEmpleados();
 
                 foreach (Empleado item in empleados)
                 {
+                    //Inserto cada fila de la lista de empleados en la grilla de la interfaz
                     dataGridViewEmpleados.Rows.Add(item.Nombre, item.Apellido, item.DNI, item.NombreUsuario, item.Rol, item.Sueldo, item.Habilitado);
                 }
             }
@@ -102,6 +110,7 @@ namespace UIJugueteria
 
         private void btn_modif_empleado_Click_1(object sender, EventArgs e)
         {
+            //Modifico la visibilidad de las tabs para mostrar la que necesito
             tabAdminEmpleados.TabPages.Remove(tabSeleccionar);
             tabAdminEmpleados.TabPages.Add(tabModificar);
         }
@@ -114,15 +123,18 @@ namespace UIJugueteria
 
                 BLL.Administrador admin = new BLL.Administrador();
 
+                //Formateo el input del sueldo para que contenga el punto
                 string Sueldotexto = textBox_sueldo.Text.Replace(',', '.');
                 decimal _Sueldo;
 
                 if (decimal.TryParse(Sueldotexto, NumberStyles.Any, CultureInfo.InvariantCulture, out _Sueldo))
                 {
-
+                    //Actualizo los datos del empleado con los nuevos datos asignados
                     if (admin.ActualizarDatosUsuario(this.RolPrevio, label_nombreusuario.Text, comboBox_rol.Text, comboBox_estado.Text, _Sueldo))
                     {
                         MessageBox.Show("Datos de usuario '" + label_nombreusuario.Text + "' actualizados con exito!.");
+                        
+                        //Modifico la visibilidad de las tablas para mostrar la que necesito
                         tabAdminEmpleados.TabPages.Remove(tabModificar);
                         tabAdminEmpleados.TabPages.Add(tabSeleccionar);
 
@@ -132,6 +144,7 @@ namespace UIJugueteria
 
                         foreach (Empleado item in empleados)
                         {
+                            //Inserto cada fila en la grilla de la interfaz
                             dataGridViewEmpleados.Rows.Add(item.Nombre, item.Apellido, item.DNI, item.NombreUsuario, item.Rol, item.Sueldo, item.Habilitado);
                         }
                     }
@@ -217,15 +230,17 @@ namespace UIJugueteria
             tabAdminEmpleados.TabPages.Add(tabVerEmpleados);
             try
             {
+                //Traigo de la BD la lista de vendedores ordenada por cantidad de ventas
                 BLL.Administrador admin = new BLL.Administrador();
 
                 List<BLL.Vendedor> listaVendedores = admin.TraerListaVendedores().OrderByDescending(v => v.CantidadVentas).ToList();
-                //List<BLL.Vendedor> listaVendedores = admin.TraerListaVendedores();
 
+                //limpio la grilla
                 dtgvVendedores.Rows.Clear();
 
                 foreach (BLL.Vendedor vendedor in listaVendedores)
                 {
+                    //formateo el string del sueldo para mostrarlo con separación de digitos
                     string sueldoFormateado = vendedor.Sueldo.ToString("N2", new System.Globalization.CultureInfo("es-ES"));
 
                     int rowIndex = dtgvVendedores.Rows.Add(vendedor.Nombre, vendedor.Apellido, vendedor.IDEmpleado, vendedor.Habilitado, "$ " + sueldoFormateado, vendedor.CantidadVentas);
@@ -235,6 +250,7 @@ namespace UIJugueteria
 
                     if (vendedor.CantidadVentas == 0)
                     {
+                        //modifico el color de la fila si se trata de un vendedor con 0 (cero) ventas
                         row.Cells["CantidadVentasVendedor"].Style.BackColor = Color.Brown;
                         row.Cells["CantidadVentasVendedor"].Style.ForeColor = Color.Black;
                     }
@@ -254,14 +270,14 @@ namespace UIJugueteria
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-
-
+            //modifico la visibilidad de las tabs 
             tabAdminEmpleados.TabPages.Remove(tabVerEmpleados);
             tabAdminEmpleados.TabPages.Add(tabSeleccionar);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //modifico la visibilidad de las tabs 
             tabAdminEmpleados.TabPages.Remove(tabModificar);
             tabAdminEmpleados.TabPages.Add(tabSeleccionar);
         }

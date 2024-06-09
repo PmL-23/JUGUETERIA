@@ -27,8 +27,10 @@ namespace UIJugueteria
         {
             try
             {
+                //Verifico que los textbox no estén vacíos
                 if (string.IsNullOrEmpty(tboxNombre.Text) || string.IsNullOrEmpty(tboxApellido.Text) || string.IsNullOrEmpty(tboxIDCliente.Text) || string.IsNullOrEmpty(tboxDNI.Text)) throw new MyExceptions("Debe completar todos los campos para continuar..");
 
+                //Guardo el valor de los textbox en variables 
                 string nombre = tboxNombre.Text;
                 string apellido = tboxApellido.Text;
                 string idCliente = tboxIDCliente.Text;
@@ -37,7 +39,7 @@ namespace UIJugueteria
 
                 BLL.Vendedor unVendedor = new BLL.Vendedor();
 
-
+                //Registro el nuevo cliente
                 if (unVendedor.RegistrarCliente(idCliente, nombre, apellido, dni, cantidadCompras) == true)
                 {
                     MessageBox.Show("Usuario cliente creado con exito!!");

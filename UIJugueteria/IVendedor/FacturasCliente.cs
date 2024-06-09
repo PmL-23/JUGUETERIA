@@ -21,8 +21,10 @@ namespace UIJugueteria.IVendedor
             InitializeComponent();
             _IDCliente = idcliente;
             _IDVendedor = idvendedor;
+
             try
             {
+                //Traigo de la BD la lista de facturas del cliente seleccinado
                 BLL.Vendedor vendedor = new BLL.Vendedor();
 
                 List<BLL.Factura> listaFacturas = vendedor.TraerListaFacturas(_IDCliente);
@@ -32,6 +34,7 @@ namespace UIJugueteria.IVendedor
 
                 foreach (BLL.Factura factura in listaFacturas)
                 {
+                    //Sumo cada fila a la grilla de la interfaz
                     dgvFacturasCliente.Rows.Add(this._IDVendedor, this._IDCliente, factura.IDFactura, factura.FechaEmision, "$ " + factura.Total);
                 }
                 dgvFacturasCliente.Columns["TotalFactura"].DefaultCellStyle.Format = "0.00";
@@ -107,12 +110,15 @@ namespace UIJugueteria.IVendedor
         private void btnVerDetalleFactura_Click(object sender, EventArgs e)
         {
             try {
+                //La fila seleccionada la guardo en una variable para poder obtener los datos de los campos de la misma
                 DataGridViewRow filaseleccionada = dgvFacturasCliente.SelectedRows[0];
 
                 BLL.Vendedor vendedor = new BLL.Vendedor();
 
+                //Traigo de la BD los detalles de la factura seleccionada
                 List<DetalleFactura> detallesFacturas = vendedor.TraerDetallesFactura(filaseleccionada.Cells["IDFactura"].Value.ToString());
 
+                //Imprimo por pantalla los detalles de la factura mostrada
                 string facturaString = "----DETALLE DE FACTURA----\n\n";
                 decimal subtotalFactura = 0;
                 decimal totalFactura = 0;
@@ -134,6 +140,7 @@ namespace UIJugueteria.IVendedor
                 facturaString += "\nSUBTOTAL: $" + subtotalFactura;
                 facturaString += "\nTOTAL (+IVA): $" + totalFactura.ToString("F2");
 
+                //Muestro el string con todos los datos en un MessageBox
                 MessageBox.Show(facturaString, "", MessageBoxButtons.OK);
             }
             catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas

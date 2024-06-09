@@ -20,6 +20,7 @@ namespace UIJugueteria
         public HistorialCliente( string IDVendedor)
         {
             InitializeComponent();
+            //Modifico el comportamiento de la seleccion de filas de la grilla
             dgv_clientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             _IDVendedor = IDVendedor;
 
@@ -31,33 +32,11 @@ namespace UIJugueteria
         {
 
         }
-        private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
-        {
-            // Cerrar y eliminar cualquier instancia existente del formulario
-            var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
-            if (existingForm != null)
-            {
-                panel1.Controls.Remove(existingForm);
-                existingForm.Close();
-                existingForm.Dispose();
-            }
-
-            // Crear una nueva instancia del formulario
-            Form formulario = formFactory();
-            formulario.TopLevel = false;
-            formulario.FormBorderStyle = FormBorderStyle.None;
-            formulario.Dock = DockStyle.Fill;
-            panel1.Controls.Add(formulario);
-            panel1.Tag = formulario;
-            formulario.Show();
-            formulario.BringToFront();
-        }
 
         private void AbrirFormEnPanelCERRAR<MiForm>(Func<MiForm> formFactory) where MiForm : Form
         {
             try
             {
-                
 
                 var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
                 if (existingForm != null)
@@ -113,11 +92,6 @@ namespace UIJugueteria
             }
         }
 
-        private void grillaClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnVolver_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanelCERRAR( () => new IVENDEDOR(_IDVendedor));
@@ -128,6 +102,7 @@ namespace UIJugueteria
 
             if (indice != -1)
             {
+                //Obtengo de la fila seleccionada el ID del cliente
                 string IDSeleccionada = (string)dgv_clientes.Rows[indice].Cells["IDCliente"].Value;
 
                 AbrirFormEnPanelCERRAR( () => new FacturasCliente(_IDVendedor, IDSeleccionada));
@@ -143,6 +118,7 @@ namespace UIJugueteria
         {
             try
             {
+                //Traigo de la BD la lista de cliente ordenada por cantidad de compras
                 BLL.Cliente cliente = new BLL.Cliente();
 
                 List<BLL.Cliente> listaClientes = cliente.ListarClientes().OrderByDescending(v => v.CantidadCompras).ToList();
@@ -151,6 +127,7 @@ namespace UIJugueteria
 
                 foreach (BLL.Cliente item in listaClientes)
                 {
+                    //Agrego cada fila a la grilla de la interfaz
                     dgv_clientes.Rows.Add(item.IDCliente, item.Nombre, item.Apellido, item.CantidadCompras, item.DNI);
                 }
             }
@@ -166,6 +143,7 @@ namespace UIJugueteria
 
         private void dgv_clientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            //Cambio el index de la fila seleccionada
             indice = e.RowIndex;
         }
     }

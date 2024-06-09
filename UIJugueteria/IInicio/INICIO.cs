@@ -33,25 +33,6 @@ namespace UIJugueteria
 
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        /*private void AbrirFormEnPanel(Form formulario)
-        {
-            // Eliminar todos los controles existentes del panel
-            PanelMain.Controls.Clear();
-
-            // Añadir el nuevo formulario al panel
-            formulario.TopLevel = false;
-            formulario.FormBorderStyle = FormBorderStyle.None; // Opcional, si quieres que no tenga borde
-            formulario.Dock = DockStyle.None; // Cambia a None para permitir el movimiento
-            formulario.Location = new Point(0, 0); // Inicializa la posición del formulario hijo
-            PanelMain.Controls.Add(formulario);
-            formulario.Show();
-        }*/
-
         private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
         {
             Form formulario = PanelMain.Controls.OfType<MiForm>().FirstOrDefault();
@@ -85,7 +66,7 @@ namespace UIJugueteria
         { 
             Application.Exit();
         }
-        //para mover la aplicacion.
+        //para mover la ventana de la aplicacion.
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]

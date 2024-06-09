@@ -27,19 +27,22 @@ namespace UIJugueteria
             btn_agregar.Enabled = false;
             btn_quitar.Enabled = false;
 
-            //Modifico propiedades de los datagridview para cambiar el comportamiento
+            //Cambio propiedades de los datagridview para modificar su comportamiento 
             dgv_productos_stock.SelectionChanged += Dgv_productos_stock_SelectionChanged;
             dgv_productos_stock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_productos_stock.CellClick += Dgv_productos_stock_CellClick;
             dgv_productos_stock.MultiSelect = false;
             dgv_productos_stock.ReadOnly = true;
 
+            //Cambio propiedades de los datagridview para modificar su comportamiento 
             dgv_productos_factura.SelectionChanged += Dgv_productos_factura_SelectionChanged;
             dgv_productos_factura.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_productos_factura.CellClick += Dgv_productos_factura_CellClick;
             dgv_productos_factura.MultiSelect = false;
             dgv_productos_factura.ReadOnly = true;
 
+
+            //LLAMO A UN MÉTODO QUE ME TRAE LA LISTA ENTERA DE PRODUCTOS
             BLL.Logistica logistica = new BLL.Logistica();
 
             List<BLL.Producto> listaProductos = logistica.TraerListaProductos();
@@ -49,7 +52,7 @@ namespace UIJugueteria
 
             foreach (BLL.Producto producto in listaProductos)
             {
-                // Agregar una nueva fila al DataGridView y asignar los valores de las celdas
+                // Por cada producto agrego una nueva fila al DataGridView y asigno los valores de las celdas
                 dgv_productos_stock.Rows.Add(producto.IDProducto, producto.NombreProducto, "$" + producto.Precioventa, producto.CantidadEnStock);
             }
 
@@ -60,7 +63,7 @@ namespace UIJugueteria
             // Verifico si el clic fue en una celda válida y no en encabezados de alguna columna
             if (e.RowIndex >= 0)
             {
-                // Selecciono la fila completa
+                // Selecciono la fila completa clickeada por el usuario
                 dgv_productos_factura.Rows[e.RowIndex].Selected = true;
                 btn_quitar.Enabled = true;
                 txtbox_cantidad.Enabled = true;
@@ -74,11 +77,13 @@ namespace UIJugueteria
             // Primero verifico si hay al menos una fila seleccionada
             if (dgv_productos_factura.SelectedRows.Count > 0)
             {
+                //Al clickear una fila de la lista cambio el textbox Cantidad al valor correspondiente
                 DataGridViewRow filaSeleccionada = dgv_productos_factura.SelectedRows[0];
                 txtbox_cantidad.Text = factura.ListaDetalles[filaSeleccionada.Index].Cantidad.ToString();
             }
             else 
             {
+                //Si se clickea en la grilla de productos desactivo el botón 'quitar'
                 btn_quitar.Enabled = false;   
             }
         }
@@ -88,7 +93,7 @@ namespace UIJugueteria
             // Verifico si el clic fue en una celda válida y no en encabezados de alguna columna
             if (e.RowIndex >= 0)
             {
-                // Selecciono la fila completa
+                // Selecciono la fila completa y deshabilito los componentes de interfaz correspondientes
                 dgv_productos_stock.Rows[e.RowIndex].Selected = true;
                 btn_agregar.Enabled = true;
                 btn_quitar.Enabled = false;
@@ -104,6 +109,7 @@ namespace UIJugueteria
             {
                 DataGridViewRow filaSeleccionada = dgv_productos_stock.SelectedRows[0];
 
+                //Si se trata de una fila ya agregada a la lista no modifico el color
                 if (dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.SelectionBackColor != Color.Brown) { 
                     
                     // Cambia el color de la última fila seleccionada
@@ -125,12 +131,15 @@ namespace UIJugueteria
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //Creo una variable del tipo fila de grilla para manejar sus datos
             DataGridViewRow filaSeleccionada = dgv_productos_stock.SelectedRows[0];
 
             try
             {
+                //Verifico la cantidad en stock del producto que intento agregar a la lista de nueva venta
                 if (filaSeleccionada.Cells["CantidadEnStock"].Value.ToString() == "0") throw new MyExceptions("Este producto se encuentra sin stock..");
 
+                //verifico si el producto ya se encuentra en la lista
                 foreach (DetalleFactura item in factura.ListaDetalles)
                 {
                     if (item.Producto.IDProducto == filaSeleccionada.Cells["IDProducto"].Value.ToString())
@@ -139,9 +148,10 @@ namespace UIJugueteria
                     }
                 }
 
+                //Agrego la fila seleccionada de la Lista de productos a la Lista de nueva venta
                 factura.AgregarProductos(filaSeleccionada.Cells["IDProducto"].Value.ToString(), int.Parse(txtbox_cantidad.Text), decimal.Parse(filaSeleccionada.Cells["PrecioVenta"].Value.ToString().TrimStart('$')));
 
-                // Clona la fila para agregarla al segundo DataGridView
+                // Clono la fila para agregarla al DataGridView Lista de nueva venta
                 DataGridViewRow newRow = new DataGridViewRow();
                 newRow.CreateCells(dgv_productos_factura);
 
@@ -204,14 +214,12 @@ namespace UIJugueteria
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //Para volver a la interfaz anterior
             AbrirFormEnPanel(() => new IVENDEDOR(IDVendedor));
         }
 
         private void CerrarSesion(object Formulario)
         {
-
-            //PanelCentral.Controls.Clear();
-            //PanelLateral.Controls.Clear();
 
             Form FH = Formulario as Form;
             FH.WindowState = FormWindowState.Maximized;
@@ -226,6 +234,7 @@ namespace UIJugueteria
         {
             try
             {
+                //Antes de confirmar la venta verifico el cliente está registrado y que la lista de nueva venta no está vacía
                 if (string.IsNullOrEmpty(txtbox_idcliente.Text)) throw new MyExceptions("Ingrese un ID de cliente..");
                 if (factura.ListaDetalles.Count <= 0) throw new MyExceptions("Debe agregar productos a la factura para continuar..");
 
@@ -235,28 +244,35 @@ namespace UIJugueteria
                 // Formatear la fecha y hora como una cadena
                 string fechaFormateada = fechaActual.ToString("yyyy-MM-dd HH:mm:ss.fff");
 
+                //Formateo el total para recortar los decimales
                 decimal total = decimal.Parse(factura.CalcularTotal().ToString("F2"));
 
                 Vendedor vendedor = new Vendedor();
 
+                //Genero la factura y la guardo en la BD
                 if (vendedor.GenerarFactura(this.IDVendedor, txtbox_idcliente.Text, fechaFormateada, total))
                 {
+                    //Obtengo el valor ID de la factura creada para asignarselo al detalle de factura
                     factura.SetIDFacturaADetalleFactura();
 
                     DetalleFactura detFact = new DetalleFactura();
 
+                    //Inserto los detalles de la factura en la BD
                     if (detFact.InsertarDetallesFactura(factura.ListaDetalles) == true)
                     {
+                        //Resto el stock vendido del stock actual del producto
                         if (detFact.DecrementarStockPosventa(factura.ListaDetalles) == true)
                         {
-
+                            //Sumo la venta y la comisión por venta al vendedor
                             if (vendedor.IncrementarYComisionarVenta(this.IDVendedor, decimal.Parse((total * 0.05M).ToString("F2"))) == true)
                             {
                                 Cliente cliente = new Cliente();
 
+                                //Sumo la compra al contador del cliente en la BD
                                 if (cliente.AumentarCantCompras(txtbox_idcliente.Text) == true)
                                 {
 
+                                    //Imprimo la factura y sus datos por pantalla
                                     string facturaString = "----DETALLE DE FACTURA----\n\n";
 
                                     facturaString += ("ID del vendedor: " + this.IDVendedor + "\n");
@@ -275,6 +291,7 @@ namespace UIJugueteria
 
                                     MessageBox.Show(facturaString, "Venta realizada con éxito!", MessageBoxButtons.OK);
 
+                                    //Al terminar vuelvo a la interfaz principal del vendedor
                                     AbrirFormEnPanel(() => new IVENDEDOR(IDVendedor));                                    
                                 }
                             }
@@ -318,9 +335,11 @@ namespace UIJugueteria
 
         private void btn_quitar_Click(object sender, EventArgs e)
         {
+            //Obtengo las filas seleccionadas de ambas grillas y las guardo en variables
             DataGridViewRow filaSeleccionadaFactura = dgv_productos_factura.SelectedRows[0];
             DataGridViewRow filaSeleccionadaStock = dgv_productos_stock.SelectedRows[0];
 
+            //Recorro los productos para modificar visualmente la fila seleccionada
             foreach (DataGridViewRow item in dgv_productos_stock.Rows)
             {
                 if (item.Cells["IDProducto"].Value.ToString() == factura.ListaDetalles[filaSeleccionadaFactura.Index].Producto.IDProducto)
@@ -339,10 +358,9 @@ namespace UIJugueteria
                 }
             }
 
+            //Quito el producto de la lista de nueva venta
             factura.SacarProductos(filaSeleccionadaFactura.Index);
-
             dgv_productos_factura.Rows.Remove(filaSeleccionadaFactura);
-
 
             //Finalmente modifico el total mostrado en la interfaz
             lbl_subtotal.Text = "$" + factura.CalcularSubtotal();
@@ -369,18 +387,6 @@ namespace UIJugueteria
 
         }
 
-        private void btn_confirmar_venta_MouseEnter(object sender, EventArgs e)
-        {
-            btn_confirmar_venta.BackColor = Color.RosyBrown;
-            btn_confirmar_venta.ForeColor = Color.White;
-        }
-
-        private void btn_confirmar_venta_MouseLeave(object sender, EventArgs e)
-        {
-            btn_confirmar_venta.BackColor = Color.White;
-            btn_confirmar_venta.ForeColor = Color.RosyBrown;
-        }
-
         private void txtbox_cantidad_TextChanged(object sender, EventArgs e)
         {
 
@@ -392,12 +398,14 @@ namespace UIJugueteria
 
             try
             {
+                //Verifico que la cantidad a cambiar del producto no sea valida (Debe ser mayor o igual a cero)
                 if (int.Parse(txtbox_cantidad.Text) <= 0)
                 {
                     txtbox_cantidad.Text = "1";
                     throw new MyExceptions("Ingrese una cantidad valida..");
                 }
 
+                //Verifico que la cantidad ingresada no supere el stock actual del producto
                 foreach (DataGridViewRow item in dgv_productos_stock.Rows)
                 {
                     if (item.Cells["IDProducto"].Value.ToString() == factura.ListaDetalles[filaSeleccionada.Index].Producto.IDProducto)

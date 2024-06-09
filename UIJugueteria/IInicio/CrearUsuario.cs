@@ -66,7 +66,7 @@ namespace UIJugueteria
 
         private void btnCrearUsuario_Click(object sender, EventArgs e)
         {
-
+            //verifico que los campos no estén vacíos
             if (tboxNombre.Text == "" || tboxApellido.Text == "" || tboxDNI.Text == "" || tboxUsuarioCrear.Text == "" || tboxContraseñaCrear.Text == "" || tboxContraseñaConfirmacion.Text == "")
             {
                 MessageBox.Show("\tHay campos incompletos, debe completarlos todos.\t");
@@ -78,6 +78,8 @@ namespace UIJugueteria
                     BLL.Empleado comprobando = new BLL.Empleado();
 
                     string TNombreUsuario = tboxUsuarioCrear.Text;
+
+                    //Llamo a un método que verifica si el usuario ingresado ya está registrado en el sistema
                     if (comprobando.VerSiExisteNombreUsuario(TNombreUsuario) == false)
                     {
 
@@ -85,6 +87,7 @@ namespace UIJugueteria
                         string TApellido = tboxApellido.Text;
                         string TextoDNI = tboxDNI.Text;
                         int TDNI;
+
                         if (int.TryParse(TextoDNI, out TDNI))
                         {
 
@@ -95,6 +98,7 @@ namespace UIJugueteria
 
                             BLL.Empleado empleado = new BLL.Empleado();
 
+                            //Finalmente llamo al método que registra el nuevo empleado en el sistema
                             bool registro = empleado.Registrarse(TNombre, TApellido, TDNI, TNombreUsuario, TContraseña, TConstraseñaConfirmacion);
                             if (registro == true)
                             {
