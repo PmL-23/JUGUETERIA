@@ -130,6 +130,19 @@ namespace BLL
             return ListaFactura;
         }
 
+        public bool VerSiExisteCliente(string idcliente)
+        {
+            DAL.Vendedor vendedor = new DAL.Vendedor();
+            if (vendedor.VerSiExisteCliente(idcliente) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         #endregion
     }
 }

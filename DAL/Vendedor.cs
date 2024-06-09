@@ -5,6 +5,7 @@ using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
+using System.Diagnostics.Eventing.Reader;
 
 namespace DAL
 {
@@ -92,6 +93,22 @@ namespace DAL
                 }
             }
 
+            return false;
+        }
+
+        public bool VerSiExisteCliente(string idcliente)
+        {
+            Conexion objConexion = new Conexion();
+
+            DataTable dt = objConexion.LeerPorComando("SELECT [_IDCliente] FROM [BDDJ].[dbo].[CLIENTES] WHERE [_IDCliente] = '"+idcliente+"'");
+            foreach (DataRow fila in dt.Rows)
+            {
+                if (fila["_IDCliente"].ToString() == idcliente)
+                {
+                    return true;
+                }
+            }
+            
             return false;
         }
     }

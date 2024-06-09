@@ -1,4 +1,5 @@
-﻿using BLL.Exceptions;
+﻿using BLL;
+using BLL.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -83,12 +84,17 @@ namespace UIJugueteria
                 MessageBox.Show("Debe ingresar una IDCLiente a buscar");
             }
             else {
-                //if cliente existe y tiene facturas
+                Vendedor vendedor = new Vendedor();
+                bool resultado = vendedor.VerSiExisteCliente(tboxIDCliente.Text);
+                if (resultado== false)
+                {
+                    MessageBox.Show("El Cliente con ID "+ tboxIDCliente.Text +" NO existe.");
+                }
+                if (resultado == true)
+                {
+                    AbrirFormEnPanelCERRAR(() => new FacturasCliente(_IDVendedor, tboxIDCliente.Text));
+                }
 
-                AbrirFormEnPanelCERRAR(() => new FacturasCliente(_IDVendedor, tboxIDCliente.Text));
-
-                //si existe y no tiene facturas otro mensaje.
-                //si no existe, mensaje
             }
         }
 

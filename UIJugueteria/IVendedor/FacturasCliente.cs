@@ -50,6 +50,12 @@ namespace UIJugueteria.IVendedor
                 MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
             }
 
+            if(dgvFacturasCliente.Rows.Count == 0)
+            {
+                MessageBox.Show("El Cliente con ID: "+ _IDCliente + " NO tiene facturas asociadas a su cuenta.");
+                AbrirFormEnPanelCERRAR(() => new HistorialCliente(_IDVendedor));
+            }
+
         }
 
         private void FacturasCliente_Load(object sender, EventArgs e)
