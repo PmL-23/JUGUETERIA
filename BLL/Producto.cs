@@ -17,7 +17,7 @@ namespace BLL
 		private int _CantidadMinimaPermitida;
 		private string _IDCreadorProducto;
 
-        #region Props
+        #region Propiedades
 
         public string NombreProducto
 		{

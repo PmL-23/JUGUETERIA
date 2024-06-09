@@ -11,6 +11,8 @@ namespace DAL
 {
     public class Administrador
     {
+
+        #region Metodos Principales 
         public DataTable ListarEmpleados()
         {
             Conexion objConexion = new Conexion();
@@ -75,7 +77,7 @@ namespace DAL
             return objConexion.LeerPorComando("SELECT [_Nombre], [_Apellido], [_IDEmpleado], [_Sueldo], [_Habilitado], [_CantidadVentas] FROM USUARIOS u JOIN EMPLEADOS e ON u._NombreUsuario = _IDEmpleado join VENDEDOR v on e._IDEmpleado= _IDVendedor order by [_CantidadVentas]");
 
         }
-
+        #endregion
 
     }
 }

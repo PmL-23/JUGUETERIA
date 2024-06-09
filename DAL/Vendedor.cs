@@ -11,6 +11,35 @@ namespace DAL
 {
     public class Vendedor : Empleado
     {
+
+        #region Metodos Principales
+        public bool RegistrarCliente(string idCliente, string nombre, string apellido, long dni, long cantidadCompras)
+        {
+            Conexion objConexion = new Conexion();
+            int filasAfectadas = objConexion.EscribirPorComando("INSERT into [BDDJ].[dbo].[CLIENTES] ([_Nombre], [_Apellido], [_IDCliente], [_CantidadCompras], [_DNI]) values ('" + nombre + "', '" + apellido + "', '" + idCliente + "', " + cantidadCompras + ", " + dni + ");");
+
+            if (filasAfectadas > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        public bool GenerarFactura(string idVendedorFactura, string idClienteFactura, string date, decimal total)
+        {
+            Conexion objConexion = new Conexion();
+            string totalString = total.ToString(CultureInfo.InvariantCulture);
+
+            int filasAfectadas = objConexion.EscribirPorComando("INSERT into [BDDJ].[dbo].[FACTURA] ([_IDVendedorFactura], [_IDClienteFactura], [_FechaEmision], [_Total]) values ('" + idVendedorFactura + "', '" + idClienteFactura + "', '" + date + "', " + totalString + ");");
+
+            if (filasAfectadas > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public bool VerHistorialCliente(string idCliente)
         {
             Conexion objConexion = new Conexion();
@@ -22,28 +51,6 @@ namespace DAL
                 {
                     return true;
                 }
-            }
-
-            return false;
-        }
-
-        public DataTable VerHistorialVendedor(string idVendedor) {
-
-            Conexion objConexion = new Conexion();
-
-            DataTable dt = objConexion.LeerPorComando("SELECT * FROM [BDDJ].[dbo].[FACTURA] WHERE [_IDVendedorFactura] = '"+idVendedor+"';");
-            
-            return dt;
-        }
-
-        public bool RegistrarCliente(string idCliente, string nombre, string apellido, long dni, long cantidadCompras)
-        {
-            Conexion objConexion = new Conexion();
-            int filasAfectadas = objConexion.EscribirPorComando("INSERT into [BDDJ].[dbo].[CLIENTES] ([_Nombre], [_Apellido], [_IDCliente], [_CantidadCompras], [_DNI]) values ('"+nombre+"', '"+apellido+"', '"+idCliente+"', "+cantidadCompras+", "+dni+");");
-
-            if (filasAfectadas > 0)
-            {
-                return true;
             }
 
             return false;
@@ -61,20 +68,6 @@ namespace DAL
             return con.LeerPorComando("SELECT * FROM [BDDJ].[dbo].[DETALLE_FACTURA] WHERE _IDFactura = " + idFactura + ";");
         }
 
-        public bool GenerarFactura(string idVendedorFactura, string idClienteFactura, string date, decimal total)
-        {
-            Conexion objConexion = new Conexion();
-            string totalString = total.ToString(CultureInfo.InvariantCulture);
-
-            int filasAfectadas = objConexion.EscribirPorComando("INSERT into [BDDJ].[dbo].[FACTURA] ([_IDVendedorFactura], [_IDClienteFactura], [_FechaEmision], [_Total]) values ('" + idVendedorFactura + "', '" + idClienteFactura + "', '" + date + "', " + totalString + ");");
-
-            if (filasAfectadas > 0)
-            {
-                return true;
-            }
-
-            return false;
-        }
 
         public bool IncrementarYComisionarVenta(string idVendedor, decimal comision)
         {
@@ -95,12 +88,24 @@ namespace DAL
 
             return false;
         }
+        #endregion
+
+        #region Metodos Auxiliares
+        public DataTable VerHistorialVendedor(string idVendedor)
+        {
+
+            Conexion objConexion = new Conexion();
+
+            DataTable dt = objConexion.LeerPorComando("SELECT * FROM [BDDJ].[dbo].[FACTURA] WHERE [_IDVendedorFactura] = '" + idVendedor + "';");
+
+            return dt;
+        }
 
         public bool VerSiExisteCliente(string idcliente)
         {
             Conexion objConexion = new Conexion();
 
-            DataTable dt = objConexion.LeerPorComando("SELECT [_IDCliente] FROM [BDDJ].[dbo].[CLIENTES] WHERE [_IDCliente] = '"+idcliente+"'");
+            DataTable dt = objConexion.LeerPorComando("SELECT [_IDCliente] FROM [BDDJ].[dbo].[CLIENTES] WHERE [_IDCliente] = '" + idcliente + "'");
             foreach (DataRow fila in dt.Rows)
             {
                 if (fila["_IDCliente"].ToString() == idcliente)
@@ -108,8 +113,10 @@ namespace DAL
                     return true;
                 }
             }
-            
+
             return false;
         }
+        #endregion
+
     }
 }

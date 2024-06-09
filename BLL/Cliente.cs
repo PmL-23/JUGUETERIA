@@ -9,41 +9,41 @@ namespace BLL
 {
     public class Cliente
     {
-        private string _nombre;
-        private string _apellido;
-        private string _idCliente;
-        private int _cantidadCompras;
-        private int _dni;
+        private string _Nombre;
+        private string _Apellido;
+        private string _IDCliente;
+        private int _CantidadCompras;
+        private int _DNI;
 
         #region Props
         public string IDCliente
         {
-            get { return _idCliente; }
-            set { _idCliente = value; }
+            get { return _IDCliente; }
+            set { _IDCliente = value; }
         }
 
         public string Nombre
         {
-            get { return _nombre; }
-            set { _nombre = value; }
+            get { return _Nombre; }
+            set { _Nombre = value; }
         }
 
         public string Apellido
         {
-            get { return _apellido; }
-            set { _apellido = value; }
+            get { return _Apellido; }
+            set { _Apellido = value; }
         }
 
         public int DNI
         {
-            get { return _dni; }
-            set { _dni = value; }
+            get { return _DNI; }
+            set { _DNI = value; }
         }
 
         public int CantidadCompras
         {
-            get { return _cantidadCompras; }
-            set { _cantidadCompras = value; }
+            get { return _CantidadCompras; }
+            set { _CantidadCompras = value; }
         }
 
         #endregion

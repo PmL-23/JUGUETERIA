@@ -11,7 +11,7 @@ namespace BLL
     {
         private int _CantidadVentas;
 
-        #region Props
+        #region Propiedades
         public int CantidadVentas
         {
             get { return _CantidadVentas; }

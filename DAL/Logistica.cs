@@ -11,8 +11,8 @@ namespace DAL
     public class Logistica
     {
 
-                                                                                //METODOS PRINCIPALES
 
+        #region Metodos Principales
         public bool CargarProducto(string IDCreadorusuario, string NombreProducto, string IDProducto, decimal Costo, string FechaCreacion, decimal PrecioVenta, int CantidadStock, int CantidadMinimaPermitida)
         { 
             Conexion objConexion = new Conexion();
@@ -103,15 +103,10 @@ namespace DAL
             return objConexion.LeerPorComando("SELECT [_IDCreadorProducto],[_NombreProducto],[_IDProducto],[_Costo],[_FechaCreacion],[_Precio],[_CantidadEnStock],[_CantidadMinimaPermitida] from [BDDJ].[dbo].[PRODUCTO] where _CantidadEnstock < _CantidadMinimaPermitida");
         }
 
+        #endregion
 
 
-
-
-
-
-        //METODOS AUXILIARES
-
-
+        #region Metodos Auxiliares
         public bool VerSiExisteProducto(string IDProducto)
         {
             Conexion objConexion = new Conexion();
@@ -140,8 +135,8 @@ namespace DAL
             return objConexion.LeerPorComando("SELECT [_IDCreadorProducto],[_NombreProducto],[_IDProducto],[_Costo],[_FechaCreacion],[_Precio],[_CantidadEnStock],[_CantidadMinimaPermitida] FROM [BDDJ].[dbo].[PRODUCTO] WHERE [_IDProducto] is not null ");
         }
 
-       
 
+        #endregion
 
     }
 }

@@ -9,6 +9,8 @@ namespace DAL
 {
     public class Usuario
     {
+
+        #region Metodos Principales
         public bool IniciarSesion(string nombreUsuario, string contrasenia)
         {
             Conexion objConexion = new Conexion();
@@ -24,5 +26,6 @@ namespace DAL
 
             return false;
         }
+        #endregion
     }
 }

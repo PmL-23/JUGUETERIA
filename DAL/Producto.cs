@@ -8,7 +8,7 @@ namespace DAL
 {
     public class Producto
     {
-        //?
+
 
     }
 }
