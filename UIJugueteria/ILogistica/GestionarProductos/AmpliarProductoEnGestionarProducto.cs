@@ -15,25 +15,24 @@ namespace UIJugueteria
     public partial class AmpliarProductoEnGestionarProducto : Form
     {
 
-        BLL.Producto ProductoEnForm = new BLL.Producto();
+        BLL.Producto ProductoEnForm = new BLL.Producto();   //objetos globales que usaremos mas adelante
         BLL.Logistica logistica = new BLL.Logistica();
 
         public AmpliarProductoEnGestionarProducto(string _IDProducto)
         {
             InitializeComponent();
-            try 
+            try         //hacemos todo dentro de un try para controlar una posible excepcion
             { 
-                ProductoEnForm = logistica.TraerUnProducto(_IDProducto);
-
-                lblIDEmpleadoCreadorProducto.Text = ProductoEnForm.IDCreadorProducto.ToString();
-                lblFechaCreacionProducto.Text =ProductoEnForm.FechaDeCreacion.ToString();
-                lblIDProductoDinamico.Text = ProductoEnForm.IDProducto.ToString();
+                ProductoEnForm = logistica.TraerUnProducto(_IDProducto);//guardamos en la variable global el producto que nos trae
+                                                                        //el metodo TraerUnProducto
+                lblIDEmpleadoCreadorProducto.Text = ProductoEnForm.IDCreadorProducto.ToString();//insertamos en los labels y textbox
+                lblFechaCreacionProducto.Text =ProductoEnForm.FechaDeCreacion.ToString();//correspondientes datos traidos de la BDD
+                lblIDProductoDinamico.Text = ProductoEnForm.IDProducto.ToString();  // asociados a esa IDProducto
                 lblNombreProducto.Text = ProductoEnForm.NombreProducto.ToString();
                 lblCostoProducto.Text = ProductoEnForm.Costo.ToString();
                 lblPrecioVentaProducto.Text = ProductoEnForm.Precioventa.ToString();
                 lblStock.Text = ProductoEnForm.CantidadEnStock.ToString();
                 lblStockMinimoIdeal.Text = ProductoEnForm.CantidadMinimaPermitida.ToString();
-            
             }
             catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
             {
@@ -45,9 +44,9 @@ namespace UIJugueteria
             }
         }
 
-        private void AmpliarProductoEnGestionarProducto_Load(object sender, EventArgs e) { }
+        private void AmpliarProductoEnGestionarProducto_Load(object sender, EventArgs e) { }    
 
-        private void lblIIDEmpleadorCreador_Click(object sender, EventArgs e) { }
+        private void lblIIDEmpleadorCreador_Click(object sender, EventArgs e) { } //eventos en los que no agregamos codigo
         private void lblFechaCreacion_Click(object sender, EventArgs e) { }
         private void lblIDProducto_Click(object sender, EventArgs e) { }
         private void lblCosto_Click(object sender, EventArgs e) { }
@@ -66,7 +65,10 @@ namespace UIJugueteria
         private void lblStock_Click(object sender, EventArgs e) { }
         private void lblStockMinimoIdeal_Click(object sender, EventArgs e) { }
 
-                                    private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
+        private void panel1_Paint(object sender, PaintEventArgs e) { }
+
+        //metodo para abrir formularios en un panel.
+        private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
                                     {
                                         // Cerrar y eliminar cualquier instancia existente del formulario
                                         var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
@@ -94,16 +96,16 @@ namespace UIJugueteria
         {
             if (tboxIDProducto.Text == "")
             {
-                MessageBox.Show("Ingrese una IDProducto a buscar.");
+                MessageBox.Show("Ingrese una IDProducto a buscar.");    //El usuario no ingreso un IDProducto a buscar.
             }
             else
             {
-                try
+                try         //hacemos todo dentro de un try para controlar una posible excepcion
                 {
                     BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
                     bool VerSiExiste = log.VerSiExisteProducto(tboxIDProducto.Text);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
 
-                    if (VerSiExiste)        //Si el producto existe, lo mostramos y permimos editarlo.
+                    if (VerSiExiste)        //Si el producto existe, abrimos otro formulario y lo mostramos.
                     {
                         AbrirFormEnPanel(() => new AmpliarProductoEnGestionarProducto(tboxIDProducto.Text));
                     }
@@ -124,14 +126,10 @@ namespace UIJugueteria
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(() => new IGestionarProductos());
+            AbrirFormEnPanel(() => new IGestionarProductos());//si presiona el boton abrimos ese formulario y le pasamos
+                                                              //el parametro necesario
         }
     }
 }
