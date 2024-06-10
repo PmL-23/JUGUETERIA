@@ -17,13 +17,14 @@ namespace BLL
         }
 
         #region Metodos Principales
+    
 
         public bool CargarProducto(string IDCreadorusuario, string NombreProducto, string IDProducto, decimal Costo, string FechaCreacion, decimal PrecioVenta, int CantidadStock, int CantidadMinimaPermitida)
         {
-            DAL.Logistica logistica = new DAL.Logistica();
-                                //producto debe tener NombreProducto, IDProducto, Costo, FechaCreacion, PrecioVenta, CantidadStock, CantidadMinimaPermitida, IDCreadorusuario 
+            DAL.Logistica logistica = new DAL.Logistica();  //instanciamos un objeto de la DAL, para usar un metodo y enviar a la Base de Datos
+
             if (logistica.CargarProducto(IDCreadorusuario, NombreProducto, IDProducto, Costo, FechaCreacion, PrecioVenta, CantidadStock, CantidadMinimaPermitida))
-            {
+            {       //llamamos a CargarProducto de la DAL, el cual nos devuelve true si se CARGO correctamente y false si NO pudo.
                 return true;
             }
 
@@ -33,10 +34,10 @@ namespace BLL
 
         public bool EditarProducto(string NombreProducto, decimal Costo, decimal PrecioVenta, int CantidadStock, int CantidadMinimaPermitida, string IDProducto)
         {
-            DAL.Logistica logistica = new DAL.Logistica();
+            DAL.Logistica logistica = new DAL.Logistica();//instanciamos un objeto de la DAL, para usar un metodo y enviar a la Base de Datos
 
             if (logistica.EditarProducto(NombreProducto, Costo, PrecioVenta, CantidadStock, CantidadMinimaPermitida, IDProducto))
-            {
+            {   //llamamos a EditarProducto de la DAL, el cual nos devuelve true si se EDITO correctamente y false si NO pudo.
                 return true;
             }
             return false;
@@ -44,22 +45,21 @@ namespace BLL
 
         public bool EliminarProducto(string IDProducto)
         {
-            DAL.Logistica logistica = new DAL.Logistica();
+            DAL.Logistica logistica = new DAL.Logistica();//instanciamos un objeto de la DAL, para usar un metodo y enviar a la Base de Datos
 
             if (logistica.EliminarProducto(IDProducto))
-            {
+            {   //llamamos a EliminarProducto de la DAL, el cual nos devuelve true si se ELIMINO correctamente y false si NO pudo por
+                //que se encuentra en otra tabla u otro error.
                 return true;
             }
             return false;
-
-
         }
         public bool ControlarStock(string nombreproducto, int stockdisponible, int stockminimoideal, string IDProducto)
         {
-            DAL.Logistica logistica = new DAL.Logistica();
+            DAL.Logistica logistica = new DAL.Logistica();//instanciamos un objeto de la DAL, para usar un metodo y enviar a la Base de Datos
 
             if (logistica.ControlarStock(nombreproducto, stockdisponible, stockminimoideal, IDProducto))
-            {
+            {//llamamos a ControlarStock de la DAL, el cual nos devuelve true si se EDITO correctamente y false si NO pudo.
                 return true;
             }
             return false;
@@ -68,13 +68,15 @@ namespace BLL
 
         public List<Producto> VerAlertarBajoStock() //pedir ayuda a patricio para haecr esto, ya que el hizo algo muy parecido.
         {
-            List<Producto> listaDeProductos = new List<Producto>();
+            List<Producto> listaDeProductos = new List<Producto>(); //instanciamos una lista del tipo Lista Producto, en la que guardaremos
+                                                                    //todos los productos traidos por el metodo VerAlertarBajoStock().
 
-            DAL.Logistica logistica = new DAL.Logistica();
+            DAL.Logistica logistica = new DAL.Logistica();//instanciamos un objeto de la DAL, para usar un metodo y enviar a la Base de Datos
             DataTable Productodb = logistica.VerAlertarBajoStock();
+            //llamamos a VerAlertarBajoStock de la DAL, el cual nos devuelve todos los producto con stock menor al sugerido.
 
-            foreach (DataRow fila in Productodb.Rows)
-            {
+            foreach (DataRow fila in Productodb.Rows)   //recorremos todo el DataTable traido por el metodo VerAlertarBajoStock
+            {                                       //y lo guardamos en un objeto del tipo producto.
                 Producto producto = new Producto();
                 producto.IDCreadorProducto = fila["_IDCreadorProducto"].ToString();
                 producto.NombreProducto = fila["_NombreProducto"].ToString();
@@ -84,10 +86,10 @@ namespace BLL
                 producto.Precioventa = decimal.Parse(fila["_Precio"].ToString());
                 producto.CantidadEnStock = int.Parse(fila["_CantidadEnStock"].ToString());
                 producto.CantidadMinimaPermitida = int.Parse(fila["_CantidadMinimaPermitida"].ToString());
-                listaDeProductos.Add(producto);
+                listaDeProductos.Add(producto); 
             }
-            return listaDeProductos;
-
+            return listaDeProductos; //finalmente retornamos la lista, que contendra todos los productos agregados
+                                     //en el foreach, si es que se trajieron productos.
         }
         #endregion
         
@@ -95,8 +97,12 @@ namespace BLL
         #region Metodos Auxiliares
         public bool VerSiExisteProducto(string IDProducto)
         {
-            DAL.Logistica logistica = new DAL.Logistica();
+            DAL.Logistica logistica = new DAL.Logistica();//instanciamos un objeto de la DAL, para usar un metodo y enviar
+                                                          //a la Base de Datos
             bool ver = logistica.VerSiExisteProducto(IDProducto);
+            //llamamos a VerSiExisteProducto de la DAL, el cual nos devuelve true si el IDProducto ya se encuentra como ID de un producto
+            //y false si no.
+            
             if (ver == true)
             {
                 return true;
@@ -107,17 +113,18 @@ namespace BLL
 
         public Producto TraerUnProducto(string idproducto)
         {
-            DAL.Logistica logistica = new DAL.Logistica();
+            DAL.Logistica logistica = new DAL.Logistica();//instanciamos un objeto de la DAL, para usar un metodo y enviar
+                                                          //a la Base de Datos
 
             DataTable logisticabd = logistica.TraerUnProducto(idproducto);
+            //llamamos a TraerUnProducto de la DAL, el cual nos devuelve un DataTable con el producto traido de la BDD
 
-            Producto ProductoRetornar = new Producto();
-
-            if (logisticabd.Rows.Count == 1)
+            if (logisticabd.Rows.Count == 1)//verificamos que el DataTable traido tenga solo una fila.
             {
-                DataRow row = logisticabd.Rows[0];
+                Producto ProductoRetornar = new Producto();
+                //instanciamos un objeto del tipo producto, el cual cargaremos con la información traida de la BDD y retornaremos
+                DataRow row = logisticabd.Rows[0];  //nos posicionamos en la posicion 0.
 
-                // Asignar los valores de las columnas a las propiedades de ProductoRetornar
                 ProductoRetornar.IDCreadorProducto = row["_IDCreadorProducto"].ToString(); // Convertir el ID del creador a cadena
                 ProductoRetornar.IDProducto = row["_IDProducto"].ToString(); // Convertir el ID del creador a cadena
                 ProductoRetornar.NombreProducto = row["_NombreProducto"].ToString(); // Convertir el nombre del producto a cadena
@@ -127,27 +134,30 @@ namespace BLL
                 ProductoRetornar.CantidadEnStock = Convert.ToInt32(row["_CantidadEnStock"]); // Convertir la cantidad en stock a int
                 ProductoRetornar.CantidadMinimaPermitida = Convert.ToInt32(row["_CantidadMinimaPermitida"]); // Convertir la cantidad mínima permitida a int
 
-                return ProductoRetornar;
+                return ProductoRetornar;    
             }
             else
             {
-                return null;
+                return null;// si fallamos al traer el producto retornamos null
             }
         }
 
         public List<Producto> TraerListaProductos()
         {
-            List<Producto> ListaProductos = new List<Producto>();
+            List<Producto> ListaProductos = new List<Producto>();//instanciamos una lista del tipo Lista Producto, en la que guardaremos
+                                                                 //todos los productos traidos por el metodo TraerListaProductos().
 
-            DAL.Logistica logistica = new DAL.Logistica();
+            DAL.Logistica logistica = new DAL.Logistica();//instanciamos un objeto de la DAL, para usar un metodo y enviar
+                                                          //a la Base de Datos
 
             DataTable logisticabd = logistica.TraerListaProductos();
-
+            //llamamos a TraerListaProductos de la DAL, el cual nos devuelve un DataTable con TODOS los productsos de la BDD
 
 
             foreach (DataRow row in logisticabd.Rows)
             {
-                Producto ProductoALista = new Producto();
+                Producto ProductoALista = new Producto(); //instanciamos un objeto del ripo producto, lo llenamos recorriendo la lista
+                                                          //traida y los agregamos a la lista a retornar.
                 ProductoALista.IDCreadorProducto = row["_IDCreadorProducto"].ToString(); // Convertir el ID del creador a cadena
                 ProductoALista.IDProducto = row["_IDProducto"].ToString(); // Convertir el ID del creador a cadena
                 ProductoALista.NombreProducto = row["_NombreProducto"].ToString(); // Convertir el nombre del producto a cadena
@@ -158,7 +168,7 @@ namespace BLL
                 ProductoALista.CantidadMinimaPermitida = Convert.ToInt32(row["_CantidadMinimaPermitida"]); // Convertir la cantidad mínima permitida a int
                 ListaProductos.Add(ProductoALista);
             }
-            return ListaProductos;
+            return ListaProductos;  //retornamos la lista manipuolada en el foreach
         }
         #endregion
 

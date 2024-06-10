@@ -8,7 +8,7 @@ namespace DAL
 {
     public class Producto
     {
-
+                    //no usamos el producto para conectarnos a la Base de Datos, lo hace el Vendedor o el de Logistica
 
     }
 }

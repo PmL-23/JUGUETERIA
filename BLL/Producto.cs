@@ -11,7 +11,7 @@ namespace BLL
 		private string _NombreProducto;
 		private string _IDProducto;
 		private decimal _Costo;
-		private string _FechaDeCreacion;
+		private string _FechaDeCreacion;		//variables que usaremos para el producto.
         private decimal _PrecioVenta;
         private int _CantidadEnStock;
 		private int _CantidadMinimaPermitida;

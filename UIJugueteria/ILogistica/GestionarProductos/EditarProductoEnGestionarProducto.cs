@@ -211,8 +211,6 @@ namespace UIJugueteria
                     MessageBox.Show("El Producto con ID: " + idproducto.Text + " a sido eliminado de la Base de Datos.");
                     AbrirFormEnPanel(() => new IGestionarProductos());
                 }
-
-
                 else
                 {
 
