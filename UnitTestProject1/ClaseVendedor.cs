@@ -5,14 +5,14 @@ using System;
 namespace UnitTestProject1
 {
     [TestClass]
-    public class GenerarFactura
+    public class ClaseVendedor
     {
         [TestMethod]
         public void TestMethod2()
         {
             BLL.Vendedor unVendedor = new BLL.Vendedor();
             BLL.Factura unaFactura = new BLL.Factura();
-            
+             
             //Cargo un Factura que no esta cargada en BDDJ 
             unaFactura.FechaEmision = "";
             unaFactura.Total = 1324;

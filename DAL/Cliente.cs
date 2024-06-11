@@ -28,5 +28,21 @@ namespace DAL
 
             return false;
         }
+
+        public bool EliminarCliente(string IDCliente)
+        {
+            Conexion objConexion = new Conexion();
+            int filasAfectadas = objConexion.EscribirPorComando("delete CLIENTES where [_IDCliente] = '" + IDCliente + "'");
+       
+                if (filasAfectadas > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false; 
+                }
+         
+        }
     }
 }

@@ -88,6 +88,16 @@ namespace BLL
             return cliente.AumentarCantCompras(idCliente);
         }
 
+        public bool EliminarCliente(string IDCliente)
+        {
+            DAL.Cliente unCliente = new DAL.Cliente();
+
+            if (unCliente.EliminarCliente(IDCliente))
+            {   
+                return true;
+            }
+            return false;
+        }
         #endregion
     }
 }

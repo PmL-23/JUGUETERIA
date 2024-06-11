@@ -19,9 +19,13 @@ namespace UnitTestProject1
             unCliente1.CantidadCompras = 4;
             //Verifico que el ID Cliente no  está cargado  en la base datos
             bool parametroEsperado1 = true;
+            
 
             //Verifico que el cliente se carga en BDDJ usando Método
             Assert.AreEqual(parametroEsperado1, unVendedor1.RegistrarCliente(unCliente1.IDCliente, unCliente1.Nombre, unCliente1.Apellido, unCliente1.DNI, unCliente1.CantidadCompras));
+            
+            //Elimino el Cliente nuevo de BDDJ en el caso de cumplirse con el Test
+            unCliente1.EliminarCliente(unCliente1.IDCliente);
 
         }
     }
