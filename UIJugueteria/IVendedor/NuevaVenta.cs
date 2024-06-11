@@ -136,6 +136,7 @@ namespace UIJugueteria
 
             try
             {
+
                 //Verifico la cantidad en stock del producto que intento agregar a la lista de nueva venta
                 if (filaSeleccionada.Cells["CantidadEnStock"].Value.ToString() == "0") throw new MyExceptions("Este producto se encuentra sin stock..");
 
@@ -398,6 +399,13 @@ namespace UIJugueteria
 
             try
             {
+                //Verifico que el textbox cantidad no esté vacío
+                if (string.IsNullOrEmpty(txtbox_cantidad.Text))
+                {
+                    txtbox_cantidad.Text = "1";
+                    throw new MyExceptions("No puede dejar el campo Cantidad vacío..");
+                }
+
                 //Verifico que la cantidad a cambiar del producto no sea valida (Debe ser mayor o igual a cero)
                 if (int.Parse(txtbox_cantidad.Text) <= 0)
                 {

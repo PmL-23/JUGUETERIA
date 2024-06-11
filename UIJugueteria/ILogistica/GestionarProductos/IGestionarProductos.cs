@@ -84,6 +84,8 @@ namespace UIJugueteria
         {
             try         //hacemos todo dentro de un try para controlar una posible excepcion
             {
+                if (string.IsNullOrEmpty(tboxIDProducto.Text)) throw new MyExceptions("No ingresó el ID de ningún producto..");
+
                 BLL.Logistica log = new BLL.Logistica();                          //Instanciamos un objeto de la BLL, para asi usar sus metodos.
                 bool VerSiExiste = log.VerSiExisteProducto(tboxIDProducto.Text);            //Guardamos en VerSiExiste lo que devuelve el metedo. 
 

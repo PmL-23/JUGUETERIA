@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -119,6 +120,10 @@ namespace UIJugueteria
         {
             try
             {
+                if (string.IsNullOrEmpty(textBox_sueldo.Text)) throw new MyExceptions("El campo Sueldo no puede estar vacio..");
+
+                if (decimal.Parse(textBox_sueldo.Text) < 0) throw new MyExceptions("El campo Sueldo no puede ser negativo..");
+
                 //Este boton almacena los datos actualizados del usuario seleccionado
 
                 BLL.Administrador admin = new BLL.Administrador();

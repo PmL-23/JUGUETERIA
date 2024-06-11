@@ -80,21 +80,32 @@ namespace UIJugueteria
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
-            if (tboxIDCliente.Text=="") {
-                MessageBox.Show("Debe ingresar una IDCLiente a buscar");
-            }
-            else {
-                Vendedor vendedor = new Vendedor();
-                bool resultado = vendedor.VerSiExisteCliente(tboxIDCliente.Text);
-                if (resultado== false)
-                {
-                    MessageBox.Show("El Cliente con ID "+ tboxIDCliente.Text +" NO existe.");
+            try
+            {
+                if (tboxIDCliente.Text == "") {
+                    MessageBox.Show("Debe ingresar una IDCLiente a buscar");
                 }
-                if (resultado == true)
-                {
-                    AbrirFormEnPanelCERRAR(() => new FacturasCliente(_IDVendedor, tboxIDCliente.Text));
-                }
+                else {
+                    Vendedor vendedor = new Vendedor();
+                    bool resultado = vendedor.VerSiExisteCliente(tboxIDCliente.Text);
+                    if (resultado== false)
+                    {
+                        MessageBox.Show("El Cliente con ID "+ tboxIDCliente.Text +" NO existe.");
+                    }
+                    if (resultado == true)
+                    {
+                        AbrirFormEnPanelCERRAR(() => new FacturasCliente(_IDVendedor, tboxIDCliente.Text));
+                    }
 
+                }
+            }
+            catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+            {
+                MessageBox.Show(ExcPersonalizada.Mensaje);
+            }
+            catch (Exception ex) //Atrapo excepciones generales
+            {
+                MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
             }
         }
 
