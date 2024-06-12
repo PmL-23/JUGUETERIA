@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClaseCliente.cs" />
+    <Compile Include="Clase Producto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ClaseVendedor.cs" />
     <Compile Include="ClaseFactura.cs" />

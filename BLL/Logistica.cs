@@ -128,9 +128,9 @@ namespace BLL
                 ProductoRetornar.IDCreadorProducto = row["_IDCreadorProducto"].ToString(); // Convertir el ID del creador a cadena
                 ProductoRetornar.IDProducto = row["_IDProducto"].ToString(); // Convertir el ID del creador a cadena
                 ProductoRetornar.NombreProducto = row["_NombreProducto"].ToString(); // Convertir el nombre del producto a cadena
-                ProductoRetornar.Costo = Convert.ToDecimal(row["_Costo"]); // Convertir el costo a float
+                ProductoRetornar.Costo = Convert.ToDecimal(row["_Costo"]); // Convertir el costo
                 ProductoRetornar.FechaDeCreacion = row["_FechaCreacion"].ToString(); // Convertir la fecha de creación a cadena
-                ProductoRetornar.Precioventa = Convert.ToDecimal(row["_Precio"]); // Convertir el precio de venta a float
+                ProductoRetornar.Precioventa = Convert.ToDecimal(row["_Precio"]); // Convertir el precio de venta
                 ProductoRetornar.CantidadEnStock = Convert.ToInt32(row["_CantidadEnStock"]); // Convertir la cantidad en stock a int
                 ProductoRetornar.CantidadMinimaPermitida = Convert.ToInt32(row["_CantidadMinimaPermitida"]); // Convertir la cantidad mínima permitida a int
 
