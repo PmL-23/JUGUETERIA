@@ -120,9 +120,8 @@ namespace UIJugueteria
         {
             try
             {
+                //Valido que el textbox sueldo no venga vacío
                 if (string.IsNullOrEmpty(textBox_sueldo.Text)) throw new MyExceptions("El campo Sueldo no puede estar vacio..");
-
-                if (decimal.Parse(textBox_sueldo.Text) < 0) throw new MyExceptions("El campo Sueldo no puede ser negativo..");
 
                 //Este boton almacena los datos actualizados del usuario seleccionado
 
@@ -132,35 +131,34 @@ namespace UIJugueteria
                 string Sueldotexto = textBox_sueldo.Text.Replace(',', '.');
                 decimal _Sueldo;
 
-                if (decimal.TryParse(Sueldotexto, NumberStyles.Any, CultureInfo.InvariantCulture, out _Sueldo))
+                //Valido que el textbox sueldo solo contenga números
+                if (decimal.TryParse(Sueldotexto, NumberStyles.Any, CultureInfo.InvariantCulture, out _Sueldo) == false) throw new MyExceptions("El sueldo solo puede contener números..");
+
+                //Valido que el sueldo ingresado no sea negativo
+                if (decimal.Parse(textBox_sueldo.Text) < 0) throw new MyExceptions("El campo Sueldo no puede ser negativo..");
+
+                //Actualizo los datos del empleado con los nuevos datos asignados
+                if (admin.ActualizarDatosUsuario(this.RolPrevio, label_nombreusuario.Text, comboBox_rol.Text, comboBox_estado.Text, _Sueldo))
                 {
-                    //Actualizo los datos del empleado con los nuevos datos asignados
-                    if (admin.ActualizarDatosUsuario(this.RolPrevio, label_nombreusuario.Text, comboBox_rol.Text, comboBox_estado.Text, _Sueldo))
-                    {
-                        MessageBox.Show("Datos de usuario '" + label_nombreusuario.Text + "' actualizados con exito!.");
-                        
-                        //Modifico la visibilidad de las tablas para mostrar la que necesito
-                        tabAdminEmpleados.TabPages.Remove(tabModificar);
-                        tabAdminEmpleados.TabPages.Add(tabSeleccionar);
+                    MessageBox.Show("Datos de usuario '" + label_nombreusuario.Text + "' actualizados con exito!.");
 
-                        //Una vez actualizados los datos recargo la tabla
-                        dataGridViewEmpleados.Rows.Clear();
-                        List<Empleado> empleados = admin.ListarEmpleados();
+                    //Modifico la visibilidad de las tablas para mostrar la que necesito
+                    tabAdminEmpleados.TabPages.Remove(tabModificar);
+                    tabAdminEmpleados.TabPages.Add(tabSeleccionar);
 
-                        foreach (Empleado item in empleados)
-                        {
-                            //Inserto cada fila en la grilla de la interfaz
-                            dataGridViewEmpleados.Rows.Add(item.Nombre, item.Apellido, item.DNI, item.NombreUsuario, item.Rol, item.Sueldo, item.Habilitado);
-                        }
-                    }
-                    else
+                    //Una vez actualizados los datos recargo la tabla
+                    dataGridViewEmpleados.Rows.Clear();
+                    List<Empleado> empleados = admin.ListarEmpleados();
+
+                    foreach (Empleado item in empleados)
                     {
-                        MessageBox.Show("Error al actualizar los datos del usuario '" + label_nombreusuario.Text + "'.");
+                        //Inserto cada fila en la grilla de la interfaz
+                        dataGridViewEmpleados.Rows.Add(item.Nombre, item.Apellido, item.DNI, item.NombreUsuario, item.Rol, item.Sueldo, item.Habilitado);
                     }
                 }
-                else {
-
-                    MessageBox.Show("El formato del Sueldo es incorrecto!");
+                else
+                {
+                    MessageBox.Show("Error al actualizar los datos del usuario '" + label_nombreusuario.Text + "'.");
                 }
 
             }

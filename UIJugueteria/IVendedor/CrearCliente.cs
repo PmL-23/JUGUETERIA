@@ -34,8 +34,11 @@ namespace UIJugueteria
                 string nombre = tboxNombre.Text;
                 string apellido = tboxApellido.Text;
                 string idCliente = tboxIDCliente.Text;
-                int dni = int.Parse(tboxDNI.Text);
+                string dniString = tboxDNI.Text;
                 int cantidadCompras = 0;
+                int dni;
+
+                if (int.TryParse(dniString, out dni) == false) throw new MyExceptions("DNI debe contener solo números..");
 
                 BLL.Vendedor unVendedor = new BLL.Vendedor();
 

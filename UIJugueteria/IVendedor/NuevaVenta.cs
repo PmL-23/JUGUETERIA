@@ -399,21 +399,32 @@ namespace UIJugueteria
 
             try
             {
-                //Verifico que el textbox cantidad no esté vacío
+                //Valido que el textbox cantidad no esté vacío
                 if (string.IsNullOrEmpty(txtbox_cantidad.Text))
                 {
                     txtbox_cantidad.Text = "1";
                     throw new MyExceptions("No puede dejar el campo Cantidad vacío..");
                 }
 
-                //Verifico que la cantidad a cambiar del producto no sea valida (Debe ser mayor o igual a cero)
+                //Valido que la cantidad ingresada sólo contenga números
+
+                string cantidadString = txtbox_cantidad.Text;
+                int cantidad;
+
+                if (int.TryParse(cantidadString, out cantidad) == false) 
+                {
+                    txtbox_cantidad.Text = "1";
+                    throw new MyExceptions("La cantidad no puede contener letras");
+                }
+
+                //Valido que la cantidad a cambiar del producto sea valida (Debe ser mayor a cero)
                 if (int.Parse(txtbox_cantidad.Text) <= 0)
                 {
                     txtbox_cantidad.Text = "1";
                     throw new MyExceptions("Ingrese una cantidad valida..");
                 }
 
-                //Verifico que la cantidad ingresada no supere el stock actual del producto
+                //Valido que la cantidad ingresada supere el stock actual del producto
                 foreach (DataGridViewRow item in dgv_productos_stock.Rows)
                 {
                     if (item.Cells["IDProducto"].Value.ToString() == factura.ListaDetalles[filaSeleccionada.Index].Producto.IDProducto)
