@@ -14,6 +14,9 @@ namespace UnitTestProject1
             BLL.Factura unaFactura = new BLL.Factura();
             BLL.Cliente unCliente1 = new BLL.Cliente();
 
+
+            ///////////////////////////PRUEBA MÉTODO1////////////////////////////////
+            
             //Cargo un Factura que no esta cargada en BDDJ 
             unaFactura.FechaEmision = "";
             unaFactura.Total = 1324;
@@ -28,7 +31,9 @@ namespace UnitTestProject1
             //Elimino registro de BDDJ
             unaFactura.EliminarFactura();
 
-   
+            ///////////////////////////PRUEBA MÉTODO2////////////////////////////////
+
+
             //Cargo Nombre de Cliente no cargado en BDDJ
             unCliente1.IDCliente = "1234";
             unCliente1.Nombre = "PEPE";

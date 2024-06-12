@@ -11,6 +11,9 @@ namespace UnitTestProject1
         {
             BLL.Vendedor unVendedor1 = new BLL.Vendedor();
             BLL.Cliente unCliente1 = new BLL.Cliente();
+
+            ///////////////////////////PRUEBA MÉTODO1////////////////////////////////
+            
             //Cargo Nombre de Cliente no cargado en BDDJ
             unCliente1.IDCliente = "1234";
             unCliente1.Nombre = "PEPE";

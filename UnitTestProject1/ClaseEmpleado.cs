@@ -11,7 +11,8 @@ namespace UnitTestProject1
         {
             BLL.Empleado unEmpleado = new BLL.Empleado();
 
-
+            ///////////////////////////PRUEBA MÉTODO1////////////////////////////////
+            
             //Cargo Nombre de Usuario cargado en BDDJ
             unEmpleado.IDEmpleado = "Manjula3";
             string nombre = "Apu";
@@ -28,6 +29,8 @@ namespace UnitTestProject1
             Assert.AreEqual(parametroEsperado, unEmpleado.Registrarse(nombre, apellido, dni, nombreUsuario, contrasenia, confirmContra),"No se genero Registro");
 
 
+            ///////////////////////////PRUEBA MÉTODO2////////////////////////////////
+            
             //Verifico con segundo test que el Nombre de Usuario esta cargado en BDDJ
             Assert.AreEqual(parametroEsperado,unEmpleado. VerSiExisteNombreUsuario(unEmpleado.IDEmpleado), "El Nombre de Usuario no esta cargado en BDDJ");
             
