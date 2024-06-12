@@ -14,13 +14,13 @@ namespace UnitTestProject1
             BLL.Logistica logistica = new BLL.Logistica();
 
             producto.NombreProducto = "Producto prueba";
-            producto.IDProducto = "13idPRUEBA";
+            producto.IDProducto = "13idPRUEBA";//
             producto.Costo = 144.2M ;                       //relleno un producto y lo cargo en la BDD, con el Método "CargarProducto"
             producto.Precioventa = 190.99M;
             producto.FechaDeCreacion = "2024-06-02 04:20:04.444";
             producto.CantidadEnStock = 7;
             producto.CantidadMinimaPermitida = 5;
-            producto.IDCreadorProducto = "MPaez4";      //DEBEMOS TENER SI O SI ESTE EMPLEADO DEL TIPO LOGISTICA CARGADO EN LA BBD.
+            producto.IDCreadorProducto = "Logistica";      //DEBEMOS TENER SI O SI ESTE EMPLEADO DEL TIPO LOGISTICA CARGADO EN LA BBD.
 
             bool ResultadoTest = false;   //si es el producto se creo como indicamos, se cambiará a true.
 

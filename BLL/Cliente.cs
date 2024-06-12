@@ -54,7 +54,16 @@ namespace BLL
         }
 
         #region Métodos Principales
+        public bool AumentarCantCompras(string idCliente)
+        {
+            DAL.Cliente cliente = new DAL.Cliente();
 
+            return cliente.AumentarCantCompras(idCliente);
+        }
+
+        #endregion
+
+        #region Métodos Auxiliares
         public List<Cliente> ListarClientes()
         {
             List<Cliente> clientes = new List<Cliente>();
@@ -63,29 +72,20 @@ namespace BLL
 
             DataTable miTabla = clienteDal.ClienteBase();
 
-            foreach ( DataRow fila in miTabla.Rows)
+            foreach (DataRow fila in miTabla.Rows)
             {
                 Cliente cliente = new Cliente();
 
                 cliente.Nombre = fila["_Nombre"].ToString();
                 cliente.Apellido = fila["_Apellido"].ToString();
-                cliente.IDCliente= fila["_IDCLiente"].ToString();
-                cliente.CantidadCompras =int.Parse(fila["_CantidadCompras"].ToString());
-                cliente.DNI = int.Parse( fila["_DNI"].ToString());
+                cliente.IDCliente = fila["_IDCLiente"].ToString();
+                cliente.CantidadCompras = int.Parse(fila["_CantidadCompras"].ToString());
+                cliente.DNI = int.Parse(fila["_DNI"].ToString());
 
-                clientes.Add(cliente); 
+                clientes.Add(cliente);
 
             }
-            
             return clientes;
-        }
-        #endregion
-
-        #region Métodos Auxiliares
-        public bool AumentarCantCompras(string idCliente) {
-            DAL.Cliente cliente = new DAL.Cliente();
-
-            return cliente.AumentarCantCompras(idCliente);
         }
 
         public bool EliminarCliente(string IDCliente)//Se utiliza Para Test Unitario. Elimina ID Cliente deseado
@@ -99,5 +99,7 @@ namespace BLL
             return false;
         }
      #endregion   
+
+
     }
 }
