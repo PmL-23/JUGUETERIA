@@ -31,9 +31,8 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
-        public void TestEditarProducto()    //para que se ejecute correctamente, primero debe ejecutarse la prueba de crear producto.
+        public void TestEditarProducto()    //para que se ejecute correctamente, primero debe ejecutarse el test "TestCrearProducto"
         {
-            //EditarProducto(string NombreProducto, decimal Costo, decimal PrecioVenta, int CantidadStock, int CantidadMinimaPermitida, string IDProducto)
             BLL.Producto EditandoProducto = new BLL.Producto();
             BLL.Logistica logistica = new BLL.Logistica();
                         EditandoProducto.NombreProducto = "Producto Editado";        //los campos tabulados seran editados.
@@ -61,9 +60,38 @@ namespace UnitTestProject1
             }
             bool ResultadoEsperado = true;
 
-            Assert.AreEqual(ResultadoEsperado, ResultadoMetodo, "Falló al EDITAR");
+            Assert.AreEqual(ResultadoEsperado, ResultadoMetodo, "Falló al EDITAR PRODUCTO.");
         }
+        [TestMethod]
+        public void TestEditarStockProducto()    //para que se ejecute correctamente, primero debe ejecutarse el test "TestCrearProducto".
+        {
+            BLL.Producto EditandoStockProducto = new BLL.Producto();
+            BLL.Logistica logistica = new BLL.Logistica();
+                    EditandoStockProducto.NombreProducto = "Producto Editado en Stock";        //los campos tabulados seran editados.
+            EditandoStockProducto.IDProducto = "13idPRUEBA";  //producto creado en el primer test "TestCrearProducto", y editado en "", ahora le editaremos los stocks y el nombre.
+            EditandoStockProducto.Costo = 300;
+            EditandoStockProducto.Precioventa = 500.1M;
+            EditandoStockProducto.FechaDeCreacion = "2024-06-02 04:20:04.444";
+                    EditandoStockProducto.CantidadEnStock = 13;
+                    EditandoStockProducto.CantidadMinimaPermitida = 1;
+            EditandoStockProducto.IDCreadorProducto = "MPaez4"; //este campo no se modifica.
 
+            //Basicamente Le cambiamos valores al objeto creado en la pueba "TestCrearProducto". entonces si traemos el objeto con esa ID deberia ser igual al que mandamo a cambiar.
+            logistica.ControlarStock(EditandoStockProducto.NombreProducto, EditandoStockProducto.CantidadEnStock, EditandoStockProducto.CantidadMinimaPermitida, EditandoStockProducto.IDProducto);
+            bool ResultadoMetodo = false;
+
+            BLL.Producto ProductoEditadoTraido = new BLL.Producto();
+            ProductoEditadoTraido = logistica.TraerUnProducto("13idPRUEBA");//metodo al que le damos una id y nos devuelve el producto con esa ID.
+                                                                            //si el producto que nos trae la bdd es igual a que editamos, entonces si se edito correctamente el producto.
+
+            if (EditandoStockProducto.NombreProducto == ProductoEditadoTraido.NombreProducto && EditandoStockProducto.IDProducto == ProductoEditadoTraido.IDProducto && EditandoStockProducto.Costo == ProductoEditadoTraido.Costo && EditandoStockProducto.Precioventa == ProductoEditadoTraido.Precioventa && EditandoStockProducto.CantidadEnStock == ProductoEditadoTraido.CantidadEnStock && EditandoStockProducto.CantidadMinimaPermitida == ProductoEditadoTraido.CantidadMinimaPermitida && EditandoStockProducto.IDCreadorProducto == ProductoEditadoTraido.IDCreadorProducto)
+            {
+                ResultadoMetodo = true;
+            }
+            bool ResultadoEsperado = true;
+
+            Assert.AreEqual(ResultadoEsperado, ResultadoMetodo, "Falló al EDITAR STOCK PRODUCTO.");
+        }
 
         [TestMethod]
         public void TestEliminarProducto()
