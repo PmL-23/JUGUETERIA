@@ -18,5 +18,23 @@ namespace DAL
 
             return dt;
         }
+
+
+        public bool EliminarFactura()//Este método elimina la última factura ingresada 
+        {
+            Conexion objConexion = new Conexion();
+            int filasAfectadas = objConexion.EscribirPorComando("DELETE FROM FACTURA WHERE [_IDFACTURA] = (SELECT MAX([_IDFACTURA]) FROM FACTURA)");
+            //Se crea una consulta en la base de datos, que elimina el ultimo registro de FACTURA
+            if (filasAfectadas > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
     }
+
 }

@@ -69,5 +69,23 @@ namespace DAL
 
             return "";
         }
+
+        public bool EliminarEmpleado(string IDEmpleado)
+        {
+            Conexion objConexion = new Conexion();
+            int filasAfectadas = objConexion.EscribirPorComando("delete EMPLEADOS where [_IDEmpleado] = '" + IDEmpleado + "'");
+
+            if (filasAfectadas > 0)
+            {
+                if ((objConexion.EscribirPorComando("delete USUARIOS where [_NombreUsuario] = '" + IDEmpleado + "'")) > 0)
+                {
+                    return true;
+                }
+            }
+            
+         return false;
+        }
+
+        
     }
 }

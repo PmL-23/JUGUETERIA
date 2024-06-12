@@ -88,7 +88,7 @@ namespace BLL
             return cliente.AumentarCantCompras(idCliente);
         }
 
-        public bool EliminarCliente(string IDCliente)
+        public bool EliminarCliente(string IDCliente)//Se utiliza Para Test Unitario. Elimina ID Cliente deseado
         {
             DAL.Cliente unCliente = new DAL.Cliente();
 
@@ -98,6 +98,6 @@ namespace BLL
             }
             return false;
         }
-        #endregion
+     #endregion   
     }
 }

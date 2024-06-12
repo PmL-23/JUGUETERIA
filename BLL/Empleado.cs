@@ -95,6 +95,16 @@ namespace BLL
             return empleado.VerificarRol(nombreUsuario);
         }
 
+        public bool EliminarEmpleado(string IDEmpleado)
+        {
+            DAL.Empleado unEmpleado = new DAL.Empleado();
+
+            if (unEmpleado.EliminarEmpleado(IDEmpleado))
+            {
+                return true;
+            }
+            return false;
+        }
         #endregion
     }
 }

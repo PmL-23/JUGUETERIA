@@ -29,12 +29,12 @@ namespace DAL
             return false;
         }
 
-        public bool EliminarCliente(string IDCliente)
+        public bool EliminarCliente(string IDCliente)//Este método se utiliza para elimina un ID de Cliente seleccionado
         {
             Conexion objConexion = new Conexion();
             int filasAfectadas = objConexion.EscribirPorComando("delete CLIENTES where [_IDCliente] = '" + IDCliente + "'");
-       
-                if (filasAfectadas > 0)
+            //Se elimina de la base de datos el ID de Cliente seleccionado
+            if (filasAfectadas > 0)
                 {
                     return true;
                 }

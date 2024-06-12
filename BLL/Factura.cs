@@ -124,6 +124,16 @@ namespace BLL
             }
 		}
 
+        public bool EliminarFactura()//Este método elimina la última factura ingresada
+        {
+            DAL.Factura unaFactura = new DAL.Factura();
+
+            if (unaFactura.EliminarFactura())
+            {
+                return true;
+            }
+            return false;
+        }
         #endregion
     }
 }
