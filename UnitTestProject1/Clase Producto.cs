@@ -15,19 +15,38 @@ namespace UnitTestProject1
 
             producto.NombreProducto = "Producto prueba";
             producto.IDProducto = "13idPRUEBA";
-            producto.Costo = 144.2M ;
+            producto.Costo = 144.2M ;                       //relleno un producto y lo cargo en la BDD, con el Método "CargarProducto"
             producto.Precioventa = 190.99M;
             producto.FechaDeCreacion = "2024-06-02 04:20:04.444";
             producto.CantidadEnStock = 7;
             producto.CantidadMinimaPermitida = 5;
-            producto.IDCreadorProducto = "MPaez4";
+            producto.IDCreadorProducto = "MPaez4";      //DEBEMOS TENER SI O SI ESTE EMPLEADO DEL TIPO LOGISTICA CARGADO EN LA BBD.
 
-            bool ResultadoEsperado = true;
+            bool ResultadoTest = false;   //si es el producto se creo como indicamos, se cambiará a true.
+
             bool ResultadoMetodo = logistica.CargarProducto(producto.IDCreadorProducto, producto.NombreProducto, producto.IDProducto, producto.Costo, producto.FechaDeCreacion, producto.Precioventa, producto.CantidadEnStock, producto.CantidadMinimaPermitida);
+            
+            if (ResultadoMetodo == true){ 
+            BLL.Producto ProductoCreadoTraido = new BLL.Producto();
+                ProductoCreadoTraido = logistica.TraerUnProducto("13idPRUEBA");//metodo al que le damos una id y nos devuelve el producto con esa ID.
+                                                                            //si el producto que nos trae la bdd es igual a que editamos, entonces si se edito correctamente el producto.
+                if (producto.NombreProducto == ProductoCreadoTraido.NombreProducto && producto.IDProducto == ProductoCreadoTraido.IDProducto && producto.Costo == ProductoCreadoTraido.Costo && producto.Precioventa == ProductoCreadoTraido.Precioventa && producto.CantidadEnStock == ProductoCreadoTraido.CantidadEnStock && producto.CantidadMinimaPermitida == ProductoCreadoTraido.CantidadMinimaPermitida && producto.IDCreadorProducto == ProductoCreadoTraido.IDCreadorProducto)
+                {
+                        ResultadoTest = true;
+                }
+                else
+                {
+                    ResultadoTest = false;
+                }
+            }
+            else
+            {
+                ResultadoTest = false;
 
-            //string IDCreadorusuario, string NombreProducto, string IDProducto, decimal Costo, string FechaCreacion, decimal PrecioVenta, int CantidadStock, int CantidadMinimaPermitida
+            }
+            bool ResultadoEsperado = true;
             //Verifico la prueba unitaria 
-            Assert.AreEqual(ResultadoEsperado, ResultadoMetodo, "Falló al CREAR");
+            Assert.AreEqual(ResultadoEsperado, ResultadoTest, "Falló al CREAR");
         }
 
         [TestMethod]
@@ -44,23 +63,35 @@ namespace UnitTestProject1
                         EditandoProducto.CantidadMinimaPermitida = 15;
             EditandoProducto.IDCreadorProducto = "MPaez4"; //este campo no se modifica.
 
+            bool ResultadoTest = false;   //si es el producto se creo como indicamos, se cambiará a true.
+
             //Basicamente Le cambiamos valores al objeto creado en la pueba "TestCrearProducto". entonces si traemos el objeto con esa ID deberia ser igual al que mandamo a cambiar.
-            logistica.EditarProducto(EditandoProducto.NombreProducto, EditandoProducto.Costo, EditandoProducto.Precioventa, EditandoProducto.CantidadEnStock, EditandoProducto.CantidadMinimaPermitida, EditandoProducto.IDProducto);
-            bool ResultadoMetodo = false;
+            bool ResultadoMetodo = logistica.EditarProducto(EditandoProducto.NombreProducto, EditandoProducto.Costo, EditandoProducto.Precioventa, EditandoProducto.CantidadEnStock, EditandoProducto.CantidadMinimaPermitida, EditandoProducto.IDProducto);
 
-            BLL.Producto ProductoEditadoTraido = new BLL.Producto();
-            ProductoEditadoTraido = logistica.TraerUnProducto("13idPRUEBA");//metodo al que le damos una id y nos devuelve el producto con esa ID.
-                                                                            //si el producto que nos trae la bdd es igual a que editamos, entonces si se edito correctamente el producto.
-
-
-            
-            if (EditandoProducto.NombreProducto == ProductoEditadoTraido.NombreProducto && EditandoProducto.IDProducto == ProductoEditadoTraido.IDProducto && EditandoProducto.Costo == ProductoEditadoTraido.Costo && EditandoProducto.Precioventa == ProductoEditadoTraido.Precioventa  && EditandoProducto.CantidadEnStock == ProductoEditadoTraido.CantidadEnStock && EditandoProducto.CantidadMinimaPermitida == ProductoEditadoTraido.CantidadMinimaPermitida && EditandoProducto.IDCreadorProducto == ProductoEditadoTraido.IDCreadorProducto )
+            if (ResultadoMetodo == true)
             {
-                ResultadoMetodo = true;
+                BLL.Producto ProductoEditadoTraido = new BLL.Producto();
+                ProductoEditadoTraido = logistica.TraerUnProducto("13idPRUEBA");//metodo al que le damos una id y nos devuelve el producto con esa ID.
+                                                                                //si el producto que nos trae la bdd es igual a que editamos, entonces si se edito correctamente el producto.
+
+                if (EditandoProducto.NombreProducto == ProductoEditadoTraido.NombreProducto && EditandoProducto.IDProducto == ProductoEditadoTraido.IDProducto && EditandoProducto.Costo == ProductoEditadoTraido.Costo && EditandoProducto.Precioventa == ProductoEditadoTraido.Precioventa && EditandoProducto.CantidadEnStock == ProductoEditadoTraido.CantidadEnStock && EditandoProducto.CantidadMinimaPermitida == ProductoEditadoTraido.CantidadMinimaPermitida && EditandoProducto.IDCreadorProducto == ProductoEditadoTraido.IDCreadorProducto)
+                {
+                    ResultadoTest = true;
+                }
+                else
+                {
+                    ResultadoTest = false;
+                }
+                
+            }
+            else
+            {
+                ResultadoTest = false;
+
             }
             bool ResultadoEsperado = true;
 
-            Assert.AreEqual(ResultadoEsperado, ResultadoMetodo, "Falló al EDITAR PRODUCTO.");
+            Assert.AreEqual(ResultadoEsperado, ResultadoTest, "Falló al EDITAR PRODUCTO.");
         }
         [TestMethod]
         public void TestEditarStockProducto()    //para que se ejecute correctamente, primero debe ejecutarse el test "TestCrearProducto".
@@ -76,21 +107,32 @@ namespace UnitTestProject1
                     EditandoStockProducto.CantidadMinimaPermitida = 1;
             EditandoStockProducto.IDCreadorProducto = "MPaez4"; //este campo no se modifica.
 
+            bool ResultadoTest = false;   //si es el producto se creo como indicamos, se cambiará a true.
+
             //Basicamente Le cambiamos valores al objeto creado en la pueba "TestCrearProducto". entonces si traemos el objeto con esa ID deberia ser igual al que mandamo a cambiar.
-            logistica.ControlarStock(EditandoStockProducto.NombreProducto, EditandoStockProducto.CantidadEnStock, EditandoStockProducto.CantidadMinimaPermitida, EditandoStockProducto.IDProducto);
-            bool ResultadoMetodo = false;
+            bool ResultadoMetodo = logistica.ControlarStock(EditandoStockProducto.NombreProducto, EditandoStockProducto.CantidadEnStock, EditandoStockProducto.CantidadMinimaPermitida, EditandoStockProducto.IDProducto);
 
-            BLL.Producto ProductoEditadoTraido = new BLL.Producto();
-            ProductoEditadoTraido = logistica.TraerUnProducto("13idPRUEBA");//metodo al que le damos una id y nos devuelve el producto con esa ID.
-                                                                            //si el producto que nos trae la bdd es igual a que editamos, entonces si se edito correctamente el producto.
-
-            if (EditandoStockProducto.NombreProducto == ProductoEditadoTraido.NombreProducto && EditandoStockProducto.IDProducto == ProductoEditadoTraido.IDProducto && EditandoStockProducto.Costo == ProductoEditadoTraido.Costo && EditandoStockProducto.Precioventa == ProductoEditadoTraido.Precioventa && EditandoStockProducto.CantidadEnStock == ProductoEditadoTraido.CantidadEnStock && EditandoStockProducto.CantidadMinimaPermitida == ProductoEditadoTraido.CantidadMinimaPermitida && EditandoStockProducto.IDCreadorProducto == ProductoEditadoTraido.IDCreadorProducto)
+            if (ResultadoMetodo)
             {
-                ResultadoMetodo = true;
+                BLL.Producto ProductoEditadoTraido = new BLL.Producto();
+                ProductoEditadoTraido = logistica.TraerUnProducto("13idPRUEBA");//metodo al que le damos una id y nos devuelve el producto con esa ID.
+                                                                                //si el producto que nos trae la bdd es igual a que editamos, entonces si se edito correctamente el producto.
+
+                if (EditandoStockProducto.NombreProducto == ProductoEditadoTraido.NombreProducto && EditandoStockProducto.IDProducto == ProductoEditadoTraido.IDProducto && EditandoStockProducto.Costo == ProductoEditadoTraido.Costo && EditandoStockProducto.Precioventa == ProductoEditadoTraido.Precioventa && EditandoStockProducto.CantidadEnStock == ProductoEditadoTraido.CantidadEnStock && EditandoStockProducto.CantidadMinimaPermitida == ProductoEditadoTraido.CantidadMinimaPermitida && EditandoStockProducto.IDCreadorProducto == ProductoEditadoTraido.IDCreadorProducto)
+                {
+                    ResultadoTest = true;
+                }
+                else
+                {
+                    ResultadoTest = false;
+                }
+            }
+            else
+            {
+                ResultadoTest = false;
             }
             bool ResultadoEsperado = true;
-
-            Assert.AreEqual(ResultadoEsperado, ResultadoMetodo, "Falló al EDITAR STOCK PRODUCTO.");
+            Assert.AreEqual(ResultadoEsperado, ResultadoTest, "Falló al EDITAR STOCK PRODUCTO.");
         }
 
         [TestMethod]
@@ -102,12 +144,28 @@ namespace UnitTestProject1
             producto.IDProducto = "13idPRUEBA";
 
 
-            bool ResultadoEsperado = true;
+            bool ResultadoTest = false;   //si es el producto se creo como indicamos, se cambiará a true.
             bool ResultadoMetodo = logistica.EliminarProducto(producto.IDProducto);
 
+            if (ResultadoMetodo==true) {
+                bool VerSiExisteProducto =logistica.VerSiExisteProducto(producto.IDProducto);//metodo que devuelve FALSE si NO encontro un producto con esa ID en la BDD
+                if (VerSiExisteProducto==false)
+                {
+                    ResultadoTest = true;
+                }
+                else
+                {
+                    ResultadoTest=false;
+                }
+            }
+            else
+            {
+                ResultadoTest = false;
+            }
             //string IDCreadorusuario, string NombreProducto, string IDProducto, decimal Costo, string FechaCreacion, decimal PrecioVenta, int CantidadStock, int CantidadMinimaPermitida
             //Verifico la prueba unitaria 
-            Assert.AreEqual(ResultadoEsperado, ResultadoMetodo, "Falló al ELIMINAR");
+            bool ResultadoEsperado = true;
+            Assert.AreEqual(ResultadoEsperado, ResultadoTest, "Falló al ELIMINAR");
         }
 
     }
