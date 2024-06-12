@@ -7,12 +7,12 @@ namespace UnitTestProject1
     public class ClaseCliente
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestRegistrarCliente()
         {
+            ///////////////////////////PRUEBA MÉTODO1////////////////////////////////
+            
             BLL.Vendedor unVendedor1 = new BLL.Vendedor();
             BLL.Cliente unCliente1 = new BLL.Cliente();
-
-            ///////////////////////////PRUEBA MÉTODO1////////////////////////////////
             
             //Cargo Nombre de Cliente no cargado en BDDJ
             unCliente1.IDCliente = "1234";
@@ -31,5 +31,6 @@ namespace UnitTestProject1
             unCliente1.EliminarCliente(unCliente1.IDCliente);
 
         }
+
     }
 }

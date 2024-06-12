@@ -8,31 +8,33 @@ namespace UnitTestProject1
     public class ClaseFactura
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestAgregarProductos1()
         {
-            BLL.Factura unaFactura = new BLL.Factura();
-            //Istancio una Lista para la prueba
-            BLL.Factura listaEsperada = new BLL.Factura();
-            BLL.DetalleFactura detalleEsperado = new BLL.DetalleFactura();  
+            ///////////////////////////PRUEBA MÉTODO1////////////////////////////////
             
-           //Cargo una Lista de Detalle 
+            BLL.Factura unaFactura = new BLL.Factura();
+            //Instancio una Lista para la prueba
+            BLL.Factura listaEsperada = new BLL.Factura();
+            BLL.DetalleFactura detalleEsperado = new BLL.DetalleFactura();
+
+            
+
+            //Cargo una Lista de Detalle 
             string IDProducto = "123";
             int Cantidad = 3;
             decimal Precioventa = 2M;
             unaFactura.IDFactura = "333";
-
+            //Cargo una Lista de de prueba 
             detalleEsperado.Producto.IDProducto = IDProducto;
             detalleEsperado.Cantidad = Cantidad;
             detalleEsperado.Producto.Precioventa = Precioventa;
             listaEsperada.IDFactura = "333";
             listaEsperada.ListaDetalles.Add(detalleEsperado);
 
-           ///////////////////////////PRUEBA MÉTODO1////////////////////////////////
-           
             //Se agrega un detalle usando Método
             unaFactura.AgregarProductos(IDProducto, Cantidad, Precioventa);
 
-            
+
             // Comprueba si las listas tienen la misma cantidad de elementos 
             Assert.AreEqual(listaEsperada.ListaDetalles.Count, unaFactura.ListaDetalles.Count);
 
@@ -54,19 +56,30 @@ namespace UnitTestProject1
                 Assert.AreEqual(detalleEsperado1.Producto.Precioventa, detalleEncontrado.Producto.Precioventa);
             }
 
+        }
 
+        [TestMethod]
+        public void TestCalcularTotal()
+        {
             //////////////////////////PRUEBA MÉTODO2////////////////////////////////
 
+            BLL.Factura unaFactura = new BLL.Factura();
+
+            //Cargo una Lista de Detalle 
+
+            string IDProducto = "123";
+            int Cantidad = 3;
+            decimal Precioventa = 2M;
+            unaFactura.IDFactura = "333";
+            unaFactura.AgregarProductos(IDProducto, Cantidad, Precioventa);
 
             //Resuelvo el cálculo del Método "CalcularTotal()"
             decimal parametroEsperado = 7.26M;
 
-     
-            
+
+
             //Verifico la prueba unitaria Aplicando Metodo
             Assert.AreEqual(parametroEsperado, unaFactura.CalcularTotal(), "El cálculo es erróneo");
-
-            
         }
     }
 }
