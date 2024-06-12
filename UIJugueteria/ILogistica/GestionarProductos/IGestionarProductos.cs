@@ -95,7 +95,7 @@ namespace UIJugueteria
                 }
                 else
                 {                           //Si el producto NO existe, mostramos un mensaje.
-                    MessageBox.Show("El producto con ID: '" + tboxIDProducto.Text + "' NO en la Base de Datos", "Producto Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El producto con ID: '" + tboxIDProducto.Text + "' NO existe en la Base de Datos", "Producto Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
