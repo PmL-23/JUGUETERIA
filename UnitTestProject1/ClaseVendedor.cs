@@ -14,23 +14,33 @@ namespace UnitTestProject1
             
             BLL.Vendedor unVendedor = new BLL.Vendedor();
             BLL.Factura unaFactura = new BLL.Factura();
-            
+            BLL.Cliente unCliente1 = new BLL.Cliente();
+            BLL.Empleado unEmpleado = new BLL.Empleado();
+
+            //Se usa el ID Empleado reservado para pruebas
+            unEmpleado.IDEmpleado = "Vendedor";
+                        
+            //Cargo Nombre de Cliente no cargado en BDDJ
+            unCliente1.IDCliente = "4567";
+            unCliente1.Nombre = "PEPE";
+            unCliente1.Apellido = "Sala";
+            unCliente1.DNI = 999999;
+            unCliente1.CantidadCompras = 4;
+            unVendedor.RegistrarCliente(unCliente1.IDCliente, unCliente1.Nombre, unCliente1.Apellido, unCliente1.DNI, unCliente1.CantidadCompras);
+           
             //Cargo un Factura que no esta cargada en BDDJ 
-            unaFactura.FechaEmision = "";
-            unaFactura.Total = 1324;
-            unaFactura.Vendedor.IDEmpleado = "davi";
-            unaFactura.Cliente.IDCliente = "4567";
+            string FechaEmision = "2024-06-02 04:20:04.444";
+            decimal Total = 32.4M;
 
             bool parametroEsperado = true;
 
-
-
             //Verifico con test que la factura se carga correctamente en BDDJ
-            Assert.AreEqual(parametroEsperado, unVendedor.GenerarFactura(unaFactura.Vendedor.IDEmpleado, unaFactura.Cliente.IDCliente, unaFactura.FechaEmision, unaFactura.Total));
+            Assert.AreEqual(parametroEsperado, unVendedor.GenerarFactura(unEmpleado.IDEmpleado, unCliente1.IDCliente, FechaEmision, Total));
 
             //Elimino registro de BDDJ
             unaFactura.EliminarFactura();
-
+            unCliente1.EliminarCliente(unCliente1.IDCliente);
+            
         }
         [TestMethod]
         public void TestRegistrarCliente()
