@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -79,6 +80,8 @@ namespace UIJugueteria
 
                     string TNombreUsuario = tboxUsuarioCrear.Text;
 
+                    if (TNombreUsuario == "Logistica" || TNombreUsuario == "Vendedor" || TNombreUsuario == "Administrador") throw new MyExceptions("La ID " + TNombreUsuario + " es reservada, por favor intente devuelta con otra ID");
+
                     //Llamo a un método que verifica si el usuario ingresado ya está registrado en el sistema
                     if (comprobando.VerSiExisteNombreUsuario(TNombreUsuario) == false)
                     {
@@ -141,7 +144,9 @@ namespace UIJugueteria
                 {
                     MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
                 }
+
             }
+        
         }
 
 
