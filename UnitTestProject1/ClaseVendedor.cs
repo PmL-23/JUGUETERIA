@@ -23,7 +23,8 @@ namespace UnitTestProject1
 
             bool parametroEsperado = true;
 
-
+            //Elimino registro de BDDJ
+            unaFactura.EliminarFactura();
 
             //Verifico con test que la factura se carga correctamente en BDDJ
             Assert.AreEqual(parametroEsperado, unVendedor.GenerarFactura(unaFactura.Vendedor.IDEmpleado, unaFactura.Cliente.IDCliente, unaFactura.FechaEmision, unaFactura.Total));
