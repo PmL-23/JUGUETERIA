@@ -84,7 +84,7 @@
             this.lblFechaCreacion.Name = "lblFechaCreacion";
             this.lblFechaCreacion.Size = new System.Drawing.Size(211, 20);
             this.lblFechaCreacion.TabIndex = 2;
-            this.lblFechaCreacion.Text = "Fecha Creacion de Producto";
+            this.lblFechaCreacion.Text = "Fecha Creación de Producto";
             this.lblFechaCreacion.Click += new System.EventHandler(this.lblFechaCreacion_Click);
             // 
             // lblCosto

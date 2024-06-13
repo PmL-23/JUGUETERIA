@@ -61,7 +61,7 @@ namespace UnitTestProject1
             EditandoProducto.FechaDeCreacion = "2024-06-02 04:20:04.444";
                         EditandoProducto.CantidadEnStock = 66;
                         EditandoProducto.CantidadMinimaPermitida = 15;
-            EditandoProducto.IDCreadorProducto = "MPaez4"; //este campo no se modifica.
+            EditandoProducto.IDCreadorProducto = "Logistica"; //este campo no se modifica.
 
             bool ResultadoTest = false;   //si es el producto se creo como indicamos, se cambiará a true.
 
@@ -105,7 +105,7 @@ namespace UnitTestProject1
             EditandoStockProducto.FechaDeCreacion = "2024-06-02 04:20:04.444";
                     EditandoStockProducto.CantidadEnStock = 13;
                     EditandoStockProducto.CantidadMinimaPermitida = 1;
-            EditandoStockProducto.IDCreadorProducto = "MPaez4"; //este campo no se modifica.
+            EditandoStockProducto.IDCreadorProducto = "Logistica"; //este campo no se modifica.
 
             bool ResultadoTest = false;   //si es el producto se creo como indicamos, se cambiará a true.
 

@@ -45,103 +45,105 @@ namespace UIJugueteria
                 MessageBox.Show("\tComplete todos los campos\t");               //el usuario no completo todos los campos
             }
             else {
-                try             //hacemos el codigo en un try para capturar una posible exepcion.
-                {
-                    string _NombreProducto = tboxNombreProducto.Text;
-                    string _IDProducto = tboxIDProducto.Text;                       //guardamos en variables los campos que ingreso el usuario.
-                                                                                    //los campos en los que el Usuario puede equivocarlos los tramos con el decimal.TryParse o
-                                                                                    //int.TryParse, si podemos seguimos, y si no se lanza una mensaje y se pedimos que los ingrese devuelta,
-                                                                                    //esto se hace 5 veces.
-                    string costoProductoTexto = tboxCostoProducto.Text.Replace(',', '.');//se usa para que siempre se guarde con , y no con . 
-                    decimal _CostoProducto;
-                    if (decimal.TryParse(costoProductoTexto, NumberStyles.Any, CultureInfo.InvariantCulture, out _CostoProducto))
+                    try             //hacemos el codigo en un try para capturar una posible exepcion.
                     {
-                        if (_CostoProducto<=0) {
-                            MessageBox.Show("El Costo debe ser mayor a 0.");
-                        }
-                        else {
-                            string precioventatext = tboxPrecioVentaProducto.Text.Replace(',', '.');
-                            decimal _PrecioVenta;
-                            if (decimal.TryParse(precioventatext, NumberStyles.Any, CultureInfo.InvariantCulture, out _PrecioVenta))
-                            {
-                                if (_PrecioVenta <= 0)
+                        string _NombreProducto = tboxNombreProducto.Text;
+                        string _IDProducto = tboxIDProducto.Text;                       //guardamos en variables los campos que ingreso el usuario.
+                                                                                        //los campos en los que el Usuario puede equivocarlos los tramos con el decimal.TryParse o
+                                                                                        //int.TryParse, si podemos seguimos, y si no se lanza una mensaje y se pedimos que los ingrese devuelta,
+                                                                                        //esto se hace 5 veces.
+                    if (_IDProducto == "13idPRUEBA") throw new MyExceptions("El ID 13idPRUEBA es un IDProducto reservado para pruebas, intente devuelta con otro IDProducto");
+                        string costoProductoTexto = tboxCostoProducto.Text.Replace(',', '.');//se usa para que siempre se guarde con , y no con . 
+                        decimal _CostoProducto;
+                        if (decimal.TryParse(costoProductoTexto, NumberStyles.Any, CultureInfo.InvariantCulture, out _CostoProducto))
+                        {
+                            if (_CostoProducto <= 0) {
+                                MessageBox.Show("El Costo debe ser mayor a 0.");
+                            }
+                            else {
+                                string precioventatext = tboxPrecioVentaProducto.Text.Replace(',', '.');
+                                decimal _PrecioVenta;
+                                if (decimal.TryParse(precioventatext, NumberStyles.Any, CultureInfo.InvariantCulture, out _PrecioVenta))
                                 {
-                                    MessageBox.Show("El Precio de Venta debe ser mayor a 0.");
-                                }
-                                else
-                                {
-
-                                    string StockProductoTexto = tboxStock.Text;
-                                    int _StockProducto;
-                                    if (int.TryParse(StockProductoTexto, out _StockProducto))
+                                    if (_PrecioVenta <= 0)
                                     {
-
-                                        string stockMinimoProductoTexto = tboxStockMinimoProducto.Text;
-                                        int _StockMinimoProducto;
-                                        if (int.TryParse(stockMinimoProductoTexto, out _StockMinimoProducto))
-                                        {   
-                                            BLL.Logistica log = new BLL.Logistica();//Instanciamos un objeto de la BLL, para asi usar sus metodos.
-
-                                            DateTime fechaActual = DateTime.Now;
-                                            string fechaFormateada = fechaActual.ToString("yyyy-MM-dd HH:mm:ss.fff"); // Creo y formateo la fecha y hora como una cadena
-                                            
-                                            bool VerSiExiste = log.VerSiExisteProducto(_IDProducto); //Guardamos en VerSiExiste lo que devuelve VerSiExisteProducto
-                                            if (VerSiExiste)
-                                            {               //error de que existe el producto con esa IDProducto ingresada.
-                                                MessageBox.Show("El producto con ID: '" + _IDProducto + "' ya existe en la Base de Datos", "Producto ya existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            }
-                                            else
-                                            {
-                                                //si pasa todas la validaciones, mandamos a la BLL y esperamos resultado.
-                                                bool resultado = log.CargarProducto(_NombreUsuario, _NombreProducto, _IDProducto, _CostoProducto, fechaFormateada, _PrecioVenta, _StockProducto, _StockMinimoProducto);
-                                                //Con el metodo CargarProducto ya mandamos a la BLL los datos para que la DAL los mande a la BDD, y esperamos a
-                                                //ver que retorna 
-                                                if (resultado)
-                                                {   //se cargo correctamente, mostramos mensajes y vaciamos los TextBox.
-                                                    MessageBox.Show("El producto se cargó correctamente.");
-                                                    tboxNombreProducto.Text = "";
-                                                    tboxIDProducto.Text = "";
-                                                    tboxCostoProducto.Text = "";
-                                                    tboxPrecioVentaProducto.Text = "";
-                                                    tboxStockMinimoProducto.Text = "";
-                                                    tboxStock.Text = "";
-                                                }
-                                                else
-                                                {
-                                                    MessageBox.Show("Hubo un error al cargar el producto.");
-                                                }
-                                            }
-                                        }
-                                        else        //vamos cerrando los else de errores de formato.
-                                        {
-                                            MessageBox.Show("El formato de la Cantidad Minima del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        }
+                                        MessageBox.Show("El Precio de Venta debe ser mayor a 0.");
                                     }
                                     else
                                     {
-                                        MessageBox.Show("El formato del Stock del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                                        string StockProductoTexto = tboxStock.Text;
+                                        int _StockProducto;
+                                        if (int.TryParse(StockProductoTexto, out _StockProducto))
+                                        {
+
+                                            string stockMinimoProductoTexto = tboxStockMinimoProducto.Text;
+                                            int _StockMinimoProducto;
+                                            if (int.TryParse(stockMinimoProductoTexto, out _StockMinimoProducto))
+                                            {
+                                                BLL.Logistica log = new BLL.Logistica();//Instanciamos un objeto de la BLL, para asi usar sus metodos.
+
+                                                DateTime fechaActual = DateTime.Now;
+                                                string fechaFormateada = fechaActual.ToString("yyyy-MM-dd HH:mm:ss.fff"); // Creo y formateo la fecha y hora como una cadena
+
+                                                bool VerSiExiste = log.VerSiExisteProducto(_IDProducto); //Guardamos en VerSiExiste lo que devuelve VerSiExisteProducto
+                                                if (VerSiExiste)
+                                                {               //error de que existe el producto con esa IDProducto ingresada.
+                                                    MessageBox.Show("El producto con ID: '" + _IDProducto + "' ya existe en la Base de Datos", "Producto ya existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                }
+                                                else
+                                                {
+                                                    //si pasa todas la validaciones, mandamos a la BLL y esperamos resultado.
+                                                    bool resultado = log.CargarProducto(_NombreUsuario, _NombreProducto, _IDProducto, _CostoProducto, fechaFormateada, _PrecioVenta, _StockProducto, _StockMinimoProducto);
+                                                    //Con el metodo CargarProducto ya mandamos a la BLL los datos para que la DAL los mande a la BDD, y esperamos a
+                                                    //ver que retorna 
+                                                    if (resultado)
+                                                    {   //se cargo correctamente, mostramos mensajes y vaciamos los TextBox.
+                                                        MessageBox.Show("El producto se cargó correctamente.");
+                                                        tboxNombreProducto.Text = "";
+                                                        tboxIDProducto.Text = "";
+                                                        tboxCostoProducto.Text = "";
+                                                        tboxPrecioVentaProducto.Text = "";
+                                                        tboxStockMinimoProducto.Text = "";
+                                                        tboxStock.Text = "";
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Hubo un error al cargar el producto.");
+                                                    }
+                                                }
+                                            }
+                                            else        //vamos cerrando los else de errores de formato.
+                                            {
+                                                MessageBox.Show("El formato de la Cantidad Minima del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("El formato del Stock del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
                                     }
                                 }
-                            }
-                            else
-                            {
-                                MessageBox.Show("El formato del Precio de Venta del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                else
+                                {
+                                    MessageBox.Show("El formato del Precio de Venta del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                         }
+                        else {
+                            MessageBox.Show("El formato del Costo del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                    else {
-                        MessageBox.Show("El formato del Costo del producto es incorrecto. Por favor ingrese un número válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }    
+                    catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
+                    {
+                        MessageBox.Show(ExcPersonalizada.Mensaje);
+                    }
+                    catch (Exception ex) //Atrapo excepciones generales
+                    {
+                        MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
+                    }
                 }
-                catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
-                {
-                    MessageBox.Show(ExcPersonalizada.Mensaje);
-                }
-                catch (Exception ex) //Atrapo excepciones generales
-                {
-                    MessageBox.Show("Ocurrió la siguiente Exception: " + ex.Message);
-                }
-            }
+            
         }
 
 

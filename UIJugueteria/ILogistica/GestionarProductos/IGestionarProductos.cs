@@ -153,7 +153,7 @@ namespace UIJugueteria
                     bool resultado = logistica.EliminarProducto(IDSelececionada);
                     if (resultado)
                     {
-                        MessageBox.Show("El Producto con ID: " + IDSelececionada + " a sido eliminado de la Base de Datos.");
+                        MessageBox.Show("El Producto con ID: " + IDSelececionada + " ha sido eliminado de la Base de Datos.");
                         AbrirFormEnPanel(() => new IGestionarProductos());
                     }
                     else
