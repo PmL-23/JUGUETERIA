@@ -112,7 +112,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NOSE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Jugueteria";
             this.Load += new System.EventHandler(this.btnCancela_Load);
             this.PanelMovCerrar.ResumeLayout(false);
             this.PanelMovCerrar.PerformLayout();

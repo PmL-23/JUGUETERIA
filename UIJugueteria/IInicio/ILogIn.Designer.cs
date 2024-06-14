@@ -102,7 +102,7 @@
             this.btnCrearCuenta.Location = new System.Drawing.Point(305, 218);
             this.btnCrearCuenta.Name = "btnCrearCuenta";
             this.btnCrearCuenta.Size = new System.Drawing.Size(174, 28);
-            this.btnCrearCuenta.TabIndex = 19;
+            this.btnCrearCuenta.TabIndex = 4;
             this.btnCrearCuenta.Text = "Crear Cuenta";
             this.btnCrearCuenta.UseVisualStyleBackColor = false;
             this.btnCrearCuenta.Click += new System.EventHandler(this.btnCrearCuenta_Click_1);
@@ -132,7 +132,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(305, 252);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(174, 28);
-            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Salir";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
