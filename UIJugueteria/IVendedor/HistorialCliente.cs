@@ -116,17 +116,23 @@ namespace UIJugueteria
 
         private void btnVerFacturasCliente_Click(object sender, EventArgs e)
         {
-
-            if (indice != -1)
+            if (dgv_clientes.Rows.Count > 0)
             {
-                //Obtengo de la fila seleccionada el ID del cliente
-                string IDSeleccionada = (string)dgv_clientes.Rows[indice].Cells["IDCliente"].Value;
+                if (indice != -1)
+                {
+                    //Obtengo de la fila seleccionada el ID del cliente
+                    string IDSeleccionada = (string)dgv_clientes.Rows[indice].Cells["IDCliente"].Value;
+                    AbrirFormEnPanelCERRAR(() => new FacturasCliente(_IDVendedor, IDSeleccionada));
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione Cliente para ver sus facturas");
 
-                AbrirFormEnPanelCERRAR( () => new FacturasCliente(_IDVendedor, IDSeleccionada));
+                }
             }
             else
             {
-                MessageBox.Show("Seleccione Cliente para ver sus facturas");
+                MessageBox.Show("No hay ningun Cliente seleccionado");
 
             }
         }

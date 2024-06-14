@@ -107,20 +107,27 @@ namespace UIJugueteria.ILogistica
 
         private void btnEditarStock_Click(object sender, EventArgs e)
         {
-            if (indice != -1)
-            {               //le pasamos la IDProducto de la fila seleccionada al presionar el boton EditarStock, y abrimos el EditarStock
-                string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
-                AbrirFormEnPanel(new EditarStock(IDSelececionada));
-                tboxIDProducto.Controls.Clear();    //limpiamos controles
-                lblIDProducto.Controls.Clear();
-                btnBuscarProducto.Controls.Clear();
+            if (dtgvVerProductos.Rows.Count > 0)
+            {
+                if (indice != -1)
+                {               //le pasamos la IDProducto de la fila seleccionada al presionar el boton EditarStock, y abrimos el EditarStock
+                    string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
+                    AbrirFormEnPanel(new EditarStock(IDSelececionada));
+                    tboxIDProducto.Controls.Clear();    //limpiamos controles
+                    lblIDProducto.Controls.Clear();
+                    btnBuscarProducto.Controls.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un producto "); //no selecciono ninguna fila de la grilla
+
+                }
             }
             else
             {
-                MessageBox.Show("Seleccione un producto "); //no selecciono ninguna fila de la grilla
-
+                MessageBox.Show("No selecciono ningun Producto");
             }
-        }
+}
 
         private void dtgvVerProductos_CellClick_1(object sender, DataGridViewCellEventArgs e) 
         {

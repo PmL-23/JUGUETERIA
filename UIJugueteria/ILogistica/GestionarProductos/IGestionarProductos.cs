@@ -116,28 +116,42 @@ namespace UIJugueteria
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (indice != -1 )  //si el indice es -1, selecciono el header.
+            if (dtgvVerProductos.Rows.Count > 0)
             {
-                string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
-                AbrirFormEnPanel(() => new EditarProductoEnGestionarProducto(IDSelececionada));
+                    if (indice != -1 )  //si el indice es -1, selecciono el header.
+                {
+                    string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
+                    AbrirFormEnPanel(() => new EditarProductoEnGestionarProducto(IDSelececionada));
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un producto ");
+                }
             }
             else
             {
-                MessageBox.Show("Seleccione un producto ");
+                MessageBox.Show("No selecciono ningun Producto");
             }
         }
 
         private void btnAmpliar_Click(object sender, EventArgs e)
         {
-            if (indice != -1)//si el indice es -1, selecciono el header.
+            if (dtgvVerProductos.Rows.Count > 0)
             {
-                string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
-                AbrirFormEnPanel(() => new AmpliarProductoEnGestionarProducto(IDSelececionada));
+                if (indice != -1)//si el indice es -1, selecciono el header.
+                {
+                    string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;
+                    AbrirFormEnPanel(() => new AmpliarProductoEnGestionarProducto(IDSelececionada));
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un producto ");
+
+                }
             }
             else
             {
-                MessageBox.Show("Seleccione un producto ");
-
+                MessageBox.Show("No selecciono ningun Producto");
             }
 
         }
@@ -146,24 +160,31 @@ namespace UIJugueteria
         {
             try
             {
-                if (indice != -1)//si el indice es -1, selecciono el header.
+                if (dtgvVerProductos.Rows.Count > 0)
                 {
-                    string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;           //probar maneja cuando no se selecciona ninguna final(solo es cuando no hay productos y se selecciona eliminar o ampliar o editar.)
-                    BLL.Logistica logistica = new BLL.Logistica();
-                    bool resultado = logistica.EliminarProducto(IDSelececionada);
-                    if (resultado)
+                    if (indice != -1)//si el indice es -1, selecciono el header.
                     {
-                        MessageBox.Show("El Producto con ID: " + IDSelececionada + " ha sido eliminado de la Base de Datos.");
-                        AbrirFormEnPanel(() => new IGestionarProductos());
+                        string IDSelececionada = (string)dtgvVerProductos.Rows[indice].Cells["IDProducto"].Value;           //probar maneja cuando no se selecciona ninguna final(solo es cuando no hay productos y se selecciona eliminar o ampliar o editar.)
+                        BLL.Logistica logistica = new BLL.Logistica();
+                        bool resultado = logistica.EliminarProducto(IDSelececionada);
+                        if (resultado)
+                        {
+                            MessageBox.Show("El Producto con ID: " + IDSelececionada + " ha sido eliminado de la Base de Datos.");
+                            AbrirFormEnPanel(() => new IGestionarProductos());
+                        }
+                        else
+                        {
+                            MessageBox.Show("El producto con ID  " + IDSelececionada + "se ha usado en una factura, por lo que no se puede eliminar de la Base de Datos.");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("El producto con ID  " + IDSelececionada+"se ha usado en una factura, por lo que no se puede eliminar de la Base de Datos.");
+                        MessageBox.Show("Seleccione un producto ");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Seleccione un producto ");
+                    MessageBox.Show("No selecciono ningun Producto");
                 }
 
             }
