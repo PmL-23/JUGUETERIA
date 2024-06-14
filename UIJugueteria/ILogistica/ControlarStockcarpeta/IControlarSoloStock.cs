@@ -58,18 +58,22 @@ namespace UIJugueteria.ILogistica
                     //metodo para abrir formularios en un panel.
                     private void AbrirFormEnPanel(object Formulario)
                     {
-                        if (this.PanelParaProducto.Controls.Count > 0)
-                        {
-                            this.PanelParaProducto.Controls.Clear();
-                        }
+            try
+            {
+                if (this.PanelParaProducto.Controls.Count > 0)
+                {
+                    this.PanelParaProducto.Controls.Clear();
+                }
 
-                        Form FH = Formulario as Form;
-                        FH.TopLevel = false;
-                        FH.Dock = DockStyle.Fill;
-                        this.PanelParaProducto.Controls.Add(FH);
-                        this.PanelParaProducto.Tag = FH;
-                        FH.Show();
-                    }
+                Form FH = Formulario as Form;
+                FH.TopLevel = false;
+                FH.Dock = DockStyle.Fill;
+                this.PanelParaProducto.Controls.Add(FH);
+                this.PanelParaProducto.Tag = FH;
+                FH.Show();
+            }
+            catch { }
+            }
 
 
 

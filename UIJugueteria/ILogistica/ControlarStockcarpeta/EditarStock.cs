@@ -46,24 +46,29 @@ namespace UIJugueteria.ILogistica.ControlarStock
                                         //metodo que sirve para abrir formularios en el PanelCentral.
                                         private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
                                         {
-                                            // Cerrar y eliminar cualquier instancia existente del formulario
-                                            var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
-                                            if (existingForm != null)
-                                            {
-                                                panel1.Controls.Remove(existingForm);
-                                                existingForm.Close();
-                                                existingForm.Dispose();
-                                            }
 
-                                            // Crear una nueva instancia del formulario
-                                            Form formulario = formFactory();
-                                            formulario.TopLevel = false;
-                                            formulario.FormBorderStyle = FormBorderStyle.None;
-                                            formulario.Dock = DockStyle.Fill;
-                                            panel1.Controls.Add(formulario);
-                                            panel1.Tag = formulario;
-                                            formulario.Show();
-                                            formulario.BringToFront();
+                                            try
+                                            {
+                                                // Cerrar y eliminar cualquier instancia existente del formulario
+                                                var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
+                                                if (existingForm != null)
+                                                {
+                                                    panel1.Controls.Remove(existingForm);
+                                                    existingForm.Close();
+                                                    existingForm.Dispose();
+                                                }
+
+                                                // Crear una nueva instancia del formulario
+                                                Form formulario = formFactory();
+                                                formulario.TopLevel = false;
+                                                formulario.FormBorderStyle = FormBorderStyle.None;
+                                                formulario.Dock = DockStyle.Fill;
+                                                panel1.Controls.Add(formulario);
+                                                panel1.Tag = formulario;
+                                                formulario.Show();
+                                                formulario.BringToFront();
+                                            }
+                                            catch { }
                                         }
 
 

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UIJugueteria.ILogistica;
 using UIJugueteria.ILogistica.ControlarStock;
 
 namespace UIJugueteria
@@ -67,8 +68,11 @@ namespace UIJugueteria
 
         private void panel1_Paint(object sender, PaintEventArgs e) { }
 
-        //metodo para abrir formularios en un panel.
-        private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
+                                //metodo para abrir formularios en un panel.
+                                private void AbrirFormEnPanel<MiForm>(Func<MiForm> formFactory) where MiForm : Form
+                                    {
+
+                                    try
                                     {
                                         // Cerrar y eliminar cualquier instancia existente del formulario
                                         var existingForm = panel1.Controls.OfType<MiForm>().FirstOrDefault();
@@ -88,6 +92,11 @@ namespace UIJugueteria
                                         panel1.Tag = formulario;
                                         formulario.Show();
                                         formulario.BringToFront();
+                                    }
+                                    catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+                                            
                                     }
 
 
@@ -128,6 +137,7 @@ namespace UIJugueteria
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
+
             AbrirFormEnPanel(() => new IGestionarProductos());//si presiona el boton abrimos ese formulario y le pasamos
                                                               //el parametro necesario
         }
