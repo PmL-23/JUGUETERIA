@@ -68,7 +68,7 @@ namespace UIJugueteria
                 label_nombreusuario.Text = filaSeleccionada.Cells["NombreUsuario"].Value.ToString();
                 comboBox_rol.Text = filaSeleccionada.Cells["Rol"].Value.ToString();
                 comboBox_estado.Text = filaSeleccionada.Cells["Habilitado"].Value.ToString();
-                textBox_sueldo.Text = filaSeleccionada.Cells["Sueldo"].Value.ToString();
+                textBox_sueldo.Text = filaSeleccionada.Cells["sueldo"].Value.ToString().TrimStart('$');
                 this.RolPrevio = filaSeleccionada.Cells["Rol"].Value.ToString();
             }
             else
@@ -95,8 +95,9 @@ namespace UIJugueteria
 
                 foreach (Empleado item in empleados)
                 {
+                    string sueldoString = item.Sueldo.ToString("N2", new System.Globalization.CultureInfo("es-ES"));
                     //Inserto cada fila de la lista de empleados en la grilla de la interfaz
-                    dataGridViewEmpleados.Rows.Add(item.Nombre, item.Apellido, item.DNI, item.NombreUsuario, item.Rol, item.Sueldo, item.Habilitado);
+                    dataGridViewEmpleados.Rows.Add(item.Nombre, item.Apellido, item.DNI, item.NombreUsuario, item.Rol, "$" + sueldoString, item.Habilitado);
                 }
             }
             catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
@@ -152,8 +153,9 @@ namespace UIJugueteria
 
                     foreach (Empleado item in empleados)
                     {
+                        string sueldoString = item.Sueldo.ToString("N2", new System.Globalization.CultureInfo("es-ES"));
                         //Inserto cada fila en la grilla de la interfaz
-                        dataGridViewEmpleados.Rows.Add(item.Nombre, item.Apellido, item.DNI, item.NombreUsuario, item.Rol, item.Sueldo, item.Habilitado);
+                        dataGridViewEmpleados.Rows.Add(item.Nombre, item.Apellido, item.DNI, item.NombreUsuario, item.Rol, "$"+sueldoString, item.Habilitado);
                     }
                 }
                 else

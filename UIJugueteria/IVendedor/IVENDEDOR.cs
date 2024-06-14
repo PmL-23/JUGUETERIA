@@ -92,10 +92,13 @@ namespace UIJugueteria
                 BLL.Vendedor vendedor = new BLL.Vendedor();
                 List<Factura> facturas = vendedor.VerHistorialVendedor(this.IDVendedor);
 
+
+
                 foreach (Factura item in facturas)
                 {
+                    string sueldoFormateado = item.Total.ToString("N2", new System.Globalization.CultureInfo("es-ES"));
                     //Agrego la fila a la grilla de la interfaz
-                    dgv_historial_vend.Rows.Add(item.IDFactura, item.Cliente.IDCliente, item.FechaEmision, item.Total);
+                    dgv_historial_vend.Rows.Add(item.IDFactura, item.Cliente.IDCliente, item.FechaEmision, "$"+sueldoFormateado);
                 }
             }
             catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas

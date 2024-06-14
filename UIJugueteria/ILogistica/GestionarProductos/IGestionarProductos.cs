@@ -28,7 +28,9 @@ namespace UIJugueteria
                 dtgvVerProductos.Rows.Clear(); //limpiamos la grilla para empezar a operar en ella.
                 foreach (BLL.Producto producto in listaProductos)       //recorremos la listaProductos e insertamos lo que trajimos de la BDD.
                 {
-                    int rowIndex = dtgvVerProductos.Rows.Add(producto.IDProducto, producto.NombreProducto, "$ " + producto.Costo, "$ " + producto.Precioventa, producto.CantidadEnStock);
+                    string costoString = producto.Costo.ToString("N2", new System.Globalization.CultureInfo("es-ES"));
+                    string precioVentaString = producto.Precioventa.ToString("N2", new System.Globalization.CultureInfo("es-ES"));
+                    int rowIndex = dtgvVerProductos.Rows.Add(producto.IDProducto, producto.NombreProducto, "$ " + costoString, "$ " + precioVentaString, producto.CantidadEnStock);
 
                     // Obtener la fila actual
                     DataGridViewRow row = dtgvVerProductos.Rows[rowIndex];

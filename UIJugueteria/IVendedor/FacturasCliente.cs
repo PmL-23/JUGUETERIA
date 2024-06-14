@@ -34,8 +34,9 @@ namespace UIJugueteria.IVendedor
 
                 foreach (BLL.Factura factura in listaFacturas)
                 {
+                    string totalString = factura.Total.ToString("N2", new System.Globalization.CultureInfo("es-ES"));
                     //Sumo cada fila a la grilla de la interfaz
-                    dgvFacturasCliente.Rows.Add(this._IDVendedor, this._IDCliente, factura.IDFactura, factura.FechaEmision, "$ " + factura.Total);
+                    dgvFacturasCliente.Rows.Add(this._IDVendedor, this._IDCliente, factura.IDFactura, factura.FechaEmision, "$ " + totalString);
                 }
                 dgvFacturasCliente.Columns["TotalFactura"].DefaultCellStyle.Format = "0.00";
 

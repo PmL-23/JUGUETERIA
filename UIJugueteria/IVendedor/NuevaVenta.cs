@@ -176,8 +176,8 @@ namespace UIJugueteria
                 dgv_productos_stock.Rows[filaSeleccionada.Index].DefaultCellStyle.SelectionForeColor = Color.Black;
 
                 //Finalmente modifico el total mostrado en la interfaz
-                lbl_subtotal.Text = "$" + factura.CalcularSubtotal();
-                lbl_total.Text = "$" + factura.CalcularTotal().ToString("F2");
+                lbl_subtotal.Text = "$" + factura.CalcularSubtotal().ToString("N2", new System.Globalization.CultureInfo("es-ES"));
+                lbl_total.Text = "$" + factura.CalcularTotal().ToString("N2", new System.Globalization.CultureInfo("es-ES"));
 
             }
             catch (MyExceptions ExcPersonalizada) //Atrapo las excepciones personalizadas
@@ -291,7 +291,6 @@ namespace UIJugueteria
                                     facturaString += "\nTOTAL (+IVA): $" + factura.CalcularTotal().ToString("F2");
 
                                     MessageBox.Show(facturaString, "Venta realizada con éxito!", MessageBoxButtons.OK);
-
                                     //Al terminar vuelvo a la interfaz principal del vendedor
                                     AbrirFormEnPanel(() => new IVENDEDOR(IDVendedor));                                    
                                 }
@@ -364,8 +363,8 @@ namespace UIJugueteria
             dgv_productos_factura.Rows.Remove(filaSeleccionadaFactura);
 
             //Finalmente modifico el total mostrado en la interfaz
-            lbl_subtotal.Text = "$" + factura.CalcularSubtotal();
-            lbl_total.Text = "$" + factura.CalcularTotal().ToString("F2");
+            lbl_subtotal.Text = "$" + factura.CalcularSubtotal().ToString("N2", new System.Globalization.CultureInfo("es-ES"));
+            lbl_total.Text = "$" + factura.CalcularTotal().ToString("N2", new System.Globalization.CultureInfo("es-ES"));
         }
 
         private void txtbox_idcliente_TextChanged(object sender, EventArgs e)
